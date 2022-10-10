@@ -1,0 +1,8 @@
+@use '../costumize' as *;
+
+/* MIXINS */
+
+// transition
+@mixin transition-to-all-25 {
+    transition: all 250ms linear;
+}

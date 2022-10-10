@@ -1,0 +1,16 @@
+@use '../costumize' as *;
+
+/* TYPOGRAPHY */
+.roboto { font-family: 'Roboto', sans-serif; }
+.nato-sans-jp { font-family: 'Noto Sans JP', sans-serif; }
+
+/* FONT SIZE */
+.fs-xpress-sm-100 { font-size: 0.75em; }
+.fs-xpress-sm-200 { font-size: 0.8em; }
+.fs-xpress-sm-300 { font-size: 0.9em; }
+.fs-xpress-sm-400 { font-size: 1em; }
+.fs-xpress-sm-500 { font-size: 1.15em; }
+.fs-xpress-sm-600 { font-size: 1.25em; }
+.fs-xpress-sm-700 { font-size: 1.5em; }
+.fs-xpress-sm-800 { font-size: 2em; }
+.fs-xpress-sm-900 { font-size: 2.25em; }

@@ -1,0 +1,10 @@
+// import bootstrap
+@use './costumize';
+
+// import all files from componets folder
+@use './components/color';
+@use './components/font';
+@use './components/typography';
+@use './components/control';
+@use './components/navbar';
+@use './components/mixins';

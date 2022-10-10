@@ -1,0 +1,10 @@
+@use '../costumize' as *;
+@use './mixins' as *;
+
+/* CONTROL */
+
+// hovering text
+.text-hover-xpress-to-red {
+    @include transition-to-all-25;
+    &:hover { color: $cart-xpress-red-100 !important; }
+}
