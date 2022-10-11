@@ -1,0 +1,14 @@
+@use '../costumize' as *;
+
+/* FORM CONTROL */
+.form-control {
+    position: relative;
+    background-color: rgba($black, 0) !important;
+
+    input { outline: none; border: solid 1px $white; }
+    
+    img {
+        position: absolute;
+        top: 0; left: 0;
+    }
+}

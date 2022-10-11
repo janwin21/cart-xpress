@@ -1,0 +1,44 @@
+@use '../costumize' as *;
+
+/* XPRESS DESIGN COMPONENT */
+.xpress-design-component {
+
+    height: 825px;
+    background-color: rgba($cart-xpress-gray-100, 0.8);
+    margin-top: 15rem;
+
+    img {
+        object-fit: cover;
+    }
+
+    &__left {
+        transform: translateY(-10rem);
+    }
+
+}
+
+.xpress-design-employee-component {
+    position: relative;
+    transform: translateY(-25rem);
+
+    .employee-box {
+        height: fit-content;
+
+        img {
+            object-fit: cover;
+        }
+    }
+
+    .employee-box-design {
+        position: absolute;
+        top: 0; right: 0;
+
+        .extend-cover {
+            transform: translateX(3rem);
+            height: calc(100% + 3rem);
+
+            &.extend-more { transform: translate(3rem, 5.8rem); }
+        }
+    }
+
+}

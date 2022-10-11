@@ -1,0 +1,23 @@
+@use '../costumize' as *;
+
+/* TEXT SHADOW */
+.text-shadow-100 { text-shadow: 1px 1px 1px black; }
+.text-shadow-200 { text-shadow: 2px 2px 2px black; }
+.text-shadow-300 { text-shadow: 3px 3px 3px black; }
+.text-shadow-400 { text-shadow: 4px 4px 4px black; }
+.text-shadow-500 { text-shadow: 5px 5px 5px black; }
+.text-shadow-600 { text-shadow: 6px 6px 6px black; }
+.text-shadow-700 { text-shadow: 7px 7px 7px black; }
+.text-shadow-800 { text-shadow: 8px 8px 8px black; }
+.text-shadow-900 { text-shadow: 9px 9px 9px black; }
+
+/* BOX SHADOW */
+.box-shadow-100 { box-shadow: 1px 4px 1px $cart-xpress-gray-200; }
+.box-shadow-200 { box-shadow: 2px 4px 2px $cart-xpress-gray-200; }
+.box-shadow-300 { box-shadow: 3px 5px 3px $cart-xpress-gray-200; }
+.box-shadow-400 { box-shadow: 4px 5px 4px $cart-xpress-gray-200; }
+.box-shadow-500 { box-shadow: 5px 6px 5px $cart-xpress-gray-200; }
+.box-shadow-600 { box-shadow: 6px 8px 6px $cart-xpress-gray-200; }
+.box-shadow-700 { box-shadow: 7px 10px 7px $cart-xpress-gray-200; }
+.box-shadow-800 { box-shadow: 8px 12px 8px $cart-xpress-gray-200; }
+.box-shadow-900 { box-shadow: 9px 14px 9px $cart-xpress-gray-200; }

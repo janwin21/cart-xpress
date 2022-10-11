@@ -1,10 +1,22 @@
 // import bootstrap
 @use './costumize';
 
-// import all files from componets folder
+// import all files from components folder
 @use './components/color';
 @use './components/font';
 @use './components/typography';
 @use './components/control';
-@use './components/navbar';
 @use './components/mixins';
+@use './components/form-control';
+@use './components/shadow';
+@use './components/opacity';
+@use './components/xpress-design-component';
+@use './components/cart-xpress-bg';
+
+// import all files from home page folder
+@use './pages/homes/simple-greetings.scss';
+@use './pages/homes/search.scss';
+@use './pages/homes/search-manager';
+@use './pages/homes/cart-xpress-header';
+@use './pages/homes/cart-xpress-details';
+@use './pages/homes/cart-xpress-employee';
