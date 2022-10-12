@@ -27,18 +27,25 @@
 .fs-xpress-md-900 { font-size: 4.75em; }
 
 /* FONT WEIGHT */
-.fw-express-100 { font-weight: 100; }
-.fw-express-200 { font-weight: 200; }
-.fw-express-300 { font-weight: 300; }
-.fw-express-400 { font-weight: 400; }
-.fw-express-500 { font-weight: 500; }
-.fw-express-600 { font-weight: 600; }
-.fw-express-700 { font-weight: 700; }
-.fw-express-800 { font-weight: 800; }
-.fw-express-900 { font-weight: 900; }
+.fw-xpress-100 { font-weight: 100; }
+.fw-xpress-200 { font-weight: 200; }
+.fw-xpress-300 { font-weight: 300; }
+.fw-xpress-400 { font-weight: 400; }
+.fw-xpress-500 { font-weight: 500; }
+.fw-xpress-600 { font-weight: 600; }
+.fw-xpress-700 { font-weight: 700; }
+.fw-xpress-800 { font-weight: 800; }
+.fw-xpress-900 { font-weight: 900; }
 
 /* TEXT TRANSFORMATION */
 .uppercase { text-transform: uppercase; }
 
 /* TEXT ALIGNMENT */
 .justify { text-align: justify; }
+
+/* TEXT OVERFLOW */
+.text-overflow {
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}

@@ -12,6 +12,8 @@
 @use './components/opacity';
 @use './components/xpress-design-component';
 @use './components/cart-xpress-bg';
+@use './components/cart-xpress-category';
+@use './components/scrollbar';
 
 // import all files from home page folder
 @use './pages/homes/simple-greetings.scss';
@@ -20,3 +22,4 @@
 @use './pages/homes/cart-xpress-header';
 @use './pages/homes/cart-xpress-details';
 @use './pages/homes/cart-xpress-employee';
+@use './pages/homes/cart-xpress-shop';

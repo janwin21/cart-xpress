@@ -86,10 +86,10 @@
 
         <!-- cover & header -->
         <div class="cover bg-opaque-xpress-black-100 
-                    fw-express-100 w-100 h-100 text-center
+                    fw-xpress-100 w-100 h-100 text-center
                     d-flex justify-content-center align-items-center">
 
-            <h5 class="text-light fw-express-500 
+            <h5 class="text-light fw-xpress-500 
                        nato-sans-jp w-50">
                        Voluptatem placeat cumque perferendis maiores 
                        id corrupti doloribus laudantium, exercitationem eaque.</h5>
@@ -103,7 +103,7 @@
                 d-flex flex-column justify-content-center align-items-center 
                 border-bottom border-2 py-4">
 
-        <h6 class="text-light roboto fw-express-400 mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h6>
+        <h6 class="text-light roboto fw-xpress-400 mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h6>
 
         <!-- search inputs -->
         <div class="row w-100 px-5 my-4">
@@ -154,10 +154,10 @@
     <!---------- Search Section END -->
     
     <!-------------------------------- Search Manager Section START -->
-    <div class="search-manager container-fluid bg-xpress-gray-100 p-4">
+    <div class="search-manager container-fluid bg-xpress-gray-100 p-4 pb-0 sticky-top">
 
         <!--  serach components -->
-        <div class="row">
+        <div class="search-component-wrapper row">
             <div class="col-6">
 
                 <div class="form-control border border-0 p-0 
@@ -172,7 +172,8 @@
                     <button class="btn bg-xpress-orange-200 
                                    bg-hover-xpress-to-gray-200 
                                    rounded text-light py-1 px-4 
-                                   fs-xpress-sm-200 fw-express-500 ms-2">
+                                   fs-xpress-sm-200 fw-xpress-500 ms-2"
+                            id="show-cart-btn">
                                    Show Cart</button>
                 </div>
 
@@ -185,30 +186,30 @@
                     <button class="btn bg-xpress-purple-100
                                    bg-hover-xpress-to-gray-200
                                    rounded text-light me-2 py-1 px-4 roboto
-                                   fs-xpress-sm-100 fw-express-500">
+                                   fs-xpress-sm-100 fw-xpress-500">
                                    SHOW</button>
 
                     <h6 class="text-light nato-sans-jp 
-                              fw-express-400">
+                              fw-xpress-400">
                               Lorem ipsum dolor sit.</h6>
                 </div>
 
                 <p class="text-light roboto 
-                          fs-xpress-sm-300 fw-express-300">
+                          fs-xpress-sm-300 fw-xpress-300">
                           Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
 
             </div>
         </div>
         
         <!-- sorted components -->
-        <div class="row">
+        <div class="sorted-component-wrapper row pb-4">
             <div class="col-6">
 
                 <!-- sorted components for left -->
                 <div class="sorted-component">
 
                     <p class="roboto fs-xpress-sm-200 
-                              fw-express-700 text-light mb-1">
+                              fw-xpress-700 text-light mb-1">
                               Sorted By:</p>
 
                     <div class="sorted-buttons mt-0">
@@ -216,38 +217,38 @@
                         <button class="btn bg-xpress-purple-100
                                        bg-hover-xpress-to-gray-200
                                        rounded text-light py-1 px-4 roboto
-                                       fs-xpress-sm-200 fw-express-500">
+                                       fs-xpress-sm-200 fw-xpress-500">
                                        Alphabet</button>
         
                         <button class="btn bg-xpress-purple-100
                                        bg-hover-xpress-to-gray-200
                                        rounded text-light py-1 px-4 roboto
-                                       fs-xpress-sm-200 fw-express-500">
+                                       fs-xpress-sm-200 fw-xpress-500">
                                        Recent</button>
         
                         <button class="btn bg-xpress-purple-100
                                        bg-hover-xpress-to-gray-200
                                        rounded text-light py-1 px-4 roboto
-                                       fs-xpress-sm-200 fw-express-500">
+                                       fs-xpress-sm-200 fw-xpress-500">
                                        Popularity</button>
         
                         <button class="btn bg-xpress-purple-100
                                        bg-hover-xpress-to-gray-200
                                        rounded text-light py-1 px-4 roboto
-                                       fs-xpress-sm-200 fw-express-500">
+                                       fs-xpress-sm-200 fw-xpress-500">
                                        Price</button>
         
                         <button class="btn bg-xpress-purple-100
                                        bg-hover-xpress-to-gray-200
                                        rounded text-light py-1 px-4 roboto
-                                       fs-xpress-sm-200 fw-express-500">
+                                       fs-xpress-sm-200 fw-xpress-500">
                                        Ratings</button>
                     </div>
                 </div>
 
             </div>
             <div class="col-6 text-end">
-                <p class="roboto fs-xpress-sm-200 fw-express-700 text-light mb-1" style="visibility: hidden">Sorted By:</p>
+                <p class="roboto fs-xpress-sm-200 fw-xpress-700 text-light mb-1" style="visibility: hidden">Sorted By:</p>
 
                 <!-- sorted components for right -->
                 <div class="sorted-component">
@@ -256,13 +257,13 @@
                         <button class="btn bg-xpress-red-100
                                        bg-hover-xpress-to-gray-200
                                        rounded text-light py-1 px-4 roboto
-                                       fs-xpress-sm-200 fw-express-500">
+                                       fs-xpress-sm-200 fw-xpress-500">
                                        ASC</button>
         
                         <button class="btn bg-xpress-green-100
                                        bg-hover-xpress-to-gray-200
                                        rounded text-light py-1 px-4 roboto
-                                       fs-xpress-sm-200 fw-express-500">
+                                       fs-xpress-sm-200 fw-xpress-500">
                                        DESC</button>
                     </div>
                 </div>
@@ -281,19 +282,19 @@
             <button class="btn bg-xpress-purple-100
                            bg-hover-xpress-to-gray-200
                            rounded-0 text-light ms-3 py-1 px-4 roboto
-                           fs-xpress-sm-200 fw-express-500">
+                           fs-xpress-sm-200 fw-xpress-500">
                            Section 1</button>
 
             <button class="btn bg-xpress-blue-100
                            bg-hover-xpress-to-gray-200
                            rounded-0 text-light ms-3 py-1 px-4 roboto
-                           fs-xpress-sm-200 fw-express-500">
+                           fs-xpress-sm-200 fw-xpress-500">
                            Section 2</button>
 
             <button class="btn bg-xpress-orange-200
                            bg-hover-xpress-to-gray-200
                            rounded-0 text-light ms-3 py-1 px-4 roboto
-                           fs-xpress-sm-200 fw-express-500">
+                           fs-xpress-sm-200 fw-xpress-500">
                            Shop Now!</button>
         </div>
 
@@ -301,11 +302,11 @@
         <div class="title-header">
             
             <h1 class="fs-xpress-md-500 lato 
-                       fw-express-600 text-light
+                       fw-xpress-600 text-light
                        text-shadow-300 mb-0">
                        CART <span class="text-xpress-yellow-100">X</span>PRESS</h1>
 
-            <h2 class="fs-xpress-sm-700 fw-express-800 
+            <h2 class="fs-xpress-sm-700 fw-xpress-800 
                        text-xpress-gray-300 lato mt-0">
 
                        <span class="text-xpress-yellow-100">Online</span> 
@@ -382,7 +383,7 @@
                                nato-sans-jp mb-5">Lorem ipsum dolor</h6>
 
                     <p class="text-light roboto 
-                              fs-xpress-sm-300 fw-express-300 p-0">
+                              fs-xpress-sm-300 fw-xpress-300 p-0">
                               Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
                               A iusto eligendi laboriosam quibusdam, deleniti expedita excepturi 
                               aliquam recusandae explicabo qui asperiores, neque mollitia voluptatum? 
@@ -450,7 +451,7 @@
                       text-xpress-yellow-100 roboto">Lorem ipsum dolor</p>
 
             <h6 class="w-50 roboto text-light 
-                      fw-express-300 mt-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                      fw-xpress-300 mt-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                                       Inventore dolor esse praesentium quae eius, est fuga vero nulla, 
                                       aut cupiditate reprehenderit temporibus fugiat labore ipsum 
                                       molestiae id dolore, cum blanditiis.</h6>
@@ -478,7 +479,7 @@
                               text-xpress-yellow-100 roboto">Lorem ipsum dolor</p>
         
                     <h6 class=" w-75 roboto text-light 
-                               fw-express-300 mt-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                               fw-xpress-300 mt-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                                                     Inventore dolor esse praesentium quae eius, est fuga vero nulla, 
                                                     aut cupiditate reprehenderit temporibus fugiat labore ipsum 
                                                     molestiae id dolore, cum blanditiis.</h6>
@@ -503,18 +504,18 @@
     
                                               
                     <h6 class="w-75 roboto text-light 
-                               fw-express-300 mt-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+                               fw-xpress-300 mt-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
                                                     A iusto eligendi laboriosam quibusdam.</h6>
                 </div>
                 
                 <!-- details from at the lowest part of this section -->
                 <div class="box-design-description__lowest 
-                            bg-xpress-purple-100 px-3 pt-3 w-100">
+                            bg-xpress-gray-200 px-3 pt-3 w-100">
 
                     <div class="row">
                         <div class="col-8">
                             <p class="roboto w-75 text-light 
-                                      fs-xpress-sm-300 fw-express-500">
+                                      fs-xpress-sm-300 fw-xpress-500">
                                       Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
                                       Dolor, consequuntur. Vel qui voluptate odit perferendis perspiciatis.</p>
                         </div>
@@ -524,13 +525,13 @@
                             <button class="btn bg-xpress-orange-100
                                            bg-hover-xpress-to-gray-200
                                            rounded-pill text-light py-1 px-4 roboto
-                                           fs-xpress-sm-200 fw-express-500">
+                                           fs-xpress-sm-200 fw-xpress-500">
                                            Shop Now!</button>
          
                             <button class="btn bg-xpress-purple-300
                                            bg-hover-xpress-to-gray-200
                                            rounded-pill text-light py-1 px-4 roboto
-                                           fs-xpress-sm-200 fw-express-500 ms-1">
+                                           fs-xpress-sm-200 fw-xpress-500 ms-1">
                                            Login</button>
                         </div>
                     </div>
@@ -887,14 +888,77 @@
                         </div>
 
                         <!-- bemployee ox design -->
-                        <div class="employee-box-design w-75 h-100" style="z-index: -1;">
-                            <div class="cover w-100 h-100 bg-xpress-purple-400" style="z-index: 1000;"></div>
-                            <div class="extend-cover w-100 bg-xpress-orange-200" style="z-index: -1;"></div>
+                        <div class="employee-box-design w-75 h-100" 
+                             style="z-index: -1;">
+
+                            <div class="cover w-100 h-100 
+                                        bg-xpress-purple-400" 
+                                        style="z-index: 1000;"></div>
+
+                            <div class="extend-cover w-100 
+                                        bg-xpress-orange-200" 
+                                        style="z-index: -1;"></div>
                         </div>
 
                     </div>
 
                 </div>
+            </div>
+
+        </div>
+
+        <!-- shop header -->
+        <div class="cart-xpress-shop-header px-3 py-0">
+
+            <div class="header-container bg-xpress-gray-100 
+                        px-5 pt-5 m-0">
+
+                <div class="row ">
+                    <div class="col-4 pe-0">
+
+                        <div class="bg-xpress-purple-300 
+                                    h-100 px-4 pt-4">
+
+                            <h5 class="lato text-xpress-blue-300">Lorem ipsum dolor sit</h5>
+
+                            <p class="roboto text-light mt-4">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                                Ex libero, magnam corporis doloribus iure recusandae soluta 
+                                eius eum rem fugit optio quibusdam maxime, vitae animi, odit 
+                                nobis cum placeat mollitia!</p>
+                        </div>
+                    </div>
+                    <div class="col-8 ps-0">
+                        <div class="shop-header bg-light h-100">
+
+                            <div class="shop-description text-light 
+                                        bg-opaque-xpress-black-300 
+                                        h-100 mt-3 me-3 ps-4 py-4" 
+                                        style="z-index: 1000;">
+
+                                <h3 class="lato fw-xpress-600 mb-0 pe-4">The Shopping Store</h3>
+
+                                <h5 class="roboto text-xpress-gray-300 mt-0 pe-4">
+                                    <span class="text-xpress-yellow-200">Online</span> 
+                                    Order & Delivery</h5>
+
+                                <p class="roboto mt-4 pe-4">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                    Doloribus iure autem totam consequuntur distinctio officia 
+                                    esse illum nostrum officiis. Minus, voluptatem. Amet quae quibusdam 
+                                    suscipit ipsam aliquam ratione molestias velit.</p>
+                            </div>
+
+                            <div class="shop-background mt-3 me-3" 
+                                 style="z-index: 0;">
+
+                                <img class="w-100 h-100" 
+                                     src="../images/sample-images/sample-image-24.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
@@ -906,10 +970,617 @@
             <div class="gradient-bg-gray-100-to-black-op-100-to-bg-gray-100
                         cover w-100 h-100"></div>
         </div>
+
     </div>
     <!---------- Cart Xpress Employee Introduction END -->
+    
+    <!-------------------------------- Cart Xpress Shop Main Content START -->
+    <div class="cart-xpress-main-content container-fluid p-0">
+
+        <!-- border line design -->
+        <div class="row bg-light m-0" style="height: 0.75rem">
+            <div class="col-4 h-100 bg-xpress-orange-100"></div>
+            <div class="col-4 h-100"></div>
+            <div class="col-4 h-100 bg-xpress-purple-300"></div>
+        </div>
+
+        <div class="bg-xpress-gray-100 
+                    w-100 pe-3 pt-3">
+        
+            <div class="row m-0 h-100">
+
+                <!-- left cart sidebar -->
+                <div class="cart-sidebar p-0 col-3 fixed-top slide-it-vertical-left" 
+                     style="height: 100vh;">
+
+                    <div class="wrapper h-100 pe-1">
+
+                        <div class="cart-sidebar__content h-100 bg-xpress-gray-200">
+
+                            <!-- shop cart header -->
+                            <div class="bg-xpress-orange-100 w-100 pb-1 px-2 pt-2 d-flex justify-content-between align-items-start sticky-top">
+    
+                                <h6 class="lato text-light w-50">
+                                    <i class="fa-solid fa-cart-shopping me-2"></i>
+                                    Shopping Cart</h6>
+    
+                                <button style="border: none; 
+                                        background-color: transparent;">
+    
+                                    <i class="fa-solid fa-xmark float-end 
+                                              text-light text-hover-xpress-to-black-200 
+                                              fs-xpress-sm-500"
+                                       id="sidebar-close-btn"></i>
+                                </button>
+                            </div>
+    
+                            <!-- shop cart content -->
+                            <div class="row row-cols-2 
+                                 m-0 px-1 py-1"
+                                 style="z-index: 1000">
+                    
+                                <!-- category item -->
+                                <div class="col py-1 px-1">
+
+                                    <a class="text-xpress-gray-100" href="#" 
+                                            style="text-decoration: none;">
+
+                                        <div class="card rounded-0 border-0">
+
+                                            <img src="../images/sample-products/product-1.jpg" 
+                                                class="card-img-top" alt="..." 
+                                                style="height: 200px;">
+
+                                            <div class="card-body bg-xpress-gray-100 p-2">
+
+                                                <p class="text-overflow card-title 
+                                                        roboto text-light fs-xpress-sm-300">
+                                                        productName 01</p>
+
+                                                <p class="card-text roboto 
+                                                        text-xpress-orange-200 fs-xpress-sm-700 
+                                                        fw-xpress-600 mb-0">
+                                                        P50</p>
+
+                                                <div class="mt-0 p-0 fs-xpress-sm-200 
+                                                            d-flex justify-content-between align-items-start">
+
+                                                    <p class="card-text text-xpress-yellow-200">
+                                                            <i class="fa-solid fa-star"></i> 4.5</p>
+
+                                                    <p class="card-text text-light 
+                                                            text-xpress-yellow-100 fw-xpress-500">
+                                                            10% discount</p>
+                                                </div>
+
+                                                <p class="card-text text-xpress-gray-300 
+                                                        fw-xpress-400 fs-xpress-sm-300">
+                                                        available: 10</p>
+                                            </div>
+                                        </div>
+
+                                    </a>
+
+                                    <div class="form-control bg-xpress-gray-100 pt-0 px-2 pb-2 
+                                                border-top
+                                                border-start-0
+                                                border-bottom-0
+                                                border-end-0
+                                                border-light rounded-0
+                                                d-flex justify-content-between align-items-center">
+
+                                        <label class="text-light roboto fs-xpress-sm-200" 
+                                               for="quantity-productName">Quantity</label>
+
+                                        <input class="w-50 mt-2 px-2" type="number" value="5" min="1">
+                                    </div>
+         
+                                    <button class="btn bg-xpress-red-100 w-100
+                                                   bg-hover-xpress-to-gray-200
+                                                   rounded-0 text-light py-1 px-4 roboto
+                                                   fs-xpress-sm-200 fw-xpress-500">
+                                                   Remove</button>
+
+                                </div>
+                                
+                            </div>
+
+                            <!-- a big space -->
+                            <div class="big-space w-100 h-25">100</div>
+
+                            <!-- submit or visit section for visiting cart or checking out -->
+                            <div class="cart-result-box gradient-black-op-100-to-bg-gray-200 
+                                        w-100 text-light">
+
+                                <div class="px-3 pt-3 pb-0 mb-0">
+                                    <p class="roboto fw-xpress-500">Total Ordered</p>
+
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <p class="roboto fs-xpress-sm-200 fw-xpress-300">Quantity: 40 pieces</p>
+                                            <p class="roboto fs-xpress-sm-200 fw-xpress-300">Expected Duration on Delivery:</p>
+                                        </div>
+                                        <div class="col-6">
+                                            <p class="roboto fs-xpress-sm-200 fw-xpress-300">Total: P15,000</p>
+                                            <p class="roboto fs-xpress-sm-200 fw-xpress-300">24 hours</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="text-end pe-2 pb-2 mt-0">
+        
+                                    <button class="btn bg-xpress-purple-300
+                                                bg-hover-xpress-to-gray-200
+                                                rounded-0 text-light py-1 px-4 roboto
+                                                fs-xpress-sm-200 fw-xpress-500">
+                                                Visit Cart</button>
+        
+                                    <button class="btn bg-xpress-orange-100
+                                                bg-hover-xpress-to-gray-200
+                                                rounded-0 text-light py-1 px-4 roboto
+                                                fs-xpress-sm-200 fw-xpress-500">
+                                                Checkout Now</button>
+
+                                </div>
+
+                            </div>
+                        
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                <div class="cart-sidebar-space col-3 p-0 shrink-it-vertical"></div>
+
+                <!-- main bar -->
+                <div class="col-9 ps-4">
+
+                    <!-- header content -->
+                    <div class="row">
+                        <div class="col-7 p-0 pe-2">
+                            <a href="#">
+                                <img class="w-100 h-100" 
+                                     src="../images/sample-shops/sample-shop-2.jpg" alt=""></a>
+                        </div>
+                        <div class="col-5 p-0">
+
+                            <a href="#">
+                                <img class="w-100 h-50 pb-2" 
+                                     src="../images/sample-shops/sample-shop-3.webp" alt=""></a>
+
+                            <div class="row h-50 ps-2">
+                                <div class="col-6 p-0 ps-1 pe-2">
+
+                                    <a href="#">
+                                        <img class="w-100 h-100" 
+                                             src="../images/sample-shops/sample-shop-1.jpg" alt=""></a>
+                                </div>
+                                <div class="col-6 p-0 pe-2">
+
+                                    <a href="#">
+                                        <img class="w-100 h-100 pe-1" 
+                                             src="../images/sample-shops/sample-shop-4.png" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- shop content -->
+                    <div class="shop-content-box row">
+
+                        <!-- left content -->
+                        <div class="col-7 p-0 pt-2 pe-2 h-100">
+                            <div class="shop-content h-100
+                                        bg-xpress-gray-200 rounded-top">
+
+                                <!-- cateogory title header -->
+                                <div class="shop-content__header 
+                                            px-3 pb-1 pt-3 border-1 
+                                            border-bottom border-light">
+
+                                    <h5 class="text-light roboto w-100 
+                                               fs-xpress-sm-500 
+                                               d-flex flex-row justify-content-between align-items-center">
+
+                                        <span>Popular Category</span>
+
+                                        <img class="float-end" 
+                                             src="../images/icons/input-icon-2.png" alt="" 
+                                             style="width: 1.5em;">
+                                    </h5>
+                                </div>
+
+                                <!-- category content -->
+                                <div class="shop-content__category bg-light px-2">
+                                    
+                                    <div class="row row-cols-5 px-1 h-100">
+
+                                        <div class="category-item 
+                                                    col p-0 bg-primary">
+
+                                            <img class="w-100 h-100" 
+                                                 src="../images/sample-categories/car.jpg" alt="">
+
+                                            <a href="#">
+                                                <p class="bg-opaque-xpress-black-200
+                                                          bg-opaque-hover-xpress-to-black-100 
+                                                          roboto text-light text-center bg-primary
+                                                          w-100 h-100 m-0 
+                                                          d-flex justify-content-center align-items-center 
+                                                          fs-xpress-sm-200">
+                                                          CAR</p></a>
+                                        </div>
+
+                                        <div class="category-item 
+                                                    col p-0 bg-primary">
+
+                                            <img class="w-100 h-100" 
+                                                 src="../images/sample-categories/bike.jpg" alt="">
+
+                                            <a href="#">
+                                                <p class="bg-opaque-xpress-black-200
+                                                          bg-opaque-hover-xpress-to-black-100 
+                                                          roboto text-light text-center bg-primary
+                                                          w-100 h-100 m-0 
+                                                          d-flex justify-content-center align-items-center 
+                                                          fs-xpress-sm-200">
+                                                          BIKE</p></a>
+                                        </div>
+                                        
+                                    </div>
+
+                                </div>
+
+                                <!-- category footer -->
+                                <div class="shop-content__footer 
+                                            bg-xpress-gray-200 px-2 
+                                            d-flex justify-content-between align-items-center">
+        
+                                    <button class="btn bg-xpress-purple-100
+                                                bg-hover-xpress-to-gray-200
+                                                rounded text-light py-1 px-4 roboto
+                                                fs-xpress-sm-200 fw-xpress-500">
+                                                Previous</button>
+        
+                                    <button class="btn bg-xpress-orange-100
+                                                bg-hover-xpress-to-gray-200
+                                                rounded text-light py-1 px-4 roboto
+                                                fs-xpress-sm-200 fw-xpress-500">
+                                                Next</button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- right content -->
+                        <div class="col-5 h-100">
+                            <div class="popular-products m-0 h-100 pt-2">
+
+                                <div class="row h-50">
+
+                                    <!-- first row left side -->
+                                    <div class="product-items col-6 h-100 p-0 pe-1">
+
+                                        <a href="#" style="text-decoration: none;">
+                                            <img class="w-100" 
+                                                 src="../images/sample-products/product-1.jpg" alt="" 
+                                                 style="height: 60%;">
+                                                 
+                                            <div class="w-100 bg-xpress-gray-200 p-2"
+                                                 style="height: 40%;">
+    
+                                                <p class="roboto text-light 
+                                                          fs-xpress-sm-200">
+                                                          Lorem ipsum dolor sit amet</p>
+    
+                                                <div class="product-detail d-flex 
+                                                            justify-content-between align-items-end 
+                                                            p-2 w-100">
+    
+                                                    <h5 class="roboto text-xpress-orange-200 
+                                                               m-0 p-0 fs-xpress-sm-900">
+                                                               P50</h5>
+    
+                                                    <p class="roboto text-xpress-gray-300
+                                                              m-0 fs-xpress-sm-200">
+                                                              available: 10</p>
+                                                </div>
+                                            </div></a>
+                                    </div>
+
+                                    <!-- first row right side -->
+                                    <div class="col-6 p-0 ps-1 h-100">
+
+                                        <a href=""><img class="w-100 h-50 pb-1" 
+                                                        src="../images/sample-products/product-2.jpg" alt=""></a>
+
+                                        <a href=""><img class="w-100 h-50 pb-1" 
+                                                        src="../images/sample-products/product-3.jpg" alt=""></a>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="row h-25 py-2">
+                                    <div class="col-6 h-100 p-0">
+
+                                        <a href="#">
+                                            <img class="w-100 h-100" 
+                                                 src="../images/sample-products/product-4.jpg" alt=""></a>
+                                    </div>
+                                    
+                                    <div class="product-items col-6 p-2 bg-xpress-gray-200">
+
+                                        <a href="#" style="text-decoration: none;">
+                                            <p class="roboto text-light 
+                                                      fs-xpress-sm-200">
+                                                      Lorem ipsum dolor sit amet</p>
+    
+                                            <div class="product-detail d-flex 
+                                                        justify-content-between align-items-end 
+                                                        p-2 w-100">
+    
+                                                <h5 class="roboto text-xpress-orange-200 
+                                                           m-0 p-0 fs-xpress-sm-900">
+                                                           P50</h5>
+    
+                                                <p class="roboto text-xpress-gray-300
+                                                          m-0 fs-xpress-sm-200">
+                                                          available: 10</p>
+                                            </div></a>
+
+                                    </div>
+                                </div>
+
+                                <div class="row h-25">
+                                    <div class="col-6 h-100 p-0 pe-1">
+
+                                        <a href="#">
+                                            <img class="w-100 h-100" 
+                                                 src="../images/sample-products/product-5.jpg" alt=""></a>
+                                    </div>
+                                    <div class="col-6 h-100 p-0 ps-1">
+
+                                        <a href="#">
+                                            <img class="w-100 h-100" 
+                                                 src="../images/sample-products/product-6.jpg" alt=""></a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-------------------------------- Main Product Inside Category START -->
+                    <div class="cart-xpress-category 
+                                row bg-xpress-gray-200 mt-2">
+
+                        <!-- category header -->
+                        <div class="pt-2 ps-2"
+                             style="z-index: 1000">
+
+                            <h5 class="roboto fs-xpress-sm-400 
+                                       text-light p-2 w-25">
+                                       categoryName</h5>
+                        </div>
+
+                        <!-- category content -->
+                        <div class="row row-cols-6 
+                                    m-0 px-1 py-1"
+                                    style="z-index: 1000">
+                            
+                            <!-- category item -->
+                            <div class="col py-1 px-1">
+
+                                <a class="text-xpress-gray-100" href="#" 
+                                          style="text-decoration: none;">
+
+                                    <div class="card rounded-0 border-0 h-100">
+
+                                        <img src="../images/sample-products/product-1.jpg" 
+                                             class="card-img-top" alt="..." 
+                                             style="height: 200px;">
+    
+                                        <div class="card-body bg-xpress-gray-100 p-2">
+
+                                            <p class="text-overflow card-title 
+                                                      roboto text-light fs-xpress-sm-300">
+                                                      productName 01</p>
+
+                                            <p class="card-text roboto 
+                                                      text-xpress-orange-200 fs-xpress-sm-700 
+                                                      fw-xpress-600 mb-0">
+                                                      P50</p>
+
+                                            <div class="mt-0 p-0 fs-xpress-sm-200 
+                                                        d-flex justify-content-between align-items-start">
+
+                                                <p class="card-text text-xpress-yellow-200">
+                                                        <i class="fa-solid fa-star"></i> 4.5</p>
+
+                                                <p class="card-text text-light 
+                                                          text-xpress-yellow-100 fw-xpress-500">
+                                                          10% discount</p>
+                                            </div>
+
+                                            <p class="card-text text-xpress-gray-300 
+                                                      fw-xpress-400 fs-xpress-sm-300">
+                                                      available: 10</p>
+                                        </div>
+                                    </div>
+
+                                </a>
+
+                            </div>
+                            
+                        </div>
+
+                        <!-- shop load more button -->
+                        <div class="px-2 pb-2" style="z-index: 1000">
+        
+                            <button class="btn bg-xpress-purple-100 w-100
+                                           bg-hover-xpress-to-gray-200
+                                           rounded text-light py-1 px-4 roboto
+                                           fs-xpress-sm-200 fw-xpress-500">
+                                           Load More</button>
+                        </div>
+
+                        <!-- category background of a certain product -->
+                        <div class="category-background h-50 p-0" 
+                             style="z-index: 0">
+
+                            <img class="w-100 h-100" 
+                                 style="z-index: -1"
+                                 src="../images/sample-categories/car.jpg" alt="">
+
+                            <div class="cover w-100 h-100 
+                                        gradient-black-op-100-to-bg-gray-200"></div>
+                        </div>
+
+                    </div>
+                    <!---------- Main Product Inside Categor END -->
+
+                </div>
+
+                <!-- right side bar -->
+                <div class="right-slidebar col-3 ps-2 pe-0 text-end text-light">
+
+                    <!-- specific product detail -->
+                    <img class="w-100" src="../images/sample-products/product-2.jpg" alt="" 
+                         style="height: 250px;
+                                object-fit: cover;">
+
+                    <h5 class="nato-sans-jp mt-3">productName 01</h5>
+
+                    <p class="lato text-xpress-yellow-200 
+                              fs-xpress-sm-400 fw-xpress-400">
+                              <span class="text-xpress-gray-300 me-3">
+                              10%</span>
+                              P50 price</p>
+
+                    <p class="lato justify 
+                              fs-xpress-sm-300 fw-xpress-200">
+                              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                              Quia deleniti ad, laborum facere aliquam et distinctio labore,
+                              dolor recusandae eligendi suscipit. Quidem dolorum dolorem nihil
+                              praesentium beatae quasi molestias veritatis!</p>
+
+                    <div class="d-flex justify-content-center align-items-center pt-2">
+                        <div class="w-100 pe-1">
+                            <button class="btn bg-xpress-orange-100 
+                                           bg-hover-xpress-to-gray-200 
+                                           rounded-0 text-light py-1 px-4 w-100
+                                           fs-xpress-sm-200 fw-xpress-500">
+                                           Visit Shop</button>
+                        </div>
+
+                        <div class="w-100 ps-1">
+                            <button class="btn bg-xpress-purple-300 
+                                           bg-hover-xpress-to-gray-200 
+                                           rounded-0 text-light py-1 px-4 w-100
+                                           fs-xpress-sm-200 fw-xpress-500">
+                                           Visit Product</button>
+                        </div>
+                    </div>
+
+                    <button class="btn bg-xpress-red-100 
+                                   bg-hover-xpress-to-gray-200 
+                                   rounded-0 text-light py-1 px-4 w-100 mt-2
+                                   fs-xpress-sm-200 fw-xpress-500">
+                                   Add To Cart</button>
+
+                    <!-- another random product -->
+                    <div class="mt-2 px-2" 
+                         style="height: 150px; overflow: hidden;">
+
+                        <div class="row px-1">
+
+                            <div class="col-4 p-0 pe-1">
+                                <a href="#"><img class="w-100 h-100 p-0" 
+                                src="../images/sample-products/product-1.jpg" alt=""></a></div>
+
+                            <div class="col-4 p-0 px-1">
+                                <a href="#"><img class="w-100 h-100 p-0"
+                                src="../images/sample-products/product-5.jpg" alt=""></a></div>
+
+                            <div class="col-4 p-0 ps-1">
+                                <a href="#"><img class="w-100 h-100 p-0" 
+                                src="../images/sample-products/product-6.jpg" alt=""></a></div>
+                        </div>
+                    </div>
+
+                    <!-- product -->
+                    <p class="roboto mt-5 text-xpress-gray-300">Related Items</p>
+
+                    <!-- category content -->
+                    <div class="row row-cols-2 flex-row-reverse
+                                m-0 py-1"
+                                style="z-index: 1000">
+                        
+                        <!-- category item -->
+                        <div class="col py-1 px-1">
+
+                            <a class="text-xpress-gray-100" href="#" 
+                                      style="text-decoration: none;">
+
+                                <div class="card rounded-0 border-0 h-100">
+
+                                    <img src="../images/sample-products/product-1.jpg" 
+                                         class="card-img-top" alt="..." 
+                                         style="height: 200px;">
+
+                                    <div class="card-body bg-xpress-gray-200 p-2">
+
+                                        <p class="text-overflow card-title 
+                                                  roboto text-light fs-xpress-sm-300">
+                                                  productName 01</p>
+
+                                        <p class="card-text roboto 
+                                                  text-xpress-orange-200 fs-xpress-sm-700 
+                                                  fw-xpress-600 mb-0">
+                                                  P50</p>
+
+                                        <div class="mt-0 p-0 fs-xpress-sm-200 
+                                                    d-flex justify-content-between align-items-start">
+
+                                            <p class="card-text text-xpress-yellow-200">
+                                                    <i class="fa-solid fa-star"></i> 4.5</p>
+
+                                            <p class="card-text text-light 
+                                                      text-xpress-yellow-100 fw-xpress-500">
+                                                      10% discount</p>
+                                        </div>
+
+                                        <p class="card-text text-xpress-gray-300 
+                                                  fw-xpress-400 fs-xpress-sm-300">
+                                                  available: 10</p>
+                                    </div>
+                                </div>
+                                
+                            </a>
+
+                        </div>
+                        
+                    </div>
+
+                    <button class="btn bg-xpress-blue-100 
+                                   bg-hover-xpress-to-gray-200 
+                                   rounded-0 text-light py-1 px-4 w-100 mt-2
+                                   fs-xpress-sm-200 fw-xpress-500">
+                                   Load More</button>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!---------- Cart Xpress Shop Main Content END -->
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="../js/utils/FunctionUtils.js"></script>
     <script src="../js/pages/home.js"></script>
 </body>
 </html>
