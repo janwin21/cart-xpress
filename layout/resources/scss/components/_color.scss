@@ -19,6 +19,7 @@
 .bg-xpress-gray-200 {                   background-color: $cart-xpress-gray-200 !important; }
 .bg-xpress-gray-300 {                   background-color: $cart-xpress-gray-300 !important; }
 .bg-xpress-gray-400 {                   background-color: $cart-xpress-gray-400 !important; }
+.bg-xpress-gray-500 {                   background-color: $cart-xpress-gray-500 !important; }
 
 .bg-xpress-orange-100 {                 background-color: $cart-xpress-orange-100 !important; }
 .bg-xpress-orange-200 {                 background-color: $cart-xpress-orange-200 !important; }
@@ -41,9 +42,14 @@
 .bg-opaque-xpress-black-200 {           background-color: rgba($black, 0.5) !important; }
 .bg-opaque-xpress-black-300 {           background-color: rgba($black, 0.75) !important; }
 
+.bg-opaque-xpress-gray-100 {            background-color: rgba($cart-xpress-gray-100, 0.9) !important; }
+
 /* COLOR WITH GRADIENT UTILS */
 .gradient-bg-gray-100-to-transparent {  background-image: linear-gradient($cart-xpress-gray-100, transparent); }
 .gradient-bg-gray-100-to-black-op-100-to-bg-gray-100 {     
                                         background-image: linear-gradient($cart-xpress-gray-100, rgba($black, 0.5), $cart-xpress-gray-100); }
 .gradient-bg-blue-200-to-purple-400 {   background-image: linear-gradient($cart-xpress-blue-200, $cart-xpress-purple-400); }
 .gradient-black-op-100-to-bg-gray-200 { background-image: linear-gradient(rgba($black, 0.5), $cart-xpress-gray-200); }
+
+/* ACTIVE COLORS */
+.purple-100-active {                        color: $cart-xpress-purple-100; }

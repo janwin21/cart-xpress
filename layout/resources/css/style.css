@@ -10827,6 +10827,10 @@ textarea.form-control-lg {
   background-color: #585858 !important;
 }
 
+.bg-xpress-gray-500 {
+  background-color: #666666 !important;
+}
+
 .bg-xpress-orange-100 {
   background-color: #e69138 !important;
 }
@@ -10880,6 +10884,10 @@ textarea.form-control-lg {
   background-color: rgba(0, 0, 0, 0.75) !important;
 }
 
+.bg-opaque-xpress-gray-100 {
+  background-color: rgba(67, 67, 67, 0.9) !important;
+}
+
 /* COLOR WITH GRADIENT UTILS */
 .gradient-bg-gray-100-to-transparent {
   background-image: linear-gradient(#434343, transparent);
@@ -10895,6 +10903,11 @@ textarea.form-control-lg {
 
 .gradient-black-op-100-to-bg-gray-200 {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), #262626);
+}
+
+/* ACTIVE COLORS */
+.purple-100-active {
+  color: #8e7cc3;
 }
 
 /* TYPOGRAPHY */
@@ -11038,6 +11051,7 @@ textarea.form-control-lg {
 }
 
 /* MIXINS */
+/* animations */
 /* CONTROL */
 .text-hover-xpress-to-red-100 {
   transition: all 250ms linear;
@@ -11298,6 +11312,19 @@ textarea.form-control-lg {
   background: #555;
 }
 
+/* NAVBAR */
+@keyframes ring {
+  0% {
+    transform: rotateZ(25deg);
+  }
+  100% {
+    transform: rotateZ(-25deg);
+  }
+}
+nav #notify {
+  animation: ring 1s linear infinite alternate;
+}
+
 /* SIMPLE GREEETINGS */
 .simple-greeting {
   position: relative;
@@ -11438,6 +11465,8 @@ textarea.form-control-lg {
 }
 .cart-xpress-main-content .cart-sidebar__content {
   position: relative;
+}
+.cart-xpress-main-content .cart-sidebar__content .shop-cart-wrapper {
   overflow-y: auto;
 }
 .cart-xpress-main-content .cart-sidebar__content .cart-result-box {
@@ -11479,6 +11508,14 @@ textarea.form-control-lg {
   position: absolute;
   bottom: 0;
   left: 0;
+}
+
+/* LOGIN MAIN CONTENT */
+.whole-cover-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
 }
 
 /*# sourceMappingURL=style.css.map */

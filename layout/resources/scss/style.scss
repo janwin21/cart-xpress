@@ -14,6 +14,7 @@
 @use './components/cart-xpress-bg';
 @use './components/cart-xpress-category';
 @use './components/scrollbar';
+@use './components/navbar';
 
 // import all files from home page folder
 @use './pages/homes/simple-greetings.scss';
@@ -23,3 +24,6 @@
 @use './pages/homes/cart-xpress-details';
 @use './pages/homes/cart-xpress-employee';
 @use './pages/homes/cart-xpress-shop';
+
+// import all files from login page folder
+@use './pages/login/main-content';
