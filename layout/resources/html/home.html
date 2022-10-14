@@ -336,7 +336,7 @@
                 Quis in id officiis illum!</p>
         </div>
 
-        <!-- cart xpress home design 01 -->
+        <!-- cart xpress home header design -->
         <div class="xpress-design-component rounded-top w-75">
             <div class="row px-3">
                 <div class="col-4 ps-4 pe-0
@@ -1017,10 +1017,14 @@
 
                     <div class="wrapper h-100 pe-1">
 
-                        <div class="cart-sidebar__content h-100 bg-xpress-gray-200">
+                        <div class="cart-sidebar__content h-100 
+                                    bg-xpress-gray-200 position-relative">
 
                             <!-- shop cart header -->
-                            <div class="bg-xpress-orange-100 w-100 pb-1 px-2 pt-2 d-flex justify-content-between align-items-start sticky-top">
+                            <div class="bg-xpress-orange-100 w-100 pb-1 px-2 pt-2 
+                                        d-flex justify-content-between align-items-start 
+                                        position-absolute top-0 start-0"
+                                        style="z-index: 1050;" style="height: 40px;">
     
                                 <h6 class="lato text-light w-50">
                                     <i class="fa-solid fa-cart-shopping me-2"></i>
@@ -1037,118 +1041,115 @@
                             </div>
     
                             <!-- shop cart content -->
-                            <div class="shop-cart-wrapper h-100">
+                            <div class="shop-cart-wrapper h-100" style="padding-top: 40px;">
 
-                            <div class="row row-cols-2 
-                                 m-0 px-1 py-1"
-                                 style="z-index: 1000;">
-                    
-                                <!-- category item -->
-                                <div class="col py-1 px-1">
+                                <div class="row row-cols-2 m-0 h-100"
+                                    style="z-index: 1000;">
+                        
+                                    <!-- category item -->
+                                    <div class="col py-1 px-1">
 
-                                    <a class="text-xpress-gray-100" href="#" 
-                                            style="text-decoration: none;">
+                                        <a class="text-xpress-gray-100" href="#" 
+                                                style="text-decoration: none;">
 
-                                        <div class="card rounded-0 border-0">
+                                            <div class="card rounded-0 border-0">
 
-                                            <img src="../images/sample-products/product-1.jpg" 
-                                                class="card-img-top" alt="..." 
-                                                style="height: 200px;">
+                                                <img src="../images/sample-products/product-1.jpg" 
+                                                    class="card-img-top" alt="..." 
+                                                    style="height: 200px;">
 
-                                            <div class="card-body bg-xpress-gray-100 p-2">
+                                                <div class="card-body bg-xpress-gray-100 p-2">
 
-                                                <p class="text-overflow card-title 
-                                                        roboto text-light fs-xpress-sm-300">
-                                                        productName 01</p>
+                                                    <p class="text-overflow card-title 
+                                                            roboto text-light fs-xpress-sm-300">
+                                                            productName 01</p>
 
-                                                <p class="card-text roboto 
-                                                        text-xpress-orange-200 fs-xpress-sm-700 
-                                                        fw-xpress-600 mb-0">
-                                                        P50</p>
+                                                    <p class="card-text roboto 
+                                                            text-xpress-orange-200 fs-xpress-sm-700 
+                                                            fw-xpress-600 mb-0">
+                                                            P50</p>
 
-                                                <div class="mt-0 p-0 fs-xpress-sm-200 
-                                                            d-flex justify-content-between align-items-start">
+                                                    <div class="mt-0 p-0 fs-xpress-sm-200 
+                                                                d-flex justify-content-between align-items-start">
 
-                                                    <p class="card-text text-xpress-yellow-200">
-                                                            <i class="fa-solid fa-star"></i> 4.5</p>
+                                                        <p class="card-text text-xpress-yellow-200">
+                                                                <i class="fa-solid fa-star"></i> 4.5</p>
 
-                                                    <p class="card-text text-light 
-                                                            text-xpress-yellow-100 fw-xpress-500">
-                                                            10% discount</p>
+                                                        <p class="card-text text-light 
+                                                                text-xpress-yellow-100 fw-xpress-500">
+                                                                10% discount</p>
+                                                    </div>
+
+                                                    <p class="card-text text-xpress-gray-300 
+                                                            fw-xpress-400 fs-xpress-sm-300">
+                                                            available: 10</p>
                                                 </div>
+                                            </div>
 
-                                                <p class="card-text text-xpress-gray-300 
-                                                        fw-xpress-400 fs-xpress-sm-300">
-                                                        available: 10</p>
+                                        </a>
+
+                                        <div class="form-control bg-xpress-gray-100 pt-0 px-2 pb-2 
+                                                    border-top
+                                                    border-start-0
+                                                    border-bottom-0
+                                                    border-end-0
+                                                    border-light rounded-0
+                                                    d-flex justify-content-between align-items-center">
+
+                                            <label class="text-light roboto fs-xpress-sm-200" 
+                                                for="quantity-productName">Quantity</label>
+
+                                            <input class="w-50 mt-2 px-2" type="number" value="5" min="1">
+                                        </div>
+            
+                                        <button class="btn bg-xpress-red-100 w-100
+                                                    bg-hover-xpress-to-gray-200
+                                                    rounded-0 text-light py-1 px-4 roboto
+                                                    fs-xpress-sm-200 fw-xpress-500">
+                                                    Remove</button>
+
+                                    </div>
+
+                                    <!-- submit or visit section for visiting cart or checking out -->
+                                    <div class="cart-result-box gradient-black-op-100-to-bg-gray-200 
+                                    position-sticky bottom-0
+                                    w-100 text-light">
+
+                                    <div class="px-3 pt-3 pb-0 mb-0">
+                                        <p class="roboto fw-xpress-500">Total Ordered</p>
+
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <p class="roboto fs-xpress-sm-200 fw-xpress-300">Quantity: 40 pieces</p>
+                                                <p class="roboto fs-xpress-sm-200 fw-xpress-300">Expected Duration on Delivery:</p>
+                                            </div>
+                                            <div class="col-6">
+                                                <p class="roboto fs-xpress-sm-200 fw-xpress-300">Total: P15,000</p>
+                                                <p class="roboto fs-xpress-sm-200 fw-xpress-300">24 hours</p>
                                             </div>
                                         </div>
-
-                                    </a>
-
-                                    <div class="form-control bg-xpress-gray-100 pt-0 px-2 pb-2 
-                                                border-top
-                                                border-start-0
-                                                border-bottom-0
-                                                border-end-0
-                                                border-light rounded-0
-                                                d-flex justify-content-between align-items-center">
-
-                                        <label class="text-light roboto fs-xpress-sm-200" 
-                                               for="quantity-productName">Quantity</label>
-
-                                        <input class="w-50 mt-2 px-2" type="number" value="5" min="1">
                                     </div>
-         
-                                    <button class="btn bg-xpress-red-100 w-100
-                                                   bg-hover-xpress-to-gray-200
-                                                   rounded-0 text-light py-1 px-4 roboto
-                                                   fs-xpress-sm-200 fw-xpress-500">
-                                                   Remove</button>
 
-                                </div>
+                                    <div class="text-end pe-2 pb-2 mt-0">
 
-                                <!-- a big space -->
-                                <div class="big-space w-100 h-25"></div>
-                                
-                            </div>
-                                
-                            </div>
+                                        <button class="btn bg-xpress-purple-300
+                                                    bg-hover-xpress-to-gray-200
+                                                    rounded-0 text-light py-1 px-4 roboto
+                                                    fs-xpress-sm-200 fw-xpress-500">
+                                                    Visit Cart</button>
 
-                            <!-- submit or visit section for visiting cart or checking out -->
-                            <div class="cart-result-box gradient-black-op-100-to-bg-gray-200 
-                                        w-100 text-light">
+                                        <button class="btn bg-xpress-orange-100
+                                                    bg-hover-xpress-to-gray-200
+                                                    rounded-0 text-light py-1 px-4 roboto
+                                                    fs-xpress-sm-200 fw-xpress-500">
+                                                    Checkout Now</button>
 
-                                <div class="px-3 pt-3 pb-0 mb-0">
-                                    <p class="roboto fw-xpress-500">Total Ordered</p>
-
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <p class="roboto fs-xpress-sm-200 fw-xpress-300">Quantity: 40 pieces</p>
-                                            <p class="roboto fs-xpress-sm-200 fw-xpress-300">Expected Duration on Delivery:</p>
                                         </div>
-                                        <div class="col-6">
-                                            <p class="roboto fs-xpress-sm-200 fw-xpress-300">Total: P15,000</p>
-                                            <p class="roboto fs-xpress-sm-200 fw-xpress-300">24 hours</p>
-                                        </div>
+
                                     </div>
+                                    
                                 </div>
-
-                                <div class="text-end pe-2 pb-2 mt-0">
-        
-                                    <button class="btn bg-xpress-purple-300
-                                                bg-hover-xpress-to-gray-200
-                                                rounded-0 text-light py-1 px-4 roboto
-                                                fs-xpress-sm-200 fw-xpress-500">
-                                                Visit Cart</button>
-        
-                                    <button class="btn bg-xpress-orange-100
-                                                bg-hover-xpress-to-gray-200
-                                                rounded-0 text-light py-1 px-4 roboto
-                                                fs-xpress-sm-200 fw-xpress-500">
-                                                Checkout Now</button>
-
-                                </div>
-
+                                
                             </div>
                         
                         </div>

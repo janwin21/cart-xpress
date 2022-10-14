@@ -26,4 +26,8 @@
 @use './pages/homes/cart-xpress-shop';
 
 // import all files from login page folder
-@use './pages/login/main-content';
+@use './pages/authentication/login-content';
+@use './pages/authentication/register-content';
+
+// import all files from product page folder
+@use './pages/product/product-content';

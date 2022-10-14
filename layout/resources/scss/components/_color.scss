@@ -4,6 +4,7 @@
 /* TEXT */
 .text-xpress-gray-100 {                 color: $cart-xpress-gray-100 !important; }
 .text-xpress-gray-300 {                 color: $cart-xpress-gray-300 !important; }
+.text-xpress-gray-600 {                 color: $cart-xpress-gray-600 !important; }
 
 .text-xpress-yellow-100 {               color: $cart-xpress-yellow-100 !important; }
 .text-xpress-yellow-200 {               color: $cart-xpress-yellow-200 !important; }
@@ -13,6 +14,11 @@
 .text-xpress-blue-300 {                 color: $cart-xpress-blue-300 !important; }
 
 .text-xpress-orange-200 {               color: $cart-xpress-orange-200 !important; }
+
+.text-xpress-red-100 {                  color: $cart-xpress-red-100 !important; }
+.text-xpress-red-200 {                  color: $cart-xpress-red-200 !important; }
+
+.text-xpress-green-200 {                color: $cart-xpress-green-200 !important; }
 
 /* BACKGROUND */
 .bg-xpress-gray-100 {                   background-color: $cart-xpress-gray-100 !important; }
@@ -31,11 +37,15 @@
 .bg-xpress-purple-300 {                 background-color: $cart-xpress-purple-300 !important; }
 .bg-xpress-purple-400 {                 background-color: $cart-xpress-purple-400 !important; }
 
-.bg-xpress-red-100 {                    background-color: $cart-xpress-red-100 !important; }
+.bg-xpress-red-100 {                    background-color: $cart-xpress-red-200 !important; }
+.bg-xpress-red-200 {                    background-color: $cart-xpress-red-100 !important; }
 
 .bg-xpress-green-100 {                  background-color: $cart-xpress-green-100 !important; }
+.bg-xpress-green-200 {                  background-color: $cart-xpress-green-200 !important; }
 
 .bg-xpress-blue-100 {                   background-color: $cart-xpress-blue-100 !important; }
+
+.bg-transparent {                       background-color: transparent; }
 
 /* COLOR WITH OPACITY UTILS */
 .bg-opaque-xpress-black-100 {           background-color: rgba($black, 0.25) !important; }
@@ -52,4 +62,10 @@
 .gradient-black-op-100-to-bg-gray-200 { background-image: linear-gradient(rgba($black, 0.5), $cart-xpress-gray-200); }
 
 /* ACTIVE COLORS */
-.purple-100-active {                        color: $cart-xpress-purple-100; }
+.purple-100-active {                    color: $cart-xpress-purple-100; }
+
+/* BORDER COLORS */
+.border-bottom-gray-300 {               border-bottom: 1px solid $cart-xpress-gray-300 !important; }
+.border-bottom-green-200 {              border-bottom: 1px solid $cart-xpress-green-200 !important; }
+.border-bottom-red-100 {                border-bottom: 1px solid $cart-xpress-red-100 !important; }
+.border-bottom-blue-200 {               border-bottom: 1px solid $cart-xpress-blue-200 !important; }

@@ -6,7 +6,7 @@
 // hovering text
 .text-hover-xpress-to-red-100 {
     @include transition-to-all-25;
-    &:hover { color: $cart-xpress-red-100 !important; }
+    &:hover { color: $cart-xpress-red-200 !important; }
 }
 
 .text-hover-xpress-to-purple-200 {

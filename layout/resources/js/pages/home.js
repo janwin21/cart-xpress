@@ -1,10 +1,7 @@
 'use strict';
 
 $(document).ready(() => {
-
-    /*---------------------------------------------------OBJECT INSTANTIATION----*/
-    const functionUtils = new FunctionUtils();
-
+    
     /*---------------------------------------------------INSTANCE VARIABLE----*/
     const cartXpressEmployeeIntroduction = $('.cart-xpress-emlpoyee-introduction .main-box');
     const fadeTrigger =                    $('#fade-trigger');
@@ -24,6 +21,10 @@ $(document).ready(() => {
     const homeDetails =                    $('.cart-xpress-header, .cart-xpress-details, .cart-xpress-emlpoyee-details, .cart-xpress-emlpoyee-introduction');
 
     const footer =                         $('footer');
+
+    /*---------------------------------------------------OBJECT INSTANTIATION----*/
+    const functionUtils =                  new FunctionUtils();
+
 
     /*---------------------------------------------------METHOD INSTANTIATION----*/
     // show details by scrolling
@@ -100,9 +101,6 @@ $(document).ready(() => {
         .setClick(slideToggleOppositeSidebars)
 
         .setComponent(showHomeBtn)
-        .setClick(showHomeDetails)
-
-        .setComponent(showCartBtn)
         .setClick(showHomeDetails)
 
         .setComponent(hideHomeBtn)

@@ -7,6 +7,10 @@
     transition: all 250ms linear;
 }
 
+@mixin transition-to-all-15 {
+    transition: all 150ms ease-out;
+}
+
 /* animations */
 @mixin ring {
     @keyframes ring {

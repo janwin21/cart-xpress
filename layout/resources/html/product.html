@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Xpress</title>
+
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../css/fontawesome.css" media="screen">
+</head>
+<body style="background: url('../images/backgrounds/background-2.png') 
+                         no-repeat center center fixed;
+             background-size: cover;">
+    
+    <!-------------------------------- Navbar Section START -->
+    <nav class="navbar navbar-expand-lg 
+                container-fluid bg-xpress-gray-100 
+                px-4 py-1 m-0 sticky-top"
+                style="height: 50px;">
+
+        <!-- nav-title -->
+        <a class="navbar-brand text-light roboto" href="#">
+            <img src="../images/logos/logo-title.png" alt="" style="width: 1.75em;">
+            <span class="text-hover-xpress-to-purple-200 ms-2">
+                cartXpress</span></a>
+
+        <!-- menu-list -->
+        <div class="collapse d-flex justify-content-end w-100" style="height: 1.75em;">
+                    
+            <div class="navbar-nav">
+
+                <!-- nav-links -->
+                <a class="nav-item nav-link align-self-center
+                          text-light nato-sans-jp 
+                          fs-xpress-sm-300 ms-3
+                          text-hover-xpress-to-red-100" href="#">
+                          <i class="fa-solid fa-house me-1"></i>
+                          Home</a>
+
+                <a class="nav-item nav-link align-self-center
+                          text-light nato-sans-jp 
+                          fs-xpress-sm-300 ms-3
+                          text-hover-xpress-to-red-100" href="#">
+                          <i class="fa-solid fa-cookie-bite me-1"></i>
+                          Products</a>
+
+                <a class="nav-item nav-link align-self-center
+                          text-light nato-sans-jp 
+                          fs-xpress-sm-300 ms-3
+                          text-hover-xpress-to-red-100" href="#">
+                          <i class="fa-solid fa-store me-1"></i>
+                          Shops</a>
+                          
+                <a class="nav-item nav-link align-self-center
+                          text-light nato-sans-jp 
+                          fs-xpress-sm-300 ms-3
+                          text-hover-xpress-to-red-100" href="#">
+                          <i class="fa-solid fa-basket-shopping me-1"></i>
+                          Categories</a>
+                          
+                <a class="nav-item nav-link align-self-center
+                          text-light nato-sans-jp 
+                          fs-xpress-sm-500 ms-3
+                          text-hover-xpress-to-red-100" 
+                          id="notify" href="#">
+                          <i class="fa-solid fa-bell purple-100-active"></i></a>
+                          
+                <!-- nav buttons -->
+                <a class="nav-item nav-link text-light nato-sans-jp 
+                          fs-xpress-sm-300 align-self-center ms-3 px-5
+                          btn bg-primary bg-xpress-orange-100
+                          bg-hover-xpress-to-gray-200" href="#"
+                          style="padding-top: 0.2em; padding-bottom: 0.2em;">
+                          Login</a>
+                          
+                <a class="nav-item nav-link text-light nato-sans-jp 
+                          fs-xpress-sm-300 align-self-center ms-1 px-5
+                          btn bg-primary bg-xpress-purple-100
+                          bg-hover-xpress-to-gray-200" href="#"
+                          style="padding-top: 0.2em; padding-bottom: 0.2em;">
+                          Register</a>
+            </div>
+        </div>
+    </nav>
+    <!---------- Navbar Section END -->
+    
+    <!-------------------------------- Product Main Content START -->
+    <div class="product-content container-fluid pt-5 bg-opaque-xpress-black-200">
+    
+        <div class="product-wrapper rounded-top border-bottom-gray-300
+                    bg-xpress-gray-200 container-fluid">
+
+            <div class="row">
+
+                <!-- product images -->
+                <div class="col-3 pt-4 ps-4 pe-0">
+
+                    <img class="w-100 rounded" 
+                         src="../images/sample-products/product-1.jpg" alt="" 
+                         style="height: 500px;">
+
+                </div>
+
+                <!-- product details -->
+                <div class="col-9 p-5">
+
+                    <!-- product header -->
+                    <div class="product-header">
+
+                        <h4 class="d-inline roboto text-light 
+                                    mb-1 fs-xpress-sm-700">
+                                    Product Name 12345</h4>
+
+                        <p class="d-inline roboto mt-0 
+                                    fs-xpress-sm-200 fw-xpress-500 
+                                    bg-xpress-purple-300 rounded 
+                                    px-3 py-1 text-light ms-3">
+                                    Product Type</p>
+                    </div>
+
+                    <!-- upper details -->
+                    <div class="row p-0">
+                        <div class="col-3">
+
+                            <p class="d-inline roboto mt-0
+                                        fs-xpress-sm-200 fw-xpress-400 
+                                        text-xpress-yellow-200">
+                                        RATING 4.5</p>
+                        </div>
+                        <div class="col-3">
+
+                            <p class="d-inline roboto mt-0
+                                        fs-xpress-sm-200 fw-xpress-500 
+                                        text-xpress-gray-600">
+                                        50 FEEDBACKS</p>
+                        </div>
+                        <div class="col-3">
+
+                            <p class="d-inline roboto mt-0
+                                        fs-xpress-sm-200 fw-xpress-500 
+                                        text-xpress-gray-600">
+                                        P50,000 TOTAL SOLD</p>
+                        </div>
+                        <div class="col-3">
+
+                            <p class="d-inline roboto mt-0
+                                        fs-xpress-sm-200 fw-xpress-500 
+                                        text-xpress-gray-600">
+                                        POSTED AT MM/DD/YYYY</p>
+                        </div>
+                    </div>
+
+
+                    <!-- main details -->
+                    <div class="main-details row d-flex align-items-end mt-4">
+                        <div class="col-3 p-0 ps-2">
+
+                            <h4 class="d-inline roboto mt-0 
+                                        fs-xpress-sm-700 fw-xpress-700 
+                                        text-light p-0 m-0">
+                                        P</h4>
+
+                            <h1 class="d-inline roboto mt-0 
+                                        fs-xpress-md-900 fw-xpress-500 
+                                        text-light p-0 m-0">
+                                        50</h1>
+                        </div>
+
+                        <div class="col-3 pb-2">
+                            <p class="d-inline roboto mt-0
+                                        fs-xpress-sm-500 fw-xpress-500 
+                                        text-light">
+                                        Weight 
+                                        <span class="text-xpress-gray-600">2 kg</span></p>
+                        </div>
+
+                        <div class="col-3 pb-2">
+                            <p class="d-inline roboto mt-0
+                                        fs-xpress-sm-500 fw-xpress-500 
+                                        text-light">
+                                        Discount 
+                                        <span class="text-xpress-yellow-200">10%</span></p>
+                        </div>
+
+                        <div class="col-3 pb-2 text-end pe-5">
+
+                            <button class="btn bg-xpress-red-100
+                                            bg-hover-xpress-to-gray-200 text-light
+                                            rounded fs-xpress-sm-100 
+                                            fw-xpress-600"
+                                            id="background-btn">
+                                            <i class="fa-solid fa-trash"></i>
+                                            </button>
+
+                            <button class="btn bg-success
+                                            bg-hover-xpress-to-gray-200 text-light
+                                            rounded fs-xpress-sm-100 
+                                            fw-xpress-600"
+                                            id="background-btn">
+                                            <i class="fa-solid fa-eye"></i>
+                                            </button>
+                        </div>
+
+                        <div class="col-12 pb-2 pe-5">
+
+                            <p class="roboto mt-0
+                                        fs-xpress-sm-300 fw-xpress-500 
+                                        text-xpress-gray-600">
+                                        ACTUAL PRICE <span class="text-light ms-3">P15,000</span></p>
+                        </div>
+                    </div>
+
+                    <!-- description detail -->
+                    <div class="product-description-detail mt-5 me-5">
+
+                        <p class="roboto mt-0
+                                    fs-xpress-sm-300 fw-xpress-500 
+                                    text-xpress-gray-600">
+                                    PRODUCT DESCRIPTION</p>
+
+                        <p class="roboto mt-0
+                                    fs-xpress-sm-300 fw-xpress-400 
+                                    text-light">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                    Enim voluptatibus nostrum blanditiis libero deserunt in quos, 
+                                    rerum mollitia neque odio voluptas! Molestiae tempore expedita 
+                                    delectus impedit. Id doloremque quae expedita?</p>
+                    </div>
+
+                    <form action="javascript: void(0)">
+
+                        <!-- other details -->
+                        <div class="other-details mt-5 row row-cols-2">
+
+                            <div class="col">
+
+                                <p class="roboto mt-0
+                                        fs-xpress-sm-300 fw-xpress-500 
+                                        text-xpress-gray-600">
+                                        DURATION OF SERVICE ON DELIVERY</p>
+                            </div>
+
+                            <div class="col">
+
+                                <p class="roboto mt-0
+                                        fs-xpress-sm-400 fw-xpress-400 
+                                        text-light">6 hours</p>
+                            </div>
+
+                            <div class="col">
+
+                                <p class="roboto mt-0
+                                        fs-xpress-sm-300 fw-xpress-500 
+                                        text-xpress-gray-600">
+                                        AVAILABLE STOCK</p>
+                            </div>
+
+                            <div class="col">
+
+                                <p class="roboto mt-0
+                                        fs-xpress-sm-400 fw-xpress-400 
+                                        text-light">40 Remaining</p>
+                            </div>
+
+                            <div class="col mt-5">
+
+                                <p class="d-inline roboto mt-0
+                                        fs-xpress-sm-300 fw-xpress-500 
+                                        text-light me-3">
+                                        QUANTITY</p>
+
+                                <!-- quantityInStock-->
+                                <input class="roboto text-xpress-gray-100
+                                        bg-light border-0 px-2 fw-xpress-500 
+                                                fs-xpress-sm-300 rounded-0 w-25" 
+                                                type="number" 
+                                                name="quantityInStock">
+                            </div>
+
+                            <div class="col mt-5">
+
+                                <p class="roboto mt-0
+                                        fs-xpress-sm-300 fw-xpress-500 
+                                        text-xpress-gray-600">
+                                        TOTAL PRICE <span class="text-light ms-3">P15,000</span></p>
+                            </div>
+
+                        </div>
+
+                        <!-- buttons for submission -->
+                        <div class="submit-buttons">
+
+                            <a class="btn bg-xpress-purple-300 
+                                            bg-hover-xpress-to-gray-200 text-light w-25 
+                                            rounded py-1 fs-xpress-sm-300 
+                                            fw-xpress-500 mt-5 me-1">
+                                            Add To Cart</a>
+
+                            <a class="btn bg-xpress-orange-100 
+                                            bg-hover-xpress-to-gray-200 text-light w-25 
+                                            rounded py-1 fs-xpress-sm-300 
+                                            fw-xpress-500 mt-5">
+                                            Buy it Right Now!</a>
+
+                        </div>
+
+                    </form>
+                    
+                </div>
+
+            </div>
+        </div>
+    
+        <!-------------------------------- Shop Content START -->
+        
+        <div class="shop-content rounded-top
+                    bg-xpress-gray-200 container-fluid">
+
+            <div class="row">
+
+                <div class="col-2 bg-primary">
+
+                    DD
+                            
+                </div>
+
+                <div class="col-10 bg-primary d-flex flex-wrap justify-content-between">
+
+                    <h4 class="d-inline roboto text-light 
+                                mb-1 fs-xpress-sm-500 w-50">
+                                Shop Name 12345</h4>
+
+                    <h4 class="d-inline roboto text-light 
+                                mb-1 fs-xpress-sm-500 w-50 text-end">
+                                City, State, Country</h4>
+                            
+                </div>
+
+            </div>
+
+        </div>
+        <!---------- Shop Content END -->
+
+    </div>
+    <!---------- Product Main Content END -->
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="../js/utils/FunctionUtils.js"></script>
+</body>
+</html>
