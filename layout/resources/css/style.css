@@ -10895,6 +10895,10 @@ textarea.form-control-lg {
   background-color: #6d9eeb !important;
 }
 
+.bg-xpress-pink-100 {
+  background-color: #c27ba0 !important;
+}
+
 .bg-transparent {
   background-color: transparent;
 }
@@ -10919,6 +10923,10 @@ textarea.form-control-lg {
 /* COLOR WITH GRADIENT UTILS */
 .gradient-bg-gray-100-to-transparent {
   background-image: linear-gradient(#434343, transparent);
+}
+
+.gradient-transparent-to-bg-gray-100 {
+  background-image: linear-gradient(transparent, #434343);
 }
 
 .gradient-bg-gray-100-to-black-op-100-to-bg-gray-100 {
