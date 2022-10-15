@@ -65,7 +65,14 @@
 .purple-100-active {                    color: $cart-xpress-purple-100; }
 
 /* BORDER COLORS */
+.border-top-gray-300 {                  border-top: 1px solid $cart-xpress-gray-300 !important; }
 .border-bottom-gray-300 {               border-bottom: 1px solid $cart-xpress-gray-300 !important; }
+
 .border-bottom-green-200 {              border-bottom: 1px solid $cart-xpress-green-200 !important; }
+
 .border-bottom-red-100 {                border-bottom: 1px solid $cart-xpress-red-100 !important; }
+
 .border-bottom-blue-200 {               border-bottom: 1px solid $cart-xpress-blue-200 !important; }
+
+/* NO COLOR */
+.no-bg-color {                          background-color: transparent !important; }

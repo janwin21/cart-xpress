@@ -194,13 +194,14 @@
                                             <i class="fa-solid fa-trash"></i>
                                             </button>
 
-                            <button class="btn bg-success
+                            <a class="btn bg-success
                                             bg-hover-xpress-to-gray-200 text-light
                                             rounded fs-xpress-sm-100 
                                             fw-xpress-600"
+                                            href="#"
                                             id="background-btn">
                                             <i class="fa-solid fa-eye"></i>
-                                            </button>
+                                            </a>
                         </div>
 
                         <div class="col-12 pb-2 pe-5">
@@ -275,8 +276,9 @@
                                 <input class="roboto text-xpress-gray-100
                                         bg-light border-0 px-2 fw-xpress-500 
                                                 fs-xpress-sm-300 rounded-0 w-25" 
-                                                type="number" 
-                                                name="quantityInStock">
+                                                type="number" min="1"
+                                                name="quantityInStock"
+                                                value="1">
                             </div>
 
                             <div class="col mt-5">
@@ -313,28 +315,59 @@
             </div>
         </div>
     
-        <!-------------------------------- Shop Content START -->
-        
-        <div class="shop-content rounded-top
+        <!-------------------------------- Shop Content START -->   
+        <div class="shop-content p-4
                     bg-xpress-gray-200 container-fluid">
 
             <div class="row">
 
-                <div class="col-2 bg-primary">
-
-                    DD
-                            
+                <div class="col-2">
+                    <img class="rounded w-100" 
+                         src="../images/alphabetical-profile/a-profile.jpg" alt="" 
+                         style="height: 175px;">              
                 </div>
 
-                <div class="col-10 bg-primary d-flex flex-wrap justify-content-between">
+                <div class="col-10 d-flex flex-wrap justify-content-between">
 
                     <h4 class="d-inline roboto text-light 
                                 mb-1 fs-xpress-sm-500 w-50">
-                                Shop Name 12345</h4>
+                                Shop Name 12345
+
+                                <a class="btn bg-success
+                                    bg-hover-xpress-to-gray-200 text-light
+                                    rounded fs-xpress-sm-100 p-1 px-2 ms-2
+                                    fw-xpress-600" href="#"
+                                    id="background-btn">
+                                    <i class="fa-solid fa-eye fs-xpress-sm-400"></i></a>
+                    </h4>
 
                     <h4 class="d-inline roboto text-light 
                                 mb-1 fs-xpress-sm-500 w-50 text-end">
                                 City, State, Country</h4>
+
+                    <h4 class="d-inline roboto text-xpress-gray-600 
+                                mb-1 fs-xpress-sm-400 fw-xpress-400 w-50 mt-1">
+                                shop12345@email.com</h4>
+
+                    <h4 class="d-inline roboto text-xpress-gray-600 
+                                mb-1 fs-xpress-sm-400 fw-xpress-400 w-50 mt-1 text-end">
+                                postal code</h4>
+
+                    <h4 class="d-inline roboto text-light mt-4
+                                mb-1 fs-xpress-sm-400 fw-xpress-400 w-50">
+                                <span class="text-xpress-gray-600 fs-xpress-sm-300 fw-xpress-500">MAIN VENDOR:</span> firstName lastName</h4>
+
+                    <h4 class="d-inline roboto text-light mt-4
+                                mb-1 fs-xpress-sm-400 fw-xpress-400 w-50 text-end">
+                                <span class="text-xpress-gray-600 fs-xpress-sm-300 fw-xpress-500">CONTACT NO:</span> 1234567890</h4>
+
+                    <h4 class="d-inline roboto text-light mt-4 
+                                mb-1 fs-xpress-sm-400 fw-xpress-400 w-100">
+                                addressLine1 Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
+
+                    <h4 class="d-inline roboto text-light mt-2
+                                mb-1 fs-xpress-sm-400 fw-xpress-400 w-100">
+                                addressLine2 Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
                             
                 </div>
 
@@ -342,6 +375,306 @@
 
         </div>
         <!---------- Shop Content END -->
+    
+        <!--------------------------------Review Content START -->  
+        <div class="review-content bg-xpress-gray-200 rounded-top mt-4">
+
+            <!-- review header -->
+            <div class="review-header pt-4 px-4 pb-1 rounded-top bg-xpress-purple-300">
+
+                <h5 class="roboto mb-0 text-light 
+                            fs-xpress-sm-600">
+                            Product Review</h5>
+
+                <p class="roboto mt-0
+                            fs-xpress-sm-300 fw-xpress-400 
+                            text-xpress-yellow-100">
+                            RATING 4.5</p>
+
+            </div>
+        
+            <!-- sorted components -->
+            <div class="sorted-component-wrapper row p-4 border-bottom-gray-300 m-0">
+                <div class="col-6">
+    
+                    <!-- sorted components for left -->
+                    <div class="sorted-component">
+    
+                        <p class="roboto fs-xpress-sm-200 
+                                  fw-xpress-700 text-light mb-1">
+                                  Sorted By:</p>
+    
+                        <div class="sorted-buttons mt-0">
+            
+                            <button class="btn bg-xpress-purple-100
+                                           bg-hover-xpress-to-gray-200
+                                           rounded text-light py-1 px-4 roboto
+                                           fs-xpress-sm-200 fw-xpress-500">
+                                           Alphabet</button>
+            
+                            <button class="btn bg-xpress-purple-100
+                                           bg-hover-xpress-to-gray-200
+                                           rounded text-light py-1 px-4 roboto
+                                           fs-xpress-sm-200 fw-xpress-500">
+                                           Recent</button>
+            
+                            <button class="btn bg-xpress-purple-100
+                                           bg-hover-xpress-to-gray-200
+                                           rounded text-light py-1 px-4 roboto
+                                           fs-xpress-sm-200 fw-xpress-500">
+                                           Ratings</button>
+                        </div>
+                    </div>
+    
+                </div>
+                <div class="col-6 text-end">
+                    <p class="roboto fs-xpress-sm-200 fw-xpress-700 text-light mb-1" style="visibility: hidden">Sorted By:</p>
+    
+                    <!-- sorted components for right -->
+                    <div class="sorted-component">
+                        <div class="sorted-buttons mt-0">
+            
+                            <button class="btn bg-xpress-red-100
+                                           bg-hover-xpress-to-gray-200
+                                           rounded text-light py-1 px-4 roboto
+                                           fs-xpress-sm-200 fw-xpress-500">
+                                           ASC</button>
+            
+                            <button class="btn bg-xpress-green-100
+                                           bg-hover-xpress-to-gray-200
+                                           rounded text-light py-1 px-4 roboto
+                                           fs-xpress-sm-200 fw-xpress-500">
+                                           DESC</button>
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+
+            <!-- review content -->
+            <div class="review-main-content p-4">
+
+                <div class="create-review bg-xpress-gray-100 rounded p-4">
+
+                    <form action="javascript: void(0)">
+
+                        <h4 class="roboto mb-0 text-light 
+                                    fs-xpress-sm-400">
+                                    Please review our product</h4>
+
+                        <p class="d-inline roboto mt-3
+                                fs-xpress-sm-300 fw-xpress-500 
+                                text-xpress-gray-600">
+                                RATE US</p>
+
+                        <!-- rating-->
+                        <input class="d-inline roboto mt-3 text-xpress-gray-100
+                                bg-light border-0 px-2 ms-2 fw-xpress-500 
+                                        fs-xpress-sm-300 rounded-0" 
+                                        type="number" min="1"
+                                        name="rating" style="width: 4em"
+                                        value="1">
+
+                        <!-- content -->
+                        <div class="form-control mt-4 p-0 rounded-0 border-0">
+
+                            <textarea class="roboto text-xpress-gray-300 
+                                    bg-xpress-gray-500 border-0 py-2 fw-xpress-500 
+                                            fs-xpress-sm-300 rounded w-100 mt-1 px-3"
+                                            name="content" placeholder="type your review here..."
+                                            style="height: 100px;"></textarea>
+
+                        <div class="lower-part w-100 mt-3">
+                            <button class="btn bg-xpress-purple-300 
+                                            bg-hover-xpress-to-gray-200 text-light 
+                                            rounded py-1 px-5 fs-xpress-sm-300 
+                                            fw-xpress-500 me-1"
+                                            type="submit">
+                                            Publish</button></div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- reviews -->
+        <div class="reviews border-top-gray-300 m-0 p-0">
+
+            <!-- single review item without showing reply -->
+            <div class="single-review-content p-4 border-bottom-gray-300">
+                <div class="row m-0">
+
+                    <!-- left -->
+                    <div class="col-1 p-0 me-0 pe-3 text-end">
+                        <img class="rounded-circle" 
+                             src="../images/alphabetical-profile/a-profile.jpg" alt="" 
+                             style="height: 50px;">   
+                    </div>
+
+                    <!-- right -->
+                    <div class="col-11 ms-0">
+
+                        <h4 class="d-inline roboto text-light mt-4 me-1
+                                    mb-1 fs-xpress-sm-400 fw-xpress-400 w-50">
+                                    firstName lastName</h4>
+
+                        <p class="d-inline roboto mt-0
+                                    fs-xpress-sm-200 fw-xpress-500 
+                                    text-xpress-gray-600">
+                                    posted at MM/DD/YYYY HH:MM AM</p>
+
+                        <button class="float-end btn bg-xpress-red-100 
+                                        bg-hover-xpress-to-gray-200 text-light 
+                                        rounded py-1 px-5 fs-xpress-sm-300 
+                                        fw-xpress-500 me-1">
+                                        Delete</button>
+
+                        <p class="roboto mt-0
+                                    fs-xpress-sm-200 fw-xpress-400 
+                                    text-xpress-yellow-200">
+                                    RATING 4.5</p>
+
+                        <p class="roboto mt-0 w-100
+                                    fs-xpress-sm-300 fw-xpress-400 
+                                    text-light">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                    Enim voluptatibus nostrum blanditiis libero deserunt in quos, 
+                                    rerum mollitia neque odio voluptas! Molestiae tempore expedita 
+                                    delectus impedit. Id doloremque quae expedita?</p>
+
+                        <a class="btn no-bg-color text-start 
+                                        bg-hover-xpress-to-gray-200 text-light 
+                                        rounded p-0 fs-xpress-sm-300 
+                                        fw-xpress-500 me-1" href="#">
+                                        Show Replies</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- single review item with showing reply -->
+            <div class="single-review-content p-4 border-bottom-gray-300">
+                <div class="row m-0">
+
+                    <!-- left -->
+                    <div class="col-1 p-0 me-0 pe-3 text-end">
+                        <img class="rounded-circle" 
+                             src="../images/alphabetical-profile/a-profile.jpg" alt="" 
+                             style="height: 50px;">   
+                    </div>
+
+                    <!-- right -->
+                    <div class="col-11 ms-0">
+
+                        <h4 class="d-inline roboto text-light mt-4 me-1
+                                    mb-1 fs-xpress-sm-400 fw-xpress-400 w-50">
+                                    firstName lastName</h4>
+
+                        <p class="d-inline roboto mt-0
+                                    fs-xpress-sm-200 fw-xpress-500 
+                                    text-xpress-gray-600">
+                                    posted at MM/DD/YYYY HH:MM AM</p>
+
+                        <button class="float-end btn bg-xpress-red-100 
+                                        bg-hover-xpress-to-gray-200 text-light 
+                                        rounded py-1 px-5 fs-xpress-sm-300 
+                                        fw-xpress-500 me-1">
+                                        Delete</button>
+
+                        <p class="roboto mt-0
+                                    fs-xpress-sm-200 fw-xpress-400 
+                                    text-xpress-yellow-200">
+                                    RATING 4.5</p>
+
+                        <p class="roboto mt-0 w-100
+                                    fs-xpress-sm-300 fw-xpress-400 
+                                    text-light">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                    Enim voluptatibus nostrum blanditiis libero deserunt in quos, 
+                                    rerum mollitia neque odio voluptas! Molestiae tempore expedita 
+                                    delectus impedit. Id doloremque quae expedita?</p>
+
+                        <a class="btn no-bg-color text-start 
+                                        bg-hover-xpress-to-gray-200 text-light 
+                                        rounded p-0 fs-xpress-sm-300 
+                                        fw-xpress-500 me-1" href="#">
+                                        Show Replies</a>
+
+                        <!-- replies -->
+                        <div class="replies col-12 mt-4 ms-0 bg-xpress-gray-100 rounded">
+        
+                            <!-- sorted components -->
+                            <div class="sorted-component-wrapper row p-4 
+                                        border-bottom-gray-300 m-0">
+                                <div class="col-6">
+                    
+                                    <!-- sorted components for left -->
+                                    <div class="sorted-component">
+                    
+                                        <p class="roboto fs-xpress-sm-200 
+                                                  fw-xpress-700 text-light mb-1">
+                                                  Sorted By:</p>
+                    
+                                        <div class="sorted-buttons mt-0">
+                            
+                                            <button class="btn bg-xpress-purple-100
+                                                           bg-hover-xpress-to-gray-200
+                                                           rounded text-light py-1 px-4 roboto
+                                                           fs-xpress-sm-200 fw-xpress-500">
+                                                           Alphabet</button>
+                            
+                                            <button class="btn bg-xpress-purple-100
+                                                           bg-hover-xpress-to-gray-200
+                                                           rounded text-light py-1 px-4 roboto
+                                                           fs-xpress-sm-200 fw-xpress-500">
+                                                           Recent</button>
+                            
+                                            <button class="btn bg-xpress-purple-100
+                                                           bg-hover-xpress-to-gray-200
+                                                           rounded text-light py-1 px-4 roboto
+                                                           fs-xpress-sm-200 fw-xpress-500">
+                                                           Ratings</button>
+                                        </div>
+                                    </div>
+                    
+                                </div>
+                                <div class="col-6 text-end">
+                                    <p class="roboto fs-xpress-sm-200 fw-xpress-700 text-light mb-1" style="visibility: hidden">Sorted By:</p>
+                    
+                                    <!-- sorted components for right -->
+                                    <div class="sorted-component">
+                                        <div class="sorted-buttons mt-0">
+                            
+                                            <button class="btn bg-xpress-red-100
+                                                           bg-hover-xpress-to-gray-200
+                                                           rounded text-light py-1 px-4 roboto
+                                                           fs-xpress-sm-200 fw-xpress-500">
+                                                           ASC</button>
+                            
+                                            <button class="btn bg-xpress-green-100
+                                                           bg-hover-xpress-to-gray-200
+                                                           rounded text-light py-1 px-4 roboto
+                                                           fs-xpress-sm-200 fw-xpress-500">
+                                                           DESC</button>
+                                        </div>
+                                    </div>
+                                
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+        </div>
+        <!----------Review Content END -->
 
     </div>
     <!---------- Product Main Content END -->
