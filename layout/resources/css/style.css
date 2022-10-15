@@ -11629,4 +11629,10 @@ nav #notify {
   padding-right: 4rem;
 }
 
+/* SHOP CONTENT DETAILS */
+.hoverable-chart {
+  width: 100% !important;
+  height: 250px !important;
+}
+
 /*# sourceMappingURL=style.css.map */
