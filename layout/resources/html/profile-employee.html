@@ -229,93 +229,129 @@
 
                             <div class="order-wrapper" style="display: none;">
 
-                                <!-- cart header -->
-                                <div class="bg-xpress-gray-200 border-bottom-purple-100 
-                                            rounded-top mx-3 mt-3 px-3 py-2">
+                                <!-- search header -->
+                                <div class="rounded-top row g-1 p-3">
 
-                                    <h4 class="d-inline roboto text-light fw-xpress-500
-                                                mb-1 fs-xpress-sm-400 w-50 text-end">
-                                                <i class="fa-solid fa-cart-shopping me-2 
-                                                text-xpress-purple-100"></i>
-                                                MM/DD/YYYY</h4>
+                                    <!-- search -->
+                                    <div class="col-6">
+                                        <div class="form-control p-0 rounded-0 border-0">
+
+                                            <label class="roboto text-xpress-gray-300 fs-xpress-sm-300 fw-xpress-500" 
+                                                for="search">SEARCH 
+                                                <span class="text-xpress-red-200 
+                                                             roboto fw-xpress-900">*</span></label>
+
+                                            <input class="roboto text-xpress-gray-100 
+                                                bg-light border-0 py-1 fw-xpress-500
+                                                fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="text" 
+                                                name="search">
+                                        </div>
+                                    </div>
+                                
+                                    <!-- sorted components for right -->
+                                    <div class="sorted-component col-6">
                     
-                                    <button class="btn bg-xpress-orange-200 float-end
-                                                    bg-hover-xpress-to-gray-200
-                                                    rounded text-light py-1 px-4 roboto
-                                                    fs-xpress-sm-200 fw-xpress-500">
-                                                    BUT IT NOW</button>
-                                </div>
+                                        <p class="roboto fs-xpress-sm-200 
+                                                    fw-xpress-700 text-light mb-1">
+                                                    Sorted By:</p>
+                    
+                                        <div class="sorted-buttons">
 
-                                <!-- cart content -->
-                                <div class="bg-xpress-gray-200 mx-3">
-                                    <div class="row row-cols-6 m-0">
-
-                                        <!-- category item -->
-                                        <div class="col p-0">
-
-                                            <a class="text-xpress-gray-100" href="#" 
-                                                    style="text-decoration: none;">
-
-                                                <div class="card rounded-0 border-0">
-
-                                                    <img src="../images/sample-products/product-1.jpg" 
-                                                        class="card-img-top rounded-0" alt="..." 
-                                                        style="height: 200px;">
-
-                                                    <div class="card-body bg-xpress-gray-200 p-2">
-
-                                                        <p class="text-overflow card-title 
-                                                                roboto text-light fs-xpress-sm-300">
-                                                                productName 01</p>
-
-                                                        <p class="card-text roboto 
-                                                                text-xpress-orange-200 fs-xpress-sm-700 
-                                                                fw-xpress-600 mb-0">
-                                                                P50</p>
-
-                                                        <div class="mt-0 p-0 fs-xpress-sm-200 
-                                                                    d-flex justify-content-between align-items-start">
-
-                                                            <p class="card-text text-xpress-yellow-200">
-                                                                    <i class="fa-solid fa-star"></i> 4.5</p>
-
-                                                            <p class="card-text text-light 
-                                                                    text-xpress-yellow-100 fw-xpress-500">
-                                                                    10% discount</p>
-                                                        </div>
-
-                                                        <p class="card-text text-xpress-gray-300 
-                                                                fw-xpress-400 fs-xpress-sm-300">
-                                                                available: 10</p>
-                                                    </div>
+                                            <div class="row m-0 g-1">
+                                                <div class="col-3">
+                            
+                                                    <button class="btn bg-xpress-purple-100 w-100
+                                                                    bg-hover-xpress-to-gray-200
+                                                                    rounded text-light py-1 px-4 roboto
+                                                                    fs-xpress-sm-200 fw-xpress-500 mt-1">
+                                                                    Alphabet</button>
+                                                </div>
+                                                
+                                                <div class="col-3">
+                            
+                                                    <button class="btn bg-xpress-purple-100 w-100
+                                                                    bg-hover-xpress-to-gray-200
+                                                                    rounded text-light py-1 px-4 roboto
+                                                                    fs-xpress-sm-200 fw-xpress-500 mt-1">
+                                                                    Recent</button>
+                                                </div>
+                                                
+                                                <div class="col-3">
+                            
+                                                    <button class="btn bg-xpress-red-100 w-100
+                                                                    bg-hover-xpress-to-gray-200
+                                                                    rounded text-light py-1 px-4 roboto
+                                                                    fs-xpress-sm-200 fw-xpress-500 mt-1">
+                                                                    ASC</button>
+                                                </div>
+                                                
+                                                <div class="col-3">
+                            
+                                                    <button class="btn bg-xpress-green-100 w-100
+                                                                    bg-hover-xpress-to-gray-200
+                                                                    rounded text-light py-1 px-4 roboto
+                                                                    fs-xpress-sm-200 fw-xpress-500 mt-1">
+                                                                    DESC</button>
                                                 </div>
 
-                                            </a>
-
-                                            <div class="form-control bg-xpress-gray-100 pt-0 px-2 pb-2 
-                                                        border-top
-                                                        border-start-0
-                                                        border-bottom-0
-                                                        border-end-0
-                                                        border-light rounded-0
-                                                        d-flex justify-content-between align-items-center">
-
-                                                <label class="text-light roboto fs-xpress-sm-200" 
-                                                    for="quantity-productName">Quantity</label>
-
-                                                <input class="w-50 mt-2 px-2" 
-                                                        type="number" value="5" min="1">
                                             </div>
-                
-                                            <button class="btn bg-xpress-red-100 w-100
-                                                        bg-hover-xpress-to-gray-200
-                                                        rounded-0 text-light py-1 px-4 roboto
-                                                        fs-xpress-sm-200 fw-xpress-500">
-                                                        Remove</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- user content - customer -->
+                                <div class="mx-3">
+                                    <div class="row row-cols-6 m-0 g-1">
+
+                                        <!-- user item -->
+                                        <div class="col">
+
+                                            <a href="#">
+
+                                                <div class="user-box position-relative" 
+                                                     style="height: 250px;">
+
+                                                    <!-- cover -->
+                                                    <div class="position-absolute 
+                                                                top-0 left-0 w-100 h-100">
+
+                                                        <img class="w-100 h-100" 
+                                                            src="../images/alphabetical-backgrounds/a-profile-background.jpg" alt="" 
+                                                            style="object-fit: cover;">
+                                                    </div>
+
+                                                    <div class="position-absolute 
+                                                                top-0 left-0 w-100 h-100
+                                                                d-flex flex-column
+                                                                justify-content-center
+                                                                align-items-center
+                                                                gradient-transparent-to-bg-gray-100">
+                                                    
+                                                        <img class="border border-3 
+                                                                    rounded-circle" 
+                                                            src="../images/alphabetical-profile/a-profile.jpg" alt="" 
+                                                            style="
+                                                                width: 35%;
+                                                                object-fit: cover;">
+
+                                                        <h4 class="roboto text-light 
+                                                                mt-5 mb-0 fs-xpress-sm-400">
+                                                                LASTNAME</h4>
+
+                                                        <h4 class="roboto text-light 
+                                                                my-0 fs-xpress-sm-300">
+                                                                firstName</h4>
+                                                    </div>
+
+                                                </div>
+                                                
+                                            </a>
 
                                         </div>
 
                                     </div>
+
                                 </div>
                                 
                             </div>
@@ -354,6 +390,12 @@
                                                 <i class="fa-solid fa-spinner me-2 
                                                 text-xpress-orange-200"></i>
                                                 MM/DD/YYYY</h4>
+                    
+                                    <button class="btn bg-xpress-pink-100 float-end
+                                                    bg-hover-xpress-to-gray-200
+                                                    rounded text-light py-1 px-4 roboto
+                                                    fs-xpress-sm-200 fw-xpress-500">
+                                                    PROVIDE SERVICE</button>
                                 </div>
 
                                 <!-- pending orders content -->
@@ -429,19 +471,18 @@
 
                         </div>
 
-                        <!-- delivered orders containers -->
+                        <!-- offices containers -->
                         <div class="shopping-cart-row mt-4">
                         
-                            <button class="dropdown-btn btn bg-xpress-green-200 w-25 text-end
+                            <button class="dropdown-btn btn bg-xpress-blue-100 w-25 text-end
                                             bg-hover-xpress-to-gray-200
                                             rounded-0 text-light py-1 ps-4 roboto
                                             fs-xpress-sm-300 fw-xpress-500"
                                             data-index="2">
-                                            DELIVERED ORDERS</button>
+                                            OFFICES</button>
 
                             <div class="empty-section m-3 p-3 
-                                        border border-1 text-center rounded"
-                                        style="display: none;">
+                                        border border-1 text-center rounded" style="display: none;">
 
                                 <h5 class="d-inline roboto text-light fw-xpress-500
                                             mb-1 fs-xpress-sm-300 w-50 text-end">
@@ -451,92 +492,130 @@
                             </div>
 
                             <div class="order-wrapper" style="display: none;">
+                                
+                                <!-- search header -->
+                                <div class="rounded-top row g-1 p-3">
 
-                                <!-- delivered orders header -->
-                                <div class="bg-xpress-gray-200 border-bottom-green-200 
-                                            rounded-top mx-3 mt-3 px-3 py-2">
+                                    <!-- search -->
+                                    <div class="col-6">
+                                        <div class="form-control p-0 rounded-0 border-0">
 
-                                    <h4 class="d-inline roboto text-light fw-xpress-500
-                                                mb-1 fs-xpress-sm-400 w-50 text-end">
-                                                <i class="fa-solid fa-check me-2 
-                                                text-xpress-green-200"></i>
-                                                MM/DD/YYYY</h4>
-                                </div>
+                                            <label class="roboto text-xpress-gray-300 fs-xpress-sm-300 fw-xpress-500" 
+                                                for="search">SEARCH 
+                                                <span class="text-xpress-red-200 
+                                                             roboto fw-xpress-900">*</span></label>
 
-                                <!-- delivered orders content -->
-                                <div class="bg-xpress-gray-200 mx-3">
-                                    <div class="row row-cols-6 m-0">
+                                            <input class="roboto text-xpress-gray-100 
+                                                bg-light border-0 py-1 fw-xpress-500
+                                                fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="text" 
+                                                name="search">
+                                        </div>
+                                    </div>
+                                
+                                    <!-- sorted components for right -->
+                                    <div class="sorted-component col-6">
+                    
+                                        <p class="roboto fs-xpress-sm-200 
+                                                    fw-xpress-700 text-light mb-1">
+                                                    Sorted By:</p>
+                    
+                                        <div class="sorted-buttons">
 
-                                        <!-- category item -->
-                                        <div class="col p-0">
-
-                                            <a class="text-xpress-gray-100" href="#" 
-                                                    style="text-decoration: none;">
-
-                                                <div class="card rounded-0 border-0">
-
-                                                    <img src="../images/sample-products/product-1.jpg" 
-                                                        class="card-img-top rounded-0" alt="..." 
-                                                        style="height: 200px;">
-
-                                                    <div class="card-body bg-xpress-gray-200 p-2">
-
-                                                        <p class="text-overflow card-title 
-                                                                roboto text-light fs-xpress-sm-300">
-                                                                productName 01</p>
-
-                                                        <p class="card-text roboto 
-                                                                text-xpress-orange-200 fs-xpress-sm-700 
-                                                                fw-xpress-600 mb-0">
-                                                                P50</p>
-
-                                                        <div class="mt-0 p-0 fs-xpress-sm-200 
-                                                                    d-flex justify-content-between align-items-start">
-
-                                                            <p class="card-text text-xpress-yellow-200">
-                                                                    <i class="fa-solid fa-star"></i> 4.5</p>
-
-                                                            <p class="card-text text-light 
-                                                                    text-xpress-yellow-100 fw-xpress-500">
-                                                                    10% discount</p>
-                                                        </div>
-
-                                                        <p class="card-text text-xpress-gray-300 
-                                                                fw-xpress-400 fs-xpress-sm-300">
-                                                                available: 10</p>
-                                                    </div>
+                                            <div class="row m-0 g-1">
+                                                <div class="col-3">
+                            
+                                                    <button class="btn bg-xpress-purple-100 w-100
+                                                                    bg-hover-xpress-to-gray-200
+                                                                    rounded text-light py-1 px-4 roboto
+                                                                    fs-xpress-sm-200 fw-xpress-500 mt-1">
+                                                                    Alphabet</button>
+                                                </div>
+                                                
+                                                <div class="col-3">
+                            
+                                                    <button class="btn bg-xpress-purple-100 w-100
+                                                                    bg-hover-xpress-to-gray-200
+                                                                    rounded text-light py-1 px-4 roboto
+                                                                    fs-xpress-sm-200 fw-xpress-500 mt-1">
+                                                                    Recent</button>
+                                                </div>
+                                                
+                                                <div class="col-3">
+                            
+                                                    <button class="btn bg-xpress-red-100 w-100
+                                                                    bg-hover-xpress-to-gray-200
+                                                                    rounded text-light py-1 px-4 roboto
+                                                                    fs-xpress-sm-200 fw-xpress-500 mt-1">
+                                                                    ASC</button>
+                                                </div>
+                                                
+                                                <div class="col-3">
+                            
+                                                    <button class="btn bg-xpress-green-100 w-100
+                                                                    bg-hover-xpress-to-gray-200
+                                                                    rounded text-light py-1 px-4 roboto
+                                                                    fs-xpress-sm-200 fw-xpress-500 mt-1">
+                                                                    DESC</button>
                                                 </div>
 
-                                            </a>
-
-                                            <div class="form-control bg-xpress-green-200 pt-0 px-2 pb-2 
-                                                        border-top
-                                                        border-start-0
-                                                        border-bottom-0
-                                                        border-end-0
-                                                        border-light rounded-0
-                                                        d-flex justify-content-between align-items-center">
-
-                                                <label class="text-xpress-gray-200 roboto f
-                                                            fs-xpress-sm-200 fw-xpress-500" 
-                                                            for="quantity-productName">
-                                                            Quantity</label>
-
-                                                <p class="card-text text-xpress-gray-200 
-                                                        fw-xpress-900 fs-xpress-sm-400">
-                                                        5</p>
                                             </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- office content - customer -->
+                                <div class="mx-3">
+                                    <div class="row row-cols-3 m-0 g-1">
+
+                                        <!-- office item -->
+                                        <div class="col">
+
+                                            <a href="#">
+
+                                                <div class="office-box position-relative" 
+                                                     style="height: 250px;">
+
+                                                    <!-- cover -->
+                                                    <div class="position-absolute 
+                                                                top-0 left-0 w-100 h-100">
+
+                                                        <img class="w-100 h-100" 
+                                                            src="../images/alphabetical-backgrounds/a-profile-background.jpg" alt="" 
+                                                            style="object-fit: cover;">
+                                                    </div>
+
+                                                    <div class="position-absolute 
+                                                                top-0 left-0 w-100 h-100
+                                                                d-flex flex-column
+                                                                justify-content-center
+                                                                align-items-center
+                                                                gradient-transparent-to-bg-gray-100">
+
+                                                        <h3 class="roboto text-light 
+                                                                mb-0 fs-xpress-sm-600">
+                                                                officeName</h3>
+
+                                                        <h4 class="roboto text-light fw-xpress-400 
+                                                                mt-2 mb-0 fs-xpress-sm-300">
+                                                                city</h4>
+                                                    </div>
+
+                                                </div>
+                                                
+                                            </a>
 
                                         </div>
 
                                     </div>
+                                    
                                 </div>
 
                             </div>
 
                         </div>
 
-                        <!-- cancelled orders containers -->
+                        <!-- approval orders containers -->
                         <div class="shopping-cart-row mt-4">
                         
                             <button class="dropdown-btn btn bg-xpress-red-100 w-25 text-end
@@ -544,7 +623,7 @@
                                             rounded-0 text-light py-1 ps-4 roboto
                                             fs-xpress-sm-300 fw-xpress-500"
                                             data-index="3">
-                                            CANCELLED ORDERS</button>
+                                            APPROVAL</button>
 
                             <div class="empty-section m-3 p-3 
                                         border border-1 text-center rounded"
@@ -558,91 +637,276 @@
                             </div>
 
                             <div class="order-wrapper pb-3" style="display: none;">
+                                
+                                <!-- search header -->
+                                <div class="rounded-top row g-1 p-3">
 
-                                <!-- cancelled orders header -->
-                                <div class="bg-xpress-gray-200 border-bottom-red-100 
-                                            rounded-top mx-3 mt-3 px-3 py-2">
+                                    <!-- search -->
+                                    <div class="col-6">
+                                        <div class="form-control p-0 rounded-0 border-0">
 
-                                    <h4 class="d-inline roboto text-light fw-xpress-500
-                                                mb-1 fs-xpress-sm-400 w-50 text-end">
-                                                <i class="fa-solid fa-ban me-2 
-                                                text-xpress-red-100"></i>
-                                                MM/DD/YYYY</h4>
+                                            <label class="roboto text-xpress-gray-300 fs-xpress-sm-300 fw-xpress-500" 
+                                                for="search">SEARCH 
+                                                <span class="text-xpress-red-200 
+                                                             roboto fw-xpress-900">*</span></label>
+
+                                            <input class="roboto text-xpress-gray-100 
+                                                bg-light border-0 py-1 fw-xpress-500
+                                                fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="text" 
+                                                name="search">
+                                        </div>
+                                    </div>
+                                
+                                    <!-- sorted components for right -->
+                                    <div class="sorted-component col-6">
                     
-                                    <button class="btn bg-xpress-purple-100 float-end
-                                                    bg-hover-xpress-to-gray-200
-                                                    rounded text-light py-1 px-4 roboto
-                                                    fs-xpress-sm-200 fw-xpress-500">
-                                                    ADD TO CART</button>
-                                </div>
+                                        <p class="roboto fs-xpress-sm-200 
+                                                    fw-xpress-700 text-light mb-1">
+                                                    Sorted By:</p>
+                    
+                                        <div class="sorted-buttons">
 
-                                <!-- cancelled orders content -->
-                                <div class="bg-xpress-gray-200 mx-3">
-                                    <div class="row row-cols-6 m-0">
-
-                                        <!-- category item -->
-                                        <div class="col p-0">
-
-                                            <a class="text-xpress-gray-100" href="#" 
-                                                    style="text-decoration: none;">
-
-                                                <div class="card rounded-0 border-0">
-
-                                                    <img src="../images/sample-products/product-1.jpg" 
-                                                        class="card-img-top rounded-0" alt="..." 
-                                                        style="height: 200px;">
-
-                                                    <div class="card-body bg-xpress-gray-200 p-2">
-
-                                                        <p class="text-overflow card-title 
-                                                                roboto text-light fs-xpress-sm-300">
-                                                                productName 01</p>
-
-                                                        <p class="card-text roboto 
-                                                                text-xpress-orange-200 fs-xpress-sm-700 
-                                                                fw-xpress-600 mb-0">
-                                                                P50</p>
-
-                                                        <div class="mt-0 p-0 fs-xpress-sm-200 
-                                                                    d-flex justify-content-between align-items-start">
-
-                                                            <p class="card-text text-xpress-yellow-200">
-                                                                    <i class="fa-solid fa-star"></i> 4.5</p>
-
-                                                            <p class="card-text text-light 
-                                                                    text-xpress-yellow-100 fw-xpress-500">
-                                                                    10% discount</p>
-                                                        </div>
-
-                                                        <p class="card-text text-xpress-gray-300 
-                                                                fw-xpress-400 fs-xpress-sm-300">
-                                                                available: 10</p>
-                                                    </div>
+                                            <div class="row m-0 g-1">
+                                                <div class="col-3">
+                            
+                                                    <button class="btn bg-xpress-purple-100 w-100
+                                                                    bg-hover-xpress-to-gray-200
+                                                                    rounded text-light py-1 px-4 roboto
+                                                                    fs-xpress-sm-200 fw-xpress-500 mt-1">
+                                                                    Alphabet</button>
+                                                </div>
+                                                
+                                                <div class="col-3">
+                            
+                                                    <button class="btn bg-xpress-purple-100 w-100
+                                                                    bg-hover-xpress-to-gray-200
+                                                                    rounded text-light py-1 px-4 roboto
+                                                                    fs-xpress-sm-200 fw-xpress-500 mt-1">
+                                                                    Recent</button>
+                                                </div>
+                                                
+                                                <div class="col-3">
+                            
+                                                    <button class="btn bg-xpress-red-100 w-100
+                                                                    bg-hover-xpress-to-gray-200
+                                                                    rounded text-light py-1 px-4 roboto
+                                                                    fs-xpress-sm-200 fw-xpress-500 mt-1">
+                                                                    ASC</button>
+                                                </div>
+                                                
+                                                <div class="col-3">
+                            
+                                                    <button class="btn bg-xpress-green-100 w-100
+                                                                    bg-hover-xpress-to-gray-200
+                                                                    rounded text-light py-1 px-4 roboto
+                                                                    fs-xpress-sm-200 fw-xpress-500 mt-1">
+                                                                    DESC</button>
                                                 </div>
 
-                                            </a>
-
-                                            <div class="form-control bg-xpress-red-100 pt-0 px-2 pb-2 
-                                                        border-top
-                                                        border-start-0
-                                                        border-bottom-0
-                                                        border-end-0
-                                                        border-light rounded-0
-                                                        d-flex justify-content-between align-items-center">
-
-                                                <label class="text-light roboto f
-                                                            fs-xpress-sm-200 fw-xpress-500" 
-                                                            for="quantity-productName">
-                                                            Quantity</label>
-
-                                                <p class="card-text text-light 
-                                                        fw-xpress-900 fs-xpress-sm-400">
-                                                        5</p>
                                             </div>
+
+                                        </div>
+                                        
+                                    </div>
+
+                                </div>
+
+                                <!-- user content - customer -->
+                                <div class="mx-3">
+                                    <div class="row row-cols-6 m-0 g-1">
+
+                                        <!-- user item -->
+                                        <div class="col">
+
+                                            <a href="#">
+
+                                                <div class="user-box position-relative" 
+                                                     style="height: 250px;">
+
+                                                    <!-- cover -->
+                                                    <div class="position-absolute 
+                                                                top-0 left-0 w-100 h-100">
+
+                                                        <img class="w-100 h-100" 
+                                                            src="../images/alphabetical-backgrounds/a-profile-background.jpg" alt="" 
+                                                            style="object-fit: cover;">
+                                                    </div>
+
+                                                    <div class="position-absolute 
+                                                                top-0 left-0 w-100 h-100
+                                                                d-flex flex-column
+                                                                justify-content-center
+                                                                align-items-center
+                                                                gradient-transparent-to-bg-gray-100">
+                                                    
+                                                        <img class="border border-3 
+                                                                    rounded-circle" 
+                                                            src="../images/alphabetical-profile/a-profile.jpg" alt="" 
+                                                            style="
+                                                                width: 35%;
+                                                                object-fit: cover;">
+
+                                                        <h4 class="roboto text-light 
+                                                                mt-5 mb-0 fs-xpress-sm-400">
+                                                                LASTNAME</h4>
+
+                                                        <h4 class="roboto text-light 
+                                                                my-0 fs-xpress-sm-300">
+                                                                firstName</h4>
+                                                    </div>
+
+                                                </div>
+                                                
+                                            </a>
 
                                         </div>
 
                                     </div>
+                                    
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- shops containers -->
+                        <div class="shopping-cart-row mt-4">
+                        
+                            <button class="dropdown-btn btn bg-xpress-pink-100 w-25 text-end
+                                            bg-hover-xpress-to-gray-200
+                                            rounded-0 text-light py-1 ps-4 roboto
+                                            fs-xpress-sm-300 fw-xpress-500"
+                                            data-index="4">
+                                            SHOPS</button>
+
+                            <div class="empty-section m-3 p-3 
+                                        border border-1 text-center rounded" style="display: none;">
+
+                                <h5 class="d-inline roboto text-light fw-xpress-500
+                                            mb-1 fs-xpress-sm-300 w-50 text-end">
+                                            <i class="fa-solid fa-face-sad-cry fs-xpress-sm-600 me-2"></i>
+                                            THIS SECTION IS EMPTY</h5>
+
+                            </div>
+
+                            <div class="order-wrapper" style="display: none;">
+                                
+                                <!-- search header -->
+                                <div class="rounded-top row g-1 p-3">
+
+                                    <!-- search -->
+                                    <div class="col-6">
+                                        <div class="form-control p-0 rounded-0 border-0">
+
+                                            <label class="roboto text-xpress-gray-300 fs-xpress-sm-300 fw-xpress-500" 
+                                                for="search">SEARCH 
+                                                <span class="text-xpress-red-200 
+                                                             roboto fw-xpress-900">*</span></label>
+
+                                            <input class="roboto text-xpress-gray-100 
+                                                bg-light border-0 py-1 fw-xpress-500
+                                                fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="text" 
+                                                name="search">
+                                        </div>
+                                    </div>
+                                
+                                    <!-- sorted components for right -->
+                                    <div class="sorted-component col-6">
+                    
+                                        <p class="roboto fs-xpress-sm-200 
+                                                    fw-xpress-700 text-light mb-1">
+                                                    Sorted By:</p>
+                    
+                                        <div class="sorted-buttons">
+
+                                            <div class="row m-0 g-1">
+                                                <div class="col-3">
+                            
+                                                    <button class="btn bg-xpress-purple-100 w-100
+                                                                    bg-hover-xpress-to-gray-200
+                                                                    rounded text-light py-1 px-4 roboto
+                                                                    fs-xpress-sm-200 fw-xpress-500 mt-1">
+                                                                    Alphabet</button>
+                                                </div>
+                                                
+                                                <div class="col-3">
+                            
+                                                    <button class="btn bg-xpress-purple-100 w-100
+                                                                    bg-hover-xpress-to-gray-200
+                                                                    rounded text-light py-1 px-4 roboto
+                                                                    fs-xpress-sm-200 fw-xpress-500 mt-1">
+                                                                    Recent</button>
+                                                </div>
+                                                
+                                                <div class="col-3">
+                            
+                                                    <button class="btn bg-xpress-red-100 w-100
+                                                                    bg-hover-xpress-to-gray-200
+                                                                    rounded text-light py-1 px-4 roboto
+                                                                    fs-xpress-sm-200 fw-xpress-500 mt-1">
+                                                                    ASC</button>
+                                                </div>
+                                                
+                                                <div class="col-3">
+                            
+                                                    <button class="btn bg-xpress-green-100 w-100
+                                                                    bg-hover-xpress-to-gray-200
+                                                                    rounded text-light py-1 px-4 roboto
+                                                                    fs-xpress-sm-200 fw-xpress-500 mt-1">
+                                                                    DESC</button>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- shop content - customer -->
+                                <div class="mx-3">
+                                    <div class="row row-cols-3 m-0 g-1">
+
+                                        <!-- shop item -->
+                                        <div class="col">
+
+                                            <a href="#">
+
+                                                <div class="shop-box position-relative" 
+                                                     style="height: 250px;">
+
+                                                    <!-- cover -->
+                                                    <div class="position-absolute 
+                                                                top-0 left-0 w-100 h-100">
+
+                                                        <img class="w-100 h-100" 
+                                                            src="../images/alphabetical-backgrounds/a-profile-background.jpg" alt="" 
+                                                            style="object-fit: cover;">
+                                                    </div>
+
+                                                    <div class="position-absolute 
+                                                                top-0 left-0 w-100 h-100
+                                                                d-flex flex-column
+                                                                justify-content-center
+                                                                align-items-center
+                                                                gradient-transparent-to-bg-gray-100">
+
+                                                        <h3 class="roboto text-light 
+                                                                mb-0 fs-xpress-sm-600">
+                                                                shopName</h3>
+
+                                                        <h4 class="roboto text-light fw-xpress-400 
+                                                                mt-2 mb-0 fs-xpress-sm-300">
+                                                                city</h4>
+                                                    </div>
+
+                                                </div>
+                                                
+                                            </a>
+
+                                        </div>
+
+                                    </div>
+                                    
                                 </div>
 
                             </div>
