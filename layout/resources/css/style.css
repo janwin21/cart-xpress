@@ -10929,6 +10929,10 @@ textarea.form-control-lg {
   background-image: linear-gradient(transparent, #434343);
 }
 
+.gradient-transparent-to-bg-gray-200 {
+  background-image: linear-gradient(transparent, #262626);
+}
+
 .gradient-bg-gray-100-to-black-op-100-to-bg-gray-100 {
   background-image: linear-gradient(#434343, rgba(0, 0, 0, 0.5), #434343);
 }
