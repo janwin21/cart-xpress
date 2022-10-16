@@ -33,3 +33,6 @@
 // import all files from product page folder
 @use './pages/product/product-content';
 @use './pages/product/shop-content';
+
+// import all files from product mobile folder
+@use './mobile/home';
