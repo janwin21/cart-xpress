@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Xpress</title>
+
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../css/fontawesome.css" media="screen">
+</head>
+<body style="background: url('../images/backgrounds/background-2.png') 
+                         no-repeat center center fixed;
+             background-size: cover;">
+    
+    <!-------------------------------- Navbar Section START -->
+    <nav class="navbar navbar-expand-lg 
+                container-fluid bg-xpress-gray-100 
+                px-4 py-1 m-0 sticky-top"
+                style="height: 50px;">
+
+        <!-- nav-title -->
+        <a class="navbar-brand text-light roboto" href="#">
+            <img src="../images/logos/logo-title.png" alt="" style="width: 1.75em;">
+            <span class="text-hover-xpress-to-purple-200 ms-2">
+                cartXpress</span></a>
+
+        <!-- menu-list -->
+        <div class="collapse d-flex justify-content-end w-100" style="height: 1.75em;">
+                    
+            <div class="navbar-nav">
+
+                <!-- nav-links -->
+                <a class="nav-item nav-link align-self-center
+                          text-light nato-sans-jp 
+                          fs-xpress-sm-300 ms-3
+                          text-hover-xpress-to-red-100" href="#">
+                          <i class="fa-solid fa-house me-1"></i>
+                          Home</a>
+
+                <a class="nav-item nav-link align-self-center
+                          text-light nato-sans-jp 
+                          fs-xpress-sm-300 ms-3
+                          text-hover-xpress-to-red-100" href="#">
+                          <i class="fa-solid fa-cookie-bite me-1"></i>
+                          Products</a>
+
+                <a class="nav-item nav-link align-self-center
+                          text-light nato-sans-jp 
+                          fs-xpress-sm-300 ms-3
+                          text-hover-xpress-to-red-100" href="#">
+                          <i class="fa-solid fa-store me-1"></i>
+                          Shops</a>
+                          
+                <a class="nav-item nav-link align-self-center
+                          text-light nato-sans-jp 
+                          fs-xpress-sm-300 ms-3
+                          text-hover-xpress-to-red-100" href="#">
+                          <i class="fa-solid fa-basket-shopping me-1"></i>
+                          Categories</a>
+                          
+                <a class="nav-item nav-link align-self-center
+                          text-light nato-sans-jp 
+                          fs-xpress-sm-500 ms-3
+                          text-hover-xpress-to-red-100" 
+                          id="notify" href="#">
+                          <i class="fa-solid fa-bell purple-100-active"></i></a>
+                          
+                <!-- nav buttons -->
+                <a class="nav-item nav-link text-light nato-sans-jp 
+                          fs-xpress-sm-300 align-self-center ms-3 px-5
+                          btn bg-primary bg-xpress-orange-100
+                          bg-hover-xpress-to-gray-200" href="#"
+                          style="padding-top: 0.2em; padding-bottom: 0.2em;;">
+                          Login</a>
+                          
+                <a class="nav-item nav-link text-light nato-sans-jp 
+                          fs-xpress-sm-300 align-self-center ms-1 px-5
+                          btn bg-primary bg-xpress-purple-100
+                          bg-hover-xpress-to-gray-200" href="#"
+                          style="padding-top: 0.2em; padding-bottom: 0.2em;;">
+                          Register</a>
+            </div>
+        </div>
+    </nav>
+    <!---------- Navbar Section END -->
+    
+    <!-------------------------------- Whole Cover Wrapper Background START -->
+    <div class="register-cover bg-opaque-xpress-black-200 w-100 h-100
+                d-flex flex-column justify-content-center align-items-center">
+
+        <!-- box space -->
+        <div class="register__box-space w-100"></div>
+
+        <!-------------------------------- Cart Xpress Login Main START -->
+        <div class="register">
+
+            <div class="row">
+
+                <div class="col-9 bg-xpress-gray-100 p-0 pb-5">
+
+                    <!-- customer component -->
+                    <div class="customer-component">
+
+                        <!-- welcome header -->
+                        <div class="welcome-header 
+                                    border border-top-0 border-start-0 
+                                    border-end-0 border-bottom-1 
+                                    text-center px-5 pt-5 pb-4">
+                                    
+                            <h4 class="roboto text-xpress-blue-300">Create Your New Shop, vendorName</h4>
+
+                            <p class="roboto text-light mt-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Esse minima, quaerat rem eum modi excepturi adipisci perspiciatis itaque 
+                                eaque ipsum, illum soluta at nesciunt.</p>
+                        </div>
+
+                        <form action="javascript: void(0)">
+
+                            <!-- first row -->
+                            <div class="row gx-2 gy-4 px-5 pt-4 pb-0 mt-2">
+
+                                <!-- shopName -->
+                                <div class="col-4">
+                                    <div class="form-control p-0 rounded-0 border-0">
+
+                                        <label class="roboto text-xpress-gray-300 fs-xpress-sm-300 fw-xpress-500" 
+                                               for="shopName">SHOP NAME 
+                                               <span class="text-xpress-red-200 roboto fw-xpress-900">*</span></label>
+
+                                        <input class="roboto text-xpress-gray-300 
+                                               bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
+                                                      fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="text" 
+                                                      name="shopName" required>
+                                    </div>
+                                </div>
+
+                                <!-- shopEmail -->
+                                <div class="col-4">
+                                    <div class="form-control p-0 rounded-0 border-0">
+
+                                        <label class="roboto text-xpress-gray-300 fs-xpress-sm-300 fw-xpress-500" 
+                                               for="shopEmail">SHOP EMAIL ADDRESS 
+                                               <span class="text-xpress-red-200 roboto fw-xpress-900">*</span></label>
+
+                                        <input class="roboto text-xpress-gray-300 
+                                               bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
+                                                      fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="text" 
+                                                      name="shopEmail" required>
+                                    </div>
+                                </div>
+
+                                <!-- phone -->
+                                <div class="col-4">
+                                    <div class="form-control p-0 rounded-0 border-0">
+
+                                        <label class="roboto text-xpress-gray-300 fs-xpress-sm-300 fw-xpress-500" 
+                                               for="phone">PHONE 
+                                               <span class="text-xpress-red-200 roboto fw-xpress-900">*</span></label>
+
+                                        <input class="roboto text-xpress-gray-300 
+                                               bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
+                                                      fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="text" 
+                                                      name="phone" required>
+                                    </div>
+                                </div>
+
+                                <!-- description -->
+                                <div class="col-12">
+                                    <div class="form-control p-0 rounded-0 border-0">
+
+                                        <label class="roboto text-xpress-gray-300 fs-xpress-sm-300 fw-xpress-500" 
+                                               for="description">DESCRIBE YOUR SHOP 
+                                               <span class="text-xpress-red-200 roboto fw-xpress-900">*</span></label>
+
+                                        <textarea class="roboto text-xpress-gray-300 
+                                                bg-xpress-gray-500 border-0 py-2 fw-xpress-500 
+                                                        fs-xpress-sm-300 rounded w-100 mt-1 px-3"
+                                                        name="message" placeholder="type the message here..."
+                                                        style="height: 150px;"></textarea>
+                                    </div>
+                                </div>
+                                
+                                <!-- your location warning notes -->
+                                <div class="col-4">
+                                    <h6 class="roboto text-xpress-red-200 fs-xpress-sm-300">YOUR LOCATION</h6>
+                                    <p class="roboto text-light fs-xpress-sm-200">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus deserunt quia aperiam sed id</p>
+                                </div>
+
+                                <!-- address lines -->
+                                <div class="col-8">
+
+                                    <!-- addressLine1 -->
+                                    <div class="form-control p-0 rounded-0 border-0">
+                                        
+                                        <label class="roboto text-xpress-gray-300 fs-xpress-sm-300 fw-xpress-500" 
+                                               for="addressLine1">ADDRESS LINE 1</label>
+
+                                        <input class="roboto text-xpress-gray-300 
+                                               bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
+                                               fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="text" 
+                                               name="addressLine1">
+                                    </div>
+
+                                    <!-- addressLine2 -->
+                                    <div class="form-control p-0 rounded-0 border-0 mt-3">
+                                        
+                                        <label class="roboto text-xpress-gray-300 fs-xpress-sm-300 fw-xpress-500" 
+                                               for="addressLine2">ADDRESS LINE 2</label>
+
+                                        <input class="roboto text-xpress-gray-300 
+                                               bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
+                                               fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="text" 
+                                               name="addressLine2">
+                                    </div>
+
+                                </div>
+
+                                <!-- city -->
+                                <div class="col-3">
+                                    <div class="form-control p-0 rounded-0 border-0">
+
+                                        <label class="roboto text-xpress-gray-300 fs-xpress-sm-300 fw-xpress-500" 
+                                               for="city">CITY</label>
+
+                                        <input class="roboto text-xpress-gray-300 
+                                               bg-xpress-gray-500 border-0 py-1 fw-xpress-500
+                                               fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="text" 
+                                               name="city">
+                                    </div>
+                                </div>
+
+                                <!-- state -->
+                                <div class="col-3">
+                                    <div class="form-control p-0 rounded-0 border-0">
+
+                                        <label class="roboto text-xpress-gray-300 fs-xpress-sm-300 fw-xpress-500" 
+                                               for="state">STATE</label>
+
+                                        <input class="roboto text-xpress-gray-300 
+                                               bg-xpress-gray-500 border-0 py-1 fw-xpress-500
+                                               fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="text" 
+                                               name="state">
+                                    </div>
+                                </div>
+
+                                <!-- postalCode -->
+                                <div class="col-3">
+                                    <div class="form-control p-0 rounded-0 border-0">
+
+                                        <label class="roboto text-xpress-gray-300 fs-xpress-sm-300 fw-xpress-500" 
+                                               for="postalCode">POSTAL CODE</label>
+
+                                        <input class="roboto text-xpress-gray-300 
+                                               bg-xpress-gray-500 border-0 py-1 fw-xpress-500
+                                               fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="text" 
+                                               name="postalCode">
+                                    </div>
+                                </div>
+
+                                <!-- country -->
+                                <div class="col-3">
+                                    <div class="form-control p-0 rounded-0 border-0">
+
+                                        <label class="roboto text-xpress-gray-300 fs-xpress-sm-300 fw-xpress-500" 
+                                               for="country">COUNTRY</label>
+
+                                        <input class="roboto text-xpress-gray-300 
+                                               bg-xpress-gray-500 border-0 py-1 fw-xpress-500
+                                               fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="text" 
+                                               name="country">
+                                    </div>
+                                </div>
+
+                                <!-- display background image -->
+                                <div class="col-8" style="height: 250px">
+
+                                    <img id="backgroundImageDisplay" 
+                                         class="w-100 h-100 rounded" 
+                                         src="../images/alphabetical-backgrounds/a-profile-background.jpg" alt="">
+                                </div>
+
+                                <!-- display profile image -->
+                                <div class="col-4" style="height: 250px"></div>
+
+                                <!-- backgroundImagePath -->
+                                <div class="col-2">
+                                    <div class="form-control p-0 rounded-0 border-0">
+
+                                        <label class="roboto text-xpress-gray-300 fs-xpress-sm-300 fw-xpress-500" 
+                                               for="backgroundImagePath">SHOP IMAGE</label>
+    
+                                        <button class="btn bg-xpress-pink-100 
+                                                        bg-hover-xpress-to-gray-200 text-light w-100
+                                                        rounded py-1 fs-xpress-sm-300 
+                                                        fw-xpress-600 mt-1"
+                                                        id="background-btn"
+                                                        data-is-profile="false"
+                                                        type="button">
+                                                        UPLOAD</button>
+
+                                        <input class="d-none" id="backgroundImagePath" type="file" name="backgroundImagePath">
+                                    </div>
+                                </div>
+
+                                <!-- profileImagePath -->
+                                <div class="col-2"></div>
+
+                                <!-- submit -->
+                                <div class="col-12">
+                                    <div class="form-control p-0 border-0 mt-0 text-start
+                                                d-flex justify-content-end align-items-end">
+        
+                                    <button class="btn bg-xpress-orange-100 
+                                                    bg-hover-xpress-to-gray-200 text-light w-25 
+                                                    rounded-pill py-1 fs-xpress-sm-300 
+                                                    fw-xpress-500"
+                                                    type="submit">CONFIRM</button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </form>
+                        
+                    </div>
+
+                    <!-- employee component -->
+                    <div class="employee-component" style="display: none;">
+
+                        <!-- welcome header -->
+                        <div class="welcome-header 
+                                    border border-top-0 border-start-0 
+                                    border-end-0 border-bottom-1 
+                                    text-center px-5 pt-5 pb-4">
+                                    
+                            <h4 class="roboto text-xpress-blue-300">Welcome To Our App, New Employee</h4>
+
+                            <p class="roboto text-light mt-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Esse minima, quaerat rem eum modi excepturi adipisci perspiciatis itaque 
+                                eaque ipsum, illum soluta at nesciunt.</p>
+                        </div>
+
+                        <form action="javascript: void(0)">
+
+                            <!-- first row -->
+                            <div class="row gx-2 gy-4 px-5 pt-4 pb-0 mt-2">
+
+                                <!-- lastName -->
+                                <div class="col-4">
+                                    <div class="form-control p-0 rounded-0 border-0">
+
+                                        <label class="roboto text-xpress-gray-300 fs-xpress-sm-300 fw-xpress-500" 
+                                               for="lastName">LAST NAME 
+                                               <span class="text-xpress-red-200 roboto fw-xpress-900">*</span></label>
+
+                                        <input class="roboto text-xpress-gray-300 
+                                               bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
+                                                      fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="text" 
+                                                      name="lastName" required>
+                                    </div>
+                                </div>
+
+                                <!-- firstName -->
+                                <div class="col-4">
+                                    <div class="form-control p-0 rounded-0 border-0">
+
+                                        <label class="roboto text-xpress-gray-300 fs-xpress-sm-300 fw-xpress-500" 
+                                               for="firstName">FIRST NAME 
+                                               <span class="text-xpress-red-200 roboto fw-xpress-900">*</span></label>
+
+                                        <input class="roboto text-xpress-gray-300 
+                                               bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
+                                                      fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="text" 
+                                                      name="firstName" required>
+                                    </div>
+                                </div>
+
+                                <!-- phone -->
+                                <div class="col-4">
+                                    <div class="form-control p-0 rounded-0 border-0">
+
+                                        <label class="roboto text-xpress-gray-300 fs-xpress-sm-300 fw-xpress-500" 
+                                               for="phone">PHONE 
+                                               <span class="text-xpress-red-200 roboto fw-xpress-900">*</span></label>
+
+                                        <input class="roboto text-xpress-gray-300 
+                                               bg-xpress-gray-500 border-0 py-1 fw-xpress-500
+                                               fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="text" 
+                                               name="phone" required>
+                                    </div>
+                                </div>
+                                
+                                <!-- email -->
+                                <div class="col-6">
+                                    <div class="form-control p-0 rounded-0 border-0">
+
+                                        <label class="roboto text-xpress-gray-300 fs-xpress-sm-300 fw-xpress-500" 
+                                               for="email">EMAIL ADRESSS 
+                                               <span class="text-xpress-red-200 roboto fw-xpress-900">*</span></label>
+
+                                        <input class="roboto text-xpress-gray-300 
+                                               bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
+                                               fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="email" 
+                                               name="email" required>
+                                    </div>
+                                </div>
+                                
+                                <!-- password -->
+                                <div class="col-6">
+                                    <div class="form-control p-0 rounded-0 border-0">
+                                        
+                                        <label class="roboto text-xpress-gray-300 fs-xpress-sm-300 fw-xpress-500" 
+                                               for="password">PASSWORD 
+                                               <span class="text-xpress-red-200 roboto fw-xpress-900">*</span></label>
+
+                                        <input class="roboto text-xpress-gray-300 
+                                               bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
+                                               fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="password" 
+                                               name="password" required>
+                                    </div>
+                                </div>
+
+                                <!-- profileImagePath -->
+                                <div class="col-2">
+                                    <div class="form-control p-0 rounded-0 border-0">
+
+                                        <label class="roboto text-xpress-gray-300 fs-xpress-sm-300 fw-xpress-500" 
+                                               for="profileImagePath">PROFILE</label>
+    
+                                        <button class="btn bg-xpress-orange-100 
+                                                        bg-hover-xpress-to-gray-200 text-light w-100
+                                                        rounded py-1 fs-xpress-sm-300 
+                                                        fw-xpress-600 mt-1"
+                                                        id="profile-btn"
+                                                        data-is-profile="true"
+                                                        type="button">
+                                                        UPLOAD</button>
+
+                                        <input class="d-none" id="profileImagePath" type="file" name="profileImagePath">
+                                    </div>
+                                </div>
+
+                                <!-- backgroundImagePath -->
+                                <div class="col-2">
+                                    <div class="form-control p-0 rounded-0 border-0">
+
+                                        <label class="roboto text-xpress-gray-300 fs-xpress-sm-300 fw-xpress-500" 
+                                               for="backgroundImagePath">BACKGROUND</label>
+    
+                                        <button class="btn bg-xpress-purple-300 
+                                                        bg-hover-xpress-to-gray-200 text-light w-100
+                                                        rounded py-1 fs-xpress-sm-300 
+                                                        fw-xpress-600 mt-1"
+                                                        id="background-btn"
+                                                        data-is-profile="false"
+                                                        type="button">
+                                                        UPLOAD</button>
+
+                                        <input class="d-none" id="backgroundImagePath" type="file" name="backgroundImagePath">
+                                    </div>
+                                </div>
+
+                                <div class="col-2"></div>
+                                
+                                <!-- passwordConfirmation -->
+                                <div class="col-6">
+                                    <div class="form-control p-0 rounded-0 border-0">
+                                        
+                                        <label class="roboto text-xpress-gray-300 fs-xpress-sm-300 fw-xpress-500" 
+                                               for="passwordConfirmation">CONFIRM PASSWORD 
+                                               <span class="text-xpress-red-200 roboto fw-xpress-900">*</span></label>
+
+                                        <input class="roboto text-xpress-gray-300 
+                                               bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
+                                               fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="password" 
+                                               name="passwordConfirmation" required>
+                                    </div>
+                                </div>
+
+                                <!-- display profile image -->
+                                <div class="col-4" style="height: 250px">
+
+                                    <img id="profileImageDisplay" 
+                                         class="w-100 h-100 rounded" 
+                                         src="../images/alphabetical-profile/a-profile.jpg" alt="">
+                                </div>
+
+                                <!-- display background image -->
+                                <div class="col-8" style="height: 250px">
+
+                                    <img id="backgroundImageDisplay" 
+                                         class="w-100 h-100 rounded" 
+                                         src="../images/alphabetical-backgrounds/a-profile-background.jpg" alt="">
+                                </div>
+                                
+                                <!-- your location warning notes -->
+                                <div class="col-12">
+
+                                    <h6 class="roboto text-xpress-blue-200 
+                                               fs-xpress-sm-300 mt-3">ACCOUNT ACCESSIBILITY</h6>
+
+                                    <p class="roboto text-light mt-3 fs-xpress-sm-200">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                                        laboris nisi ut aliquip ex ea commodo consequat.
+                                        <br><br>
+                                        
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                                        laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                </div>
+
+                                <!-- acceptAgreement -->
+                                <div class="col-12">
+                                    <div class="form-control p-0 border-0 mt-0 text-start
+                                                d-flex justify-content-start align-items-center">
+        
+                                        <input type="checkbox" name="remember_me">
+                                            <label class="roboto text-light fs-xpress-sm-200 ms-2" 
+                                                   for="remember_me">Accept out <span class="text-xpress-blue-100"><a href="#">Terms Agreement</a></span></label>
+                                    </div>
+                                </div>
+
+                                <!-- submit -->
+                                <div class="col-12">
+                                    <div class="form-control p-0 border-0 mt-0 text-start
+                                                d-flex justify-content-end align-items-end">
+        
+    
+                                    <button class="btn bg-xpress-orange-100 
+                                                    bg-hover-xpress-to-gray-200 text-light w-25 
+                                                    rounded-pill py-1 fs-xpress-sm-300 
+                                                    fw-xpress-500" href="#"
+                                                    type="submit">CONFIRM</button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </form>
+                        
+                    </div>
+                               
+                </div>
+
+                <!-- left -->
+                <div class="register__left col-3 text-center p-0"
+                            style="background: url('../images/wonderful-images/wonderful-image-6.jpg') no-repeat;
+                                   background-size: cover;">
+
+                    <div class="w-100 h-100 bg-opaque-xpress-black-200" style="overflow-y: auto;">
+
+                        <!-- left header -->
+                        <div class="vendor-header px-3 py-2 text-start 
+                                    border-bottom-blue-200">
+
+                            <img class="d-inline" 
+                                 src="../images/icons/input-icon-2.png" alt="" 
+                                 style="width: 1.5rem;">
+        
+                            <h5 class="d-inline lato text-xpress-blue-300 
+                                        fs-xpress-sm-300 fw-xpress-600">
+                                        VENDOR</h5>
+                        </div>
+    
+                        <!-- vendor buttons -->
+                        <div class="row row-cols-2 m-0 g-1 p-3 pb-0">
+
+                            <div class="col">
+
+                                <a class="btn bg-xpress-gray-100 w-100 m-0
+                                                bg-hover-xpress-to-gray-200 text-light w-75 
+                                                rounded pt-1 pb-2 fs-xpress-sm-200 
+                                                fw-xpress-500"
+                                                id="customer-confirm-btn">
+                                                ADD<br>VENDOR</a>
+                            </div>
+
+                            <div class="col">
+
+                                <a class="btn bg-xpress-pink-100 w-100 m-0
+                                                bg-hover-xpress-to-gray-200 text-light w-75 
+                                                rounded pt-1 pb-2 fs-xpress-sm-200 
+                                                fw-xpress-500"
+                                                id="customer-confirm-btn">
+                                                CREATE<br>SHOP</a>
+                            </div>
+                        </div>
+
+                        <!-- shops -->
+                        <div class="shops px-3 pb-3">
+
+                            <!-- single shop item -->
+                            <div class="position-relative shop-item mt-3" 
+                                 style="height: 150px;">
+
+                                <a href="#">
+                            
+                                    <img class="rounded w-100 h-100" 
+                                         src="../images/sample-shops/sample-shop-1.jpg" alt=""
+                                         style="object-fit: cover;">
+                                    
+                                    <div class="shop-item-cover rounded-bottom 
+                                                text-start bg-xpress-gray-200
+                                                position-absolute bottom-0 left-0 w-100 p-2">
+    
+                                        <h5 class="d-inline lato 
+                                                   text-xpress-blue-300 
+                                                   fs-xpress-sm-300 fw-xpress-600">
+                                                   shopName</h5>
+                                    </div>
+                                    
+                                    <div class="shop-item-cover rounded-bottom text-end 
+                                                position-absolute top-0 right-0 w-100 p-2">
+
+                                        <button class="btn bg-xpress-red-100
+                                                        bg-hover-xpress-to-gray-200 text-light
+                                                        rounded fs-xpress-sm-100 
+                                                        fw-xpress-600"
+                                                        id="background-btn">
+                                                        <i class="fa-solid fa-trash"></i>
+                                                        </button>
+                                    </div>
+                                    
+                                </a>
+                            
+                            </div>
+
+                        </div>
+
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+        <!---------- Cart Xpress Login Main END -->
+
+    </div>
+    <!---------- Whole Cover Wrapper Background END -->
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="../js/utils/FunctionUtils.js"></script>
+    <script src="../js/utils/UploadUtils.js"></script>
+    <script src="../js/pages/register.js"></script>
+</body>
+</html>
