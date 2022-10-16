@@ -79,7 +79,6 @@ $(document).ready(() => {
         return () => {
 
             let userComponent = isCustomer ? customerComponent : employeeComponent;
-            console.log('CALL');
 
             userComponent.show();
 

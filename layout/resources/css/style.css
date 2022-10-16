@@ -10810,6 +10810,10 @@ textarea.form-control-lg {
   color: #cfe2f3 !important;
 }
 
+.text-xpress-orange-100 {
+  color: #e69138 !important;
+}
+
 .text-xpress-orange-200 {
   color: #f6b26b !important;
 }
@@ -10824,6 +10828,10 @@ textarea.form-control-lg {
 
 .text-xpress-green-200 {
   color: #93c47d !important;
+}
+
+.text-xpress-purple-100 {
+  color: #8e7cc3 !important;
 }
 
 /* BACKGROUND */
@@ -10895,6 +10903,10 @@ textarea.form-control-lg {
   background-color: #6d9eeb !important;
 }
 
+.bg-xpress-pink-100 {
+  background-color: #c27ba0 !important;
+}
+
 .bg-transparent {
   background-color: transparent;
 }
@@ -10919,6 +10931,14 @@ textarea.form-control-lg {
 /* COLOR WITH GRADIENT UTILS */
 .gradient-bg-gray-100-to-transparent {
   background-image: linear-gradient(#434343, transparent);
+}
+
+.gradient-transparent-to-bg-gray-100 {
+  background-image: linear-gradient(transparent, #434343);
+}
+
+.gradient-transparent-to-bg-gray-200 {
+  background-image: linear-gradient(transparent, #262626);
 }
 
 .gradient-bg-gray-100-to-black-op-100-to-bg-gray-100 {
@@ -10957,6 +10977,14 @@ textarea.form-control-lg {
 
 .border-bottom-blue-200 {
   border-bottom: 1px solid #a4c2f4 !important;
+}
+
+.border-bottom-purple-100 {
+  border-bottom: 1px solid #8e7cc3 !important;
+}
+
+.border-bottom-orange-200 {
+  border-bottom: 1px solid #f6b26b !important;
 }
 
 /* NO COLOR */
@@ -11619,6 +11647,32 @@ nav #notify {
 .product-content {
   padding-left: 4rem;
   padding-right: 4rem;
+}
+
+/* SHOP CONTENT DETAILS */
+.hoverable-chart {
+  width: 100% !important;
+  height: 250px !important;
+}
+
+/*
+@include media-breakpoint-up(sm) { ... }
+@include media-breakpoint-up(md) { ... }
+@include media-breakpoint-up(lg) { ... }
+@include media-breakpoint-up(xl) { ... }
+@include media-breakpoint-up(xxl) { ... }
+
+@include media-breakpoint-down(sm) { ... }
+@include media-breakpoint-down(md) { ... }
+@include media-breakpoint-down(lg) { ... }
+@include media-breakpoint-down(xl) { ... }
+@include media-breakpoint-down(xxl) { ... }
+*/
+/* HOME MOBILE */
+@media (max-width: 767.98px) {
+  .navbar {
+    background-color: red !important;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
