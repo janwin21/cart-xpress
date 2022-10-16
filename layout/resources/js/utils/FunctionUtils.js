@@ -9,7 +9,6 @@ function FunctionUtils()
     };
 
     this.setClick = eventListener => {
-        console.log(eventListener);
         this.component.on('click', eventListener);
         return this;
     };
