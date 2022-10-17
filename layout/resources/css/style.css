@@ -10932,6 +10932,10 @@ textarea.form-control-lg {
   background-color: rgba(67, 67, 67, 0.9) !important;
 }
 
+.bg-opaque-xpress-gray-200 {
+  background-color: rgba(67, 67, 67, 0.75) !important;
+}
+
 /* COLOR WITH GRADIENT UTILS */
 .gradient-bg-gray-100-to-transparent {
   background-image: linear-gradient(#434343, transparent);
@@ -10939,6 +10943,10 @@ textarea.form-control-lg {
 
 .gradient-transparent-to-bg-gray-100 {
   background-image: linear-gradient(transparent, #434343);
+}
+
+.gradient-bg-gray-100-op-to-bg-gray-100 {
+  background-image: linear-gradient(rgba(67, 67, 67, 0.5), #434343);
 }
 
 .gradient-transparent-to-bg-gray-200 {

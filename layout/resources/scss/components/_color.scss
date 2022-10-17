@@ -60,10 +60,12 @@
 .bg-opaque-xpress-black-300 {           background-color: rgba($black, 0.75) !important; }
 
 .bg-opaque-xpress-gray-100 {            background-color: rgba($cart-xpress-gray-100, 0.9) !important; }
+.bg-opaque-xpress-gray-200 {            background-color: rgba($cart-xpress-gray-100, 0.75) !important; }
 
 /* COLOR WITH GRADIENT UTILS */
 .gradient-bg-gray-100-to-transparent {  background-image: linear-gradient($cart-xpress-gray-100, transparent); }
 .gradient-transparent-to-bg-gray-100 {  background-image: linear-gradient(transparent, $cart-xpress-gray-100); }
+.gradient-bg-gray-100-op-to-bg-gray-100{background-image: linear-gradient(rgba($cart-xpress-gray-100, 0.5), $cart-xpress-gray-100); }
 .gradient-transparent-to-bg-gray-200 {  background-image: linear-gradient(transparent, $cart-xpress-gray-200); }
 .gradient-bg-gray-100-to-black-op-100-to-bg-gray-100 {     
                                         background-image: linear-gradient($cart-xpress-gray-100, rgba($black, 0.5), $cart-xpress-gray-100); }
