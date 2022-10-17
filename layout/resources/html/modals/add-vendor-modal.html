@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Xpress</title>
+
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../../css/fontawesome.css" media="screen">
+</head>
+<body style="background: url('../../images/backgrounds/background-2.png') 
+                         no-repeat center center fixed;
+             background-size: cover;">
+    
+    <!-------------------------------- One Way Option Modal START -->
+    <div class="cart-xpress-modal-wrapper
+                position-absolute top-0 left-0 w-100 p-5
+                d-flex justify-content-center align-items-center">
+
+        <!-- cover -->
+        <div class="cover position-fixed top-0 left-0 w-100 
+                    bg-opaque-xpress-black-300" 
+                    style="height: 100vh;"></div>
+
+        <!-- modal container -->
+        <div class="cart-xpress-modal position-relative w-50">
+
+            <!-- welcome header -->
+            <div class="welcome-header w-100
+                        border border-top-0 border-start-0 
+                        border-end-0 border-bottom-blue-200
+                        text-center text-light px-5 pt-4 pb-1
+                        bg-xpress-gray-200">
+    
+                <button class="btn bg-xpress-gray-400
+                                bg-hover-xpress-to-gray-200 text-light
+                                rounded-pill fs-xpress-sm-100 
+                                fw-xpress-600 m-2
+                                position-absolute top-0 end-0"
+                                id="background-btn">
+                                <i class="fa fa-remove"></i>
+                                </button>
+                        
+                <h4 class="roboto text-xpress-blue-200 fs-xpress-sm-500 mb-1">Your Colleagues</h4>
+
+                <p class="roboto mt-0 fs-xpress-sm-200">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Similique accusantium ea blanditiis consequuntur.</p>
+            </div>
+
+            <!-- modal content -->
+            <div class="modal-content bg-xpress-gray-200 text-light justify w-100 p-3">  
+
+                <form action="javascript: void(0)">
+
+                    <!-- message header to -->
+                    <div class="header-message d-flex align-items-center">
+                        <img class="d-inline rounded-circle me-2" 
+                            src="../../images/alphabetical-profile/a-profile.jpg" 
+                            alt="" style="width: 2em;">
+
+                        <h5 class="roboto text-xpress-gray-300 fs-xpress-sm-400 d-inline">TO: 
+                            <span class="text-light">firstName</span> 
+                            <span class="text-light">LastName</span></h5>
+                    </div>
+
+                    <!-- vendorName -->
+                    <div class="form-control mt-2 p-0 rounded-0 border-0">
+
+                        <input class="roboto text-xpress-gray-300 
+                                bg-xpress-gray-500 border-0 py-2 fw-xpress-500 
+                                        fs-xpress-sm-300 rounded w-100 mt-1 px-3" type="text" 
+                                        name="vendorName" placeholder="search vendor name...">
+                    </div>
+
+                    <!-- main profile header -->
+                    <div class="main-profile 
+                                position-relative w-100">
+
+                        <!-- main profile background -->
+                        <div class="position-absolute top-0 start-0 w-100 h-100">
+                            <img class="w-100 h-100" src="../../images/alphabetical-backgrounds/a-profile-background.jpg" alt="" style="object-fit: cover;">
+                            <div class="cover w-100 h-100 
+                                        gradient-transparent-to-bg-gray-100"></div>
+                        </div>
+
+                        <div class="d-flex flex-column position-relative
+                                    justify-content-center align-items-center pt-3">
+
+                            <div class="w-100 text-end px-3 pb-3">
+                    
+                                <button class="btn bg-xpress-red-100
+                                                bg-hover-xpress-to-gray-200
+                                                rounded text-light py-1 px-4 roboto
+                                                fs-xpress-sm-200 fw-xpress-500">
+                                                Remove Vendor</button>
+                    
+                                <button class="btn bg-xpress-purple-100 ms-1
+                                                bg-hover-xpress-to-gray-200
+                                                rounded text-light py-1 px-4 roboto
+                                                fs-xpress-sm-200 fw-xpress-500">
+                                                Add Vendor</button>
+                            </div>
+
+                            <!-- profile image -->
+                            <div class="w-25 d-flex justify-content-center">
+                                
+                                <img class="rounded-circle w-50 
+                                            border border-3 border-light" 
+                                            src="../../images/alphabetical-profile/a-profile.jpg" alt="">
+                            </div>
+
+                            <div class="w-100 border-bottom-blue-200
+                                        d-flex flex-column justify-content-center align-items-center">
+
+                                <!-- first details -->
+                                <h5 class="d-inline roboto text-light 
+                                            mt-3 mb-0 fs-xpress-sm-400">
+                                            firstName lastName</h5>
+    
+                                <h5 class="d-inline roboto mt-0 
+                                            fs-xpress-sm-300 fw-xpress-400
+                                            px-3 py-1 text-light">
+                                            email@gmail.com</h5>
+                            </div>
+
+                            <!-- address details -->
+                            <div class="row row-cols-2 p-3 g-2 m-0 w-100">
+
+                                <div class="col">
+
+                                    <h5 class="d-inline roboto mt-0 
+                                                fs-xpress-sm-300 fw-xpress-400
+                                                py-1 text-light">
+                                                phone no: phone</h5>
+
+                                </div>
+
+                                <div class="col">
+
+                                    <h5 class="d-inline roboto mt-0 
+                                                fs-xpress-sm-300 fw-xpress-400
+                                                py-1 text-light">
+                                                addressLine1</h5>
+
+                                </div>
+
+                                
+                            </div>
+
+                            <div class="row row-cols-6 m-0 g-1 w-100">
+
+                                <!-- user item -->
+                                <div class="col">
+
+                                    <a href="#">
+
+                                        <div class="user-box position-relative" 
+                                             style="height: 200px;">
+
+                                            <!-- cover -->
+                                            <div class="position-absolute 
+                                                        top-0 left-0 w-100 h-100">
+
+                                                <img class="w-100 h-100" 
+                                                    src="../../images/alphabetical-backgrounds/a-profile-background.jpg" alt="" 
+                                                    style="object-fit: cover;">
+                                            </div>
+
+                                            <div class="position-absolute 
+                                                        top-0 left-0 w-100 h-100
+                                                        d-flex flex-column
+                                                        justify-content-center
+                                                        align-items-center
+                                                        gradient-transparent-to-bg-gray-100">
+                                            
+                                                <img class="border border-3 
+                                                            rounded-circle" 
+                                                    src="../../images/alphabetical-profile/a-profile.jpg" alt="" 
+                                                    style="
+                                                        width: 35%;
+                                                        object-fit: cover;">
+
+                                                <h4 class="roboto text-light 
+                                                        mt-5 mb-0 fs-xpress-sm-300">
+                                                        LASTNAME</h4>
+
+                                                <h4 class="roboto text-light 
+                                                        my-0 fs-xpress-sm-200">
+                                                        firstName</h4>
+                                            </div>
+
+                                        </div>
+                                        
+                                    </a>
+
+                                </div>
+
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                    
+                </form>
+                
+            </div>
+
+        </div>
+
+    </div>
+    <!---------- One Way Option Modal END -->
+    
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+</body>
+</html>

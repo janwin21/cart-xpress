@@ -17,6 +17,9 @@
 @use './components/scrollbar';
 @use './components/navbar';
 
+// import all files from jquery style folder
+@use './jquery/orgchart';
+
 // import all files from home page folder
 @use './pages/homes/simple-greetings.scss';
 @use './pages/homes/search.scss';
@@ -34,5 +37,5 @@
 @use './pages/product/product-content';
 @use './pages/product/shop-content';
 
-// import all files from product mobile folder
+// import all files from mobile folder
 @use './mobile/home';
