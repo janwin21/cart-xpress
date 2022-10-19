@@ -1,0 +1,44 @@
+@use '../../costumize' as *;
+@use '../../components/mixins' as *;
+
+/* REGISTER MAIN CONTENT */
+.register-cover {
+    @include transition-to-all-15;
+    
+    .register {
+        @include transition-to-all-15;
+        $space: 8rem;
+    
+        padding-left: $space;
+        padding-right: $space;
+    
+        &__left {
+            height: 500px;
+        }
+    
+    }
+}
+
+.register__box-space {
+    height: 50px;
+}
+
+.form-transformation {
+    $space: 2rem;
+    $height: 20;
+
+    .register {
+        padding-left: $space !important;
+        padding-right: $space !important;
+
+        &__left {
+            position: sticky;
+            top: calc(50px + #{$height}px);
+            height: calc(100vh - #{$height * 4.5}px) !important;
+        }
+    }
+
+    .register__box-space {
+        height:  #{$height}px !important;
+    }
+}

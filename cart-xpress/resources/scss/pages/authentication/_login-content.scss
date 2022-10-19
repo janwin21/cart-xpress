@@ -1,0 +1,36 @@
+@use '../../costumize' as *;
+
+/* LOGIN MAIN CONTENT */
+.whole-cover-background {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100vh;
+}
+
+.login {
+
+    .two-image-design {
+
+        img {
+            width: 125px; 
+            height: 250px; 
+            object-fit: cover;
+        }
+
+        &__left {
+            transform: rotateZ(-25deg) translate(25px, 50px);
+        }
+
+        &__right {
+            transform: rotateZ(15deg) translate(-35px, -50px);
+        }
+
+    }
+
+}
+
+::placeholder {
+    color: $cart-xpress-gray-300;
+    font-weight: 400;
+    font-style: italic;
+}

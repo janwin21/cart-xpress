@@ -1,0 +1,14 @@
+@use '../../costumize' as *;
+
+/* SIMPLE GREEETINGS */
+.simple-greeting {
+    position: relative;
+    overflow: hidden;
+
+    .cover {
+        position: absolute;
+        top: 0; left: 0;
+
+        h5 { height: fit-content; }
+    }
+}

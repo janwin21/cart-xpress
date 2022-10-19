@@ -1,0 +1,51 @@
+@use '../costumize' as *;
+
+/* TYPOGRAPHY */
+.roboto {       font-family: 'Roboto', sans-serif; }
+.nato-sans-jp { font-family: 'Noto Sans JP', sans-serif; }
+.lato {         font-family: 'Lato', sans-serif; }
+
+/* FONT SIZE */
+.fs-xpress-sm-100 { font-size: 0.75em; }
+.fs-xpress-sm-200 { font-size: 0.8em; }
+.fs-xpress-sm-300 { font-size: 0.9em; }
+.fs-xpress-sm-400 { font-size: 1em; }
+.fs-xpress-sm-500 { font-size: 1.15em; }
+.fs-xpress-sm-600 { font-size: 1.25em; }
+.fs-xpress-sm-700 { font-size: 1.5em; }
+.fs-xpress-sm-800 { font-size: 2em; }
+.fs-xpress-sm-900 { font-size: 2.25em; }
+
+.fs-xpress-md-100 { font-size: 2.75em; }
+.fs-xpress-md-200 { font-size: 3em; }
+.fs-xpress-md-300 { font-size: 3.25em; }
+.fs-xpress-md-400 { font-size: 3.5em; }
+.fs-xpress-md-500 { font-size: 3.75em; }
+.fs-xpress-md-600 { font-size: 4em; }
+.fs-xpress-md-700 { font-size: 4.25em; }
+.fs-xpress-md-800 { font-size: 4.5em; }
+.fs-xpress-md-900 { font-size: 4.75em; }
+
+/* FONT WEIGHT */
+.fw-xpress-100 { font-weight: 100; }
+.fw-xpress-200 { font-weight: 200; }
+.fw-xpress-300 { font-weight: 300; }
+.fw-xpress-400 { font-weight: 400; }
+.fw-xpress-500 { font-weight: 500; }
+.fw-xpress-600 { font-weight: 600; }
+.fw-xpress-700 { font-weight: 700; }
+.fw-xpress-800 { font-weight: 800; }
+.fw-xpress-900 { font-weight: 900; }
+
+/* TEXT TRANSFORMATION */
+.uppercase { text-transform: uppercase; }
+
+/* TEXT ALIGNMENT */
+.justify { text-align: justify; }
+
+/* TEXT OVERFLOW */
+.text-overflow {
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
