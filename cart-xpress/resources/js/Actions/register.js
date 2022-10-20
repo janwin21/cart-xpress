@@ -1,125 +1,133 @@
 'use strict';
 
-$(document).ready(() => {
+import $ from 'jquery';
+import FunctionUtils from '../Utils/FunctionUtils';
+import UploadUtils from '../Utils/UploadUtils';
 
-    /*---------------------------------------------------INSTANCE VARIABLE----*/
-    const register =                          $('.register');
-    const registerCover =                     $('.register-cover');
+export default function callRegister() {
 
-    /* CUSTOMER */
-    const customerComponent =                 $('.customer-component');
-    const customerConfirmBtn =                $('#customer-confirm-btn');
+    $(document).ready(() => {
 
-    const customerProfileBtn =                $('.customer-component #profile-btn');
-    const customerBackgroundBtn =             $('.customer-component #background-btn');
+        /*---------------------------------------------------INSTANCE VARIABLE----*/
+        const register =                          $('.register');
+        const registerCover =                     $('.register-cover');
 
-    const customerProfileImageInput =         $('.customer-component #profileImagePath');
-    const customerBackgroundImageInput =      $('.customer-component #backgroundImagePath');
+        /* CUSTOMER */
+        const customerComponent =                 $('.customer-component');
+        const customerConfirmBtn =                $('#customer-confirm-btn');
 
-    const customerProfileImageDisplayer =     $('.customer-component #profileImageDisplay');
-    const customerBackgroundImageDisplayer =  $('.customer-component #backgroundImageDisplay');
+        const customerProfileBtn =                $('.customer-component #profile-btn');
+        const customerBackgroundBtn =             $('.customer-component #background-btn');
 
-    /* EMPLOYEE */
-    const employeeComponent =                 $('.employee-component');
-    const employeeConfirmBtn =                $('#employee-confirm-btn');
+        const customerProfileImageInput =         $('.customer-component #profileImagePath');
+        const customerBackgroundImageInput =      $('.customer-component #backgroundImagePath');
 
-    const employeeProfileBtn =                $('.employee-component #profile-btn');
-    const employeeBackgroundBtn =             $('.employee-component #background-btn');
+        const customerProfileImageDisplayer =     $('.customer-component #profileImageDisplay');
+        const customerBackgroundImageDisplayer =  $('.customer-component #backgroundImageDisplay');
 
-    const employeeProfileImageInput =         $('.employee-component #profileImagePath');
-    const employeeBackgroundImageInput =      $('.employee-component #backgroundImagePath');
+        /* EMPLOYEE */
+        const employeeComponent =                 $('.employee-component');
+        const employeeConfirmBtn =                $('#employee-confirm-btn');
 
-    const employeeProfileImageDisplayer =     $('.employee-component #profileImageDisplay');
-    const employeeBackgroundImageDisplayer =  $('.employee-component #backgroundImageDisplay');
+        const employeeProfileBtn =                $('.employee-component #profile-btn');
+        const employeeBackgroundBtn =             $('.employee-component #background-btn');
 
-    /*---------------------------------------------------OBJECT INSTANTIATION----*/
-    const functionUtils =                     new FunctionUtils();
+        const employeeProfileImageInput =         $('.employee-component #profileImagePath');
+        const employeeBackgroundImageInput =      $('.employee-component #backgroundImagePath');
 
-    /* CUSTOMER */
-    const customerProfileUploadUtils =        new UploadUtils(customerProfileImageInput, customerProfileImageDisplayer).setChange();
-    const customerBackgroundUploadUtils =     new UploadUtils(customerBackgroundImageInput, customerBackgroundImageDisplayer).setChange();
+        const employeeProfileImageDisplayer =     $('.employee-component #profileImageDisplay');
+        const employeeBackgroundImageDisplayer =  $('.employee-component #backgroundImageDisplay');
 
-    /* EMPLOYEE */
-    const employeeProfileUploadUtils =        new UploadUtils(employeeProfileImageInput, employeeProfileImageDisplayer).setChange();
-    const employeeBackgroundUploadUtils =     new UploadUtils(employeeBackgroundImageInput, employeeBackgroundImageDisplayer).setChange();
+        /*---------------------------------------------------OBJECT INSTANTIATION----*/
+        const functionUtils =                     new FunctionUtils();
 
-    /*---------------------------------------------------METHOD INSTANTIATION----*/
-    // transform register component when scrolled
-    const registerTransformation = () => {
-        if(register[0].getBoundingClientRect().y <= 0) 
-            registerCover
-                .addClass('form-transformation')
-                .removeClass('bg-opaque-xpress-black-200')
-                .addClass('bg-xpress-gray-200');
-        else
-            registerCover
-                .removeClass('form-transformation')
-                .addClass('bg-opaque-xpress-black-200')
-                .removeClass('bg-xpress-gray-200');
-    };
+        /* CUSTOMER */
+        const customerProfileUploadUtils =        new UploadUtils(customerProfileImageInput, customerProfileImageDisplayer).setChange();
+        const customerBackgroundUploadUtils =     new UploadUtils(customerBackgroundImageInput, customerBackgroundImageDisplayer).setChange();
 
-    // click the file input
-    const initTriggerFileEvent = (profileUploadUtils, backgroundUploadUtils) => {
+        /* EMPLOYEE */
+        const employeeProfileUploadUtils =        new UploadUtils(employeeProfileImageInput, employeeProfileImageDisplayer).setChange();
+        const employeeBackgroundUploadUtils =     new UploadUtils(employeeBackgroundImageInput, employeeBackgroundImageDisplayer).setChange();
 
-        return event => {
+        /*---------------------------------------------------METHOD INSTANTIATION----*/
+        // transform register component when scrolled
+        const registerTransformation = () => {
+            if(register[0].getBoundingClientRect().y <= 0) 
+                registerCover
+                    .addClass('form-transformation')
+                    .removeClass('bg-opaque-xpress-black-200')
+                    .addClass('bg-xpress-gray-200');
+            else
+                registerCover
+                    .removeClass('form-transformation')
+                    .addClass('bg-opaque-xpress-black-200')
+                    .removeClass('bg-xpress-gray-200');
+        };
 
-            const { isProfile } = event.currentTarget.dataset;
-    
-            if(isProfile.toLowerCase() === 'true') profileUploadUtils.trigger();
+        // click the file input
+        const initTriggerFileEvent = (profileUploadUtils, backgroundUploadUtils) => {
 
-            else backgroundUploadUtils.trigger();
+            return event => {
+
+                const { isProfile } = event.currentTarget.dataset;
+        
+                if(isProfile.toLowerCase() === 'true') profileUploadUtils.trigger();
+
+                else backgroundUploadUtils.trigger();
+
+            };
 
         };
 
-    };
+        // show customer or employee form
+        const initShowForm = isCustomer => {
 
-    // show customer or employee form
-    const initShowForm = isCustomer => {
+            return () => {
 
-        return () => {
+                let userComponent = isCustomer ? customerComponent : employeeComponent;
 
-            let userComponent = isCustomer ? customerComponent : employeeComponent;
+                userComponent.show();
 
-            userComponent.show();
+                if(isCustomer) userComponent.next().hide();
+                else userComponent.prev().hide();
 
-            if(isCustomer) userComponent.next().hide();
-            else userComponent.prev().hide();
+            };
 
         };
-
-    };
-    
-    /*---------------------------------------------------INVOKE METHODS----*/
-    // function utils
-    functionUtils
-        .setComponent($(window))
-        .setScroll(registerTransformation)
-
-        .setComponent($(customerProfileBtn))
-        .setClick(
-            initTriggerFileEvent(
-                customerProfileUploadUtils, customerBackgroundUploadUtils))
-
-        .setComponent($(customerBackgroundBtn))
-        .setClick(
-            initTriggerFileEvent(
-                customerProfileUploadUtils, customerBackgroundUploadUtils))
-
-        .setComponent($(employeeProfileBtn))
-        .setClick(
-            initTriggerFileEvent(
-                employeeProfileUploadUtils, employeeBackgroundUploadUtils))
-
-        .setComponent($(employeeBackgroundBtn))
-        .setClick(
-            initTriggerFileEvent(
-                employeeProfileUploadUtils, employeeBackgroundUploadUtils))
-                
         
-        .setComponent($(customerConfirmBtn))
-        .setClick(initShowForm(true))
-        
-        .setComponent($(employeeConfirmBtn))
-        .setClick(initShowForm(false));
+        /*---------------------------------------------------INVOKE METHODS----*/
+        // function utils
+        functionUtils
+            .setComponent($(window))
+            .setScroll(registerTransformation)
 
-});
+            .setComponent($(customerProfileBtn))
+            .setClick(
+                initTriggerFileEvent(
+                    customerProfileUploadUtils, customerBackgroundUploadUtils))
+
+            .setComponent($(customerBackgroundBtn))
+            .setClick(
+                initTriggerFileEvent(
+                    customerProfileUploadUtils, customerBackgroundUploadUtils))
+
+            .setComponent($(employeeProfileBtn))
+            .setClick(
+                initTriggerFileEvent(
+                    employeeProfileUploadUtils, employeeBackgroundUploadUtils))
+
+            .setComponent($(employeeBackgroundBtn))
+            .setClick(
+                initTriggerFileEvent(
+                    employeeProfileUploadUtils, employeeBackgroundUploadUtils))
+                    
+            
+            .setComponent($(customerConfirmBtn))
+            .setClick(initShowForm(true))
+            
+            .setComponent($(employeeConfirmBtn))
+            .setClick(initShowForm(false));
+
+    });
+
+}

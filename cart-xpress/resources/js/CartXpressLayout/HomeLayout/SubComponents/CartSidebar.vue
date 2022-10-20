@@ -119,76 +119,9 @@
 
 <script setup>
     import ProductLink from '../Elements/ProductLink.vue';
-    import { reactive } from 'vue';
+    import { inject } from 'vue';
     
-    const products = reactive([
-        {
-            id: 0,
-            name: 'product 01',
-            price: 55,
-            quantityInStock: 12,
-            overallRating: 4.5,
-            discount: 0.4,
-            description: 'this is a description of sample number 1',
-            imagePath: '/images/sample-products/product-1.jpg',
-            orderDetails: { quantityOrdered: 5 }
-        },
-        {
-            id: 1,
-            name: 'product 01',
-            price: 5445,
-            quantityInStock: 12,
-            overallRating: 4.5,
-            discount: 0.4,
-            description: 'this is a description of sample number 1',
-            imagePath: '/images/sample-products/product-3.jpg',
-            orderDetails: { quantityOrdered: 9 }
-        },
-        {
-            id: 2,
-            name: 'product 01',
-            price: 55,
-            quantityInStock: 12,
-            overallRating: 4.5,
-            discount: 0.4,
-            description: 'this is a description of sample number 1',
-            imagePath: '/images/sample-products/product-4.jpg',
-            orderDetails: { quantityOrdered: 5 }
-        },
-        {
-            id: 3,
-            name: 'product 01',
-            price: 55,
-            quantityInStock: 12,
-            overallRating: 4.5,
-            discount: 0.4,
-            description: 'this is a description of sample number 1',
-            imagePath: '/images/sample-products/product-1.jpg',
-            orderDetails: { quantityOrdered: 15 }
-        },
-        {
-            id: 4,
-            name: 'product 01',
-            price: 55,
-            quantityInStock: 12,
-            overallRating: 4.5,
-            discount: 0.4,
-            description: 'this is a description of sample number 1',
-            imagePath: '/images/sample-products/product-6.jpg',
-            orderDetails: { quantityOrdered: 40 }
-        },
-        {
-            id: 5,
-            name: 'product 05',
-            price: 55,
-            quantityInStock: 12,
-            overallRating: 4.5,
-            discount: 0.4,
-            description: 'this is a description of sample number 1',
-            imagePath: '/images/sample-products/product-1.jpg',
-            orderDetails: { quantityOrdered: 12 }
-        }
-    ]);
+    const products = inject('productsInACart');
 </script>
 
 <style scoped>

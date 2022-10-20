@@ -29,26 +29,9 @@
 
 <script setup>
     import ShopLink from '../Elements/ShopLink.vue';
-    import { reactive } from 'vue';
+    import { inject } from 'vue';
 
-    const shops = reactive([
-        {   
-            id: 0,
-            backgroundImagePath: '/images/sample-shops/sample-shop-2.jpg'
-        },
-        {   
-            id: 1,
-            backgroundImagePath: '/images/sample-shops/sample-shop-3.webp'
-        },
-        {   
-            id: 2,
-            backgroundImagePath: '/images/sample-shops/sample-shop-1.jpg'
-        },
-        {   
-            id: 3,
-            backgroundImagePath: '/images/sample-shops/sample-shop-4.png'
-        }
-    ]);
+    const shops = inject('popularShops');
 </script>
 
 <style lang="scss" scoped>

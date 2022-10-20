@@ -1,24 +1,31 @@
 'use strict';
 
-$(document).ready(() => {
+import $ from 'jquery';
+import FunctionUtils from '../Utils/FunctionUtils';
 
-    /*---------------------------------------------------INSTANCE VARIABLE----*/
-    const dropdownBtn =                       $('.dropdown-btn');
-    const emptySection =                      $('.empty-section');
-    const orderWrapper =                      $('.order-wrapper');
+export default function callProfile() {
 
-    /*---------------------------------------------------OBJECT INSTANTIATION----*/
-    const functionUtils =                     new FunctionUtils();
+    $(document).ready(() => {
 
-    /*---------------------------------------------------METHOD INSTANTIATION----*/
-    const showDropdown = event => {
-        emptySection.eq(event.currentTarget.dataset.index).slideToggle(250);
-        orderWrapper.eq(event.currentTarget.dataset.index).slideToggle(250);
-    };
+        /*---------------------------------------------------INSTANCE VARIABLE----*/
+        const dropdownBtn =                       $('.dropdown-btn');
+        const emptySection =                      $('.empty-section');
+        const orderWrapper =                      $('.order-wrapper');
+
+        /*---------------------------------------------------OBJECT INSTANTIATION----*/
+        const functionUtils =                     new FunctionUtils();
+
+        /*---------------------------------------------------METHOD INSTANTIATION----*/
+        const showDropdown = event => {
+            emptySection.eq(event.currentTarget.dataset.index).slideToggle(250);
+            orderWrapper.eq(event.currentTarget.dataset.index).slideToggle(250);
+        };
+        
+        /*---------------------------------------------------INVOKE METHODS----*/
+        functionUtils
+            .setComponent(dropdownBtn)
+            .setClick(showDropdown);
+
+    });
     
-    /*---------------------------------------------------INVOKE METHODS----*/
-    functionUtils
-        .setComponent(dropdownBtn)
-        .setClick(showDropdown);
-
-});
+}

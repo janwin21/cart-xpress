@@ -1,6 +1,6 @@
 'use strict';
 
-function UploadUtils(input, imageDisplayer) 
+export default function UploadUtils(input, imageDisplayer) 
 {
 
     this.input = input;

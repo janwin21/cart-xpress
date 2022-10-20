@@ -15,5 +15,6 @@
                  no-repeat center center fixed;
                  background-size: cover;">
         @inertia
+        <div id="popup"></div>
     </body>
 </html>

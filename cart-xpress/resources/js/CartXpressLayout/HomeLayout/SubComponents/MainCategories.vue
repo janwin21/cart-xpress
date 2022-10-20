@@ -11,7 +11,7 @@
 
                 <h5 class="roboto fs-xpress-sm-400 
                         text-light p-2 w-25">
-                        {{ category.name.toUpperCase() }} {{ call }}</h5>
+                        {{ category.name.toUpperCase() }}</h5>
             </div>
 
             <!-- category content -->
@@ -19,7 +19,9 @@
                         m-0 g-1 p-2"
                         style="z-index: 1000">
 
-                <template v-for="(product, productIndex) in category.products" :key="product.id">
+                <template v-for="(product, productIndex) in 
+                                 filterItems(searchProductValue, category.products)" 
+                                 :key="product.id">
 
                     <template v-if="productIndex < 
                                     ((counters[index]) ? counters[index] : incrementValue)">
@@ -31,7 +33,7 @@
                 </template>
             </div>
 
-            <template v-if="category.products.length > 
+            <template v-if="filterItems(searchProductValue, category.products).length > 
                             ((counters[index]) ? counters[index] : incrementValue)">
 
                 <!-- shop load more button -->
@@ -69,290 +71,18 @@
 
 <script setup>
     import ProductLink from '../Elements/ProductLink.vue';
-    import { ref, reactive, inject } from 'vue';
+    import { watch, inject } from 'vue';
 
     import _ from 'lodash';
     import { dynamicCounter } from '../../../Composables/DynamicCounter';
+    import { dynamicFilter } from '../../../Composables/DynamicFilter';
 
     const initialValue = 6; // initial value for product display
     const { incrementValue, counters, load } = dynamicCounter(initialValue);
+    const { filterItems } = dynamicFilter();
 
-    const call = inject('call');
-
-    const categories = reactive(_.filter([
-        {
-            id: 0,
-            name: 'car',
-            imagePath: '/images/sample-categories/car.jpg',
-            products: [
-                {
-                    id: 0,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-4.jpg'
-                },
-                {
-                    id: 0,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-2.jpg'
-                },
-                {
-                    id: 0,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-1.jpg'
-                }
-            ]
-        },
-        {
-            id: 1,
-            name: 'kitchen',
-            imagePath: '/images/sample-categories/kitchen.jpg',
-            products: []
-        },
-        {
-            id: 2,
-            name: 'bike',
-            imagePath: '/images/sample-categories/bike.jpg',
-            products: []
-        },
-        {
-            id: 3,
-            name: 'tools',
-            imagePath: '/images/sample-categories/tools.webp',
-            products: [
-                {
-                    id: 0,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-1.jpg'
-                },
-                {
-                    id: 1,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-2.jpg'
-                },
-                {
-                    id: 2,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-3.jpg'
-                },
-                {
-                    id: 3,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-4.jpg'
-                },
-                {
-                    id: 4,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-5.jpg'
-                },
-                {
-                    id: 5,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-6.jpg'
-                },
-                {
-                    id: 6,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-1.jpg'
-                },
-                {
-                    id: 7,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-2.jpg'
-                }
-            ]
-        },
-        {
-            id: 4,
-            name: 'appliances',
-            imagePath: '/images/sample-categories/appliances.webp',
-            products: []
-        },
-        {
-            id: 5,
-            name: 'toy',
-            imagePath: '/images/sample-categories/toy.jpg',
-            products: [
-                {
-                    id: 0,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-4.jpg'
-                },
-                {
-                    id: 0,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-2.jpg'
-                },
-                {
-                    id: 0,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-1.jpg'
-                },
-                {
-                    id: 0,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-4.jpg'
-                },
-                {
-                    id: 0,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-2.jpg'
-                },
-                {
-                    id: 0,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-1.jpg'
-                },
-                {
-                    id: 0,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-4.jpg'
-                },
-                {
-                    id: 0,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-2.jpg'
-                },
-                {
-                    id: 0,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-1.jpg'
-                },
-                {
-                    id: 0,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-4.jpg'
-                },
-                {
-                    id: 0,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-2.jpg'
-                },
-                {
-                    id: 0,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-1.jpg'
-                },
-                {
-                    id: 0,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-4.jpg'
-                },
-                {
-                    id: 0,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-2.jpg'
-                },
-                {
-                    id: 0,
-                    name: 'product 01',
-                    overallRating: 4.5,
-                    price: 100.5,
-                    discount: 0.45,
-                    quantityInStock: 25,
-                    imagePath: '/images/sample-products/product-1.jpg'
-                }]
-        }
-    ], category => category.products.length > 0 ));
+    const categories = inject('categoriesWithProducts');
+    const searchProductValue = inject('searchProductValue');
 
 </script>
 

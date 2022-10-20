@@ -36,6 +36,22 @@ Route::middleware([
 });
 */
 
+// Home Page
 Route::get('/', function() {
     return inertia('CartXpressPage/Home');
-});
+})->name('pages.home');
+
+// Login Page
+Route::get('/login', function() {
+    return inertia('CartXpressPage/Login');
+})->name('pages.login');
+
+// Register Page
+Route::get('/register', function() {
+    return inertia('CartXpressPage/Register');
+})->name('pages.register');
+
+// Customer Profile Page
+Route::get('/profile/customer', function() {
+    return inertia('CartXpressPage/CustomerProfile');
+})->name('pages.profile.customer');

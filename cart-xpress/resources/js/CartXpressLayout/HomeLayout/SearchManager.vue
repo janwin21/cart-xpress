@@ -10,12 +10,14 @@
                             d-flex align-items-center">
 
 
-                    <a href="#category-footer">
-                        <img src="/images/icons/search-icon-2.png" alt="" style="width: 2.1em">
+
+                        <img src="/images/icons/search-icon-2.png" 
+                             alt="" style="width: 2.1em">
+
                         <input class="border rounded-pill pe-3 py-1"
-                            type="search" style="padding-left: 2.75rem" 
+                            type="search" v-model="searchProductValue"
+                            style="padding-left: 2.75rem" 
                             placeholder="search product...">
-                    </a>
 
                     <!-- show cart button -->
                     <button class="btn bg-xpress-orange-200 
@@ -75,31 +77,46 @@
                         <button class="btn bg-xpress-purple-100
                                        bg-hover-xpress-to-gray-200
                                        rounded text-light py-1 px-4 roboto
-                                       fs-xpress-sm-200 fw-xpress-500 me-1">
+                                       fs-xpress-sm-200 fw-xpress-500 me-1"
+                                       @click="dynamicSortBy(
+                                            categoriesWithProducts, 'products', 
+                                            property = 'name', orderedThrough)">
                                        Alphabet</button>
         
                         <button class="btn bg-xpress-purple-100
                                        bg-hover-xpress-to-gray-200
                                        rounded text-light py-1 px-4 roboto
-                                       fs-xpress-sm-200 fw-xpress-500 me-1">
+                                       fs-xpress-sm-200 fw-xpress-500 me-1"
+                                       @click="dynamicSortBy(
+                                            categoriesWithProducts, 'products', 
+                                            property = 'createdBy', orderedThrough)">
                                        Recent</button>
         
                         <button class="btn bg-xpress-purple-100
                                        bg-hover-xpress-to-gray-200
                                        rounded text-light py-1 px-4 roboto
-                                       fs-xpress-sm-200 fw-xpress-500 me-1">
+                                       fs-xpress-sm-200 fw-xpress-500 me-1"
+                                       @click="dynamicSortBy(
+                                            categoriesWithProducts, 'products', 
+                                            property = 'itemSold', orderedThrough)">
                                        Popularity</button>
         
                         <button class="btn bg-xpress-purple-100
                                        bg-hover-xpress-to-gray-200
                                        rounded text-light py-1 px-4 roboto
-                                       fs-xpress-sm-200 fw-xpress-500 me-1">
+                                       fs-xpress-sm-200 fw-xpress-500 me-1"
+                                       @click="dynamicSortBy(
+                                            categoriesWithProducts, 'products', 
+                                            property = 'price', orderedThrough)">
                                        Price</button>
         
                         <button class="btn bg-xpress-purple-100
                                        bg-hover-xpress-to-gray-200
                                        rounded text-light py-1 px-4 roboto
-                                       fs-xpress-sm-200 fw-xpress-500">
+                                       fs-xpress-sm-200 fw-xpress-500"
+                                       @click="dynamicSortBy(
+                                            categoriesWithProducts, 'products', 
+                                            property = 'overallRating', orderedThrough)">
                                        Ratings</button>
                     </div>
                 </div>
@@ -115,13 +132,19 @@
                         <button class="btn bg-xpress-red-100
                                        bg-hover-xpress-to-gray-200
                                        rounded text-light py-1 px-4 roboto
-                                       fs-xpress-sm-200 fw-xpress-500 me-1">
+                                       fs-xpress-sm-200 fw-xpress-500 me-1"
+                                       @click="dynamicSortBy(
+                                            categoriesWithProducts, 'products', 
+                                            property, orderedThrough = 'asc')">
                                        ASC</button>
         
                         <button class="btn bg-xpress-green-100
                                        bg-hover-xpress-to-gray-200
                                        rounded text-light py-1 px-4 roboto
-                                       fs-xpress-sm-200 fw-xpress-500">
+                                       fs-xpress-sm-200 fw-xpress-500"
+                                       @click="dynamicSortBy(
+                                            categoriesWithProducts, 'products', 
+                                            property, orderedThrough = 'desc')">
                                        DESC</button>
                     </div>
                 </div>
@@ -133,6 +156,16 @@
 </template>
 
 <script setup>
+    import { ref, inject, watch } from 'vue';
+    import _ from 'lodash';
+
+    const property = inject('property');
+    const orderedThrough = inject('orderedThrough');
+    const dynamicSortBy = inject('dynamicSortBy');
+    const categoriesWithProducts = inject('categoriesWithProducts');
+    const searchProductValue = inject('searchProductValue');
+
+    watch(searchProductValue, value => { searchProductValue.value = value; });
 
 </script>
 

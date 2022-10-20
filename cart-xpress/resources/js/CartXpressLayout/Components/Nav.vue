@@ -17,33 +17,18 @@
             <div class="navbar-nav">
 
                 <!-- nav-links -->
-                <a class="nav-item nav-link align-self-center
-                          text-light nato-sans-jp 
-                          fs-xpress-sm-300 ms-3
-                          text-hover-xpress-to-red-100" href="#">
-                          <i class="fa-solid fa-house me-1"></i>
-                          Home</a>
+                <NavLink :class="{ 'text-xpress-green-200': $page.component === 'CartXpressPage/Home' }" 
+                         :href="route('pages.home')">
+                    <i class="fa-solid fa-house me-1"></i>Home</NavLink>
 
-                <a class="nav-item nav-link align-self-center
-                          text-light nato-sans-jp 
-                          fs-xpress-sm-300 ms-3
-                          text-hover-xpress-to-red-100" href="#">
-                          <i class="fa-solid fa-cookie-bite me-1"></i>
-                          Products</a>
+                <NavLink :class="{ 'text-xpress-green-200': 
+                                    $page.component === 'CartXpressPage/CustomerProfile' }"
+                         :href="route('pages.profile.customer')">
+                    <i class="fa-solid fa-user me-1"></i>Profile</NavLink>
 
-                <a class="nav-item nav-link align-self-center
-                          text-light nato-sans-jp 
-                          fs-xpress-sm-300 ms-3
-                          text-hover-xpress-to-red-100" href="#">
-                          <i class="fa-solid fa-store me-1"></i>
-                          Shops</a>
+                <NavLink><i class="fa-solid fa-store me-1"></i>Shop</NavLink>
                           
-                <a class="nav-item nav-link align-self-center
-                          text-light nato-sans-jp 
-                          fs-xpress-sm-300 ms-3
-                          text-hover-xpress-to-red-100" href="#">
-                          <i class="fa-solid fa-basket-shopping me-1"></i>
-                          Categories</a>
+                <NavLink><i class="fa-solid fa-basket-shopping me-1"></i>Category</NavLink>
                           
                 <a class="nav-item nav-link align-self-center
                           text-light nato-sans-jp 
@@ -53,19 +38,21 @@
                           <i class="fa-solid fa-bell purple-100-active"></i></a>
                           
                 <!-- nav buttons -->
-                <a class="nav-item nav-link text-light nato-sans-jp 
+                <Link class="nav-item nav-link text-light nato-sans-jp 
                           fs-xpress-sm-300 align-self-center ms-3 px-5
                           btn bg-primary bg-xpress-orange-100
-                          bg-hover-xpress-to-gray-200" href="#"
-                          style="padding-top: 0.2em; padding-bottom: 0.2em;;">
-                          Login</a>
+                          bg-hover-xpress-to-gray-200" 
+                          :href="route('pages.login')"
+                          style="padding-top: 0.2em; padding-bottom: 0.2em;">
+                          Login</Link>
                           
-                <a class="nav-item nav-link text-light nato-sans-jp 
+                <Link class="nav-item nav-link text-light nato-sans-jp 
                           fs-xpress-sm-300 align-self-center ms-1 px-5
                           btn bg-primary bg-xpress-purple-100
-                          bg-hover-xpress-to-gray-200" href="#"
-                          style="padding-top: 0.2em; padding-bottom: 0.2em;;">
-                          Register</a>
+                          bg-hover-xpress-to-gray-200"
+                          :href="route('pages.register')"
+                          style="padding-top: 0.2em; padding-bottom: 0.2em;">
+                          Register</Link>
             </div>
         </div>
     </nav>
@@ -73,7 +60,8 @@
 </template>
 
 <script setup>
-
+    import { Link } from '@inertiajs/inertia-vue3';
+    import NavLink from './SubComponent/NavLink.vue';
 </script>
 
 <style lang="scss" scoped>
