@@ -10974,6 +10974,10 @@ textarea.form-control-lg {
   color: #cfe2f3 !important;
 }
 
+.text-xpress-orange-100 {
+  color: #e69138 !important;
+}
+
 .text-xpress-orange-200 {
   color: #f6b26b !important;
 }
@@ -10988,6 +10992,14 @@ textarea.form-control-lg {
 
 .text-xpress-green-200 {
   color: #93c47d !important;
+}
+
+.text-xpress-purple-100 {
+  color: #8e7cc3 !important;
+}
+
+.text-xpress-pink-100 {
+  color: #c27ba0 !important;
 }
 
 /* BACKGROUND */
@@ -11084,6 +11096,10 @@ textarea.form-control-lg {
   background-color: rgba(67, 67, 67, 0.9) !important;
 }
 
+.bg-opaque-xpress-gray-200 {
+  background-color: rgba(67, 67, 67, 0.75) !important;
+}
+
 /* COLOR WITH GRADIENT UTILS */
 .gradient-bg-gray-100-to-transparent {
   background-image: linear-gradient(#434343, transparent);
@@ -11091,6 +11107,14 @@ textarea.form-control-lg {
 
 .gradient-transparent-to-bg-gray-100 {
   background-image: linear-gradient(transparent, #434343);
+}
+
+.gradient-bg-gray-100-op-to-bg-gray-100 {
+  background-image: linear-gradient(rgba(67, 67, 67, 0.5), #434343);
+}
+
+.gradient-transparent-to-bg-gray-200 {
+  background-image: linear-gradient(transparent, #262626);
 }
 
 .gradient-bg-gray-100-to-black-op-100-to-bg-gray-100 {
@@ -11103,6 +11127,10 @@ textarea.form-control-lg {
 
 .gradient-black-op-100-to-bg-gray-200 {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), #262626);
+}
+
+.gradient-bg-gray-100-to-bg-red-300-end {
+  background-image: linear-gradient(to right, #434343 50%, #cf5959);
 }
 
 /* ACTIVE COLORS */
@@ -11129,6 +11157,18 @@ textarea.form-control-lg {
 
 .border-bottom-blue-200 {
   border-bottom: 1px solid #a4c2f4 !important;
+}
+
+.border-bottom-purple-100 {
+  border-bottom: 1px solid #8e7cc3 !important;
+}
+
+.border-bottom-orange-200 {
+  border-bottom: 1px solid #f6b26b !important;
+}
+
+.border-bottom-pink-100 {
+  border-bottom: 1px solid #c27ba0 !important;
 }
 
 /* NO COLOR */
@@ -11568,6 +11608,109 @@ nav #notify {
           animation: ring 1s linear infinite alternate;
 }
 
+div.orgChart {
+  background-color: transparent;
+  padding: 20px;
+  overflow-x: auto;
+}
+
+div.orgChart h2 {
+  margin: 0px;
+  font-size: 1em;
+  border-bottom: none;
+}
+
+div.orgChart ul {
+  list-style: none;
+  margin: 4px;
+  padding: 0px;
+  font-size: 0.8em;
+  text-align: left;
+}
+
+div.orgChart ul.stack,
+div.orgChart ul.stack ul {
+  text-align: center;
+}
+
+div.orgChart table {
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+div.orgChart table .row-box {
+  width: 150px !important;
+  height: 250px !important;
+  padding: 0 !important;
+}
+
+div.orgChart tr.lines td.line {
+  width: 1px;
+  height: 20px;
+}
+
+div.orgChart tr.lines td.top {
+  border-top: 2px solid #a4c2f4;
+}
+
+div.orgChart tr.lines td.left {
+  border-right: 2px solid #a4c2f4;
+}
+
+div.orgChart tr.lines td.right {
+  border-left: 2px solid #a4c2f4;
+}
+
+div.orgChart td {
+  text-align: center;
+  vertical-align: top;
+  padding: 0px 2px;
+  height: 100%;
+}
+
+div.orgChart div.node {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 4px;
+  width: 96px;
+  height: 60px;
+  background-color: #ffffcf;
+  line-height: 1.3em;
+  border-radius: 5px;
+}
+
+div.orgChart div.hasChildren {
+  background-color: #ffff98;
+}
+
+div.orgChart.interactive div.hasChildren {
+  cursor: pointer;
+}
+
+div.orgChart div.node.hover {
+  background-color: white;
+}
+
+div.orgChart div.adjunct.node {
+  position: absolute;
+  margin-top: 8px;
+  margin-left: -110px;
+  width: 80px;
+  height: 40px;
+  background-color: #efefef;
+}
+
+div.orgChart div.adjunct-link {
+  display: inline-block;
+  position: absolute;
+  margin-left: -20px;
+  margin-top: 25px;
+  width: 20px;
+  border: 1px dashed black;
+}
+
 /* SIMPLE GREEETINGS */
 .simple-greeting {
   position: relative;
@@ -11837,12 +11980,33 @@ nav #notify {
   padding-right: 4rem;
 }
 
+/* SHOP CONTENT DETAILS */
+.hoverable-chart {
+  width: 100% !important;
+  height: 250px !important;
+}
+
 /*@include media-breakpoint-down(sm) { ... }
+=======
+/*
+@include media-breakpoint-up(sm) { ... }
+@include media-breakpoint-up(md) { ... }
+@include media-breakpoint-up(lg) { ... }
+@include media-breakpoint-up(xl) { ... }
+@include media-breakpoint-up(xxl) { ... }
+
+@include media-breakpoint-down(sm) { ... }
+>>>>>>> 1c55b143e31487a13f481ce9d7aefaee7ad75bf1
 @include media-breakpoint-down(md) { ... }
 @include media-breakpoint-down(lg) { ... }
 @include media-breakpoint-down(xl) { ... }
 @include media-breakpoint-down(xxl) { ... }
 */
+@media (min-width: 992px) {
+  #sort-button {
+    display: none !important;
+  }
+}
 @media (max-width: 991.98px) {
   /*NAV-BARRR*/
   .navbar {
@@ -11851,8 +12015,18 @@ nav #notify {
   .navbar .navbar-brand {
     color: black !important;
   }
+  .navbar .navbar-brand button {
+    position: absolute !important;
+    width: 0.6em !important;
+    border-width: 0.6em !important;
+    width: 0.6em !important;
+    height: 0.5em !important;
+    padding-top: 1rem !important;
+  }
   .navbar .navbar-toggler-icon {
-    border: 0;
+    font-size: 0.5em !important;
+    border-width: 0.6em !important;
+    padding-top: 0.5em !important;
   }
   .navbar .navbar-nav {
     margin-left: 0 !important;
@@ -11943,5 +12117,32 @@ nav #notify {
   .search-home-xpress .row .col-4 input {
     min-width: 15rem;
     justify-items: left !important;
+  }
+  .search-manager .col-6 .form-control #search-img {
+    width: 2em !important;
+    padding-top: 0.1rem !important;
+  }
+  .search-manager .col-6 .form-control button #show {
+    display: none !important;
+  }
+  .search-manager .col-6 .sorted-component #sorting {
+    padding-bottom: 1rem !important;
+  }
+  .search-manager .col-6 .sorted-component #sort-button {
+    padding-top: 1rem !important;
+  }
+  .search-manager .col-6 .sorted-component #sort-button #button-text {
+    color: beige !important;
+    padding: 0px !important;
+  }
+  .search-manager .col-6 .sorted-component #p-sort {
+    display: none !important;
+  }
+  .search-manager .col-6 #sorted-component-two .sorted-buttons button {
+    display: inline-flex !important;
+    padding-left: 1% !important;
+    padding-right: 2% !important;
+    margin-bottom: 3% !important;
+    font-size: 12px !important;
   }
 }/*# sourceMappingURL=style.css.map */
