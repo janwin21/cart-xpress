@@ -1,0 +1,35 @@
+@use '../costumize' as *;
+@use './mixins' as *;
+
+/* CONTROL */
+
+// hovering text
+.text-hover-xpress-to-red-100 {
+    @include transition-to-all-25;
+    &:hover { color: $cart-xpress-red-200 !important; }
+}
+
+.text-hover-xpress-to-purple-200 {
+    @include transition-to-all-25;
+    &:hover { color: $cart-xpress-purple-200 !important; }
+}
+
+.text-hover-xpress-to-black-200 {
+    @include transition-to-all-25;
+    &:hover { color: $cart-xpress-gray-200 !important; }
+}
+
+// hovering background
+.bg-hover-xpress-to-gray-200 {
+    @include transition-to-all-25;
+    &:hover { background-color: $cart-xpress-gray-200 !important; }
+}
+
+.bg-opaque-hover-xpress-to-black-100 {
+    @include transition-to-all-25;
+    &:hover { background-color: rgba($black, 0.25) !important; }
+}
+
+// show control
+.slide-it-vertical-left { transform: translateX(-100%); }
+.shrink-it-vertical { width: 0 !important; }

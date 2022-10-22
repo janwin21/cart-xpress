@@ -1,0 +1,81 @@
+// Color system
+
+// scss-docs-start gray-color-variables
+$white:    #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black:    #000;
+// scss-docs-end gray-color-variables
+
+// scss-docs-start color-variables
+$blue:    #0d6efd;
+$indigo:  #6610f2;
+$purple:  #6f42c1;
+$pink:    #d63384;
+$red:     #dc3545;
+$orange:  #fd7e14;
+$yellow:  #ffc107;
+$green:   #198754;
+$teal:    #20c997;
+$cyan:    #0dcaf0;
+// scss-docs-end color-variables
+
+// scss-docs-start theme-color-variables
+$primary:       $blue;
+$secondary:     $gray-600;
+$success:       $green;
+$info:          $cyan;
+$warning:       $yellow;
+$danger:        $red;
+$light:         $white;
+$dark:          $gray-900;
+// scss-docs-end theme-color-variables
+
+/* CART EXPRESS MAIN COLOR */
+// cart-xpress gray
+$cart-xpress-gray-100:     #434343ff;
+$cart-xpress-gray-200:     #262626ff;
+$cart-xpress-gray-300:     #d9d9d9;
+$cart-xpress-gray-400:     #585858ff;
+$cart-xpress-gray-500:     #666666ff;
+$cart-xpress-gray-600:     rgb(145, 143, 143);
+
+// cart-xpress-orange
+$cart-xpress-orange-100:   #e69138ff;
+$cart-xpress-orange-200:   #f6b26bff;
+
+// cart-xpress-purple
+$cart-xpress-purple-100:   #8e7cc3;
+$cart-xpress-purple-200:   rgb(184, 167, 237);
+$cart-xpress-purple-300:   #674ea7;
+$cart-xpress-purple-400:   #b4a7d6ff;
+
+// cart-xpress-red
+$cart-xpress-red-100:      #dd7e6b;
+$cart-xpress-red-200:      #e06666ff;
+$cart-xpress-red-300:      rgb(209, 80, 80);
+
+// cart-xpress-green
+$cart-xpress-green-100:    #45818eff;
+$cart-xpress-green-200:    #93c47d;
+
+// cart-xpress-blue
+$cart-xpress-blue-100:     #6d9eebff;
+$cart-xpress-blue-200:     #a4c2f4ff;
+$cart-xpress-blue-300:     #cfe2f3;
+
+// cart-xpress-yellow
+$cart-xpress-yellow-100:   #ffe599;
+$cart-xpress-yellow-200:   #f1c232;
+
+// cart-xpress-pink
+$cart-xpress-pink-100:     #c27ba0ff;
+
+@import '../node_modules/bootstrap/scss/bootstrap.scss';

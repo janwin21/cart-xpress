@@ -1,0 +1,20 @@
+@use '../costumize' as *;
+
+/* MIXINS */
+
+// transition
+@mixin transition-to-all-25 {
+    transition: all 250ms linear;
+}
+
+@mixin transition-to-all-15 {
+    transition: all 150ms ease-out;
+}
+
+/* animations */
+@mixin ring {
+    @keyframes ring {
+        0% { transform: rotateZ(25deg); }
+        100% { transform: rotateZ(-25deg); }
+    }
+}

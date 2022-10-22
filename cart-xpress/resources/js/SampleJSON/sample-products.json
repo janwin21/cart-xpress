@@ -1,0 +1,22 @@
+[
+    {
+        "name": "",
+        "size": "",
+        "description": "",
+        "quantity_in_stock": "",
+        "price": "",
+        "discount": "",
+        "duration_of_delivery_by_hour": "",
+        "image_path": "/images/sample-categories/{TYPE_THE_NAME_HERE.png}"
+    },
+    {
+        "name": "",
+        "size": "",
+        "description": "",
+        "quantity_in_stock": "",
+        "price": "",
+        "discount": "",
+        "duration_of_delivery_by_hour": "",
+        "image_path": "/images/sample-categories/{TYPE_THE_NAME_HERE.png}"
+    }
+]
