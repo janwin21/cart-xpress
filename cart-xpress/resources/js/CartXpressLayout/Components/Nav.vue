@@ -17,13 +17,20 @@
             <div class="navbar-nav">
 
                 <!-- nav-links -->
-                <NavLink :class="{ 'text-xpress-green-200': $page.component === 'CartXpressPage/Home' }" 
-                         :href="route('pages.home')">
+                <NavLink :class="{ 'text-xpress-green-200': 
+                                        ($page.component === 'CartXpressPage/Home' ||
+                                         $page.component === 'CartXpressPage/Login' ||
+                                         $page.component === 'CartXpressPage/Register') 
+                                 }" 
+                         :href="route('home')">
                     <i class="fa-solid fa-house me-1"></i>Home</NavLink>
 
                 <NavLink :class="{ 'text-xpress-green-200': 
-                                    $page.component === 'CartXpressPage/CustomerProfile' }"
-                         :href="route('pages.profile.customer')">
+                                        ($page.component === 'CartXpressPage/CustomerProfile' ||
+                                         $page.component === 'CartXpressPage/VendorProfile' ||
+                                         $page.component === 'CartXpressPage/ShopForm') 
+                                 }"
+                         :href="route('profile')">
                     <i class="fa-solid fa-user me-1"></i>Profile</NavLink>
 
                 <NavLink><i class="fa-solid fa-store me-1"></i>Shop</NavLink>
@@ -42,7 +49,7 @@
                           fs-xpress-sm-300 align-self-center ms-3 px-5
                           btn bg-primary bg-xpress-orange-100
                           bg-hover-xpress-to-gray-200" 
-                          :href="route('pages.login')"
+                          :href="route('login')"
                           style="padding-top: 0.2em; padding-bottom: 0.2em;">
                           Login</Link>
                           
@@ -50,7 +57,7 @@
                           fs-xpress-sm-300 align-self-center ms-1 px-5
                           btn bg-primary bg-xpress-purple-100
                           bg-hover-xpress-to-gray-200"
-                          :href="route('pages.register')"
+                          :href="route('register')"
                           style="padding-top: 0.2em; padding-bottom: 0.2em;">
                           Register</Link>
             </div>

@@ -89,7 +89,7 @@
                                        fs-xpress-sm-200 fw-xpress-500 me-1"
                                        @click="dynamicSortBy(
                                             categoriesWithProducts, 'products', 
-                                            property = 'createdBy', orderedThrough)">
+                                            property = 'createdAt', orderedThrough)">
                                        Recent</button>
         
                         <button class="btn bg-xpress-purple-100
@@ -156,7 +156,7 @@
 </template>
 
 <script setup>
-    import { ref, inject, watch } from 'vue';
+    import { inject, watch } from 'vue';
     import _ from 'lodash';
 
     const property = inject('property');

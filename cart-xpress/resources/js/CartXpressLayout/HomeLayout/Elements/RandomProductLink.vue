@@ -1,7 +1,9 @@
 <template>
     <!-- specific random product detail -->
-    <img class="w-100" :src="props.product.imagePath" alt="" 
-         style="height: 250px; object-fit: cover;">
+    <Link :href="route('products.show', props.product.id)">
+        <img class="w-100" :src="props.product.imagePath" alt="" 
+            style="height: 250px; object-fit: cover;" />
+    </Link>
 
     <h5 class="nato-sans-jp mt-3">{{ props.product.name }}</h5>
 
@@ -30,7 +32,7 @@
                            bg-hover-xpress-to-gray-200 
                            rounded-0 text-light py-1 px-4 w-100
                            fs-xpress-sm-200 fw-xpress-500"
-                           :id="props.product.id">
+                           :href="route('products.show', props.product.id)">
                            Visit Product</Link>
         </div>
     </div>

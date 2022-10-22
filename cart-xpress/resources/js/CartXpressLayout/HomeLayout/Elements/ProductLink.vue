@@ -2,7 +2,7 @@
     <!-- category item -->
     <div class="col">
 
-        <Link class="text-xpress-gray-100" href="#" :id="props.product.id"
+        <Link class="text-xpress-gray-100" :href="route('products.show', props.product.id)"
                 style="text-decoration: none;">
 
             <div class="card rounded-0 border-0 h-100">
@@ -52,6 +52,8 @@
 
 <script setup>
     import { Link } from '@inertiajs/inertia-vue3';
+    import moment from 'moment';
+    import Route from '../../../../../vendor/tightenco/ziggy/src/js/Route';
 
     const props = defineProps({
         product: Object,

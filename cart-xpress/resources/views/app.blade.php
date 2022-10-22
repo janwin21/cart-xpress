@@ -16,5 +16,6 @@
                  background-size: cover;">
         @inertia
         <div id="popup"></div>
+        <div id="backup-popup-1"></div>
     </body>
 </html>

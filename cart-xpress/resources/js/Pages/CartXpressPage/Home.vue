@@ -71,7 +71,7 @@
 </template>
 
 <script setup>
-    import { ref, provide } from 'vue';
+    import { ref, provide, reactive } from 'vue';
 
     // main components
     import CartXpressAppLayout from '../CartXpressAppLayout.vue';
@@ -101,7 +101,7 @@
     import { dynamicSort } from '../../Composables/DynamicSort';
 
     callHome();
-    const { popularShops, categoriesWithProducts, productsInACart, productsInRandomCategory } = data();
+    const { removeEmptyCategories } = data();
     const { property, orderedThrough, dynamicSortBy } = dynamicSort();
 
     // provide global values to the conencted components
@@ -110,15 +110,28 @@
     provide('orderedThrough', orderedThrough);
     provide('dynamicSortBy', dynamicSortBy);
 
+    const props = defineProps({
+        popularShops: Array,
+        categoriesWithProducts: Array,
+        productsInACart: Array
+    });
+
     // DATA
-    provide('popularShops', popularShops);
-    provide('categoriesWithProducts', categoriesWithProducts);
-    provide('productsInACart', productsInACart);
-    provide('productsInRandomCategory', productsInRandomCategory);
+    provide('popularShops', props.popularShops);
+    provide('categoriesWithProducts', removeEmptyCategories(props.categoriesWithProducts));
+    provide('productsInACart', props.productsInACart);
+    provide('productsInRandomCategory', 
+        reactive(
+            _.sample(
+                removeEmptyCategories(props.categoriesWithProducts)
+            )
+        )
+    );
 
     // SEARCH
     const searchProductValue = ref('');
     provide('searchProductValue', searchProductValue);
+    
 </script>
 
 <style lang="scss">

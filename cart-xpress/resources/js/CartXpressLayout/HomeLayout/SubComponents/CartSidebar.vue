@@ -36,7 +36,8 @@
                         <!-- diplay all ordered products that has a status of on-cart -->
                         <template v-for="product in products" :key="product.id">
 
-                            <ProductLink :product="product" style="height: 75%;">
+                            <ProductLink :product="product" 
+                                         style="height: 75%;">
 
                                 <div class="form-control bg-xpress-gray-100 pt-0 px-2 pb-2
                                             border-top

@@ -13,7 +13,10 @@
                     <!-- first row left side -->
                     <div class="product-items col-6 h-100 p-0 pe-1">
 
-                        <Link href="#" style="text-decoration: none;" :id="popularProducts[0].id">
+                        <Link :href="route('products.show', popularProducts[0].id)" 
+                              style="text-decoration: none;" 
+                              :id="popularProducts[0].id">
+                              
                             <img class="w-100" 
                                  :src="popularProducts[0].imagePath" alt="" 
                                  style="height: 60%;">
@@ -48,7 +51,7 @@
                         <template v-for="popularProduct in [popularProducts[1], popularProducts[2]]"
                                   :key="popularProduct.id">
 
-                            <Link href="#" :id="popularProduct.id">
+                            <Link :href="route('products.show', popularProduct.id)" :id="popularProduct.id">
                                 <img class="w-100 h-50 pb-1" 
                                      :src="popularProduct.imagePath" alt="">
                             </Link>
@@ -62,14 +65,15 @@
                 <div class="row h-25 py-2">
                     <div class="col-6 h-100 p-0">
 
-                        <Link href="#" :id="popularProducts[3].id">
+                        <Link :href="route('products.show', popularProducts[3].id)">
                             <img class="w-100 h-100" 
                                  :src="popularProducts[3].imagePath" alt=""></Link>
                     </div>
                     
                     <div class="product-items col-6 p-2 bg-xpress-gray-200">
 
-                        <Link href="#" style="text-decoration: none;">
+                        <Link :href="route('products.show', popularProducts[3].id)" style="text-decoration: none;">
+
                             <p class="roboto text-light 
                                       fs-xpress-sm-200">
                                       {{ popularProducts[3].name }}</p>
@@ -85,7 +89,9 @@
                                 <p class="roboto text-xpress-gray-300
                                           m-0 fs-xpress-sm-200">
                                           available: {{ popularProducts[3].quantityInStock }}</p>
-                            </div></Link>
+                            </div>
+
+                        </Link>
 
                     </div>
                 </div>
@@ -98,7 +104,7 @@
 
                         <div :class="`col-6 h-100 p-0 p${index === 0 ? 'e' : 's'}-1`">
 
-                            <Link href="#">
+                            <Link :href="route('products.show', popularProduct.id)">
                                 <img class="w-100 h-100" 
                                      :src="popularProduct.imagePath" alt=""></Link>
                         </div>

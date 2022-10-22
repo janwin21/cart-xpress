@@ -1,6 +1,8 @@
 'use strict';
 
-function PieChart(title, data, HTMLComponent) {
+import { GoogleCharts } from 'google-charts';
+
+export default function PieChart(title, data, HTMLComponent) {
     this.title = title;
     this.data = data;
     this.HTMLComponent = HTMLComponent;
@@ -8,27 +10,51 @@ function PieChart(title, data, HTMLComponent) {
     this.drawChart;
 
     this.init = () => {
-        google.charts.load('current', {'packages':['corechart']});
 
         this.drawChart = () => {
 
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Pizza');
-            data.addColumn('number', 'Populartiy');
-            data.addRows(this.data);
+            const data = GoogleCharts.api.visualization.arrayToDataTable([
+                ['Chart thing', 'Chart amount'],
+                ...this.data
+            ]);
 
-            var options = {
-                title: this.title,
-                sliceVisibilityThreshold: .1
+            let options = {
+
+                width: '100%',
+                height: '80%',
+
+                pieSliceTextStyle: {
+                    color: 'white',
+                },
+
+                legend: {
+                    position: 'left',
+                    textStyle: {
+                        color: 'white',
+                        fontSize: 13,
+                        fontName: 'EncodeSans'
+                    }
+                },
+
+                titleTextStyle: {
+                    color: 'white',
+                    fontSize: 13,
+                    fontName: 'EncodeSans'
+                },
+
+                backgroundColor: {
+                    fill: '#FFF',
+                    fillOpacity: 0
+                },
             };
 
-            var chart = new google.visualization.PieChart(this.HTMLComponent);
+            let chart = new GoogleCharts.api.visualization.PieChart(this.HTMLComponent);
             chart.draw(data, options);
         };
     };
 
     this.load = () => {
-        google.charts.setOnLoadCallback(this.drawChart);
+        GoogleCharts.load(this.drawChart);
     };
 
 }

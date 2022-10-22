@@ -16,7 +16,7 @@
 
                             <WelcomeHeader>
 
-                                <template #header>New Guest</template>
+                                <template #header>Welcome To Our App, New Guest</template>
 
                                 <template #paragraph>
                                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
@@ -67,11 +67,11 @@
 <script setup>
     // main components
     import CartXpressAppLayout from '../CartXpressAppLayout.vue';
-    import RegisterCover from '../../CartXpressLayout/Components/RegisterLayout/RegisterCover.vue';
-    import WelcomeHeader from '../../CartXpressLayout/Components/RegisterLayout/WelcomeHeader.vue';
-    import CustomerForm from '../../CartXpressLayout/Components/RegisterLayout/CustomerForm.vue';
-    import EmployeeForm from '../../CartXpressLayout/Components/RegisterLayout/EmployeeForm.vue';
-    import SelectForm from '../../CartXpressLayout/Components/RegisterLayout/SelectForm.vue';
+    import RegisterCover from '../../CartXpressLayout/RegisterLayout/RegisterCover.vue';
+    import WelcomeHeader from '../../CartXpressLayout/RegisterLayout/WelcomeHeader.vue';
+    import CustomerForm from '../../CartXpressLayout/RegisterLayout/CustomerForm.vue';
+    import EmployeeForm from '../../CartXpressLayout/RegisterLayout/EmployeeForm.vue';
+    import SelectForm from '../../CartXpressLayout/RegisterLayout/SelectForm.vue';
 
     // actions & composables
     import callRegister from '../../Actions/register';

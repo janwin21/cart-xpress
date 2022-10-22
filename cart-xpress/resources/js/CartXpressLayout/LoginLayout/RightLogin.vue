@@ -1,8 +1,8 @@
 <template>
     <!-- right -->
     <div class="col-3 text-center h-100 p-0" 
-         style="background: url('/images/wonderful-images/wonderful-image-2.jpg') no-repeat; 
-                background-size: cover;">
+         style="background: url('/images/wonderful-images/wonderful-image-2.jpg') 
+            no-repeat; background-size: cover;">
 
         <div class="w-100 h-100 bg-opaque-xpress-black-200 px-4 pt-4
                     d-flex flex-column justify-content-center align-items-center">
@@ -58,7 +58,7 @@
 
                 <Link class="roboto text-light fs-xpress-sm-200 
                              w-25 border-light" 
-                      :href="route('pages.register')">
+                      :href="route('register')">
                         <p class="">Register</p>
                 </Link>
 

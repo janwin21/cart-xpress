@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ShopsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -36,22 +40,33 @@ Route::middleware([
 });
 */
 
-// Home Page
-Route::get('/', function() {
-    return inertia('CartXpressPage/Home');
-})->name('pages.home');
+// HOME
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Login Page
-Route::get('/login', function() {
-    return inertia('CartXpressPage/Login');
-})->name('pages.login');
+Route::get('/login', [HomeController::class, 'login'])->name('login');
 
 // Register Page
-Route::get('/register', function() {
-    return inertia('CartXpressPage/Register');
-})->name('pages.register');
+Route::get('/register', [HomeController::class, 'register'])->name('register');
 
-// Customer Profile Page
-Route::get('/profile/customer', function() {
-    return inertia('CartXpressPage/CustomerProfile');
-})->name('pages.profile.customer');
+// Profile Page
+Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
+
+// Shop Form Page
+Route::get('/form/shop', function() {
+    return inertia('CartXpressPage/ShopForm');
+})->name('pages.form.shop');
+
+// checkout Page
+Route::get('/checkout', function() {
+    return inertia('CartXpressPage/Checkout');
+})->name('pages.checkout');
+
+// CUSTOMER
+Route::resource('customers', CustomersController::class);
+
+// PRODUCTS
+Route::resource('products', ProductsController::class);
+
+// SHOP
+Route::resource('shops', ShopsController::class);

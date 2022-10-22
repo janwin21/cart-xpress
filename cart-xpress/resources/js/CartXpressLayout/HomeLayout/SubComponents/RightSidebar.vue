@@ -15,7 +15,7 @@
 
                     <div class="col-4 p-0 pe-1">
 
-                        <Link href="#" :id="product.id">
+                        <Link :href="route('products.show', product.id)">
                             <img class="w-100 h-100 p-0" 
                                  :src="product.imagePath" alt="random product image">
                         </Link>
@@ -76,7 +76,7 @@
     const initialValue = 4; // initial value for product display
     const { incrementValue, counters, load } = dynamicCounter(initialValue);
 
-    const randomProducts = inject('productsInRandomCategory')().products;
+    const randomProducts = inject('productsInRandomCategory').products;
 </script>
 
 <style lang="scss" scoped>

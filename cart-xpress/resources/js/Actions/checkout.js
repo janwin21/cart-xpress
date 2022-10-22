@@ -1,29 +1,36 @@
 'use strict';
 
-$(document).ready(() => {
+import $ from 'jquery';
+import FunctionUtils from '../Utils/FunctionUtils';
 
-    /*---------------------------------------------------INSTANCE VARIABLE----*/
-    const showBelowClasses =                  'position-fixed bottom-0 end-0';
+export default function callCheckout() {
 
-    const checkoutBox =                       $('.checkout-box');
-    const shoppingCartContent =               $('.shopping-cart-content');
+    $(document).ready(() => {
 
-    /*---------------------------------------------------OBJECT INSTANTIATION----*/
-    const functionUtils =                     new FunctionUtils();
+        /*---------------------------------------------------INSTANCE VARIABLE----*/
+        const showBelowClasses =                  'position-fixed bottom-0 end-0';
 
-    /*---------------------------------------------------METHOD INSTANTIATION----*/
-    const showCheckoutBelow = () => {
+        const checkoutBox =                       $('.checkout-box');
+        const shoppingCartContent =               $('.shopping-cart-content');
+
+        /*---------------------------------------------------OBJECT INSTANTIATION----*/
+        const functionUtils =                     new FunctionUtils();
+
+        /*---------------------------------------------------METHOD INSTANTIATION----*/
+        const showCheckoutBelow = () => {
+            
+            if(shoppingCartContent[0].getBoundingClientRect().y <= 0)
+                checkoutBox.addClass(showBelowClasses);
+            else 
+                checkoutBox.removeClass(showBelowClasses);  
+            
+        };
         
-        if(shoppingCartContent[0].getBoundingClientRect().y <= 0)
-            checkoutBox.addClass(showBelowClasses);
-        else 
-            checkoutBox.removeClass(showBelowClasses);  
-        
-    };
+        /*---------------------------------------------------INVOKE METHODS----*/
+        functionUtils
+        .setComponent($(window))
+        .setScroll(showCheckoutBelow);
+
+    });
     
-    /*---------------------------------------------------INVOKE METHODS----*/
-    functionUtils
-    .setComponent($(window))
-    .setScroll(showCheckoutBelow);
-
-});
+}
