@@ -1,0 +1,12 @@
+@use '../costumize' as *;
+@use './mixins' as *;
+
+/* NAVBAR */
+nav {
+    @include ring;
+
+    #notify {
+        animation: ring 1s linear infinite alternate;
+    }
+
+}

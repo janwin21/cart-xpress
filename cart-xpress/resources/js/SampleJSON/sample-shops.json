@@ -1,0 +1,28 @@
+[
+    {
+        "name": "",
+        "email": "",
+        "phone": "",
+        "address_line_1": "",
+        "address_line_2": "",
+        "city": "",
+        "state": "",
+        "postal_code": "",
+        "country": "",
+        "description": "",
+        "background_image_path": "/images/sample-categories/{TYPE_THE_NAME_HERE.png}"
+    },
+    {
+        "name": "",
+        "email": "",
+        "phone": "",
+        "address_line_1": "",
+        "address_line_2": "",
+        "city": "",
+        "state": "",
+        "postal_code": "",
+        "country": "",
+        "description": "",
+        "background_image_path": "/images/sample-categories/{TYPE_THE_NAME_HERE.png}"
+    }
+]

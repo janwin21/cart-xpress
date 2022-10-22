@@ -1,0 +1,30 @@
+@use '../../costumize' as *;
+@use '../../components/mixins' as *;
+
+/* XPRESS EMPLOYEE DETAILS */
+.cart-xpress-emlpoyee-details {
+    position: relative;
+    height: fit-content;
+    padding-left: 8rem;
+    padding-right: 8rem;
+
+    img {
+        object-fit: cover ;
+    }
+
+    .lower {
+        margin-top: 15rem;
+    }
+}
+
+.cart-xpress-emlpoyee-introduction {
+    position: relative;
+    
+    .main-box {
+        @include transition-to-all-25;
+        padding-top: 15rem;
+        padding-left: 8rem;
+        padding-right: 8rem;
+    }
+
+}
