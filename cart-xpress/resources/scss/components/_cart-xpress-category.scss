@@ -1,0 +1,21 @@
+@use '../costumize' as *;
+
+/* CART XPRESS CATEGORY */
+.cart-xpress-category {
+    position: relative;
+
+    .category-background {
+        position: absolute;
+        top: 0; left: 0;
+        
+        img {
+            object-fit: cover;
+        }
+
+        .cover {
+            position: absolute;
+            top: 0; left: 0;
+        }
+    }
+
+}

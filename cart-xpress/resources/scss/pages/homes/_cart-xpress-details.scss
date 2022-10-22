@@ -1,0 +1,58 @@
+@use '../../costumize' as *;
+
+/* XPRESS DESIGN DETAILS */
+.cart-xpress-details {
+
+    &__upper, &__lower {
+        padding-left: 8rem;
+        padding-right: 8rem;
+    }
+
+    object {
+        width: 10rem;
+    }
+
+    &__lower {
+        $box-height: 575px;
+
+        .box-design {
+            transform: translateX(-2rem);
+            width: 15%;
+            height: $box-height;
+        
+            &__img {
+                position: absolute;
+                top: calc(50% - 2.5rem); left: 3.75rem;
+                transform: translateY(-50%);
+                object-fit: cover;
+                width: 275px;
+                height: 400px;
+            }
+
+        }
+
+        .box-design-description {
+            position: relative;
+            width: 85%;
+            padding-left: 5rem;
+            height: $box-height;
+            border-top-right-radius: 1rem;
+
+            &__lowest {
+                position: absolute;
+                bottom: 0; left: 0;
+            }
+
+            .wrapper {
+                width: 92.5%;
+            }
+
+            &__img {
+                height: 125px;
+                overflow: hidden;
+            }
+        }
+
+    }
+
+}

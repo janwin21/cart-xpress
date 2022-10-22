@@ -1,0 +1,20 @@
+@use '../../costumize' as *;
+
+/* CART XPRESS HEADER */
+.cart-xpress-header {
+    position: relative;
+    height: fit-content;
+    padding-left: 8rem;
+    padding-right: 8rem;
+
+    .simple-nav {
+        padding-top: 5rem !important;
+
+        button { width: 10rem; }
+    }
+
+    .title-header {
+        margin-top: 5rem !important;
+    }
+
+}
