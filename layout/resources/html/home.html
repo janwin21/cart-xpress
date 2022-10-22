@@ -13,77 +13,82 @@
 <body style="background: url('../images/backgrounds/background-2.png') 
                          no-repeat center center fixed;
              background-size: cover;">
-    
+   
     <!-------------------------------- Navbar Section START -->
     <nav class="navbar navbar-expand-lg 
-                container-fluid bg-xpress-gray-100 
-                px-4 py-1 m-0 sticky-top"
-                style="height: 50px;">
+    container-fluid bg-xpress-gray-100 
+    px-4 py-1 m-0 sticky-top"
+    style="height: 50px;">
 
-        <!-- nav-title -->
-        <a class="navbar-brand text-light roboto" href="#">
-            <img src="../images/logos/logo-title.png" alt="" style="width: 1.75em;">
-            <span class="text-hover-xpress-to-purple-200 ms-2">
-                cartXpress</span></a>
+<!-- nav-title -->
+<a class="navbar-brand text-light roboto " href="#">
+<img src="../images/logos/logo-title.png" alt="" style="width: 1.75em;">
+<span class="text-hover-xpress-to-purple-200 ms-2">
+    cartXpress</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" onclick="myFunction()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+<!-- menu-list -->  
 
-        <!-- menu-list -->
-        <div class="collapse d-flex justify-content-end w-100" style="height: 1.75em;">
-                    
-            <div class="navbar-nav">
+<div  class="collapse navbar-collapse justify-content-end w-100" style="height: 1.75em;" id="mobMenu">
+    
+<div class="navbar-nav"  >
+    
+    <!-- nav-links -->
+    <a class="nav-item nav-link align-self-center
+              text-light nato-sans-jp 
+              fs-xpress-sm-300 ms-3
+              text-hover-xpress-to-red-100" href="#">
+              <i class="fa-solid fa-house me-1"></i>
+              Home</a>
+            
+    <a class="nav-item nav-link align-self-center
+              text-light nato-sans-jp 
+              fs-xpress-sm-300 ms-3
+              text-hover-xpress-to-red-100" href="#">
+              <i class="fa-solid fa-cookie-bite me-1"></i>
+              Products</a>
 
-                <!-- nav-links -->
-                <a class="nav-item nav-link align-self-center
-                          text-light nato-sans-jp 
-                          fs-xpress-sm-300 ms-3
-                          text-hover-xpress-to-red-100" href="#">
-                          <i class="fa-solid fa-house me-1"></i>
-                          Home</a>
-
-                <a class="nav-item nav-link align-self-center
-                          text-light nato-sans-jp 
-                          fs-xpress-sm-300 ms-3
-                          text-hover-xpress-to-red-100" href="#">
-                          <i class="fa-solid fa-cookie-bite me-1"></i>
-                          Products</a>
-
-                <a class="nav-item nav-link align-self-center
-                          text-light nato-sans-jp 
-                          fs-xpress-sm-300 ms-3
-                          text-hover-xpress-to-red-100" href="#">
-                          <i class="fa-solid fa-store me-1"></i>
-                          Shops</a>
-                          
-                <a class="nav-item nav-link align-self-center
-                          text-light nato-sans-jp 
-                          fs-xpress-sm-300 ms-3
-                          text-hover-xpress-to-red-100" href="#">
-                          <i class="fa-solid fa-basket-shopping me-1"></i>
-                          Categories</a>
-                          
-                <a class="nav-item nav-link align-self-center
-                          text-light nato-sans-jp 
-                          fs-xpress-sm-500 ms-3
-                          text-hover-xpress-to-red-100" 
-                          id="notify" href="#">
-                          <i class="fa-solid fa-bell purple-100-active"></i></a>
-                          
-                <!-- nav buttons -->
-                <a class="nav-item nav-link text-light nato-sans-jp 
-                          fs-xpress-sm-300 align-self-center ms-3 px-5
-                          btn bg-primary bg-xpress-orange-100
-                          bg-hover-xpress-to-gray-200" href="#"
-                          style="padding-top: 0.2em; padding-bottom: 0.2em;;">
-                          Login</a>
-                          
-                <a class="nav-item nav-link text-light nato-sans-jp 
-                          fs-xpress-sm-300 align-self-center ms-1 px-5
-                          btn bg-primary bg-xpress-purple-100
-                          bg-hover-xpress-to-gray-200" href="#"
-                          style="padding-top: 0.2em; padding-bottom: 0.2em;;">
-                          Register</a>
-            </div>
-        </div>
-    </nav>
+    <a class="nav-item nav-link align-self-center
+              text-light nato-sans-jp 
+              fs-xpress-sm-300 ms-3
+              text-hover-xpress-to-red-100" href="#">
+              <i class="fa-solid fa-store me-1"></i>
+              Shops</a>
+              
+    <a class="nav-item nav-link align-self-center
+              text-light nato-sans-jp 
+              fs-xpress-sm-300 ms-3
+              text-hover-xpress-to-red-100" href="#">
+              <i class="fa-solid fa-basket-shopping me-1"></i>
+              Categories</a>
+              
+    <a class="nav-item nav-link align-self-center
+              text-light nato-sans-jp 
+              fs-xpress-sm-500 ms-3
+              text-hover-xpress-to-red-100" 
+              id="notify" href="#">
+              <i class="fa-solid fa-bell purple-100-active"></i></a>
+         
+    <!-- nav buttons -->
+    <a  class="nav-item nav-link text-light nato-sans-jp 
+              fs-xpress-sm-300 align-self-center ms-3 px-5
+              btn bg-primary bg-xpress-orange-100
+              bg-hover-xpress-to-gray-200" href="#"
+              style="padding-top: 0.2em; padding-bottom: 0.2em;;">
+              Login</a>
+              
+    <a  class="nav-item nav-link text-light nato-sans-jp 
+              fs-xpress-sm-300 align-self-center ms-1 px-5
+              btn bg-primary bg-xpress-purple-100
+              bg-hover-xpress-to-gray-200" href="#"
+              style="padding-top: 0.2em; padding-bottom: 0.2em;;">
+              Register</a>
+         
+            </div>          
+</div>
+</div>
+</nav>
     <!---------- Navbar Section END -->
     
     <!-------------------------------- Simple Greeting Section START -->
@@ -102,23 +107,25 @@
                        Voluptatem placeat cumque perferendis maiores 
                        id corrupti doloribus laudantium, exercitationem eaque.</h5>
         </div>
+        </div>
     </div>
     <!---------- Simple Greeting Section END -->
     
-    <!-------------------------------- Search Section START -->
+    <!-------------------------------- Search Section   START -->
     <div class="search-home-xpress container-fluid 
                 bg-xpress-gray-100 text-center px-5 
                 d-flex flex-column justify-content-center align-items-center 
                 border-bottom border-2 py-4">
-
+                
         <h6 class="text-light roboto fw-xpress-400 mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h6>
-
+       
+          
         <!-- search inputs -->
-        <div class="row w-100 px-5 my-4">
-            <div class="col-4">
+        <div class="row  px-5 my-4">
+            <div  class="col-4">
                 <div class="form-control border border-0 p-0">
 
-                    <img src="../images/icons/input-icon-1.png" alt="" style="width: 4.5em">
+                    <img id="prod" src="../images/icons/input-icon-1.png" alt="" style="width: 4.5em">
                     <input class="border rounded-pill 
                                   w-100 pe-3 py-1" 
                            type="search" style="padding-left: 3.25rem" 
@@ -136,12 +143,12 @@
                 </div>
             </div>
             <div class="col-4">
-                <div class="form-control border border-0 p-0">
+                <div  class="form-control border border-0 p-0">
 
-                    <img src="../images/icons/input-icon-3.png" alt="" style="width: 3.5em">
-                    <input class="border rounded-pill 
+                    <img id="price" src="../images/icons/input-icon-3.png" alt="" style="width: 3.5em">
+                    <input   class="border rounded-pill 
                                   w-100 pe-3 py-1" 
-                           type="number" style="padding-left: 3.25rem"
+                           type="number" style="padding-left: 3.25rem" 
                             placeholder="price afford...">
                 </div>
             </div>
@@ -1733,5 +1740,7 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script src="../js/utils/FunctionUtils.js"></script>
     <script src="../js/pages/home.js"></script>
+    <script src="../js/mobile/nav.js"></script>
+    
 </body>
 </html>

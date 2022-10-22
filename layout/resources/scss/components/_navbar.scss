@@ -4,9 +4,11 @@
 /* NAVBAR */
 nav {
     @include ring;
-
+    .navbar-collapse{
+        justify-content: end !important;
+    }
     #notify {
-        animation: ring 1s linear infinite alternate;
+       animation: ring 1s linear infinite alternate;
     }
 
 }

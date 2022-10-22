@@ -1,1 +1,140 @@
-//commenttttttt
+@use '../costumize' as *;
+
+
+// No media query necessary for xs breakpoint as it's effectively `@media (max-width: 0) { ... }`
+/*@include media-breakpoint-down(sm) { ... }
+@include media-breakpoint-down(md) { ... }
+@include media-breakpoint-down(lg) { ... }
+@include media-breakpoint-down(xl) { ... }
+@include media-breakpoint-down(xxl) { ... }
+*/
+// Example: Style from medium breakpoint and down
+
+@include media-breakpoint-down(lg){
+ /*NAV-BARRR*/
+  .navbar{
+    .navbar-brand{
+color: black !important ;
+
+    }
+  background-color: lightgray !important;
+
+  .navbar-toggler-icon{
+  border: 0;
+  }
+  .navbar-nav{
+ margin-left: 0 !important;
+ display:list-item ;
+ border: solid;
+ border-width:thin;
+ height: 15rem;
+ background-color: burlywood;
+ border-radius: 0.7rem;
+ align-items: center;
+
+ .fa-bell{
+  display: inline-block;
+  border-width: 0;
+ }
+ .btn{
+  
+  border-inline-end: 2rem;
+  display: inline-block;
+
+  margin-left: 1rem;
+ }
+ #notify {
+  animation: none;
+}
+}
+
+}
+
+.simple-greeting{
+  overflow: hidden;
+  h5{
+    position: absolute !important;
+    display: block !important;
+    font-size:16px !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    font-weight: 500;
+    width:100% !important;
+    }
+  .w-100{
+      display: block; 
+      overflow-y: hidden;
+      height: 15rem;
+        }
+}
+
+.search-home-xpress{
+  display:inline-block;
+  padding: 0;
+  margin: 0;
+  height: 22rem;
+  justify-content: start !important;
+
+  button{
+    text-align: center !important;
+    margin-top: .5rem !important;
+        }
+  p{
+    display: none;
+    margin-top: 8rem !important;
+   }
+
+  h6{
+    
+    display: block !important;
+    font-size:16px !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    font-weight: 500;
+    width:100% !important;
+    justify-content: center;
+    }
+  .row{
+    display: inline-block;
+    justify-content: center !important;
+    padding-right: 10% !important;
+    padding-bottom: 0px !important;
+    margin-bottom: 0px !important;
+  
+    
+.col-4{
+  padding-bottom: 0.5rem !important;
+  justify-content: center !important;
+    
+  
+       
+       #prod{
+          width:7rem ;
+       }
+        img{
+          position: absolute;
+          width: 5rem !important;
+          height:auto !important;
+          padding-top: 1rem !important;
+          padding-right: 3rem !important;
+         
+       
+        
+        }
+      input{
+          min-width: 15rem;
+          justify-items: left !important;
+          
+
+        }
+    }
+  }
+
+
+
+
+}
+
+
+
+}
