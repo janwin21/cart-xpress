@@ -1,6 +1,6 @@
 @use '../costumize' as *;
 
-<<<<<<< HEAD
+
 
 // No media query necessary for xs breakpoint as it's effectively `@media (max-width: 0) { ... }`
 /*@include media-breakpoint-down(sm) { ... }
@@ -19,7 +19,7 @@
 @include media-breakpoint-down(xl) { ... }
 @include media-breakpoint-down(xxl) { ... }
 */
-<<<<<<< HEAD
+
 // Example: Style from medium breakpoint and down
 
 @include media-breakpoint-down(lg){
@@ -27,12 +27,22 @@
   .navbar{
     .navbar-brand{
 color: black !important ;
+button{
+  position: absolute !important;
+  width: 0.6em!important;
+  border-width: 0.6em !important;
+  width: 0.6em !important;
+  height: 0.5em !important;
+  padding-top: 1rem !important;
+}
 
     }
   background-color: lightgray !important;
 
   .navbar-toggler-icon{
-  border: 0;
+  font-size: 0.5em !important;
+  border-width: 0.6em !important;
+ padding-top: 0.5em !important;
   }
   .navbar-nav{
  margin-left: 0 !important;
@@ -149,17 +159,6 @@ color: black !important ;
 
 
 
-}
-=======
-
-/* HOME MOBILE */
-@include media-breakpoint-down(md) {
-
-    .navbar {
-
-        background-color: red !important;
-
-    }
 
 }
->>>>>>> 1c55b143e31487a13f481ce9d7aefaee7ad75bf1
+
