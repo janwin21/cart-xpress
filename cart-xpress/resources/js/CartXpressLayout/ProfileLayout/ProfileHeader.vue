@@ -22,7 +22,7 @@
             <!-- first details -->
             <h5 class="d-inline roboto text-light 
                     mt-3 mb-0 fs-xpress-sm-500">
-                    {{ props.userProfile.firstName }} {{ props.userProfile.lastName }}</h5>
+                    {{ props.user.firstName }} {{ props.user.lastName }}</h5>
 
             <h5 class="d-inline roboto mt-0 
                     fs-xpress-sm-400 fw-xpress-400
@@ -36,12 +36,7 @@
                     rounded text-light py-1 px-4 roboto
                     fs-xpress-sm-200 fw-xpress-500">
                     EDIT</button>
-    
-                <button class="btn bg-xpress-purple-100 ms-1
-                    bg-hover-xpress-to-gray-200
-                    rounded text-light py-1 px-4 roboto
-                    fs-xpress-sm-200 fw-xpress-500">
-                    MESSAGE</button>
+                    
             </div>
 
             <template v-if="!props.user.isHired">
@@ -72,7 +67,7 @@
                         <h5 class="d-inline roboto mt-0 
                             fs-xpress-sm-400 fw-xpress-400
                             py-1 text-light">
-                            phone no: {{ props.userProfile.phone }}</h5>
+                            phone no: {{ props.user.phone }}</h5>
 
                     </div>
 

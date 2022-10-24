@@ -30,7 +30,7 @@
                 <p class="d-inline roboto mt-0
                             fs-xpress-sm-200 fw-xpress-400 
                             text-xpress-yellow-200">
-                            {{ props.product.overallRating }}</p>
+                            {{ props.product.overallRating }} Ratings</p>
             </div>
             <div class="col-2">
 
@@ -81,33 +81,43 @@
 
             <!-- quantityInStock -->
             <div class="col-2 mt-5">
+                <template v-if="props.editable">
 
-                <div class="form-control p-0 pt-1 bg-transparent 
-                            border-0 border-light">
+                    <div class="form-control p-0 pt-1 bg-transparent 
+                                border-0 border-light">
 
-                    <input class="w-50 px-3 rounded" 
-                        type="number" name="quantityInStock" 
-                        v-model="quantity" min="0">
-                </div>
+                        <input class="w-50 px-3 rounded" 
+                            type="number" name="quantityInStock" 
+                            v-model="quantity" min="0">
+                    </div>
+
+                </template>
             </div>
 
             <div class="col-2 mt-5">
+                <template v-if="props.editable">
 
-                <p class="roboto mt-0 pe-1
-                            fs-xpress-sm-700 fw-xpress-500 
-                            text-light">
-                            P{{ updateQuantity }}</p>
+                    <p class="roboto mt-0 pe-1
+                        fs-xpress-sm-700 fw-xpress-500 
+                        text-light">
+                        P{{ updateQuantity }}</p>
+
+                </template>
             </div>
 
             <div class="col-2 mt-5 pe-5">
 
-                <button class="btn bg-xpress-red-100
-                    bg-hover-xpress-to-gray-200 text-light
-                    rounded fs-xpress-sm-100 
-                    fw-xpress-600 ms-1"
-                    id="background-btn">
-                    <i class="fa-solid fa-trash"></i>
-                </button>
+                <template v-if="props.editable">
+                    
+                    <button class="btn bg-xpress-red-100
+                        bg-hover-xpress-to-gray-200 text-light
+                        rounded fs-xpress-sm-100 
+                        fw-xpress-600 ms-1"
+                        id="background-btn">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+
+                </template>
 
                 <Link class="btn bg-success
                     bg-hover-xpress-to-gray-200 text-light
@@ -160,7 +170,8 @@
     import { useProduct } from '../../Composables/UseProduct';
 
     const props = defineProps({
-        product: Object
+        product: Object,
+        editable: Number
     });
 
     const { quantity, priceWithDiscount, updateQuantity } = useProduct(props.product);

@@ -96,7 +96,7 @@
     import MainCategories from '../../CartXpressLayout/HomeLayout/SubComponents/MainCategories.vue';
 
     // actions & composables
-    import callHome from '../../Actions/home';
+    import callHome from '../../Actions/home'
     import { data } from '../../Composables/Data';
     import { dynamicSort } from '../../Composables/DynamicSort';
 
@@ -113,13 +113,15 @@
     const props = defineProps({
         popularShops: Array,
         categoriesWithProducts: Array,
-        productsInACart: Array
+        shops: Array,
+        hasLogin: Boolean
     });
 
     // DATA
+    provide('hasLogin', props.hasLogin)
     provide('popularShops', props.popularShops);
     provide('categoriesWithProducts', removeEmptyCategories(props.categoriesWithProducts));
-    provide('productsInACart', props.productsInACart);
+    provide('shops', props.shops);
     provide('productsInRandomCategory', 
         reactive(
             _.sample(

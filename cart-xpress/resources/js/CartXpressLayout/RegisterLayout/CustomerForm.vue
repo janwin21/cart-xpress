@@ -1,41 +1,87 @@
 <template>
     <!-- customer form -->
-    <form action="javascript: void(0)">
+    <form @submit.prevent="customerSubmit" enctype="multipart/form-data">
 
         <!-- first row -->
         <div class="row gx-2 gy-4 px-5 pt-4 pb-0 mt-2">
 
-            <!-- username -->
-            <FormControl labelName="USERNAME" type="text" 
-                         inputName="username" :required="true" />
-
             <!-- firstName -->
-            <FormControl labelName="FIRST NAME" type="text" 
-                         inputName="firstName" :required="true" />
+            <FormControl col="6" labelName="FIRST NAME" type="text" 
+                inputName="firstName" :required="true">
+
+                <input class="roboto text-xpress-gray-300 
+                    bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
+                    fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="text" 
+                    v-model="form.firstName" name="firstName" :required="true" />
+            
+            </FormControl>
 
             <!-- lastName -->
-            <FormControl labelName="LAST NAME" type="text" 
-                         inputName="lastName" :required="true" />
+            <FormControl col="6" labelName="LAST NAME" type="text" 
+                inputName="lastName" :required="true">
+
+                <input class="roboto text-xpress-gray-300 
+                    bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
+                    fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="text" 
+                    v-model="form.lastName" name="lastName" :required="true" />
+            
+            </FormControl>
 
             <!-- phone -->
             <FormControl labelName="PHONE" type="text" 
-                         inputName="phone" :required="true" />
+                inputName="phone" :required="true">
+
+                <input class="roboto text-xpress-gray-300 
+                    bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
+                    fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="text" 
+                    v-model="form.phone" name="phone" :required="true" />
+            
+            </FormControl>
 
             <!-- email -->
-            <FormControl labelName="EMAIL ADDRESS" type="email" 
-                         inputName="email" :required="true" />
+            <FormControl col="5" labelName="EMAIL" type="email" 
+                inputName="email" :required="true">
+
+                <input class="roboto text-xpress-gray-300 
+                    bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
+                    fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="email" 
+                    v-model="form.email" name="email" :required="true" />
+            
+            </FormControl>
 
             <!-- creditLimit -->
-            <FormControl labelName="CREDIT LIMIT" type="number" 
-                         inputName="creditLimit" :required="true" />
+            <FormControl col="3" labelName="CREDIT LIMIT" type="number" 
+                inputName="creditLimit" :required="true">
+
+                <input class="roboto text-xpress-gray-300 
+                    bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
+                    fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="number" 
+                    v-model="customerForm.creditLimit" name="creditLimit" :required="true" />
+            
+            </FormControl>
 
             <!-- password -->
             <FormControl col="6" labelName="PASSWORD" type="password" 
-                         inputName="password" :required="true" />
+                inputName="password" :required="true">
+
+                <input class="roboto text-xpress-gray-300 
+                    bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
+                    fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="password" 
+                    v-model="form.password" name="password" :required="true" />
+            
+            </FormControl>
 
             <!-- password_confirmation -->
             <FormControl col="6" labelName="CONFIRM PASSWORD" type="password" 
-                         inputName="password_confirmation" :required="true" />
+                inputName="password_confirmation" :required="true">
+
+                <input class="roboto text-xpress-gray-300 
+                    bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
+                    fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="password" 
+                    v-model="form.password_confirmation" 
+                    name="password_confirmation" :required="true" />
+            
+            </FormControl>
             
             <!-- your location warning notes -->
             <div class="col-4">
@@ -55,7 +101,7 @@
                     <input class="roboto text-xpress-gray-300 
                         bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
                         fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="text" 
-                        name="addressLine1">
+                        name="addressLine1" v-model="customerForm.addressLine1">
                 </div>
 
                 <!-- addressLine2 -->
@@ -67,26 +113,54 @@
                     <input class="roboto text-xpress-gray-300 
                         bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
                         fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="text" 
-                        name="addressLine2">
+                        name="addressLine2" v-model="customerForm.addressLine2">
                 </div>
 
             </div>
 
             <!-- city -->
             <FormControl col="3" labelName="CITY" type="text" 
-                         inputName="city" :required="false" />
+                inputName="city" :required="false">
+
+                <input class="roboto text-xpress-gray-300 
+                    bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
+                    fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="text" 
+                    v-model="customerForm.city" name="city" :required="false" />
+            
+            </FormControl>
 
             <!-- state -->
             <FormControl col="3" labelName="STATE" type="text" 
-                         inputName="state" :required="false" />
+                inputName="state" :required="false">
+
+                <input class="roboto text-xpress-gray-300 
+                    bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
+                    fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="text" 
+                    v-model="customerForm.state" name="state" :required="false" />
+            
+            </FormControl>
 
             <!-- postalCode -->
             <FormControl col="3" labelName="POSTAL CODE" type="text" 
-                         inputName="postalCode" :required="false" />
+                inputName="postalCode" :required="false">
+
+                <input class="roboto text-xpress-gray-300 
+                    bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
+                    fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="text" 
+                    v-model="customerForm.postalCode" name="postalCode" :required="false" />
+            
+            </FormControl>
 
             <!-- country -->
             <FormControl col="3" labelName="COUNTRY" type="text" 
-                         inputName="country" :required="false" />
+                inputName="country" :required="false">
+
+                <input class="roboto text-xpress-gray-300 
+                    bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
+                    fs-xpress-sm-300 rounded w-100 mt-1 px-2" type="text" 
+                    v-model="customerForm.country" name="country" :required="false" />
+            
+            </FormControl>
 
             <!-- display profile image -->
             <div class="col-4" style="height: 250px">
@@ -112,15 +186,19 @@
                         for="profileImagePath">PROFILE</label>
 
                     <button class="btn bg-xpress-orange-100 
-                                    bg-hover-xpress-to-gray-200 text-light w-100
-                                    rounded py-1 fs-xpress-sm-300 
-                                    fw-xpress-600 mt-1"
-                                    id="profile-btn"
-                                    data-is-profile="true"
-                                    type="button">
-                                    UPLOAD</button>
+                        bg-hover-xpress-to-gray-200 text-light w-100
+                        rounded py-1 fs-xpress-sm-300 
+                        fw-xpress-600 mt-1"
+                        id="profile-btn"
+                        data-is-profile="true"
+                        type="button">
+                        UPLOAD
+                    </button>
 
-                    <input class="d-none" id="profileImagePath" type="file" name="profileImagePath">
+                    <input class="d-none" id="profileImagePath" 
+                        type="file" name="profileImagePath" 
+                        @change="form.profileImagePath = onFile($event)">
+
                 </div>
             </div>
 
@@ -132,15 +210,19 @@
                         for="backgroundImagePath">BACKGROUND</label>
 
                     <button class="btn bg-xpress-purple-300 
-                                    bg-hover-xpress-to-gray-200 text-light w-100
-                                    rounded py-1 fs-xpress-sm-300 
-                                    fw-xpress-600 mt-1"
-                                    id="background-btn"
-                                    data-is-profile="false"
-                                    type="button">
-                                    UPLOAD</button>
+                        bg-hover-xpress-to-gray-200 text-light w-100
+                        rounded py-1 fs-xpress-sm-300 
+                        fw-xpress-600 mt-1"
+                        id="background-btn"
+                        data-is-profile="false"
+                        type="button">
+                        UPLOAD
+                    </button>
 
-                    <input class="d-none" id="backgroundImagePath" type="file" name="backgroundImagePath">
+                    <input class="d-none" id="backgroundImagePath" 
+                        type="file" name="backgroundImagePath"
+                        @change="form.backgroundImagePath = onFile($event)">
+
                 </div>
             </div>
 
@@ -150,10 +232,11 @@
                 <div class="form-control p-0 border-0 mt-0 text-start
                             d-flex justify-content-start align-items-center">
 
-                    <input type="checkbox" name="remember_me">
+                    <input type="checkbox" name="acceptAgreement" 
+                        v-model="form.acceptAgreement">
 
                     <label class="roboto text-light fs-xpress-sm-200 ms-2" 
-                            for="remember_me">
+                            for="acceptAgreement">
                             Accept our 
 
                         <span class="text-xpress-blue-100">
@@ -170,13 +253,16 @@
             <!-- submit -->
             <div class="col-12">
                 <div class="form-control p-0 border-0 mt-0 text-start
-                            d-flex justify-content-end align-items-end">
+                    d-flex justify-content-end align-items-end">
 
-                    <Link class="btn bg-xpress-orange-100 
-                                 bg-hover-xpress-to-gray-200 text-light w-25 
-                                 rounded-pill py-1 fs-xpress-sm-300 
-                                 fw-xpress-500" href="#"
-                                 type="submit">CONFIRM</Link>
+                    <button class="btn bg-xpress-orange-100 
+                        bg-hover-xpress-to-gray-200 text-light w-25 
+                        rounded-pill py-1 fs-xpress-sm-300 
+                        fw-xpress-500" :disabled="form.processing"
+                        @click="form.isHired = false"
+                        type="submit">CONFIRM
+                    </button>
+
                 </div>
             </div>
 
@@ -194,13 +280,45 @@
 <script setup>
     import FormControl from './Elements/FormControl.vue';
     import TermsAndAgreementModal from '../../CartXpressModal/TermsAndAgreementModal.vue';
-    import { Link } from '@inertiajs/inertia-vue3';
+    import { Link, useForm } from '@inertiajs/inertia-vue3';
     import { usePopup } from '../../Composables/UsePopup';
+    import { useFile } from '../../Composables/UseFile';
     import { provide } from 'vue';
 
-    const { twoWayOption, showTermsOfAgreementPopup } = usePopup();
+    const { termsAndAgreementRef, showTermsOfAgreementPopup } = usePopup();
+    const { onFile } = useFile();
 
     provide('showTermsOfAgreementPopup', showTermsOfAgreementPopup);
+
+    const customerForm = useForm({
+        addressLine1: '',
+        addressLine2: '',
+        city: '',
+        state: '',
+        postalCode: '',
+        country: '',
+        creditLimit: 0,
+    });
+
+    const form = useForm({
+        firstName: '',
+        lastName: '',
+        phone: '',
+        email: '',
+        password: '',
+        password_confirmation: '',
+        profileImagePath: '',
+        backgroundImagePath: '',
+        acceptAgreement: false,
+        isHired: false,
+        customer: customerForm
+    });
+
+    const customerSubmit = () => {
+        form.post(route('register'), {
+            onFinish: () => form.reset('password', 'password_confirmation'),
+        });
+    };
 
 </script>
 

@@ -31,35 +31,39 @@
                                          $page.component === 'CartXpressPage/ShopForm') 
                                  }"
                          :href="route('profile')">
-                    <i class="fa-solid fa-user me-1"></i>Profile</NavLink>
+                    <i class="fa-solid fa-user me-1"></i>Profile</NavLink>   
+                
+                <template v-if="hasLogin">
+                            
+                    <button class="nav-item nav-link text-light nato-sans-jp 
+                            fs-xpress-sm-300 align-self-center ms-1 px-5
+                            btn bg-xpress-purple-100
+                            bg-hover-xpress-to-gray-200 ms-5"
+                            href="#" @click.prevent="logout"
+                            style="padding-top: 0.2em; padding-bottom: 0.2em;">
+                            Logout</button>
 
-                <NavLink><i class="fa-solid fa-store me-1"></i>Shop</NavLink>
-                          
-                <NavLink><i class="fa-solid fa-basket-shopping me-1"></i>Category</NavLink>
-                          
-                <a class="nav-item nav-link align-self-center
-                          text-light nato-sans-jp 
-                          fs-xpress-sm-500 ms-3
-                          text-hover-xpress-to-red-100" 
-                          id="notify" href="#">
-                          <i class="fa-solid fa-bell purple-100-active"></i></a>
-                          
-                <!-- nav buttons -->
-                <Link class="nav-item nav-link text-light nato-sans-jp 
-                          fs-xpress-sm-300 align-self-center ms-3 px-5
-                          btn bg-primary bg-xpress-orange-100
-                          bg-hover-xpress-to-gray-200" 
-                          :href="route('login')"
-                          style="padding-top: 0.2em; padding-bottom: 0.2em;">
-                          Login</Link>
-                          
-                <Link class="nav-item nav-link text-light nato-sans-jp 
-                          fs-xpress-sm-300 align-self-center ms-1 px-5
-                          btn bg-primary bg-xpress-purple-100
-                          bg-hover-xpress-to-gray-200"
-                          :href="route('register')"
-                          style="padding-top: 0.2em; padding-bottom: 0.2em;">
-                          Register</Link>
+                </template>
+                <template v-else>
+                
+                    <!-- nav buttons -->
+                    <Link class="nav-item nav-link text-light nato-sans-jp 
+                            fs-xpress-sm-300 align-self-center ms-3 px-5
+                            btn bg-xpress-orange-100
+                            bg-hover-xpress-to-gray-200" 
+                            :href="route('login')"
+                            style="padding-top: 0.2em; padding-bottom: 0.2em;">
+                            Login</Link>
+                            
+                    <Link class="nav-item nav-link text-light nato-sans-jp 
+                            fs-xpress-sm-300 align-self-center ms-1 px-5
+                            btn bg-xpress-purple-100
+                            bg-hover-xpress-to-gray-200"
+                            :href="route('register')"
+                            style="padding-top: 0.2em; padding-bottom: 0.2em;">
+                            Register</Link>
+                    </template>
+
             </div>
         </div>
     </nav>
@@ -67,8 +71,16 @@
 </template>
 
 <script setup>
+    import { inject } from 'vue';
     import { Link } from '@inertiajs/inertia-vue3';
     import NavLink from './SubComponent/NavLink.vue';
+    import { Inertia } from '@inertiajs/inertia';
+
+    const hasLogin = inject('hasLogin');
+
+    function logout() {
+        Inertia.post(route('logout'));
+    }
 </script>
 
 <style lang="scss" scoped>

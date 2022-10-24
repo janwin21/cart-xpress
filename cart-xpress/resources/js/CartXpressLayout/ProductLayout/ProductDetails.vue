@@ -21,14 +21,14 @@
                 <div class="product-header">
 
                     <h4 class="d-inline roboto text-light 
-                                mb-1 fs-xpress-sm-700">
-                                {{ props.product.name }}</h4>
+                        mb-1 fs-xpress-sm-700">
+                        {{ props.product.name }}</h4>
 
                     <p class="d-inline roboto mt-0 
-                                fs-xpress-sm-200 fw-xpress-500 
-                                bg-xpress-purple-300 rounded 
-                                px-3 py-1 text-light ms-3">
-                                {{ props.product.category.name }}</p>
+                        fs-xpress-sm-200 fw-xpress-500 
+                        bg-xpress-purple-300 rounded 
+                        px-3 py-1 text-light ms-3">
+                        {{ props.product.category.name }}</p>
                 </div>
 
                 <!-- upper details -->
@@ -36,30 +36,30 @@
                     <div class="col-3">
 
                         <p class="d-inline roboto mt-0
-                                    fs-xpress-sm-200 fw-xpress-400 
-                                    text-xpress-yellow-200">
-                                    RATING {{ props.product.overallRating }}</p>
+                            fs-xpress-sm-200 fw-xpress-400 
+                            text-xpress-yellow-200">
+                            RATING {{ props.product.overallRating }}</p>
                     </div>
                     <div class="col-3">
 
                         <p class="d-inline roboto mt-0
-                                    fs-xpress-sm-200 fw-xpress-500 
-                                    text-xpress-gray-600">
-                                    {{ props.product.countReviews }} REVIEWS</p>
+                            fs-xpress-sm-200 fw-xpress-500 
+                            text-xpress-gray-600">
+                            {{ props.product.countReviews }} REVIEWS</p>
                     </div>
                     <div class="col-3">
 
                         <p class="d-inline roboto mt-0
-                                    fs-xpress-sm-200 fw-xpress-500 
-                                    text-xpress-gray-600">
-                                    P{{ props.product.totalPriceSold }} TOTAL SOLD</p>
+                            fs-xpress-sm-200 fw-xpress-500 
+                            text-xpress-gray-600">
+                            P{{ props.product.totalPriceSold }} TOTAL SOLD</p>
                     </div>
                     <div class="col-3">
 
                         <p class="d-inline roboto mt-0
-                                    fs-xpress-sm-200 fw-xpress-500 
-                                    text-xpress-gray-600">
-                                    POSTED AT {{ moment(props.product.createdAt).format("MMM Do YYYY") }}</p>
+                            fs-xpress-sm-200 fw-xpress-500 
+                            text-xpress-gray-600">
+                            POSTED AT {{ moment(props.product.createdAt).format("MMM Do YYYY") }}</p>
                     </div>
                 </div>
 
@@ -69,30 +69,31 @@
                     <div class="col-3 p-0 ps-2">
 
                         <h4 class="d-inline roboto mt-0 
-                                    fs-xpress-sm-700 fw-xpress-700 
-                                    text-light p-0 m-0">
-                                    P</h4>
+                            fs-xpress-sm-700 fw-xpress-700 
+                            text-light p-0 m-0">
+                            P</h4>
 
                         <h1 class="d-inline roboto mt-0 
-                                    fs-xpress-md-900 fw-xpress-500 
-                                    text-light p-0 m-0">
-                                    {{ props.product.price }}</h1>
+                            fs-xpress-md-900 fw-xpress-500 
+                            text-light p-0 m-0">
+                            {{ props.product.price }}</h1>
                     </div>
 
                     <div class="col-3 pb-2">
                         <p class="d-inline roboto mt-0
-                                    fs-xpress-sm-500 fw-xpress-500 
-                                    text-light">
-                                    Weight 
-                                    <span class="text-xpress-gray-600">{{ props.product.size }} kg</span></p>
+                            fs-xpress-sm-500 fw-xpress-500 
+                            text-light">
+                            Weight 
+                            <span class="text-xpress-gray-600">{{ props.product.size }} kg</span></p>
                     </div>
 
                     <div class="col-3 pb-2">
                         <p class="d-inline roboto mt-0
-                                    fs-xpress-sm-500 fw-xpress-500 
-                                    text-light">
-                                    Discount 
-                                    <span class="text-xpress-yellow-200">{{ props.product.discount * 100 }}%</span></p>
+                            fs-xpress-sm-500 fw-xpress-500 
+                            text-light">
+                            Discount 
+                            <span class="text-xpress-yellow-200">
+                                {{ props.product.discount * 100 }}%</span></p>
                     </div>
 
                     <div class="col-3 pb-2 text-end pe-5">
@@ -141,17 +142,17 @@
                 <div class="product-description-detail mt-5 me-5">
 
                     <p class="roboto mt-0
-                                fs-xpress-sm-300 fw-xpress-500 
-                                text-xpress-gray-600">
-                                PRODUCT DESCRIPTION</p>
+                        fs-xpress-sm-300 fw-xpress-500 
+                        text-xpress-gray-600">
+                        PRODUCT DESCRIPTION</p>
 
                     <p class="roboto mt-0
-                                fs-xpress-sm-300 fw-xpress-400 
-                                text-light">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                Enim voluptatibus nostrum blanditiis libero deserunt in quos, 
-                                rerum mollitia neque odio voluptas! Molestiae tempore expedita 
-                                delectus impedit. Id doloremque quae expedita?</p>
+                        fs-xpress-sm-300 fw-xpress-400 
+                        text-light">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Enim voluptatibus nostrum blanditiis libero deserunt in quos, 
+                        rerum mollitia neque odio voluptas! Molestiae tempore expedita 
+                        delectus impedit. Id doloremque quae expedita?</p>
                 </div>
 
                 <form action="javascript: void(0)">
@@ -162,56 +163,56 @@
                         <div class="col">
 
                             <p class="roboto mt-0
-                                    fs-xpress-sm-300 fw-xpress-500 
-                                    text-xpress-gray-600">
-                                    DURATION OF SERVICE ON DELIVERY</p>
+                                fs-xpress-sm-300 fw-xpress-500 
+                                text-xpress-gray-600">
+                                DURATION OF SERVICE ON DELIVERY</p>
                         </div>
 
                         <div class="col">
 
                             <p class="roboto mt-0
-                                    fs-xpress-sm-400 fw-xpress-400 
-                                    text-light">{{ props.product.durationOfDeliveryByHour }} hours</p>
+                                fs-xpress-sm-400 fw-xpress-400 
+                                text-light">{{ props.product.durationOfDeliveryByHour }} hours</p>
                         </div>
 
                         <div class="col">
 
                             <p class="roboto mt-0
-                                    fs-xpress-sm-300 fw-xpress-500 
-                                    text-xpress-gray-600">
-                                    AVAILABLE STOCK</p>
+                                fs-xpress-sm-300 fw-xpress-500 
+                                text-xpress-gray-600">
+                                AVAILABLE STOCK</p>
                         </div>
 
                         <div class="col">
 
                             <p class="roboto mt-0
-                                    fs-xpress-sm-400 fw-xpress-400 
-                                    text-light">{{ props.product.quantityInStock }} Remaining</p>
+                                fs-xpress-sm-400 fw-xpress-400 
+                                text-light">{{ props.product.quantityInStock }} Remaining</p>
                         </div>
 
                         <div class="col mt-5">
 
                             <p class="d-inline roboto mt-0
-                                    fs-xpress-sm-300 fw-xpress-500 
-                                    text-light me-3">
-                                    QUANTITY</p>
+                                fs-xpress-sm-300 fw-xpress-500 
+                                text-light me-3">
+                                QUANTITY</p>
 
                             <!-- quantityOrdered-->
                             <input class="roboto text-xpress-gray-100
-                                    bg-light border-0 px-2 fw-xpress-500 
-                                    fs-xpress-sm-300 rounded-0 w-25" 
-                                    type="number" min="1"
-                                    name="quantityOrdered"
-                                    v-model="quantity">
+                                bg-light border-0 px-2 fw-xpress-500 
+                                fs-xpress-sm-300 rounded-0 w-25" 
+                                type="number" min="1"
+                                name="quantityOrdered"
+                                v-model="quantity">
                         </div>
 
                         <div class="col mt-5">
 
                             <p class="roboto mt-0
-                                    fs-xpress-sm-300 fw-xpress-500 
-                                    text-xpress-gray-600">
-                                    TOTAL PRICE <span class="text-light ms-3">
-                                        P{{ updateQuantity }}</span></p>
+                                fs-xpress-sm-300 fw-xpress-500 
+                                text-xpress-gray-600">
+                                TOTAL PRICE <span class="text-light ms-3">
+                                    P{{ updateQuantity }}</span></p>
                         </div>
 
                     </div>
@@ -220,17 +221,17 @@
                     <div class="submit-buttons">
 
                         <Link class="btn bg-xpress-purple-300 
-                                bg-hover-xpress-to-gray-200 text-light w-25 
-                                rounded py-1 fs-xpress-sm-300 
-                                fw-xpress-500 mt-5 me-1"
-                                :href="route('pages.checkout')">
-                                Add To Cart</Link>
+                            bg-hover-xpress-to-gray-200 text-light w-25 
+                            rounded py-1 fs-xpress-sm-300 
+                            fw-xpress-500 mt-5 me-1">
+                            Add To Cart</Link>
 
-                        <a class="btn bg-xpress-orange-100 
-                                bg-hover-xpress-to-gray-200 text-light w-25 
-                                rounded py-1 fs-xpress-sm-300 
-                                fw-xpress-500 mt-5">
-                                Buy it Right Now!</a>
+                        <Link class="btn bg-xpress-orange-100 
+                            bg-hover-xpress-to-gray-200 text-light w-25 
+                            rounded py-1 fs-xpress-sm-300 
+                            fw-xpress-500 mt-5"
+                            :href="route('checkout')">
+                            Buy it Right Now!</Link>
 
                     </div>
 
@@ -256,19 +257,19 @@
                     <template #modal-buttons>
     
                         <button class="btn bg-xpress-red-100 w-25 
-                                bg-hover-xpress-to-gray-200 text-light
-                                rounded py-1 fs-xpress-sm-300 
-                                fw-xpress-600 mt-1"
-                                id="background-btn">
-                                DELETE</button>
+                            bg-hover-xpress-to-gray-200 text-light
+                            rounded py-1 fs-xpress-sm-300 
+                            fw-xpress-600 mt-1"
+                            id="background-btn">
+                            DELETE</button>
 
                         <button class="btn bg-xpress-gray-500 w-25 
-                                bg-hover-xpress-to-gray-200 text-light
-                                rounded py-1 fs-xpress-sm-300 
-                                fw-xpress-600 mt-1 ms-2"
-                                id="background-btn"
-                                @click="showTwoWayOptionPopup()">
-                                CANCEL</button>
+                            bg-hover-xpress-to-gray-200 text-light
+                            rounded py-1 fs-xpress-sm-300 
+                            fw-xpress-600 mt-1 ms-2"
+                            id="background-btn"
+                            @click="showTwoWayOptionPopup()">
+                            CANCEL</button>
 
                     </template>
                     
@@ -293,11 +294,11 @@
                     <template #modal-button>
     
                         <button class="btn bg-xpress-orange-100 w-25 
-                                bg-hover-xpress-to-gray-200 text-light
-                                rounded py-1 fs-xpress-sm-300 
-                                fw-xpress-600 mt-1"
-                                id="background-btn">
-                                PROCEED</button>
+                            bg-hover-xpress-to-gray-200 text-light
+                            rounded py-1 fs-xpress-sm-300 
+                            fw-xpress-600 mt-1"
+                            id="background-btn">
+                            PROCEED</button>
 
                     </template>
                     

@@ -11,8 +11,13 @@ export function dynamicSort() {
     const dynamicSortBy = (objs, childProperty, givenProperty, orderBy) => {
 
         objs.forEach(obj => {
-            obj[childProperty] = 
-                _.orderBy(obj[childProperty], [child => child[givenProperty]], [orderBy]);
+            if(orderBy === 'asc')
+                obj[childProperty]
+                    .sort((a, b) => { return a[givenProperty] < b[givenProperty] ? 1 : -1; })
+                        .reverse();
+            if(orderBy === 'desc')
+                obj[childProperty]
+                    .sort((a, b) => { return a[givenProperty] < b[givenProperty] ? 1 : -1; });
         });
 
     };

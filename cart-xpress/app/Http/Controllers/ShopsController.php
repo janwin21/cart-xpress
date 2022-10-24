@@ -24,7 +24,33 @@ class ShopsController extends Controller
      */
     public function create()
     {
-        //
+
+        $yourShops = [
+            [
+                'id' => 0,
+                'name' => 'my shop 01',
+                'backgorundImagePath' => '/images/sample-shops/sample-shop-1.jpg'
+            ],
+            [
+                'id' => 1,
+                'name' => 'my shop 02',
+                'backgorundImagePath' => '/images/sample-shops/sample-shop-2.jpg'
+            ],
+            [
+                'id' => 2,
+                'name' => 'my shop 03',
+                'backgorundImagePath' => '/images/sample-shops/sample-shop-3.webp'
+            ],
+            [
+                'id' => 3,
+                'name' => 'my shop 04',
+                'backgorundImagePath' => '/images/sample-shops/sample-shop-4.png'
+            ]
+        ];
+
+        return inertia('CartXpressPage/ShopForm', [
+            'yourShops' => $yourShops
+        ]);
     }
 
     /**
@@ -35,7 +61,7 @@ class ShopsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request, $request->file('backgroundImagePath'));
     }
 
     /**

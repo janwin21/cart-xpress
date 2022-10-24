@@ -1,14 +1,14 @@
 'use strict';
 
-export function dynamicFilter() {
+export function dynamicFilter(property = 'name') {
 
     const filterItems = (searchedValue, items) => {
 
-        return _.filter(items, products => {
-                const regex = new RegExp(`${searchedValue}`, 'gi');
-                const match = products.name.match(regex);
-                const matched = (match) ? match.length : 0;
-                return matched != 0;
+        return _.filter(items, item => {
+            const regex = new RegExp(`${searchedValue}`, 'gi');
+            const match = item[property].match(regex);
+            const matched = (match) ? match.length : 0;
+            return matched != 0;
          });
          
     }

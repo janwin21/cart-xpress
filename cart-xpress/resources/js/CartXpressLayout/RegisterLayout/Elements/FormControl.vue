@@ -9,10 +9,8 @@
                       class="text-xpress-red-200 roboto fw-xpress-900">*</span>
             </label>
 
-            <input class="roboto text-xpress-gray-300 
-                bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
-                        fs-xpress-sm-300 rounded w-100 mt-1 px-2" :type="type" 
-                        :name="inputName" :required="required" />
+            <slot />
+
         </div>
     </div>
 </template>
@@ -23,7 +21,7 @@
         labelName: String,
         type: String,
         inputName: String,
-        required: Boolean
+        required: Boolean,
     });
 </script>
 

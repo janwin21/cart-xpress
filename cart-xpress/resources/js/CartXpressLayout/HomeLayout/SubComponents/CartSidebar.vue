@@ -32,39 +32,40 @@
 
                     <div class="row row-cols-2 m-0 g-1" 
                          style="z-index: 1000;">
+
+                        <template v-for="shop in shops" :key="shop.id">
             
-                        <!-- diplay all ordered products that has a status of on-cart -->
-                        <template v-for="product in products" :key="product.id">
+                            <!-- diplay all ordered products that has a status of on-cart -->
+                            <template v-for="product in shop.products" :key="product.id">
 
-                            <ProductLink :product="product" 
-                                         style="height: 75%;">
+                                <ProductLink :product="product" 
+                                            style="height: 75%;">
 
-                                <div class="form-control bg-xpress-gray-100 pt-0 px-2 pb-2
-                                            border-top
-                                            border-start-0
-                                            border-bottom-0
-                                            border-end-0
-                                            border-light rounded-0
-                                            d-flex justify-content-between align-items-center">
+                                    <div class="form-control bg-xpress-gray-100 pt-0 px-2 pb-2
+                                                border-top
+                                                border-start-0
+                                                border-bottom-0
+                                                border-end-0
+                                                border-light rounded-0
+                                                d-flex justify-content-between align-items-center">
 
-                                    <label class="text-light roboto fs-xpress-sm-200" 
-                                        for="quantityOrdered">Quantity</label>
+                                        <p class="roboto text-light w-100 pt-2
+                                            float-end fs-xpress-sm-200 fw-xpress-600">
+                                            Quantity: {{ product.orderDetails.quantityOrdered }}
+                                        </p>
 
-                                    <input class="w-50 mt-2 px-2" 
-                                        type="number" 
-                                        name="quantityOrdered"
-                                        :value="product.orderDetails.quantityOrdered"
-                                        min="1">
-                                </div>
+                                    </div>
 
-                                <button class="btn bg-xpress-red-100 w-100
-                                            bg-hover-xpress-to-gray-200
-                                            rounded-0 text-light py-1 px-4 roboto
-                                            fs-xpress-sm-200 fw-xpress-500">
-                                            Remove</button>
+                                    <button class="btn bg-xpress-red-100 w-100
+                                        bg-hover-xpress-to-gray-200
+                                        rounded-0 text-light py-1 px-4 roboto
+                                        fs-xpress-sm-200 fw-xpress-500">
+                                        Remove</button>
 
-                            </ProductLink>
+                                </ProductLink>
 
+                            </template>
+                            
                         </template>
 
                         <!-- submit or visit section for visiting cart or checking out -->
@@ -77,11 +78,12 @@
 
                             <div class="row">
                                 <div class="col-6">
-                                    <p class="roboto fs-xpress-sm-200 fw-xpress-300">Quantity: 40 pieces</p>
+                                    <p class="roboto fs-xpress-sm-200 fw-xpress-300">
+                                        Quantity: {{ totalQuantity }} pieces</p>
                                     <p class="roboto fs-xpress-sm-200 fw-xpress-300">Expected Duration on Delivery:</p>
                                 </div>
                                 <div class="col-6">
-                                    <p class="roboto fs-xpress-sm-200 fw-xpress-300">Total: P15,000</p>
+                                    <p class="roboto fs-xpress-sm-200 fw-xpress-300">Total: P{{ totalPrice }}</p>
                                     <p class="roboto fs-xpress-sm-200 fw-xpress-300">24 hours</p>
                                 </div>
                             </div>
@@ -90,16 +92,16 @@
                         <div class="text-end pe-2 pb-2 mt-0">
 
                             <button class="btn bg-xpress-purple-300
-                                        bg-hover-xpress-to-gray-200
-                                        rounded-0 text-light py-1 px-4 roboto
-                                        fs-xpress-sm-200 fw-xpress-500">
-                                        Visit Cart</button>
+                                bg-hover-xpress-to-gray-200
+                                rounded-0 text-light py-1 px-4 roboto
+                                fs-xpress-sm-200 fw-xpress-500">
+                                Visit Profile</button>
 
                             <button class="btn bg-xpress-orange-100
-                                        bg-hover-xpress-to-gray-200
-                                        rounded-0 text-light py-1 px-4 roboto
-                                        fs-xpress-sm-200 fw-xpress-500">
-                                        Checkout Now</button>
+                                bg-hover-xpress-to-gray-200
+                                rounded-0 text-light py-1 px-4 roboto
+                                fs-xpress-sm-200 fw-xpress-500">
+                                Go Checkout</button>
 
                             </div>
 
@@ -121,8 +123,14 @@
 <script setup>
     import ProductLink from '../Elements/ProductLink.vue';
     import { inject } from 'vue';
+    import { useTotal } from '../../../Composables/UseTotal';
+    //const { quantity, priceWithDiscount, updateQuantity } = useProduct(props.product);
     
-    const products = inject('productsInACart');
+    const shops = inject('shops');
+
+    const { totalQuantity, totalPrice } = useTotal(shops);
+
+    // quantity.value = props.product.orderDetails.quantityOrdered;
 </script>
 
 <style scoped>

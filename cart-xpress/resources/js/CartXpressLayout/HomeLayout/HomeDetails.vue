@@ -17,13 +17,13 @@
             <h3 class="mt-5 roboto text-light">Lorem ipsum dolor sit amet consectetur</h3>
 
             <p class="text-xpress-gray-300 
-                      text-xpress-yellow-100 roboto">Lorem ipsum dolor</p>
+                text-xpress-yellow-100 roboto">Lorem ipsum dolor</p>
 
             <h6 class="w-50 roboto text-light 
-                      fw-xpress-300 mt-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                      Inventore dolor esse praesentium quae eius, est fuga vero nulla, 
-                                      aut cupiditate reprehenderit temporibus fugiat labore ipsum 
-                                      molestiae id dolore, cum blanditiis.</h6>
+                fw-xpress-300 mt-2">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Inventore dolor esse praesentium quae eius, est fuga vero nulla, 
+                aut cupiditate reprehenderit temporibus fugiat labore ipsum 
+                molestiae id dolore, cum blanditiis.</h6>
         </div>
         
         <div class="cart-xpress-details__lower text-start py-5

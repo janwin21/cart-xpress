@@ -6,12 +6,21 @@
                     row bg-xpress-gray-200 mt-2">
 
             <!-- category header -->
-            <div class="pt-2 ps-2"
+            <div class="pt-2 ps-2 position-relative"
                 style="z-index: 1000">
 
                 <h5 class="roboto fs-xpress-sm-400 
-                        text-light p-2 w-25">
-                        {{ category.name.toUpperCase() }}</h5>
+                    text-light p-2 w-25">
+                    {{ category.name.toUpperCase() }}</h5>
+                          
+                <Link class="position-absolute top-0 end-0 m-3
+                    text-light nato-sans-jp 
+                    fs-xpress-sm-300 align-self-center ms-1 px-5
+                    btn bg-success
+                    bg-hover-xpress-to-gray-200"
+                    :href="route('categories.show', category.id)"
+                    style="padding-top: 0.2em; padding-bottom: 0.2em;">
+                    Visit</Link>
             </div>
 
             <!-- category content -->
@@ -71,6 +80,7 @@
 
 <script setup>
     import ProductLink from '../Elements/ProductLink.vue';
+    import { Link } from '@inertiajs/inertia-vue3';
     import { watch, inject } from 'vue';
 
     import _ from 'lodash';

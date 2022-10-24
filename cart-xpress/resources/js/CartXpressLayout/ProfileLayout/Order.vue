@@ -106,8 +106,7 @@
         readOnly: Boolean,
         index: Number
     });
-
-    console.log(props.orders);
+    
 </script>
 
 <style lang="scss" scoped>

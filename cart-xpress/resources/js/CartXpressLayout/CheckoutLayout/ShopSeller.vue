@@ -11,7 +11,7 @@
 
     <template v-for="product in props.shop.products" :key="product.id">
 
-        <ProductOrdered :product="product" />
+        <ProductOrdered :product="product" :editable="1" />
 
     </template>
 

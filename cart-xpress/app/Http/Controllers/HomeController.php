@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -14,7 +15,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-
+        
         $popularShops =  [
             [ 'id'=> 0, 'backgroundImagePath' => '/images/sample-shops/sample-shop-2.jpg'],
             [ 'id'=> 1, 'backgroundImagePath' => '/images/sample-shops/sample-shop-3.webp'],
@@ -94,68 +95,166 @@ class HomeController extends Controller
             ]
         ];
 
-        $productsInACart = [
+        $shops = [
             [
                 'id' => 0,
-                'name' => 'the first product',
-                'price' => 55,
-                'quantityInStock' => 12,
-                'overallRating' => 4.5,
-                'discount' => 0.4,
-                'description' => 'this is a description of sample number 1',
-                'imagePath' => '/images/sample-products/product-1.jpg',
-                'orderDetails' => [ 'quantityOrdered' => 5 ]
+                'name' => 'shopName XYZ',
+    
+                'products' => [
+                    [
+                        'id' => 0,
+                        'name' => 'Product 01',
+                        'createdAt' => new Carbon(),
+                        'price' => 200,
+                        'size' => 3,
+                        'discount' => 0.25,
+                        'durationOfDeliveryByHour' => 4,
+                        'quantityInStock' => 80,
+                        'imagePath' => '/images/sample-products/product-1.jpg',
+                        'overallRating' => 4.3,
+                        'countReviews' => 67,
+                        'totalPriceSold' => 14000,
+    
+                        'category' => [ 
+                            'id' => 0,
+                            'name' => 'category name'
+                        ],
+    
+                        'orderDetails' => [
+                            'quantityOrdered' => 7
+                        ]
+                    ],
+                    [
+                        'id' => 1,
+                        'name' => 'Product 01',
+                        'createdAt' => new Carbon(),
+                        'price' => 150,
+                        'size' => 3,
+                        'discount' => 0.25,
+                        'durationOfDeliveryByHour' => 4,
+                        'quantityInStock' => 80,
+                        'imagePath' => '/images/sample-products/product-2.jpg',
+                        'overallRating' => 4.3,
+                        'countReviews' => 67,
+                        'totalPriceSold' => 14000,
+    
+                        'category' => [ 
+                            'id' => 0,
+                            'name' => 'category name'
+                        ],
+    
+                        'orderDetails' => [
+                            'quantityOrdered' => 7
+                        ]
+                    ],
+                    [
+                        'id' => 2,
+                        'name' => 'Product 01',
+                        'createdAt' => new Carbon(),
+                        'price' => 150,
+                        'size' => 3,
+                        'discount' => 0.25,
+                        'durationOfDeliveryByHour' => 4,
+                        'quantityInStock' => 80,
+                        'imagePath' => '/images/sample-products/product-2.jpg',
+                        'overallRating' => 4.3,
+                        'countReviews' => 67,
+                        'totalPriceSold' => 14000,
+    
+                        'category' => [ 
+                            'id' => 0,
+                            'name' => 'category name'
+                        ],
+    
+                        'orderDetails' => [
+                            'quantityOrdered' => 7
+                        ]
+                    ]
+                ]
             ],
             [
-                'id' => 2,
-                'name' => 'product 01',
-                'price' => 55,
-                'quantityInStock' => 12,
-                'overallRating' => 4.5,
-                'discount' => 0.4,
-                'description' => 'this is a description of sample number 1',
-                'imagePath' => '/images/sample-products/product-4.jpg',
-                'orderDetails' => [ 'quantityOrdered' => 5 ]
-            ],
-            [
-                'id' => 3,
-                'name' => 'product 01',
-                'price' => 55,
-                'quantityInStock' => 12,
-                'overallRating' => 4.5,
-                'discount' => 0.4,
-                'description' => 'this is a description of sample number 2',
-                'imagePath' => '/images/sample-products/product-1.jpg',
-                'orderDetails' => [ 'quantityOrdered' => 15 ]
-            ],
-            [
-                'id' => 4,
-                'name' => 'product 01',
-                'price' => 55,
-                'quantityInStock' => 12,
-                'overallRating' => 4.5,
-                'discount' => 0.4,
-                'description' => 'this is a description of sample number 3',
-                'imagePath' => '/images/sample-products/product-6.jpg',
-                'orderDetails' => [ 'quantityOrdered' => 40 ]
-            ],
-            [
-                'id' => 5,
-                'name' => 'product 05',
-                'price' => 55,
-                'quantityInStock' => 12,
-                'overallRating' => 4.5,
-                'discount' => 0.4,
-                'description' => 'this is a description of sample number 4',
-                'imagePath' => '/images/sample-products/product-1.jpg',
-                'orderDetails' => [ 'quantityOrdered' => 12 ]
+                'id' => 0,
+                'name' => 'shopName ABC',
+    
+                'products' => [
+                    [
+                        'id' => 0,
+                        'name' => 'Product 0221',
+                        'createdAt' => new Carbon(),
+                        'price' => 150,
+                        'size' => 3,
+                        'discount' => 0.25,
+                        'durationOfDeliveryByHour' => 4,
+                        'quantityInStock' => 80,
+                        'imagePath' => '/images/sample-products/product-6.jpg',
+                        'overallRating' => 4.3,
+                        'countReviews' => 67,
+                        'totalPriceSold' => 14000,
+    
+                        'category' => [ 
+                            'id' => 0,
+                            'name' => 'category name'
+                        ],
+    
+                        'orderDetails' => [
+                            'quantityOrdered' => 7
+                        ]
+                    ],
+                    [
+                        'id' => 1,
+                        'name' => 'Product1212ewqwewe',
+                        'createdAt' => new Carbon(),
+                        'price' => 150,
+                        'size' => 3,
+                        'discount' => 0.25,
+                        'durationOfDeliveryByHour' => 4,
+                        'quantityInStock' => 80,
+                        'imagePath' => '/images/sample-products/product-4.jpg',
+                        'overallRating' => 4.3,
+                        'countReviews' => 67,
+                        'totalPriceSold' => 14000,
+    
+                        'category' => [ 
+                            'id' => 0,
+                            'name' => 'category name'
+                        ],
+    
+                        'orderDetails' => [
+                            'quantityOrdered' => 7
+                        ]
+                    ],
+                    [
+                        'id' => 2,
+                        'name' => 'Product thisdin',
+                        'createdAt' => new Carbon(),
+                        'price' => 150,
+                        'size' => 3,
+                        'discount' => 0.25,
+                        'durationOfDeliveryByHour' => 4,
+                        'quantityInStock' => 80,
+                        'imagePath' => '/images/sample-products/product-5.jpg',
+                        'overallRating' => 4.3,
+                        'countReviews' => 67,
+                        'totalPriceSold' => 14000,
+    
+                        'category' => [ 
+                            'id' => 0,
+                            'name' => 'category name'
+                        ],
+    
+                        'orderDetails' => [
+                            'quantityOrdered' => 7
+                        ]
+                    ]
+                ]
             ]
         ];
 
         return inertia('CartXpressPage/Home', [
             'popularShops' => $popularShops,
             'categoriesWithProducts' => $categoriesWithProducts,
-            'productsInACart' => $productsInACart
+            'shops' => $shops,
+            'hasLogin' => Auth::check()
         ]);
 
     }
@@ -194,6 +293,350 @@ class HomeController extends Controller
 
         $user = [
             'id' => 0,
+            'firstName' => 'myFirstName',
+            'lastName' => 'myLastName',
+            'phone' => 'phone',
+            'email' => 'user@gamil.com',
+            'profileImagePath' => '/images/alphabetical-profile/a-profile.jpg',
+            'backgroundImagePath' => '/images/alphabetical-backgrounds/a-profile-background.jpg',
+            'isHired' => true,
+            'isVendor' => false
+        ];
+
+        if($user['isHired']) {
+
+            $pendingOrders = [
+                [
+                    'id' => 0,
+                    'orderedDate' => new Carbon(),
+                    'products' =>  [
+                        [
+                            'id' => 0,
+                            'name' => 'the first product',
+                            'price' => 55,
+                            'quantityInStock' => 12,
+                            'overallRating' => 4.5,
+                            'discount' => 0.4,
+                            'description' => 'this is a description of sample number 1',
+                            'imagePath' => '/images/sample-products/product-1.jpg',
+                            'orderDetails' => [ 'quantityOrdered' => 5 ]
+                        ]
+                    ]
+                ],
+                [
+                    'id' => 1,
+                    'orderedDate' => new Carbon(),
+                    'products' =>  [
+                        [
+                            'id' => 0,
+                            'name' => 'the secind product',
+                            'price' => 55,
+                            'quantityInStock' => 12,
+                            'overallRating' => 4.5,
+                            'discount' => 0.4,
+                            'description' => 'this is a description of sample number 1',
+                            'imagePath' => '/images/sample-products/product-1.jpg',
+                            'orderDetails' => [ 'quantityOrdered' => 5 ]
+                        ]
+                    ]
+                ]
+            ];
+
+            $customers = [
+                [
+                    'id' => 0,
+                    'firstName' => 'first abc',
+                    'lastName' => 'last abc',
+                    'profileImagePath' => '/images/alphabetical-profile/a-profile.jpg',
+                    'backgroundImagePath' => '/images/alphabetical-backgrounds/a-profile-background.jpg',
+                    'createdAt' => new Carbon(2002, 8, 1),
+                ],
+                [
+                    'id' => 1,
+                    'firstName' => 'xzy sasasa',
+                    'lastName' => 'gsdosdo',
+                    'profileImagePath' => '/images/alphabetical-profile/c-profile.jpg',
+                    'backgroundImagePath' => '/images/alphabetical-backgrounds/d-profile-background.jpg',
+                    'createdAt' => new Carbon(2016, 5, 2)
+                ],
+                [
+                    'id' => 2,
+                    'firstName' => 'asadsd',
+                    'lastName' => 'asdsad',
+                    'profileImagePath' => '/images/alphabetical-profile/e-profile.jpg',
+                    'backgroundImagePath' => '/images/alphabetical-backgrounds/r-profile-background.jpg',
+                    'createdAt' => new Carbon(2022, 2, 10)
+                ]
+            ];
+
+            $employees = [
+                [
+                    'id' => 0,
+                    'firstName' => 'employee first abc',
+                    'lastName' => 'employee last abc',
+                    'profileImagePath' => '/images/alphabetical-profile/m-profile.jpg',
+                    'backgroundImagePath' => '/images/alphabetical-backgrounds/t-profile-background.jpg',
+                    'createdAt' => new Carbon(2002, 8, 1),
+                ],
+                [
+                    'id' => 1,
+                    'firstName' => 'employee xzy sasasa',
+                    'lastName' => 'employee gsdosdo',
+                    'profileImagePath' => '/images/alphabetical-profile/g-profile.jpg',
+                    'backgroundImagePath' => '/images/alphabetical-backgrounds/x-profile-background.jpg',
+                    'createdAt' => new Carbon(2016, 5, 2)
+                ],
+                [
+                    'id' => 2,
+                    'firstName' => 'employee asadsd',
+                    'lastName' => 'employee asdsad',
+                    'profileImagePath' => '/images/alphabetical-profile/e-profile.jpg',
+                    'backgroundImagePath' => 'images/alphabetical-backgrounds/e-profile-background.jpg',
+                    'createdAt' => new Carbon(2022, 2, 10)
+                ]
+            ];
+
+            $needToAssignCustomers = [
+                [
+                    'id' => 0,
+                    'firstName' => 'first abc',
+                    'lastName' => 'last abc',
+                    'profileImagePath' => '/images/alphabetical-profile/a-profile.jpg',
+                    'backgroundImagePath' => '/images/alphabetical-backgrounds/a-profile-background.jpg',
+                    'createdAt' => new Carbon(2002, 8, 1),
+                ],
+                [
+                    'id' => 1,
+                    'firstName' => 'xzy sasasa',
+                    'lastName' => 'gsdosdo',
+                    'profileImagePath' => '/images/alphabetical-profile/c-profile.jpg',
+                    'backgroundImagePath' => '/images/alphabetical-backgrounds/d-profile-background.jpg',
+                    'createdAt' => new Carbon(2016, 5, 2)
+                ],
+                [
+                    'id' => 2,
+                    'firstName' => 'asadsd',
+                    'lastName' => 'asdsad',
+                    'profileImagePath' => '/images/alphabetical-profile/e-profile.jpg',
+                    'backgroundImagePath' => 'images/alphabetical-backgrounds/t-profile-background.jpg',
+                    'createdAt' => new Carbon(2022, 2, 10)
+                ]
+            ];
+
+            $shops = [
+                [
+                    'id' => 0,
+                    'name' => 'my shop 01',
+                    'createdAt' => new Carbon(2002, 01, 01),
+                    'backgorundImagePath' => '/images/sample-shops/sample-shop-1.jpg',
+                    'city' => 'city 01'
+                ],
+                [
+                    'id' => 1,
+                    'name' => 'my shop 02',
+                    'createdAt' => new Carbon(2013, 01, 01),
+                    'backgorundImagePath' => '/images/sample-shops/sample-shop-2.jpg',
+                    'city' => 'city 12'
+                ],
+                [
+                    'id' => 2,
+                    'name' => 'my shop 03',
+                    'createdAt' => new Carbon(20014, 01, 01),
+                    'backgorundImagePath' => '/images/sample-shops/sample-shop-3.webp',
+                    'city' => 'ZYX city'
+                ],
+                [
+                    'id' => 3,
+                    'name' => 'my shop 04',
+                    'createdAt' => new Carbon(2015, 01, 01),
+                    'backgorundImagePath' => '/images/sample-shops/sample-shop-4.png',
+                    'city' => 'sasasasas'
+                ]
+            ];
+            
+            return inertia('CartXpressPage/EmployeeProfile', [
+                'user' => $user,
+                'pendingOrders' => $pendingOrders,
+                'customers' => $customers,
+                'shops' => $shops,
+                'employees' => $employees,
+                'needToAssignCustomers' => $needToAssignCustomers
+            ]);
+
+        } else {
+        
+            $userProfile = [
+                'addressLine1' => 'addressLine1',
+                'addressLine2' => 'addressLine2',
+                'city' => 'city',
+                'states' => 'states',
+                'postalCode' => 'postalCode',
+                'country' => 'country'
+            ];
+
+            $onCartOrders = [
+                [
+                    'id' => 0,
+                    'orderedDate' => new Carbon(),
+                    'products' =>  [
+                        [
+                            'id' => 0,
+                            'name' => 'the first product',
+                            'price' => 55,
+                            'quantityInStock' => 12,
+                            'overallRating' => 4.5,
+                            'discount' => 0.4,
+                            'description' => 'this is a description of sample number 1',
+                            'imagePath' => '/images/sample-products/product-1.jpg',
+                            'orderDetails' => [ 'quantityOrdered' => 5 ]
+                        ],
+                        [
+                            'id' => 1,
+                            'name' => 'product 01',
+                            'price' => 5445,
+                            'quantityInStock' => 12,
+                            'overallRating' => 4.5,
+                            'discount' => 0.4,
+                            'description' => 'this is a description of sample number 1',
+                            'imagePath' => '/images/sample-products/product-3.jpg',
+                            'orderDetails' => [ 'quantityOrdered' => 9 ]
+                        ],
+                        [
+                            'id' => 2,
+                            'name' => 'product 01',
+                            'price' => 55,
+                            'quantityInStock' => 12,
+                            'overallRating' => 4.5,
+                            'discount' => 0.4,
+                            'description' => 'this is a description of sample number 1',
+                            'imagePath' => '/images/sample-products/product-4.jpg',
+                            'orderDetails' => [ 'quantityOrdered' => 5 ]
+                        ]
+                    ]
+                ]
+            ];
+
+            $pendingOrders = [
+                [
+                    'id' => 0,
+                    'orderedDate' => new Carbon(),
+                    'products' =>  [
+                        [
+                            'id' => 0,
+                            'name' => 'the first product',
+                            'price' => 55,
+                            'quantityInStock' => 12,
+                            'overallRating' => 4.5,
+                            'discount' => 0.4,
+                            'description' => 'this is a description of sample number 1',
+                            'imagePath' => '/images/sample-products/product-1.jpg',
+                            'orderDetails' => [ 'quantityOrdered' => 5 ]
+                        ]
+                    ]
+                ]
+            ];
+
+            $deliveredOrders = [
+                [
+                    'id' => 0,
+                    'orderedDate' => new Carbon(),
+                    'products' =>  [
+                        [
+                            'id' => 0,
+                            'name' => 'the first product',
+                            'price' => 55,
+                            'quantityInStock' => 12,
+                            'overallRating' => 4.5,
+                            'discount' => 0.4,
+                            'description' => 'this is a description of sample number 1',
+                            'imagePath' => '/images/sample-products/product-1.jpg',
+                            'orderDetails' => [ 'quantityOrdered' => 5 ]
+                        ]
+                    ]
+                ]
+            ];
+
+            $cancelledOrders = [
+                [
+                    'id' => 0,
+                    'orderedDate' => new Carbon(),
+                    'products' =>  [
+                        [
+                            'id' => 0,
+                            'name' => 'the first product',
+                            'price' => 55,
+                            'quantityInStock' => 12,
+                            'overallRating' => 4.5,
+                            'discount' => 0.4,
+                            'description' => 'this is a description of sample number 1',
+                            'imagePath' => '/images/sample-products/product-1.jpg',
+                            'orderDetails' => [ 'quantityOrdered' => 5 ]
+                        ]
+                    ]
+                ]
+            ];
+
+            $yourShops = [
+                [
+                    'id' => 0,
+                    'name' => 'my shop 01',
+                    'backgorundImagePath' => '/images/sample-shops/sample-shop-1.jpg'
+                ],
+                [
+                    'id' => 1,
+                    'name' => 'my shop 02',
+                    'backgorundImagePath' => '/images/sample-shops/sample-shop-2.jpg'
+                ],
+                [
+                    'id' => 2,
+                    'name' => 'my shop 03',
+                    'backgorundImagePath' => '/images/sample-shops/sample-shop-3.webp'
+                ],
+                [
+                    'id' => 3,
+                    'name' => 'my shop 04',
+                    'backgorundImagePath' => '/images/sample-shops/sample-shop-4.png'
+                ]
+            ];
+
+            $restricted = false;
+
+            if($user['isVendor']) {
+                return inertia('CartXpressPage/VendorProfile', [
+                    'user' => $user,
+                    'userProfile' => $userProfile,
+                    'onCartOrders' => $onCartOrders,
+                    'pendingOrders' => $pendingOrders,
+                    'deliveredOrders' => $deliveredOrders,
+                    'cancelledOrders' => $cancelledOrders,
+                    'yourShops' => $yourShops,
+                    'restricted' => $restricted
+                ]);
+            } else {
+                return inertia('CartXpressPage/CustomerProfile', [
+                    'user' => $user,
+                    'userProfile' => $userProfile,
+                    'onCartOrders' => $onCartOrders,
+                    'pendingOrders' => $pendingOrders,
+                    'deliveredOrders' => $deliveredOrders,
+                    'cancelledOrders' => $cancelledOrders,
+                    'restricted' => $restricted
+                ]);
+            }
+
+        }
+
+    }
+
+    /**
+     * Display a Customer Page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function visitUserCustomer($id) {
+
+        $user = [
+            'id' => 0,
             'email' => 'user@gamil.com',
             'profileImagePath' => '/images/alphabetical-profile/a-profile.jpg',
             'backgroundImagePath' => '/images/alphabetical-backgrounds/a-profile-background.jpg',
@@ -213,128 +656,299 @@ class HomeController extends Controller
             'postalCode' => 'postalCode'
         ];
 
-        $onCartOrders = [
+        $restricted = true;
+
+        return inertia('CartXpressPage/CustomerProfile', [
+            'user' => $user,
+            'userProfile' => $userProfile,
+            'restricted' => $restricted
+        ]);
+
+    }
+
+    /**
+     * Display a checkout page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function checkout()
+    {
+
+        $shops = [
             [
                 'id' => 0,
-                'orderedDate' => new Carbon(),
-                'products' =>  [
+                'name' => 'shopName XYZ',
+    
+                'products' => [
                     [
                         'id' => 0,
-                        'name' => 'the first product',
-                        'price' => 55,
-                        'quantityInStock' => 12,
-                        'overallRating' => 4.5,
-                        'discount' => 0.4,
-                        'description' => 'this is a description of sample number 1',
+                        'name' => 'Product 01',
+                        'createdAt' => new Carbon(),
+                        'price' => 150,
+                        'size' => 3,
+                        'discount' => 0.25,
+                        'durationOfDeliveryByHour' => 4,
+                        'quantityInStock' => 80,
                         'imagePath' => '/images/sample-products/product-1.jpg',
-                        'orderDetails' => [ 'quantityOrdered' => 5 ]
+                        'overallRating' => 4.3,
+                        'countReviews' => 67,
+                        'totalPriceSold' => 14000,
+    
+                        'category' => [ 
+                            'id' => 0,
+                            'name' => 'category name'
+                        ],
+    
+                        'orderDetails' => [
+                            'quantityOrdered' => 7
+                        ]
                     ],
                     [
                         'id' => 1,
-                        'name' => 'product 01',
-                        'price' => 5445,
-                        'quantityInStock' => 12,
-                        'overallRating' => 4.5,
-                        'discount' => 0.4,
-                        'description' => 'this is a description of sample number 1',
-                        'imagePath' => '/images/sample-products/product-3.jpg',
-                        'orderDetails' => [ 'quantityOrdered' => 9 ]
+                        'name' => 'Product 01',
+                        'createdAt' => new Carbon(),
+                        'price' => 150,
+                        'size' => 3,
+                        'discount' => 0.25,
+                        'durationOfDeliveryByHour' => 4,
+                        'quantityInStock' => 80,
+                        'imagePath' => '/images/sample-products/product-2.jpg',
+                        'overallRating' => 4.3,
+                        'countReviews' => 67,
+                        'totalPriceSold' => 14000,
+    
+                        'category' => [ 
+                            'id' => 0,
+                            'name' => 'category name'
+                        ],
+    
+                        'orderDetails' => [
+                            'quantityOrdered' => 7
+                        ]
                     ],
                     [
                         'id' => 2,
-                        'name' => 'product 01',
-                        'price' => 55,
-                        'quantityInStock' => 12,
-                        'overallRating' => 4.5,
-                        'discount' => 0.4,
-                        'description' => 'this is a description of sample number 1',
+                        'name' => 'Product 01',
+                        'createdAt' => new Carbon(),
+                        'price' => 150,
+                        'size' => 3,
+                        'discount' => 0.25,
+                        'durationOfDeliveryByHour' => 4,
+                        'quantityInStock' => 80,
+                        'imagePath' => '/images/sample-products/product-2.jpg',
+                        'overallRating' => 4.3,
+                        'countReviews' => 67,
+                        'totalPriceSold' => 14000,
+    
+                        'category' => [ 
+                            'id' => 0,
+                            'name' => 'category name'
+                        ],
+    
+                        'orderDetails' => [
+                            'quantityOrdered' => 7
+                        ]
+                    ]
+                ]
+            ],
+            [
+                'id' => 0,
+                'name' => 'shopName ABC',
+    
+                'products' => [
+                    [
+                        'id' => 0,
+                        'name' => 'Product 0221',
+                        'createdAt' => new Carbon(),
+                        'price' => 150,
+                        'size' => 3,
+                        'discount' => 0.25,
+                        'durationOfDeliveryByHour' => 4,
+                        'quantityInStock' => 80,
+                        'imagePath' => '/images/sample-products/product-6.jpg',
+                        'overallRating' => 4.3,
+                        'countReviews' => 67,
+                        'totalPriceSold' => 14000,
+    
+                        'category' => [ 
+                            'id' => 0,
+                            'name' => 'category name'
+                        ],
+    
+                        'orderDetails' => [
+                            'quantityOrdered' => 7
+                        ]
+                    ],
+                    [
+                        'id' => 1,
+                        'name' => 'Product1212ewqwewe',
+                        'createdAt' => new Carbon(),
+                        'price' => 150,
+                        'size' => 3,
+                        'discount' => 0.25,
+                        'durationOfDeliveryByHour' => 4,
+                        'quantityInStock' => 80,
                         'imagePath' => '/images/sample-products/product-4.jpg',
-                        'orderDetails' => [ 'quantityOrdered' => 5 ]
+                        'overallRating' => 4.3,
+                        'countReviews' => 67,
+                        'totalPriceSold' => 14000,
+    
+                        'category' => [ 
+                            'id' => 0,
+                            'name' => 'category name'
+                        ],
+    
+                        'orderDetails' => [
+                            'quantityOrdered' => 7
+                        ]
+                    ],
+                    [
+                        'id' => 2,
+                        'name' => 'Product thisdin',
+                        'createdAt' => new Carbon(),
+                        'price' => 150,
+                        'size' => 3,
+                        'discount' => 0.25,
+                        'durationOfDeliveryByHour' => 4,
+                        'quantityInStock' => 80,
+                        'imagePath' => '/images/sample-products/product-5.jpg',
+                        'overallRating' => 4.3,
+                        'countReviews' => 67,
+                        'totalPriceSold' => 14000,
+    
+                        'category' => [ 
+                            'id' => 0,
+                            'name' => 'category name'
+                        ],
+    
+                        'orderDetails' => [
+                            'quantityOrdered' => 7
+                        ]
                     ]
                 ]
             ]
         ];
 
-        $pendingOrders = [
+        $users = [
             [
                 'id' => 0,
-                'orderedDate' => new Carbon(),
-                'products' =>  [
-                    [
-                        'id' => 0,
-                        'name' => 'the first product',
-                        'price' => 55,
-                        'quantityInStock' => 12,
-                        'overallRating' => 4.5,
-                        'discount' => 0.4,
-                        'description' => 'this is a description of sample number 1',
-                        'imagePath' => '/images/sample-products/product-1.jpg',
-                        'orderDetails' => [ 'quantityOrdered' => 5 ]
-                    ]
-                ]
-            ]
-        ];
-
-        $deliveredOrders = [
+                'firstName' => 'A firstname',
+                'lastName' => 'V lastname',
+                'profileImagePath' => '/images/alphabetical-profile/b-profile.jpg',
+                'addressLine1' => 'address line 1 01',
+                'addressLine2' => 'address line 2 01',
+                'city' => 'my city 01',
+                'state' => 'my state 01',
+                'postalCode' => 'my postal code 01',
+                'country' => 'my country 01',
+                'orders' => [ 'comment' => 'my comment 01' ]
+            ],
             [
-                'id' => 0,
-                'orderedDate' => new Carbon(),
-                'products' =>  [
-                    [
-                        'id' => 0,
-                        'name' => 'the first product',
-                        'price' => 55,
-                        'quantityInStock' => 12,
-                        'overallRating' => 4.5,
-                        'discount' => 0.4,
-                        'description' => 'this is a description of sample number 1',
-                        'imagePath' => '/images/sample-products/product-1.jpg',
-                        'orderDetails' => [ 'quantityOrdered' => 5 ]
-                    ]
-                ]
-            ]
-        ];
-
-        $cancelledOrders = [
+                'id' => 1,
+                'firstName' => 'F firstname',
+                'lastName' => 'A lastname',
+                'profileImagePath' => '/images/alphabetical-profile/c-profile.jpg',
+                'addressLine1' => 'address line 1 02',
+                'addressLine2' => 'address line 2 02',
+                'city' => 'my city 02',
+                'state' => 'my state 02',
+                'postalCode' => 'my postal code 02',
+                'country' => 'my country 02',
+                'orders' => [ 'comment' => 'my comment 02' ]
+            ],
             [
-                'id' => 0,
-                'orderedDate' => new Carbon(),
-                'products' =>  [
-                    [
-                        'id' => 0,
-                        'name' => 'the first product',
-                        'price' => 55,
-                        'quantityInStock' => 12,
-                        'overallRating' => 4.5,
-                        'discount' => 0.4,
-                        'description' => 'this is a description of sample number 1',
-                        'imagePath' => '/images/sample-products/product-1.jpg',
-                        'orderDetails' => [ 'quantityOrdered' => 5 ]
-                    ]
-                ]
+                'id' => 2,
+                'firstName' => 'D firstname',
+                'lastName' => 'B lastname',
+                'profileImagePath' => '/images/alphabetical-profile/g-profile.jpg',
+                'addressLine1' => 'address line 1 03',
+                'addressLine2' => 'address line 2 03',
+                'city' => 'my city 03',
+                'state' => 'my state 03',
+                'postalCode' => 'my postal code 03',
+                'country' => 'my country 03',
+                'orders' => [ 'comment' => 'my comment 03' ]
+            ],
+            [
+                'id' => 3,
+                'firstName' => 'C firstname',
+                'lastName' => 'A lastname',
+                'profileImagePath' => '/images/alphabetical-profile/h-profile.jpg',
+                'addressLine1' => 'address line 1 04',
+                'addressLine2' => 'address line 2 04',
+                'city' => 'my city 04',
+                'state' => 'my state 04',
+                'postalCode' => 'my postal code 04',
+                'country' => 'my country 04',
+                'orders' => [ 'comment' => 'my comment 04' ]
+            ],
+            [
+                'id' => 4,
+                'firstName' => 'janwin',
+                'lastName' => 'toralba',
+                'profileImagePath' => '/images/alphabetical-profile/x-profile.jpg',
+                'addressLine1' => 'address line 1 05',
+                'addressLine2' => 'address line 2 05',
+                'city' => 'my city 05',
+                'state' => 'my state 05',
+                'postalCode' => 'my postal code 05',
+                'country' => 'my country 05',
+                'orders' => [ 'comment' => 'my comment 05' ]
+            ],
+            [
+                'id' => 5,
+                'firstName' => 'asask salslas',
+                'lastName' => 'zackasas',
+                'profileImagePath' => '/images/alphabetical-profile/c-profile.jpg',
+                'addressLine1' => 'address line 1 06',
+                'addressLine2' => 'address line 2 06',
+                'city' => 'my city 06',
+                'state' => 'my state 06',
+                'postalCode' => 'my postal code 06',
+                'country' => 'my country 06',
+                'orders' => [ 'comment' => 'my comment 06' ]
             ]
         ];
 
-        if($user['isVendor']) {
-            return inertia('CartXpressPage/VendorProfile', [
-                'user' => $user,
-                'userProfile' => $userProfile,
-                'onCartOrders' => $onCartOrders,
-                'pendingOrders' => $pendingOrders,
-                'deliveredOrders' => $deliveredOrders,
-                'cancelledOrders' => $cancelledOrders
-            ]);
-        } else {
-            return inertia('CartXpressPage/CustomerProfile', [
-                'user' => $user,
-                'userProfile' => $userProfile,
-                'onCartOrders' => $onCartOrders,
-                'pendingOrders' => $pendingOrders,
-                'deliveredOrders' => $deliveredOrders,
-                'cancelledOrders' => $cancelledOrders
-            ]);
-        }
+        $user = [
+            'id' => 0,
+            'firstName' => 'A firstname XYZ',
+            'lastName' => 'V lastname XYZ',
+            'profileImagePath' => '/images/alphabetical-profile/b-profile.jpg',
+            'addressLine1' => 'address line 1 XYZ',
+            'addressLine2' => 'address line 2 XYZ',
+            'city' => 'my city XYZ',
+            'state' => 'my state XYZ',
+            'postalCode' => 'my postal code XYZ',
+            'country' => 'my country XYZ',
+            'orders' => [ 'comment' => 'my comment XYZ' ]
+        ];
 
+        return inertia('CartXpressPage/Checkout', [
+            'shops' => $shops,
+            'users' => $users,
+            'user' => $user
+        ]);
+
+    }
+
+    /**
+     * Order all checkout items.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function order(Request $request) {
+
+        $request->addressLine1;
+        $request->addressLine2;
+        $request->city;
+        $request->state;
+        $request->postalCode;
+        $request->country;
+        $request->comment;
+        $request->shops;
+        
+        return redirect()->route('home');
     }
 
 }

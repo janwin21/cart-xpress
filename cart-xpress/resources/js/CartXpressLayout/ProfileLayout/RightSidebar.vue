@@ -4,7 +4,7 @@
 
         <ProfileHeader :user="props.user" :user-profile="props.userProfile" />
 
-        <div class="wrapper bg-xpress-gray-100">
+        <div v-if="!props.restricted" class="wrapper bg-xpress-gray-100">
 
             <!-- on-cart -->
             <Order :orders="props.onCartOrders" 

@@ -34,7 +34,7 @@
     // actions & composables
     import callRegister from '../../Actions/register';
     import callProfile from '../../Actions/profile';
-import { provide } from '@vue/runtime-core';
+    import { provide } from '@vue/runtime-core';
 
     callRegister();
     callProfile();
@@ -45,10 +45,13 @@ import { provide } from '@vue/runtime-core';
         onCartOrders: Array,
         pendingOrders: Array,
         deliveredOrders: Array,
-        cancelledOrders: Array
+        cancelledOrders: Array,
+        yourShops: Array,
+        restricted: Boolean
     });
 
-    provide('userProps', userProps)
+    provide('userProps', userProps);
+    provide('yourShops', userProps.yourShops);
 
 </script>
 

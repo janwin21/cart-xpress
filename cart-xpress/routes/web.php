@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ShopsController;
@@ -51,16 +53,11 @@ Route::get('/register', [HomeController::class, 'register'])->name('register');
 
 // Profile Page
 Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
+Route::get('/profile/{id}', [HomeController::class, 'visitUserCustomer'])->name('profile.visit');
 
-// Shop Form Page
-Route::get('/form/shop', function() {
-    return inertia('CartXpressPage/ShopForm');
-})->name('pages.form.shop');
-
-// checkout Page
-Route::get('/checkout', function() {
-    return inertia('CartXpressPage/Checkout');
-})->name('pages.checkout');
+// Checkout & Order Page
+Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
+Route::post('/checkout/order', [HomeController::class, 'order'])->name('order');
 
 // CUSTOMER
 Route::resource('customers', CustomersController::class);
@@ -70,3 +67,11 @@ Route::resource('products', ProductsController::class);
 
 // SHOP
 Route::resource('shops', ShopsController::class);
+
+// CATEGORIES
+Route::resource('categories', CategoriesController::class);
+
+// EMPLOYEE
+Route::resource('employees', EmployeesController::class);
+Route::post('employees/assign/{employeeID}/{customerID}', [EmployeesController::class, 'assign'])
+    ->name('employees.assign');
