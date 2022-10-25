@@ -46,10 +46,13 @@ Route::middleware([
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Login Page
-Route::get('/login', [HomeController::class, 'login'])->name('login');
+Route::get('profile/login', [HomeController::class, 'login'])->name('profile.login');
 
 // Register Page
-Route::get('/register', [HomeController::class, 'register'])->name('register');
+Route::get('profile/register', [HomeController::class, 'register'])->name('profile.register');
+
+// Logout
+Route::post('profile/logout', [HomeController::class, 'logout'])->name('profile.logout');
 
 // Profile Page
 Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
@@ -64,6 +67,8 @@ Route::resource('customers', CustomersController::class);
 
 // PRODUCTS
 Route::resource('products', ProductsController::class);
+Route::get('products/create/{shopID}', [ProductsController::class, 'createWithShopID'])
+    ->name('products.createWithShopID');
 
 // SHOP
 Route::resource('shops', ShopsController::class);

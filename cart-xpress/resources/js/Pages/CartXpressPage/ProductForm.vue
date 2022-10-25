@@ -62,7 +62,7 @@
                                             <input class="roboto text-xpress-gray-300 
                                                 bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
                                                 fs-xpress-sm-300 rounded w-100 mt-1 px-2" 
-                                                type="number" name="size" required
+                                                type="number" step="0.01" name="size" required
                                                 v-model="productForm.size">
                                         </div>
                                     </div>
@@ -79,7 +79,7 @@
                                             <input class="roboto text-xpress-gray-300 
                                                 bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
                                                 fs-xpress-sm-300 rounded w-100 mt-1 px-2"  
-                                                type="text" name="quantityInStock" required
+                                                type="number" name="quantityInStock" required
                                                 v-model="productForm.quantityInStock">
                                         </div>
                                     </div>
@@ -224,7 +224,7 @@
                                             <input class="roboto text-xpress-gray-300 
                                                 bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
                                                 fs-xpress-sm-300 rounded w-100 mt-1 px-2" 
-                                                type="number" name="price" required 
+                                                type="number" step="0.01" name="price" required 
                                                 v-model="productForm.price" />
                                         </div>
                                     </div>
@@ -241,7 +241,7 @@
                                             <input class="roboto text-xpress-gray-300 
                                                 bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
                                                 fs-xpress-sm-300 rounded w-100 mt-1 px-2" 
-                                                type="number" name="discount" required
+                                                type="number" step="0.01" name="discount" required
                                                 v-model="productForm.discount" />
                                         </div>
                                     </div>
@@ -259,7 +259,7 @@
                                             <input class="roboto text-xpress-gray-300 
                                                 bg-xpress-gray-500 border-0 py-1 fw-xpress-500 
                                                 fs-xpress-sm-300 rounded w-100 mt-1 px-2" 
-                                                type="number" name="durationOfDeliveryByHour" required
+                                                type="number" step="0.01" name="durationOfDeliveryByHour" required
                                                 v-model="productForm.durationOfDeliveryByHour" />
                                         </div>
                                     </div>
@@ -318,7 +318,15 @@
 
     callRegister();
 
+    const props = defineProps({
+        categories: Array,
+        yourShops: Array,
+        shopID: Number,
+        hasLogin: Boolean
+    });
+
     const productForm = useForm({
+        shopID: 0,
         name: '',
         size: '1',
         description: '',
@@ -330,10 +338,7 @@
         categoryName: ''
     });
 
-    const props = defineProps({
-        categories: Array,
-        yourShops: Array
-    });
+    productForm.shopID = props.shopID;
 
     const searchInput = ref(null);
 
@@ -341,6 +346,7 @@
         productForm.categoryName = event.currentTarget.dataset.name;
     }
 
+    provide('hasLogin', reactive(props.hasLogin));
     provide('yourShops', props.yourShops);
 
     // SEARCH

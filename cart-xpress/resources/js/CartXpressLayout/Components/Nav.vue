@@ -18,51 +18,54 @@
 
                 <!-- nav-links -->
                 <NavLink :class="{ 'text-xpress-green-200': 
-                                        ($page.component === 'CartXpressPage/Home' ||
-                                         $page.component === 'CartXpressPage/Login' ||
-                                         $page.component === 'CartXpressPage/Register') 
-                                 }" 
-                         :href="route('home')">
+                    ($page.component === 'CartXpressPage/Home') }" 
+                    :href="route('home')">
                     <i class="fa-solid fa-house me-1"></i>Home</NavLink>
 
                 <NavLink :class="{ 'text-xpress-green-200': 
-                                        ($page.component === 'CartXpressPage/CustomerProfile' ||
-                                         $page.component === 'CartXpressPage/VendorProfile' ||
-                                         $page.component === 'CartXpressPage/ShopForm') 
-                                 }"
-                         :href="route('profile')">
+                    ($page.component === 'CartXpressPage/CustomerProfile' ||
+                    $page.component === 'CartXpressPage/VendorProfile') }"
+                    :href="route('profile')">
                     <i class="fa-solid fa-user me-1"></i>Profile</NavLink>   
                 
                 <template v-if="hasLogin">
                             
-                    <button class="nav-item nav-link text-light nato-sans-jp 
+                    <form @submit.prevent="logout">
+
+                        <button class="nav-item nav-link text-light nato-sans-jp 
                             fs-xpress-sm-300 align-self-center ms-1 px-5
                             btn bg-xpress-purple-100
                             bg-hover-xpress-to-gray-200 ms-5"
-                            href="#" @click.prevent="logout"
+                            type="submit"
                             style="padding-top: 0.2em; padding-bottom: 0.2em;">
-                            Logout</button>
+                            Logout
+                        </button>
+
+                    </form>
 
                 </template>
                 <template v-else>
                 
                     <!-- nav buttons -->
                     <Link class="nav-item nav-link text-light nato-sans-jp 
-                            fs-xpress-sm-300 align-self-center ms-3 px-5
-                            btn bg-xpress-orange-100
-                            bg-hover-xpress-to-gray-200" 
-                            :href="route('login')"
-                            style="padding-top: 0.2em; padding-bottom: 0.2em;">
-                            Login</Link>
+                        fs-xpress-sm-300 align-self-center ms-3 px-5
+                        btn bg-xpress-orange-100
+                        bg-hover-xpress-to-gray-200" 
+                        :href="route('profile.login')"
+                        style="padding-top: 0.2em; padding-bottom: 0.2em;">
+                        Login
+                    </Link>
                             
                     <Link class="nav-item nav-link text-light nato-sans-jp 
-                            fs-xpress-sm-300 align-self-center ms-1 px-5
-                            btn bg-xpress-purple-100
-                            bg-hover-xpress-to-gray-200"
-                            :href="route('register')"
-                            style="padding-top: 0.2em; padding-bottom: 0.2em;">
-                            Register</Link>
-                    </template>
+                        fs-xpress-sm-300 align-self-center ms-1 px-5
+                        btn bg-xpress-purple-100
+                        bg-hover-xpress-to-gray-200"
+                        :href="route('profile.register')"
+                        style="padding-top: 0.2em; padding-bottom: 0.2em;">
+                        Register
+                    </Link>
+
+                </template>
 
             </div>
         </div>
@@ -76,11 +79,13 @@
     import NavLink from './SubComponent/NavLink.vue';
     import { Inertia } from '@inertiajs/inertia';
 
-    const hasLogin = inject('hasLogin');
+    let hasLogin = inject('hasLogin');
 
     function logout() {
-        Inertia.post(route('logout'));
+        Inertia.post(route('profile.logout'));
+        location.reload();
     }
+
 </script>
 
 <style lang="scss" scoped>

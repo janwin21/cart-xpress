@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class CustomersController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('redirect.home');
+    }
+    
     /**
      * Display a listing of the resource.
      *

@@ -10,8 +10,8 @@
     <p class="lato text-xpress-yellow-200 
               fs-xpress-sm-400 fw-xpress-400">
               <span class="text-xpress-gray-300 me-3">
-                {{ props.product.discount * 100 }}%</span>
-              P{{ props.product.price }} price</p>
+                {{ nFormatter(props.product.discount * 100, 2) }}%</span>
+              P{{ nFormatter(props.product.price) }} price</p>
 
     <p class="lato justify 
               fs-xpress-sm-300 fw-xpress-200">
@@ -20,20 +20,22 @@
     <div class="d-flex justify-content-center align-items-center pt-2">
         <div class="w-100 pe-1">
             <Link class="btn bg-xpress-orange-100 
-                           bg-hover-xpress-to-gray-200 
-                           rounded-0 text-light py-1 px-4 w-100
-                           fs-xpress-sm-200 fw-xpress-500"
-                           :id="props.product.shop.id">
-                           Visit Shop</Link>
+                bg-hover-xpress-to-gray-200 
+                rounded-0 text-light py-1 px-4 w-100
+                fs-xpress-sm-200 fw-xpress-500"
+                :id="props.product.shop.id">
+                Visit Shop
+            </Link>
         </div>
 
         <div class="w-100 ps-1">
             <Link class="btn bg-xpress-purple-300 
-                           bg-hover-xpress-to-gray-200 
-                           rounded-0 text-light py-1 px-4 w-100
-                           fs-xpress-sm-200 fw-xpress-500"
-                           :href="route('products.show', props.product.id)">
-                           Visit Product</Link>
+                bg-hover-xpress-to-gray-200 
+                rounded-0 text-light py-1 px-4 w-100
+                fs-xpress-sm-200 fw-xpress-500"
+                :href="route('products.show', props.product.id)">
+                Visit Product
+            </Link>
         </div>
     </div>
 
@@ -47,10 +49,13 @@
 
 <script setup>
     import { Link } from '@inertiajs/inertia-vue3';
+    import { useNFormatter } from '../../../Composables/UseNFormatter';
 
     const props = defineProps({
         product: Object
     });
+
+    const { nFormatter } = useNFormatter();
 
 </script>
 

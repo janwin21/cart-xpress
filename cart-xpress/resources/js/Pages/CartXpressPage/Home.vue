@@ -114,14 +114,18 @@
         popularShops: Array,
         categoriesWithProducts: Array,
         shops: Array,
+        topCategories: Array,
+        popularProducts: Array,
         hasLogin: Boolean
     });
 
     // DATA
-    provide('hasLogin', props.hasLogin)
+    provide('hasLogin', reactive(props.hasLogin))
     provide('popularShops', props.popularShops);
+    provide('popularProducts', props.popularProducts);
     provide('categoriesWithProducts', removeEmptyCategories(props.categoriesWithProducts));
     provide('shops', props.shops);
+    provide('topCategories', props.topCategories);
     provide('productsInRandomCategory', 
         reactive(
             _.sample(

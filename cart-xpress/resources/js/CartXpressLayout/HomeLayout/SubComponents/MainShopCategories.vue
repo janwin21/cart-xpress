@@ -6,19 +6,20 @@
 
             <!-- cateogory title header -->
             <div class="shop-content__header 
-                        px-3 pb-1 pt-3 border-1 
-                        border-bottom border-light">
+                px-3 pb-1 pt-3 border-1 
+                border-bottom border-light">
 
                 <h5 class="text-light roboto w-100 
-                           fs-xpress-sm-500 
-                           d-flex flex-row justify-content-between align-items-center">
+                    fs-xpress-sm-500 
+                    d-flex flex-row justify-content-between align-items-center">
 
-                    <span>Categories</span>
+                    <span>Top Categories</span>
 
                     <img class="float-end" 
                          src="/images/icons/input-icon-2.png" alt="" 
                          style="width: 1.5em;">
                 </h5>
+
             </div>
 
             <!-- category content -->
@@ -29,8 +30,9 @@
                     <template v-for="category in categories" :key="category.categoryID">
 
                         <CategoryLink :categoryID="category.categoryID"
-                                    :name="category.name" 
-                                    :backgroundImagePath="category.backgroundImagePath"/>
+                            :name="category.name" 
+                            :backgroundImagePath="category.backgroundImagePath"/>
+
                     </template>
                     
                 </div>
@@ -43,6 +45,7 @@
                         d-flex justify-content-between align-items-center"
                  id="category-footer">
 
+                <!--
                 <button class="btn bg-xpress-purple-100
                             bg-hover-xpress-to-gray-200
                             rounded text-light py-1 px-4 roboto
@@ -53,7 +56,7 @@
                             bg-hover-xpress-to-gray-200
                             rounded text-light py-1 px-4 roboto
                             fs-xpress-sm-200 fw-xpress-500">
-                            Next</button>
+                            Next</button>-->
             </div>
 
         </div>
@@ -62,40 +65,9 @@
 
 <script setup>
     import CategoryLink from '../Elements/CategoryLink.vue';
-    import { reactive } from 'vue';
+    import { reactive, inject } from 'vue';
 
-    const categories = reactive([
-        {
-            categoryID: 0,
-            name: 'car',
-            backgroundImagePath: '/images/sample-categories/car.jpg'
-        },
-        {
-            categoryID: 1,
-            name: 'bike',
-            backgroundImagePath: '/images/sample-categories/bike.jpg'
-        },
-        {
-            categoryID: 2,
-            name: 'appliances',
-            backgroundImagePath: '/images/sample-categories/appliances.webp'
-        },
-        {
-            categoryID: 3,
-            name: 'toy',
-            backgroundImagePath: '/images/sample-categories/toy.jpg'
-        },
-        {
-            categoryID: 4,
-            name: 'kitchen',
-            backgroundImagePath: '/images/sample-categories/kitchen.jpg'
-        },
-        {
-            categoryID: 5,
-            name: 'tools',
-            backgroundImagePath: '/images/sample-categories/tools.webp'
-        }
-    ]);
+    const categories = inject('topCategories');
 
 </script>
 

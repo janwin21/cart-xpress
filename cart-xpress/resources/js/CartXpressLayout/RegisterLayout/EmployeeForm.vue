@@ -228,7 +228,7 @@
         profileImagePath: '',
         backgroundImagePath: '',
         acceptAgreement: false,
-        isHired: false
+        isHired: true
     });
 
     const employeeSubmit = () => {

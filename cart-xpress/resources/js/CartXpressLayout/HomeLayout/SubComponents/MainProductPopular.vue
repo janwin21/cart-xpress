@@ -34,7 +34,7 @@
 
                                     <h5 class="roboto text-xpress-orange-200 
                                                m-0 p-0 fs-xpress-sm-900">
-                                               P{{ popularProducts[0].price }}</h5>
+                                               P{{ nFormatter(popularProducts[0].price, 1) }}</h5>
 
                                     <p class="roboto text-xpress-gray-300
                                               m-0 fs-xpress-sm-200">
@@ -84,7 +84,7 @@
 
                                 <h5 class="roboto text-xpress-orange-200 
                                            m-0 p-0 fs-xpress-sm-900">
-                                           P{{ popularProducts[3].price }}</h5>
+                                           P{{ nFormatter(popularProducts[3].price, 1) }}</h5>
 
                                 <p class="roboto text-xpress-gray-300
                                           m-0 fs-xpress-sm-200">
@@ -119,52 +119,11 @@
 
 <script setup>
     import { Link } from '@inertiajs/inertia-vue3';
-    import { reactive } from 'vue';
+    import { inject } from 'vue';
+    import { useNFormatter } from '../../../Composables/UseNFormatter';
     
-    const popularProducts = reactive([
-        {
-            id: 0,
-            name: 'product 01',
-            price: 55,
-            quantityInStock: 12,
-            imagePath: '/images/sample-products/product-1.jpg'
-        },
-        {
-            id: 1,
-            name: 'product 02',
-            price: 100,
-            quantityInStock: 32,
-            imagePath: '/images/sample-products/product-2.jpg'
-        },
-        {
-            id: 2,
-            name: 'product 03',
-            price: 11,
-            quantityInStock: 12,
-            imagePath: '/images/sample-products/product-3.jpg'
-        },
-        {
-            id: 3,
-            name: 'product 04',
-            price: 10000,
-            quantityInStock: 90,
-            imagePath: '/images/sample-products/product-4.jpg'
-        },
-        {
-            id: 4,
-            name: 'product 05',
-            price: 1255,
-            quantityInStock: 12,
-            imagePath: '/images/sample-products/product-5.jpg'
-        },
-        {
-            id: 5,
-            name: 'product 06',
-            price: 10,
-            quantityInStock: 11,
-            imagePath: '/images/sample-products/product-6.jpg'
-        }
-    ]);
+    const popularProducts = inject('popularProducts');
+    const { nFormatter } = useNFormatter();
 
 </script>
 

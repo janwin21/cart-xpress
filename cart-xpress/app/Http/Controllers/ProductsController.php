@@ -2,11 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\YourShopsResource;
+use App\Models\Categories;
+use App\Models\Products;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Traits\UseUpload;
 
 class ProductsController extends Controller
 {
+    use UseUpload;
+
+    public function __construct()
+    {
+        $this->middleware('redirect.home');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,44 +37,25 @@ class ProductsController extends Controller
      */
     public function create()
     {
+        //
+    }
 
-        $categories = [
-            [ 'id' => 0, 'name' => 'Category 01' ],
-            [ 'id' => 1, 'name' => 'Category 02' ],
-            [ 'id' => 2, 'name' => 'Category 03' ],
-            [ 'id' => 3, 'name' => 'Category 04' ],
-            [ 'id' => 4, 'name' => 'Category 05' ],
-            [ 'id' => 5, 'name' => 'ABC 05' ],
-            [ 'id' => 6, 'name' => 'ZYX 05' ],
-            [ 'id' => 8, 'name' => 'STR 05' ]
-        ];
+    /**
+     * Show the form for creating a new resource with shop id.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createWithShopID($shopID) 
+    {
 
-        $yourShops = [
-            [
-                'id' => 0,
-                'name' => 'my shop 01',
-                'backgorundImagePath' => '/images/sample-shops/sample-shop-1.jpg'
-            ],
-            [
-                'id' => 1,
-                'name' => 'my shop 02',
-                'backgorundImagePath' => '/images/sample-shops/sample-shop-2.jpg'
-            ],
-            [
-                'id' => 2,
-                'name' => 'my shop 03',
-                'backgorundImagePath' => '/images/sample-shops/sample-shop-3.webp'
-            ],
-            [
-                'id' => 3,
-                'name' => 'my shop 04',
-                'backgorundImagePath' => '/images/sample-shops/sample-shop-4.png'
-            ]
-        ];
+        $yourShops = YourShopsResource::collection(
+            User::find(Auth::user()->id)->customer->shops);
 
         return inertia('CartXpressPage/ProductForm', [
-            'categories' => $categories,
-            'yourShops' => $yourShops
+            'categories' => Categories::all(),
+            'yourShops' => $yourShops,
+            'shopID' => $shopID,
+            'hasLogin' => Auth::check() 
         ]);
 
     }
@@ -74,8 +68,24 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        
-        dd($request, $request->file('imagePath'));
+
+        $imagePath = $this->upload($request->file('imagePath'), 'stored-product');
+
+        Products::create([
+            'shopID' => $request->shopID,
+            'categoryID' => Categories::where('name', $request->categoryName)->first()->id,
+            'name' => $request->name,
+            'size' => $request->size,
+            'description' => $request->description,
+            'quantityInStock' => $request->quantityInStock,
+            'price' => $request->price,
+            'discount' => $request->discount,
+            'durationOfDeliveryByHour' => $request->durationOfDeliveryByHour,
+            'categoryName' => $request->categoryName,
+            'imagePath' => $imagePath 
+        ]);
+
+        return redirect()->route('shops.show', $request->shopID);
 
     }
 

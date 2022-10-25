@@ -40,8 +40,11 @@
     provide('dynamicSortBy', dynamicSortBy);
 
     const props = defineProps({
-        product: Object
+        product: Object,
+        hasLogin: Boolean
     });
+
+    provide('hasLogin', reactive(props.hasLogin));
 
 </script>
 

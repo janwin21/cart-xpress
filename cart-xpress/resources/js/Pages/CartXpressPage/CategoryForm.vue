@@ -145,7 +145,7 @@
     import RegisterCover from '../../CartXpressLayout/RegisterLayout/RegisterCover.vue';
     import VendorSidebar from '../../CartXpressLayout/ProfileLayout/VendorSidebar.vue';
     import { useForm } from '@inertiajs/inertia-vue3';
-    import { provide } from 'vue';
+    import { provide, reactive } from 'vue';
 
     // actions & composables
     import { useFile } from '../../Composables/UseFile';
@@ -161,9 +161,11 @@
     });
 
     const userProps = defineProps({
-        yourShops: Array
+        yourShops: Array,
+        hasLogin: Boolean
     });
 
+    provide('hasLogin', reactive(userProps.hasLogin))
     provide('yourShops', userProps.yourShops);
 
 </script>

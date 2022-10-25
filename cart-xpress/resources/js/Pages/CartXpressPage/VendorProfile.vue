@@ -5,7 +5,7 @@
         <RegisterCover>
 
             <!-------------------------------- Cart Xpress Profile Main START -->
-            <div class="register">
+            <div class="register w-100">
 
                 <div class="row">
 
@@ -25,6 +25,8 @@
 </template>
 
 <script setup>
+    import { reactive, provide } from 'vue';
+
     // main components
     import CartXpressAppLayout from '../CartXpressAppLayout.vue';
     import RegisterCover from '../../CartXpressLayout/RegisterLayout/RegisterCover.vue';
@@ -34,7 +36,6 @@
     // actions & composables
     import callRegister from '../../Actions/register';
     import callProfile from '../../Actions/profile';
-    import { provide } from '@vue/runtime-core';
 
     callRegister();
     callProfile();
@@ -47,9 +48,11 @@
         deliveredOrders: Array,
         cancelledOrders: Array,
         yourShops: Array,
-        restricted: Boolean
+        restricted: Boolean,
+        hasLogin: Boolean
     });
-
+    
+    provide('hasLogin', reactive(userProps.hasLogin))
     provide('userProps', userProps);
     provide('yourShops', userProps.yourShops);
 

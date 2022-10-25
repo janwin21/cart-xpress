@@ -2,11 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ShopResource;
+use App\Http\Resources\YourShopsResource;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Http\Traits\UseUpload;
+use App\Models\Shops;
+use App\Models\User;
+use App\Models\Vendors;
+use Illuminate\Support\Facades\Auth;
 
 class ShopsController extends Controller
 {
+
+    use UseUpload;
+
+    public function __construct()
+    {
+        $this->middleware('redirect.home');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,31 +40,12 @@ class ShopsController extends Controller
     public function create()
     {
 
-        $yourShops = [
-            [
-                'id' => 0,
-                'name' => 'my shop 01',
-                'backgorundImagePath' => '/images/sample-shops/sample-shop-1.jpg'
-            ],
-            [
-                'id' => 1,
-                'name' => 'my shop 02',
-                'backgorundImagePath' => '/images/sample-shops/sample-shop-2.jpg'
-            ],
-            [
-                'id' => 2,
-                'name' => 'my shop 03',
-                'backgorundImagePath' => '/images/sample-shops/sample-shop-3.webp'
-            ],
-            [
-                'id' => 3,
-                'name' => 'my shop 04',
-                'backgorundImagePath' => '/images/sample-shops/sample-shop-4.png'
-            ]
-        ];
+        $yourShops = YourShopsResource::collection(
+            User::find(Auth::user()->id)->customer->shops);
 
         return inertia('CartXpressPage/ShopForm', [
-            'yourShops' => $yourShops
+            'yourShops' => $yourShops,
+            'hasLogin' => Auth::check() 
         ]);
     }
 
@@ -61,7 +57,33 @@ class ShopsController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request, $request->file('backgroundImagePath'));
+
+        $user = User::where('id', Auth::user()->id)->first();
+
+        if(!$user->isVendor) {
+            $user->isVendor = true;
+            $user->update();
+        }
+
+        $backgroundImagePath = $this->upload($request->file('backgroundImagePath'), 'stored-shop');
+
+        Shops::create([
+            'customerID' => $user->customer->id,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'addressLine1' => $request->addressLine1,
+            'addressLine2' => $request->addressLine2,
+            'city' => $request->city,
+            'state' => $request->state,
+            'postalCode' => $request->postalCode,
+            'country' => $request->country,
+            'description' => $request->description,
+            'backgroundImagePath' => $backgroundImagePath
+        ]);
+
+        return redirect()->route('profile');
+
     }
 
     /**
@@ -73,26 +95,7 @@ class ShopsController extends Controller
     public function show($id)
     {
 
-        $shop = [
-            'id' => 0,
-            'name' => 'Shop 12232312',
-            'city' => 'Paranaque',
-            'state' => 'Metro Manila',
-            'country' => 'Philippines',
-            'email' => 'shop@email.com',
-            'postalCode' => '1764',
-            'phone' => '1234567890',
-            'addressLine1' => 'adressline1 1234566899',
-            'addressLine2' => 'adressline2 097531',
-            'backgroundImagePath' => '/images/sample-shops/sample-shop-1.jpg',
-    
-            'mainVendor' => [
-                'id' => 0,
-                'firstName' => 'myFirstame',
-                'lastName' => 'myLastName',
-                'profileImagePath' => '/images/alphabetical-profile/a-profile.jpg'
-            ]
-        ];
+        $shop = new ShopResource(Shops::where('id', $id)->first());
 
         $categoriesWithProducts = [
             [
@@ -168,7 +171,8 @@ class ShopsController extends Controller
         
         return inertia('CartXpressPage/Shop', [
             'shop' => $shop,
-            'categoriesWithProducts' => $categoriesWithProducts
+            'categoriesWithProducts' => $categoriesWithProducts,
+            'hasLogin' => Auth::check() 
         ]);
 
     }

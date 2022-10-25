@@ -7,10 +7,13 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
+use App\Http\Traits\UseUpload;
+use App\Models\Customers;
 
 class CreateNewUser implements CreatesNewUsers
 {
     use PasswordValidationRules;
+    use UseUpload;
 
     /**
      * Validate and create a newly registered user.
@@ -20,14 +23,6 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
-        /*
-        if($input['isHired']) {
-            dd('EMPLOYEEE', $input);
-        } else {
-            dd('CUSTOMER', $input);
-        }
-        */
-        
 
         Validator::make($input, [
             'firstName' => ['required', 'string', 'max:255'],
@@ -36,16 +31,37 @@ class CreateNewUser implements CreatesNewUsers
             // 'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
 
-        return User::create([
+        $profileImagePath = $this->upload($input['profileImagePath'], 'stored-profile');
+        $backgroundImagePath = $this->upload($input['backgroundImagePath'], 'stored-background');
+
+        $user = User::create([
             'firstName' => $input['firstName'],
             'lastName' => $input['lastName'],
             'phone' => $input['phone'],
-            'profileImagePath' => $input['profileImagePath'],
-            'backgroundImagePath' => $input['backgroundImagePath'],
+            'profileImagePath' => $profileImagePath,
+            'backgroundImagePath' => $backgroundImagePath,
             'acceptAgreement' => $input['acceptAgreement'],
             'isHired' => $input['isHired'],
+            'isVendor' => $input['isVendor'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
+
+        if(!$input['isHired']) {
+
+            Customers::create([    
+                'userID' => $user->id,
+                'addressLine1' => $input['customer']['addressLine1'],
+                'addressLine2' => $input['customer']['addressLine2'],
+                'city' => $input['customer']['city'],
+                'state' => $input['customer']['state'],
+                'postalCode' => $input['customer']['postalCode'],
+                'country' => $input['customer']['country'],
+                'creditLimit' => $input['customer']['creditLimit']
+            ]);
+
+        }
+
+        return $user;
     }
 }

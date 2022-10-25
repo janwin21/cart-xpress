@@ -86,6 +86,8 @@
 </template>
 
 <script setup>
+    import { provide, reactive } from 'vue';
+
     // main components
     import CartXpressAppLayout from '../CartXpressAppLayout.vue';
     import RegisterCover from '../../CartXpressLayout/RegisterLayout/RegisterCover.vue';
@@ -99,7 +101,6 @@
     // actions & composables
     import callRegister from '../../Actions/register';
     import callProfile from '../../Actions/profile';
-    import { provide } from 'vue';
 
     callRegister();
     callProfile();
@@ -110,9 +111,13 @@
         customers: Array,
         shops: Array,
         employees: Object,
-        needToAssignCustomers: Object
+        needToAssignCustomers: Object,
+        hasLogin: Boolean
     });
 
+    console.log(props.hasLogin);
+    
+    provide('hasLogin', reactive(props.hasLogin))
     provide('customers', props.customers);
     provide('employees', props.employees);
     provide('needToAssignCustomers', props.needToAssignCustomers);

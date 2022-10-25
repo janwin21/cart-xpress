@@ -31,6 +31,7 @@ class User extends Authenticatable
         'backgroundImagePath',
         'acceptAgreement',
         'isHired',
+        'isVendor',
         'email',
         'password',
     ];
@@ -64,4 +65,8 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function customer() {
+        return $this->hasOne(Customers::class, 'userID');
+    }
 }

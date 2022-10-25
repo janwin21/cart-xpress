@@ -311,6 +311,7 @@
         backgroundImagePath: '',
         acceptAgreement: false,
         isHired: false,
+        isVendor: false,
         customer: customerForm
     });
 

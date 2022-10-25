@@ -3,11 +3,34 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Http\Controllers\Auth\LoginRequest;
+use App\Http\Resources\CategoriesWithProductsResource;
+use App\Http\Resources\PopularProductsResource;
+use App\Http\Resources\PopularShopsResource;
+use App\Http\Resources\TopCategoriesResource;
+use App\Http\Resources\YourProfileResource;
+use App\Http\Resources\YourShopsResource;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Traits\UseUpload;
+use App\Models\Categories;
+use App\Models\Products;
+use App\Models\Shops;
 
 class HomeController extends Controller
 {
+    use UseUpload;
+
+    function __construct()
+    {
+        
+        $this->middleware('redirect.home')
+            ->except(['index', 'login', 'register']);
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,85 +38,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
-        $popularShops =  [
-            [ 'id'=> 0, 'backgroundImagePath' => '/images/sample-shops/sample-shop-2.jpg'],
-            [ 'id'=> 1, 'backgroundImagePath' => '/images/sample-shops/sample-shop-3.webp'],
-            [ 'id'=> 2, 'backgroundImagePath' => '/images/sample-shops/sample-shop-1.jpg'],
-            [ 'id'=> 3, 'backgroundImagePath' => '/images/sample-shops/sample-shop-4.png']
-        ];
+        // display top 4 shops
+        $popularShops = PopularShopsResource::collection(
+            Shops::orderBy('created_at', 'DESC')->limit(4)->get());
 
-        $categoriesWithProducts = [
-            [
-                'id' => 0, 
-                'name' => 'casr', 
-                'imagePath' => '/images/sample-categories/car.jpg',
-                'products' => [
-                    [ 
-                        'id' => 0,
-                        'name' => 'f 01',
-                        'overallRating' => 5,
-                        'price' => 90,
-                        'discount' => 0.45,
-                        'itemSold' => 15,
-                        'createdAt' => new Carbon(),
-                        'quantityInStock' => 25,
-                        'imagePath' => '/images/sample-products/product-4.jpg',
-                        'shop' => [ 'id' => 0 ]
-                    ],
-                    [
-                        'id' => 2,
-                        'name' => 'z 01',
-                        'overallRating' => 1.5,
-                        'price' => 110,
-                        'discount' => 0.45,
-                        'itemSold' => 12,
-                        'createdAt' => new Carbon(),
-                        'quantityInStock' => 25,
-                        'imagePath' => '/images/sample-products/product-1.jpg',
-                        'shop' => [ 'id' => 1 ]
-                    ]
-                ]
-            ], 
-            [
-                'id' => 2, 
-                'name' => 'train', 
-                'imagePath' => '/images/sample-categories/car.jpg',
-                'products' => [
-                    [ 
-                        'id' => 0,
-                        'name' => 'f 01',
-                        'overallRating' => 5,
-                        'price' => 90,
-                        'discount' => 0.45,
-                        'itemSold' => 15,
-                        'createdAt' => new Carbon(),
-                        'quantityInStock' => 25,
-                        'imagePath' => '/images/sample-products/product-4.jpg',
-                        'shop' => [ 'id' => 0 ]
-                    ]
-                ]
-            ], 
-            [
-                'id' => 1, 
-                'name' => 'train', 
-                'imagePath' => '/images/sample-categories/car.jpg',
-                'products' => [
-                    [ 
-                        'id' => 0,
-                        'name' => 'f 01',
-                        'overallRating' => 5,
-                        'price' => 90,
-                        'discount' => 0.45,
-                        'itemSold' => 15,
-                        'createdAt' => new Carbon(),
-                        'quantityInStock' => 25,
-                        'imagePath' => '/images/sample-products/product-4.jpg',
-                        'shop' => [ 'id' => 0 ]
-                    ]
-                ]
-            ]
-        ];
+        // display all categories with products contain
+        $categoriesWithProducts = CategoriesWithProductsResource::collection(Categories::all());
+
+        // top 10 categories
+        $topCategories = TopCategoriesResource::collection(
+            Categories::orderBy('created_at', 'DESC')->limit(10)->get());
+
+        // display top 6 products
+        $popularProducts = PopularProductsResource::collection(
+            Products::orderBy('created_at', 'DESC')->limit(6)->get());
 
         $shops = [
             [
@@ -254,7 +212,9 @@ class HomeController extends Controller
             'popularShops' => $popularShops,
             'categoriesWithProducts' => $categoriesWithProducts,
             'shops' => $shops,
-            'hasLogin' => Auth::check()
+            'topCategories' => $topCategories,
+            'popularProducts' => $popularProducts,
+            'hasLogin' => Auth::check() 
         ]);
 
     }
@@ -284,6 +244,35 @@ class HomeController extends Controller
     }
 
     /**
+     * login.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function loginAccount(Request $request)
+    {
+
+        $request->authenticate();
+        $request->session()->regenerate();
+
+        return redirect()->route('home');
+
+    }
+
+    /**
+     * logout.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function logout(Request $request)
+    {
+
+        $request->session()->flush();
+
+        return redirect()->route('home');
+
+    }
+
+    /**
      * Display a Customer & Vendor Profile Page.
      *
      * @return \Illuminate\Http\Response
@@ -291,19 +280,12 @@ class HomeController extends Controller
     public function profile()
     {
 
-        $user = [
-            'id' => 0,
-            'firstName' => 'myFirstName',
-            'lastName' => 'myLastName',
-            'phone' => 'phone',
-            'email' => 'user@gamil.com',
-            'profileImagePath' => '/images/alphabetical-profile/a-profile.jpg',
-            'backgroundImagePath' => '/images/alphabetical-backgrounds/a-profile-background.jpg',
-            'isHired' => true,
-            'isVendor' => false
-        ];
+        // temp variables
+        $tempUser = Auth::user();
 
-        if($user['isHired']) {
+        $user = new YourProfileResource(Auth::user());
+
+        if($user->isHired) {
 
             $pendingOrders = [
                 [
@@ -460,19 +442,13 @@ class HomeController extends Controller
                 'customers' => $customers,
                 'shops' => $shops,
                 'employees' => $employees,
-                'needToAssignCustomers' => $needToAssignCustomers
+                'needToAssignCustomers' => $needToAssignCustomers,
+                'hasLogin' => Auth::check() 
             ]);
 
         } else {
         
-            $userProfile = [
-                'addressLine1' => 'addressLine1',
-                'addressLine2' => 'addressLine2',
-                'city' => 'city',
-                'states' => 'states',
-                'postalCode' => 'postalCode',
-                'country' => 'country'
-            ];
+            $userProfile = User::find($tempUser->id)->customer;
 
             $onCartOrders = [
                 [
@@ -576,32 +552,12 @@ class HomeController extends Controller
                 ]
             ];
 
-            $yourShops = [
-                [
-                    'id' => 0,
-                    'name' => 'my shop 01',
-                    'backgorundImagePath' => '/images/sample-shops/sample-shop-1.jpg'
-                ],
-                [
-                    'id' => 1,
-                    'name' => 'my shop 02',
-                    'backgorundImagePath' => '/images/sample-shops/sample-shop-2.jpg'
-                ],
-                [
-                    'id' => 2,
-                    'name' => 'my shop 03',
-                    'backgorundImagePath' => '/images/sample-shops/sample-shop-3.webp'
-                ],
-                [
-                    'id' => 3,
-                    'name' => 'my shop 04',
-                    'backgorundImagePath' => '/images/sample-shops/sample-shop-4.png'
-                ]
-            ];
-
             $restricted = false;
+            
+            if($user->isVendor) {
 
-            if($user['isVendor']) {
+                $yourShops = YourShopsResource::collection($userProfile->shops);
+
                 return inertia('CartXpressPage/VendorProfile', [
                     'user' => $user,
                     'userProfile' => $userProfile,
@@ -610,7 +566,8 @@ class HomeController extends Controller
                     'deliveredOrders' => $deliveredOrders,
                     'cancelledOrders' => $cancelledOrders,
                     'yourShops' => $yourShops,
-                    'restricted' => $restricted
+                    'restricted' => $restricted,
+                    'hasLogin' => Auth::check() 
                 ]);
             } else {
                 return inertia('CartXpressPage/CustomerProfile', [
@@ -620,7 +577,8 @@ class HomeController extends Controller
                     'pendingOrders' => $pendingOrders,
                     'deliveredOrders' => $deliveredOrders,
                     'cancelledOrders' => $cancelledOrders,
-                    'restricted' => $restricted
+                    'restricted' => $restricted,
+                    'hasLogin' => Auth::check() 
                 ]);
             }
 

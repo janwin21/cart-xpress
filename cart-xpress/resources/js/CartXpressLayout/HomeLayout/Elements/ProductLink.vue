@@ -23,7 +23,7 @@
                     <p class="card-text roboto 
                             text-xpress-orange-200 fs-xpress-sm-700 
                             fw-xpress-600 mb-0">
-                            P{{ props.product.price }}</p>
+                            P{{ nFormatter(props.product.price) }}</p>
 
                     <div class="mt-0 p-0 fs-xpress-sm-200 
                                 d-flex justify-content-between align-items-start">
@@ -34,7 +34,7 @@
 
                         <p class="card-text text-light 
                                 text-xpress-yellow-100 fw-xpress-500">
-                                {{ props.product.discount * 100 }}% discount</p>
+                                {{ nFormatter(props.product.discount * 100, 2) }}% discount</p>
                     </div>
 
                     <p class="card-text text-xpress-gray-300 
@@ -54,6 +54,9 @@
     import { Link } from '@inertiajs/inertia-vue3';
     import moment from 'moment';
     import Route from '../../../../../vendor/tightenco/ziggy/src/js/Route';
+    import { useNFormatter } from '../../../Composables/UseNFormatter';
+
+    const { nFormatter } = useNFormatter();
 
     const props = defineProps({
         product: Object,

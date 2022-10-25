@@ -41,11 +41,12 @@
                     Create Category
                 </Link>
 
-                <a class="btn bg-xpress-purple-300
+                <Link :href="route('products.createWithShopID', props.shop.id)"
+                    class="btn bg-xpress-purple-300
                     bg-hover-xpress-to-gray-200 text-light 
                     rounded py-1 px-5 fs-xpress-sm-300 
                     fw-xpress-500 mt-5 me-1">
-                    New Product</a>
+                    New Product</Link>
             </div>
 
             <!-------------------------------- Vendors Involved START -->  
@@ -90,7 +91,9 @@
                     <div class="col-3 bg-xpress-gray-200 p-0 pt-2">
 
                         <div class="p-0 position-relative" 
-                            style="background: url('/images/wonderful-images/wonderful-image-2.jpg') no-repeat; background-size: cover;">
+                            style="background: 
+                            url('/images/wonderful-images/wonderful-image-2.jpg') no-repeat; 
+                            background-size: cover;">
         
                             <div class="w-100 h-100 bg-opaque-xpress-black-200 px-4 pt-4">
             
@@ -149,7 +152,7 @@
 <script setup>
     import $ from 'jquery';
     import { Link } from '@inertiajs/inertia-vue3';
-    import { ref, provide, onMounted } from 'vue';
+    import { ref, reactive, provide, onMounted } from 'vue';
 
     // main components
     import CartXpressAppLayout from '../CartXpressAppLayout.vue';
@@ -166,9 +169,11 @@
 
     const props = defineProps({
         shop: Object,
-        categoriesWithProducts: Array
+        categoriesWithProducts: Array,
+        hasLogin: Boolean
     });
 
+    provide('hasLogin', reactive(props.hasLogin))
     provide('categoriesWithProducts', props.categoriesWithProducts);
 
     // SEARCH

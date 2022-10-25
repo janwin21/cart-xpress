@@ -187,7 +187,7 @@
     // main components
     import CartXpressAppLayout from '../CartXpressAppLayout.vue';
     import ProductOrdered from '../../CartXpressLayout/CheckoutLayout/ProductOrdered.vue';
-    import { ref, watch } from 'vue';
+    import { provide, reactive } from 'vue';
 
     // actions & composables
     import callCheckout from '../../Actions/checkout';
@@ -196,8 +196,11 @@
     callCheckout();
 
     const props = defineProps({
-        category: Array
+        category: Array,
+        hasLogin: Boolean
     });
+
+    provide('hasLogin', reactive(props.hasLogin))
 
     // DYNAMIC SORTS
     const { property, orderedThrough, dynamicSortBy } = dynamicSort();

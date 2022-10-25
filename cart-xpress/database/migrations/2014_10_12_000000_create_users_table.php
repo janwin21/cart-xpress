@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('profileImagePath')->nullable();
             $table->string('backgroundImagePath')->nullable();
             $table->boolean('acceptAgreement');
-            $table->boolean('isHired')->nullable()->default(0);
+            $table->boolean('isHired')->default(0);
+            $table->boolean('isVendor')->default(0);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

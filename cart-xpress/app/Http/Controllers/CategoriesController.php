@@ -2,11 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\YourShopsResource;
+use App\Models\Categories;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Traits\UseUpload;
 
 class CategoriesController extends Controller
 {
+    use UseUpload;
+
+    public function __construct()
+    {
+        $this->middleware('redirect.home');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,31 +37,12 @@ class CategoriesController extends Controller
     public function create()
     {
 
-        $yourShops = [
-            [
-                'id' => 0,
-                'name' => 'my shop 01',
-                'backgorundImagePath' => '/images/sample-shops/sample-shop-1.jpg'
-            ],
-            [
-                'id' => 1,
-                'name' => 'my shop 02',
-                'backgorundImagePath' => '/images/sample-shops/sample-shop-2.jpg'
-            ],
-            [
-                'id' => 2,
-                'name' => 'my shop 03',
-                'backgorundImagePath' => '/images/sample-shops/sample-shop-3.webp'
-            ],
-            [
-                'id' => 3,
-                'name' => 'my shop 04',
-                'backgorundImagePath' => '/images/sample-shops/sample-shop-4.png'
-            ]
-        ];
+        $yourShops = YourShopsResource::collection(
+            User::find(Auth::user()->id)->customer->shops);
 
         return inertia('CartXpressPage/CategoryForm', [
-            'yourShops' => $yourShops
+            'yourShops' => $yourShops,
+            'hasLogin' => Auth::check() 
         ]);
 
     }
@@ -62,8 +55,16 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        
-        dd($request);
+
+        $backgroundImagePath = $this->upload($request->file('backgroundImagePath'), 'stored-category');
+
+        Categories::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'backgroundImagePath' => $backgroundImagePath
+        ]);
+
+        return redirect()->route('profile');
 
     }
 

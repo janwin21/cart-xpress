@@ -20,20 +20,7 @@
             </div>
 
             <!-- vendor buttons -->
-            <div class="row row-cols-2 m-0 g-1 p-4 pb-0">
-
-                <div class="col">
-
-                    <Link class="btn bg-xpress-gray-100 w-100 m-0
-                        bg-hover-xpress-to-gray-200 text-light w-75 
-                        rounded pt-1 pb-2 fs-xpress-sm-200 
-                        fw-xpress-500"
-                        id="customer-confirm-btn"
-                        :href="route('products.create')">
-                        ADD NEW<br>PRODUCT
-                    </Link>
-
-                </div>
+            <div class="row row-cols-1 m-0 g-1 p-4 pb-0">
 
                 <div class="col">
 
@@ -60,9 +47,10 @@
                         style="height: 150px;">
 
                         <Link :href="route('shops.show', yourShop.id)">
-                    
+
                             <img class="rounded w-100 h-100" 
-                                :src="yourShop.backgorundImagePath" alt="shop image"
+                                :src="`${ ($page.component === 'CartXpressPage/ProductForm') ? '../' : '' }${yourShop.backgroundImagePath}`" 
+                                alt="shop image"
                                 style="object-fit: cover;">
                             
                             <div class="shop-item-cover rounded-bottom 
@@ -93,6 +81,7 @@
     import { Link } from '@inertiajs/inertia-vue3';
 
     const yourShops = inject('yourShops');
+    console.log(yourShops);
 
 </script>
 

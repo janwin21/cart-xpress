@@ -75,7 +75,7 @@
 </template>
 
 <script setup>
-    import { reactive } from 'vue';
+    import { provide, reactive } from 'vue';
 
     // main components
     import CartXpressAppLayout from '../CartXpressAppLayout.vue';
@@ -98,8 +98,11 @@
         pendingOrders: Array,
         deliveredOrders: Array,
         cancelledOrders: Array,
-        restricted: Boolean
+        restricted: Boolean,
+        hasLogin: Boolean
     });
+
+    provide('hasLogin', reactive(props.hasLogin))
 
 </script>
 

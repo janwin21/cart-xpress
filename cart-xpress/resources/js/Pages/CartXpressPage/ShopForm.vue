@@ -255,7 +255,7 @@
     import FormControl from '../../CartXpressLayout/RegisterLayout/Elements/FormControl.vue';
     import VendorSidebar from '../../CartXpressLayout/ProfileLayout/VendorSidebar.vue';
     import { useForm } from '@inertiajs/inertia-vue3';
-    import { provide } from 'vue';
+    import { provide, reactive } from 'vue';
 
     // actions & composables
     import callRegister from '../../Actions/register';
@@ -280,9 +280,11 @@
     });
 
     const props = defineProps({
-        yourShops: Array
+        yourShops: Array,
+        hasLogin: Boolean
     });
 
+    provide('hasLogin', reactive(props.hasLogin))
     provide('yourShops', props.yourShops);
 
 </script>
