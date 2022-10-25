@@ -12493,11 +12493,14 @@ div.orgChart div.adjunct-link {
   .search-manager .col-6 .form-control button #show {
     display: none !important;
   }
+  .search-manager .col-6 .sorted-component {
+    padding-top: 1rem !important;
+  }
   .search-manager .col-6 .sorted-component #sorting {
     padding-bottom: 1rem !important;
   }
-  .search-manager .col-6 .sorted-component #sort-button {
-    padding-top: 1rem !important;
+  .search-manager .col-6 .sorted-component #sort-button .sorted-buttons {
+    padding-bottom: 0.2rem !important;
   }
   .search-manager .col-6 .sorted-component #sort-button #button-text {
     color: beige !important;
@@ -12510,8 +12513,16 @@ div.orgChart div.adjunct-link {
     display: inline-flex !important;
     padding-left: 1% !important;
     padding-right: 2% !important;
+    padding-bottom: 0.4rem !important;
     margin-bottom: 3% !important;
     font-size: 12px !important;
+  }
+  .search-manager .col-6 #sorted-component-two .sorted-buttons #desc {
+    margin-right: 0.3rem !important;
+    font-size: 12px !important;
+  }
+  .search-manager .col-6 #sorted-component-two .sorted-buttons #asc {
+    margin-right: 0.2rem !important;
   }
 } /*# sourceMappingURL=style.css.map */
 

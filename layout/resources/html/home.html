@@ -232,13 +232,12 @@
 
                 <!-- sorted components for left -->
                 <div class="sorted-component">
-                <button id="sort-button" type="button" class="btn " data-bs-toggle="collapse" onclick="sortButton()"><span id="button-text">Sorted By:</span></button>
+                <button id="sort-button" type="button " class="btn " data-bs-toggle="dropdown" aria-expanded="false" onclick="sortButton()"><span id="button-text">Sorted By:</span></button>
                     <p id="p-sort" class="roboto fs-xpress-sm-200 
                               fw-xpress-700 text-light mb-1">
                               Sorted By:</p>
-
-                    <div class="sorted-buttons mt-0" id="sortButton">
-        
+                          <div class="sorted-buttons  mt-0" id="sortButton">
+                 
                         <button class="btn bg-xpress-purple-100
                                        bg-hover-xpress-to-gray-200
                                        rounded text-light py-1 px-4 roboto
@@ -268,9 +267,10 @@
                                        rounded text-light py-1 px-4 roboto
                                        fs-xpress-sm-200 fw-xpress-500">
                                        Ratings</button>
+                                   
                     </div>
                 </div>
-
+          
             </div>
             <div class="col-6 text-end">
                 <p class="roboto fs-xpress-sm-200 fw-xpress-700 text-light mb-1" style="visibility: hidden">Sorted By:</p>
@@ -279,13 +279,13 @@
                 <div id="sorted-component-two" class="sorted-component">
                     <div class="sorted-buttons mt-0">
         
-                        <button class="btn bg-xpress-red-100
+                        <button id="desc" class="btn bg-xpress-red-100
                                        bg-hover-xpress-to-gray-200
                                        rounded text-light py-1 px-4 roboto
                                        fs-xpress-sm-200 fw-xpress-500">
                                        ASC</button>
         
-                        <button class="btn bg-xpress-green-100
+                        <button id="asc" class="btn bg-xpress-green-100
                                        bg-hover-xpress-to-gray-200
                                        rounded text-light py-1 px-4 roboto
                                        fs-xpress-sm-200 fw-xpress-500">

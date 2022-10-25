@@ -24,8 +24,9 @@
 @include media-breakpoint-up(lg) {
   #sort-button{
     display: none !important;
+    
   }
-  
+
 }
 
 @include media-breakpoint-down(lg){
@@ -167,6 +168,8 @@ button{
 }
 
 .search-manager{
+ 
+  
   .col-6{
 
 
@@ -186,12 +189,18 @@ button{
 }
 }
 .sorted-component{
+ 
     #sorting{
       padding-bottom: 1rem !important;
     }
-
+    padding-top: 1rem !important;
+    
+ 
   #sort-button{
-   padding-top: 1rem !important;
+     .sorted-buttons{
+      padding-bottom: 0.2rem !important;
+     }
+
     #button-text{
         color: beige !important;
         padding: 0px !important;
@@ -213,17 +222,27 @@ button{
         display: inline-flex !important;
        padding-left: 1% !important ;
        padding-right: 2% !important;
+       padding-bottom: 0.4rem !important;
       margin-bottom: 3% !important;
       font-size: 12px !important;
-    
+
+  
       //PAUSE
       
+    }
+    #desc{
+
+    margin-right: 0.3rem !important;
+   font-size: 12px !important;
+
+    }
+    #asc{
+      margin-right: 0.2rem !important;
     }
   }
 }
 }
 }
-
 
 }
 
