@@ -5,10 +5,10 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Traits\UseUpload;
 
-class CategoriesWithProductsResource extends JsonResource
+class CategoriesResource extends JsonResource
 {
     use UseUpload;
-    
+
     /**
      * Transform the resource into an array.
      *
@@ -23,7 +23,7 @@ class CategoriesWithProductsResource extends JsonResource
             'description' => $this->description,
             'imagePath' => 
                 $this->getPath($this->backgroundImagePath, '/images/sample-shops/sample-shop-1.jpg'),
-            'products' => ProductsInCategoryResource::collection($this->products)
+            'products' => ProductResource::collection($this->products)
         ];
     }
 }

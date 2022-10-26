@@ -51,7 +51,7 @@
                                 <h4 class="d-inline roboto text-light 
                                     mb-1 fs-xpress-sm-400 w-50 text-end">
                                     <span class="text-light">
-                                    P{{ totalPrice }}</span>
+                                    P{{ (Math.round(totalPrice * 100) / 100).toFixed(2) }}</span>
                                 </h4>
 
                             </div>
@@ -197,11 +197,13 @@
     const props = defineProps({
         shops: Array,
         users: Array,
-        user: Object
+        user: Object,
+        hasLogin: Boolean
     });
 
     const checkBtn = ref(null);
     const { totalQuantity, totalPrice } = useTotal(props.shops);
+
     const shopInput = useForm({
         addressLine1: '',
         addressLine2: '',
@@ -210,10 +212,13 @@
         postalCode: '',
         country: '',
         comment: '',
+        quantities: [],
         shops: props.shops
     });
 
+    provide('hasLogin', reactive(props.hasLogin));
     provide('shopInput', shopInput);
+    provide('yourProfile', props.user);
 
     provide('setDefaultAddress', event => {
 

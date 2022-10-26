@@ -18,4 +18,8 @@ trait UseUpload {
         return $alternative;
     }
 
+    public function unsplashImage($id, $width, $height) {
+        return 'https://source.unsplash.com/collection/928423/' . $width . 'x' . $height . '/?sig=' . $id;
+    }
+
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Http\Controllers\Auth\LoginRequest;
 use App\Http\Resources\CategoriesWithProductsResource;
+use App\Http\Resources\CustomerAddressesResource;
+use App\Http\Resources\OnCartShopsResource;
 use App\Http\Resources\PopularProductsResource;
 use App\Http\Resources\PopularShopsResource;
 use App\Http\Resources\TopCategoriesResource;
@@ -13,9 +15,10 @@ use App\Http\Resources\YourShopsResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 use App\Http\Traits\UseUpload;
 use App\Models\Categories;
+use App\Models\Customers;
+use App\Models\OrderDetails;
 use App\Models\Products;
 use App\Models\Shops;
 
@@ -53,160 +56,23 @@ class HomeController extends Controller
         $popularProducts = PopularProductsResource::collection(
             Products::orderBy('created_at', 'DESC')->limit(6)->get());
 
-        $shops = [
-            [
-                'id' => 0,
-                'name' => 'shopName XYZ',
-    
-                'products' => [
-                    [
-                        'id' => 0,
-                        'name' => 'Product 01',
-                        'createdAt' => new Carbon(),
-                        'price' => 200,
-                        'size' => 3,
-                        'discount' => 0.25,
-                        'durationOfDeliveryByHour' => 4,
-                        'quantityInStock' => 80,
-                        'imagePath' => '/images/sample-products/product-1.jpg',
-                        'overallRating' => 4.3,
-                        'countReviews' => 67,
-                        'totalPriceSold' => 14000,
-    
-                        'category' => [ 
-                            'id' => 0,
-                            'name' => 'category name'
-                        ],
-    
-                        'orderDetails' => [
-                            'quantityOrdered' => 7
-                        ]
-                    ],
-                    [
-                        'id' => 1,
-                        'name' => 'Product 01',
-                        'createdAt' => new Carbon(),
-                        'price' => 150,
-                        'size' => 3,
-                        'discount' => 0.25,
-                        'durationOfDeliveryByHour' => 4,
-                        'quantityInStock' => 80,
-                        'imagePath' => '/images/sample-products/product-2.jpg',
-                        'overallRating' => 4.3,
-                        'countReviews' => 67,
-                        'totalPriceSold' => 14000,
-    
-                        'category' => [ 
-                            'id' => 0,
-                            'name' => 'category name'
-                        ],
-    
-                        'orderDetails' => [
-                            'quantityOrdered' => 7
-                        ]
-                    ],
-                    [
-                        'id' => 2,
-                        'name' => 'Product 01',
-                        'createdAt' => new Carbon(),
-                        'price' => 150,
-                        'size' => 3,
-                        'discount' => 0.25,
-                        'durationOfDeliveryByHour' => 4,
-                        'quantityInStock' => 80,
-                        'imagePath' => '/images/sample-products/product-2.jpg',
-                        'overallRating' => 4.3,
-                        'countReviews' => 67,
-                        'totalPriceSold' => 14000,
-    
-                        'category' => [ 
-                            'id' => 0,
-                            'name' => 'category name'
-                        ],
-    
-                        'orderDetails' => [
-                            'quantityOrdered' => 7
-                        ]
-                    ]
-                ]
-            ],
-            [
-                'id' => 0,
-                'name' => 'shopName ABC',
-    
-                'products' => [
-                    [
-                        'id' => 0,
-                        'name' => 'Product 0221',
-                        'createdAt' => new Carbon(),
-                        'price' => 150,
-                        'size' => 3,
-                        'discount' => 0.25,
-                        'durationOfDeliveryByHour' => 4,
-                        'quantityInStock' => 80,
-                        'imagePath' => '/images/sample-products/product-6.jpg',
-                        'overallRating' => 4.3,
-                        'countReviews' => 67,
-                        'totalPriceSold' => 14000,
-    
-                        'category' => [ 
-                            'id' => 0,
-                            'name' => 'category name'
-                        ],
-    
-                        'orderDetails' => [
-                            'quantityOrdered' => 7
-                        ]
-                    ],
-                    [
-                        'id' => 1,
-                        'name' => 'Product1212ewqwewe',
-                        'createdAt' => new Carbon(),
-                        'price' => 150,
-                        'size' => 3,
-                        'discount' => 0.25,
-                        'durationOfDeliveryByHour' => 4,
-                        'quantityInStock' => 80,
-                        'imagePath' => '/images/sample-products/product-4.jpg',
-                        'overallRating' => 4.3,
-                        'countReviews' => 67,
-                        'totalPriceSold' => 14000,
-    
-                        'category' => [ 
-                            'id' => 0,
-                            'name' => 'category name'
-                        ],
-    
-                        'orderDetails' => [
-                            'quantityOrdered' => 7
-                        ]
-                    ],
-                    [
-                        'id' => 2,
-                        'name' => 'Product thisdin',
-                        'createdAt' => new Carbon(),
-                        'price' => 150,
-                        'size' => 3,
-                        'discount' => 0.25,
-                        'durationOfDeliveryByHour' => 4,
-                        'quantityInStock' => 80,
-                        'imagePath' => '/images/sample-products/product-5.jpg',
-                        'overallRating' => 4.3,
-                        'countReviews' => 67,
-                        'totalPriceSold' => 14000,
-    
-                        'category' => [ 
-                            'id' => 0,
-                            'name' => 'category name'
-                        ],
-    
-                        'orderDetails' => [
-                            'quantityOrdered' => 7
-                        ]
-                    ]
-                ]
-            ]
-        ];
+        
+        // display all products on-cart by shops    
+        $shops = [];
+        
+        if(Auth::user()->customer->orders->where('status', 'on-cart')->count() != 0) {
+
+            $shops = OnCartShopsResource::collection(
+                Shops::all()->filter(function($shop) {
+                    return $shop->products->filter(function($product) {
+                        return $product->orderDetails->where('orderID',
+                            Auth::user()->customer->orders->where('status', 'on-cart')->first()->id
+                        )->count() > 0;
+                    })->count() > 0;
+                })
+            );
+
+        }
 
         return inertia('CartXpressPage/Home', [
             'popularShops' => $popularShops,
@@ -632,260 +498,27 @@ class HomeController extends Controller
     public function checkout()
     {
 
-        $shops = [
-            [
-                'id' => 0,
-                'name' => 'shopName XYZ',
-    
-                'products' => [
-                    [
-                        'id' => 0,
-                        'name' => 'Product 01',
-                        'createdAt' => new Carbon(),
-                        'price' => 150,
-                        'size' => 3,
-                        'discount' => 0.25,
-                        'durationOfDeliveryByHour' => 4,
-                        'quantityInStock' => 80,
-                        'imagePath' => '/images/sample-products/product-1.jpg',
-                        'overallRating' => 4.3,
-                        'countReviews' => 67,
-                        'totalPriceSold' => 14000,
-    
-                        'category' => [ 
-                            'id' => 0,
-                            'name' => 'category name'
-                        ],
-    
-                        'orderDetails' => [
-                            'quantityOrdered' => 7
-                        ]
-                    ],
-                    [
-                        'id' => 1,
-                        'name' => 'Product 01',
-                        'createdAt' => new Carbon(),
-                        'price' => 150,
-                        'size' => 3,
-                        'discount' => 0.25,
-                        'durationOfDeliveryByHour' => 4,
-                        'quantityInStock' => 80,
-                        'imagePath' => '/images/sample-products/product-2.jpg',
-                        'overallRating' => 4.3,
-                        'countReviews' => 67,
-                        'totalPriceSold' => 14000,
-    
-                        'category' => [ 
-                            'id' => 0,
-                            'name' => 'category name'
-                        ],
-    
-                        'orderDetails' => [
-                            'quantityOrdered' => 7
-                        ]
-                    ],
-                    [
-                        'id' => 2,
-                        'name' => 'Product 01',
-                        'createdAt' => new Carbon(),
-                        'price' => 150,
-                        'size' => 3,
-                        'discount' => 0.25,
-                        'durationOfDeliveryByHour' => 4,
-                        'quantityInStock' => 80,
-                        'imagePath' => '/images/sample-products/product-2.jpg',
-                        'overallRating' => 4.3,
-                        'countReviews' => 67,
-                        'totalPriceSold' => 14000,
-    
-                        'category' => [ 
-                            'id' => 0,
-                            'name' => 'category name'
-                        ],
-    
-                        'orderDetails' => [
-                            'quantityOrdered' => 7
-                        ]
-                    ]
-                ]
-            ],
-            [
-                'id' => 0,
-                'name' => 'shopName ABC',
-    
-                'products' => [
-                    [
-                        'id' => 0,
-                        'name' => 'Product 0221',
-                        'createdAt' => new Carbon(),
-                        'price' => 150,
-                        'size' => 3,
-                        'discount' => 0.25,
-                        'durationOfDeliveryByHour' => 4,
-                        'quantityInStock' => 80,
-                        'imagePath' => '/images/sample-products/product-6.jpg',
-                        'overallRating' => 4.3,
-                        'countReviews' => 67,
-                        'totalPriceSold' => 14000,
-    
-                        'category' => [ 
-                            'id' => 0,
-                            'name' => 'category name'
-                        ],
-    
-                        'orderDetails' => [
-                            'quantityOrdered' => 7
-                        ]
-                    ],
-                    [
-                        'id' => 1,
-                        'name' => 'Product1212ewqwewe',
-                        'createdAt' => new Carbon(),
-                        'price' => 150,
-                        'size' => 3,
-                        'discount' => 0.25,
-                        'durationOfDeliveryByHour' => 4,
-                        'quantityInStock' => 80,
-                        'imagePath' => '/images/sample-products/product-4.jpg',
-                        'overallRating' => 4.3,
-                        'countReviews' => 67,
-                        'totalPriceSold' => 14000,
-    
-                        'category' => [ 
-                            'id' => 0,
-                            'name' => 'category name'
-                        ],
-    
-                        'orderDetails' => [
-                            'quantityOrdered' => 7
-                        ]
-                    ],
-                    [
-                        'id' => 2,
-                        'name' => 'Product thisdin',
-                        'createdAt' => new Carbon(),
-                        'price' => 150,
-                        'size' => 3,
-                        'discount' => 0.25,
-                        'durationOfDeliveryByHour' => 4,
-                        'quantityInStock' => 80,
-                        'imagePath' => '/images/sample-products/product-5.jpg',
-                        'overallRating' => 4.3,
-                        'countReviews' => 67,
-                        'totalPriceSold' => 14000,
-    
-                        'category' => [ 
-                            'id' => 0,
-                            'name' => 'category name'
-                        ],
-    
-                        'orderDetails' => [
-                            'quantityOrdered' => 7
-                        ]
-                    ]
-                ]
-            ]
-        ];
+        if(Auth::user()->customer->orders->where('status', 'on-cart')->count() == 0)
+            return redirect()->route('home');
 
-        $users = [
-            [
-                'id' => 0,
-                'firstName' => 'A firstname',
-                'lastName' => 'V lastname',
-                'profileImagePath' => '/images/alphabetical-profile/b-profile.jpg',
-                'addressLine1' => 'address line 1 01',
-                'addressLine2' => 'address line 2 01',
-                'city' => 'my city 01',
-                'state' => 'my state 01',
-                'postalCode' => 'my postal code 01',
-                'country' => 'my country 01',
-                'orders' => [ 'comment' => 'my comment 01' ]
-            ],
-            [
-                'id' => 1,
-                'firstName' => 'F firstname',
-                'lastName' => 'A lastname',
-                'profileImagePath' => '/images/alphabetical-profile/c-profile.jpg',
-                'addressLine1' => 'address line 1 02',
-                'addressLine2' => 'address line 2 02',
-                'city' => 'my city 02',
-                'state' => 'my state 02',
-                'postalCode' => 'my postal code 02',
-                'country' => 'my country 02',
-                'orders' => [ 'comment' => 'my comment 02' ]
-            ],
-            [
-                'id' => 2,
-                'firstName' => 'D firstname',
-                'lastName' => 'B lastname',
-                'profileImagePath' => '/images/alphabetical-profile/g-profile.jpg',
-                'addressLine1' => 'address line 1 03',
-                'addressLine2' => 'address line 2 03',
-                'city' => 'my city 03',
-                'state' => 'my state 03',
-                'postalCode' => 'my postal code 03',
-                'country' => 'my country 03',
-                'orders' => [ 'comment' => 'my comment 03' ]
-            ],
-            [
-                'id' => 3,
-                'firstName' => 'C firstname',
-                'lastName' => 'A lastname',
-                'profileImagePath' => '/images/alphabetical-profile/h-profile.jpg',
-                'addressLine1' => 'address line 1 04',
-                'addressLine2' => 'address line 2 04',
-                'city' => 'my city 04',
-                'state' => 'my state 04',
-                'postalCode' => 'my postal code 04',
-                'country' => 'my country 04',
-                'orders' => [ 'comment' => 'my comment 04' ]
-            ],
-            [
-                'id' => 4,
-                'firstName' => 'janwin',
-                'lastName' => 'toralba',
-                'profileImagePath' => '/images/alphabetical-profile/x-profile.jpg',
-                'addressLine1' => 'address line 1 05',
-                'addressLine2' => 'address line 2 05',
-                'city' => 'my city 05',
-                'state' => 'my state 05',
-                'postalCode' => 'my postal code 05',
-                'country' => 'my country 05',
-                'orders' => [ 'comment' => 'my comment 05' ]
-            ],
-            [
-                'id' => 5,
-                'firstName' => 'asask salslas',
-                'lastName' => 'zackasas',
-                'profileImagePath' => '/images/alphabetical-profile/c-profile.jpg',
-                'addressLine1' => 'address line 1 06',
-                'addressLine2' => 'address line 2 06',
-                'city' => 'my city 06',
-                'state' => 'my state 06',
-                'postalCode' => 'my postal code 06',
-                'country' => 'my country 06',
-                'orders' => [ 'comment' => 'my comment 06' ]
-            ]
-        ];
+        // display all products on-cart by shops
+        $shops = OnCartShopsResource::collection(
+            Shops::all()->filter(function($shop) {
+                return $shop->products->filter(function($product) {
+                    return $product->orderDetails->where('orderID',
+                        Auth::user()->customer->orders->where('status', 'on-cart')->first()->id
+                    )->count() > 0;
+                })->count() > 0;
+            })
+        );
 
-        $user = [
-            'id' => 0,
-            'firstName' => 'A firstname XYZ',
-            'lastName' => 'V lastname XYZ',
-            'profileImagePath' => '/images/alphabetical-profile/b-profile.jpg',
-            'addressLine1' => 'address line 1 XYZ',
-            'addressLine2' => 'address line 2 XYZ',
-            'city' => 'my city XYZ',
-            'state' => 'my state XYZ',
-            'postalCode' => 'my postal code XYZ',
-            'country' => 'my country XYZ',
-            'orders' => [ 'comment' => 'my comment XYZ' ]
-        ];
+        $users = CustomerAddressesResource::collection(User::all());
 
         return inertia('CartXpressPage/Checkout', [
             'shops' => $shops,
             'users' => $users,
-            'user' => $user
+            'user' => new CustomerAddressesResource(Auth::user()),
+            'hasLogin' => Auth::check()
         ]);
 
     }
@@ -895,16 +528,34 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function order(Request $request) {
+    public function order(Request $request) 
+    {
 
-        $request->addressLine1;
-        $request->addressLine2;
-        $request->city;
-        $request->state;
-        $request->postalCode;
-        $request->country;
-        $request->comment;
-        $request->shops;
+        $onCartOrder = Auth::user()->customer->orders->where('status', 'on-cart')->first();
+        $yourAddress = Auth::user()->customer;
+
+        foreach ($request->quantities as $q) {
+
+            $orderDetail = $onCartOrder->orderDetails
+                ->where('orderID', $onCartOrder->id)
+                ->where('productID', $q['productID'])
+                ->first();
+
+            $orderDetail->quantityOrdered = $q['quantity'];
+            $orderDetail->update();
+
+        }
+
+        $onCartOrder->status = 'pending';
+        $onCartOrder->update();
+
+        $yourAddress->addressLine1  = $request->addressLine1;
+        $yourAddress->addressLine2  = $request->addressLine2;
+        $yourAddress->city  = $request->city;
+        $yourAddress->state  = $request->state;
+        $yourAddress->postalCode  = $request->postalCode;
+        $yourAddress->country  = $request->country;
+        $yourAddress->update();
         
         return redirect()->route('home');
     }

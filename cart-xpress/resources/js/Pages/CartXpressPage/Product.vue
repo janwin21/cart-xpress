@@ -41,9 +41,13 @@
 
     const props = defineProps({
         product: Object,
+        productQuantity: Number,
+        productOrderedExist: Boolean,
         hasLogin: Boolean
     });
 
+    provide('productQuantity', props.productQuantity);
+    provide('productOrderedExist', props.productOrderedExist);
     provide('hasLogin', reactive(props.hasLogin));
 
 </script>

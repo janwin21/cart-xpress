@@ -1,5 +1,5 @@
 <template>
-    <Link href="#" :id="props.id">
+    <Link :href="route('shops.show', props.id)">
         <img v-bind="$attrs"
              :src="props.backgroundImagePath" 
              alt="shop image">

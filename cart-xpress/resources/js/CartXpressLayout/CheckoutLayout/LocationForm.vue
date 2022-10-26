@@ -8,7 +8,7 @@
             <div class="w-100 h-100 p-0 position-absolute top-0 left-0 bg-primary">
 
                 <img class="w-100 h-100" 
-                    src="/images/alphabetical-backgrounds/a-profile-background.jpg" 
+                    :src="yourProfile.backgroundImagePath" 
                     alt="" style="z-index: -1; object-fit: cover;">
             </div>
 
@@ -16,7 +16,7 @@
             <div class="col-2 gradient-transparent-to-bg-gray-200 text-center py-5" style="z-index: 1000;">
 
                 <img class="w-50 rounded-circle" 
-                    src="/images/alphabetical-profile/a-profile.jpg" alt="">
+                    :src="yourProfile.profileImagePath" alt="">
 
                 <button class="btn bg-xpress-purple-100 mt-4
                     bg-hover-xpress-to-gray-200
@@ -181,6 +181,7 @@
 
     const setProfileAddress = inject('setProfileAddress');
     const shopInput = inject('shopInput');
+    const yourProfile = inject('yourProfile');
 
 </script>
 

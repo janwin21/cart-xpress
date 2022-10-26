@@ -3,6 +3,8 @@ import { ref, computed, watch } from 'vue';
 
 export function useProduct(product) {
 
+    const inputIndex = ref(0);
+
     const quantity = ref(product.orderDetails ?
         product.orderDetails.quantityOrdered : 0);
 
@@ -25,6 +27,7 @@ export function useProduct(product) {
     });
 
     return {
+        inputIndex,
         quantity,
         priceWithDiscount,
         updateQuantity

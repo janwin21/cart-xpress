@@ -6,12 +6,15 @@ use App\Models\Categories;
 use App\Models\Products;
 use App\Models\Shops;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Http\Traits\UseUpload;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Products>
  */
 class ProductFactory extends Factory
 {
+    use UseUpload;
+    
     /**
      * The name of the factory's corresponding model.
      *
@@ -44,7 +47,8 @@ class ProductFactory extends Factory
             'price' => $this->faker->randomFloat(2, 1, 10000),
             'discount' => $this->faker->numberBetween(0, 100) / 100,
             'durationOfDeliveryByHour' => $this->faker->randomFloat(2, 1, 500),
-            'imagePath' => $this->faker->imageUrl(300, 580, null, true, 'Faker', false)
+            'imagePath' => $this->unsplashImage($this->faker->numberBetween(1, 1000), 300, 580)
+            //$this->faker->imageUrl(300, 580, null, true, 'Faker', false)
         ];
     }
 }

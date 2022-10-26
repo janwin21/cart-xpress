@@ -52,7 +52,7 @@
                         <p class="d-inline roboto mt-0
                             fs-xpress-sm-200 fw-xpress-500 
                             text-xpress-gray-600">
-                            P{{ props.product.totalPriceSold }} TOTAL SOLD</p>
+                            P{{ nFormatter(props.product.totalPriceSold, 2) }} TOTAL SOLD</p>
                     </div>
                     <div class="col-3">
 
@@ -76,7 +76,7 @@
                         <h1 class="d-inline roboto mt-0 
                             fs-xpress-md-900 fw-xpress-500 
                             text-light p-0 m-0">
-                            {{ props.product.price }}</h1>
+                            {{ nFormatter(props.product.price, 1) }}</h1>
                     </div>
 
                     <div class="col-3 pb-2">
@@ -93,7 +93,7 @@
                             text-light">
                             Discount 
                             <span class="text-xpress-yellow-200">
-                                {{ props.product.discount * 100 }}%</span></p>
+                                {{ nFormatter((props.product.discount * 100), 2) }}%</span></p>
                     </div>
 
                     <div class="col-3 pb-2 text-end pe-5">
@@ -133,7 +133,7 @@
                             fs-xpress-sm-300 fw-xpress-500 
                             text-xpress-gray-600">
                             ACTUAL PRICE <span class="text-xpress-yellow-200 ms-3">P
-                                {{ priceWithDiscount() }}
+                                {{ (Math.round(priceWithDiscount() * 100) / 100).toFixed(2) }}
                             </span></p>
                     </div>
                 </div>
@@ -201,7 +201,7 @@
                             <input class="roboto text-xpress-gray-100
                                 bg-light border-0 px-2 fw-xpress-500 
                                 fs-xpress-sm-300 rounded-0 w-25" 
-                                type="number" min="1"
+                                type="number" min="0"
                                 name="quantityOrdered"
                                 v-model="quantity">
                         </div>
@@ -212,7 +212,7 @@
                                 fs-xpress-sm-300 fw-xpress-500 
                                 text-xpress-gray-600">
                                 TOTAL PRICE <span class="text-light ms-3">
-                                    P{{ updateQuantity }}</span></p>
+                                    P{{ (Math.round(updateQuantity * 100) / 100).toFixed(2) }}</span></p>
                         </div>
 
                     </div>
@@ -220,18 +220,25 @@
                     <!-- buttons for submission -->
                     <div class="submit-buttons">
 
-                        <Link class="btn bg-xpress-purple-300 
-                            bg-hover-xpress-to-gray-200 text-light w-25 
-                            rounded py-1 fs-xpress-sm-300 
-                            fw-xpress-500 mt-5 me-1">
-                            Add To Cart</Link>
+                        <form class="d-inline" @submit.prevent="orderForm.post(route('orders.addToCart'))">
+                            <button class="btn bg-xpress-purple-300 
+                                bg-hover-xpress-to-gray-200 text-light w-25 
+                                rounded py-1 fs-xpress-sm-300 
+                                fw-xpress-500 mt-5 me-1"
+                                type="submit" :disabled="disabled">
+                                Add To Cart
+                            </button>
+                        </form>
 
-                        <Link class="btn bg-xpress-orange-100 
-                            bg-hover-xpress-to-gray-200 text-light w-25 
-                            rounded py-1 fs-xpress-sm-300 
-                            fw-xpress-500 mt-5"
-                            :href="route('checkout')">
-                            Buy it Right Now!</Link>
+                        <form class="d-inline" @submit.prevent="orderForm.post(route('orders.addToCart'))">
+                            <button class="btn bg-xpress-orange-100 
+                                bg-hover-xpress-to-gray-200 text-light w-25 
+                                rounded py-1 fs-xpress-sm-300 
+                                fw-xpress-500 mt-5"
+                                :disabled="disabled">
+                                Buy it Right Now!
+                            </button>
+                        </form>
 
                     </div>
 
@@ -298,7 +305,8 @@
                             rounded py-1 fs-xpress-sm-300 
                             fw-xpress-600 mt-1"
                             id="background-btn">
-                            PROCEED</button>
+                            PROCEED
+                        </button>
 
                     </template>
                     
@@ -311,19 +319,40 @@
 
 <script setup>
     import moment from 'moment';
-    import { Link } from '@inertiajs/inertia-vue3';
+    import { Link, useForm } from '@inertiajs/inertia-vue3';
     import { useProduct } from '../../Composables/UseProduct';
     import { usePopup } from '../../Composables/UsePopup';
-    import { provide } from 'vue';
+    import { ref, provide, watch, inject } from 'vue';
     import TwoOptionModal from '../../CartXpressModal/TwoOptionModal.vue';
     import OneOptionModal from '../../CartXpressModal/OneOptionModal.vue';
+    import { useNFormatter } from '../../Composables/UseNFormatter';
 
     const props = defineProps({
         product: Object
     });
 
+    const orderForm = useForm({
+        productID: 0,
+        orderDetailsQuantityOrdered: 0,
+        productOrderedExist: false
+    });
+
+    orderForm.productID = props.product.id;
+
     const { oneWayOption, twoWayOption, showOneWayOptionPopup, showTwoWayOptionPopup } = usePopup();
     const { quantity, priceWithDiscount, updateQuantity } = useProduct(props.product);
+    const { nFormatter } = useNFormatter();
+    const disabled = ref(true);
+
+    quantity.value = inject('productQuantity');
+    orderForm.productOrderedExist = inject('productOrderedExist');
+
+    watch(quantity, newQuantity => {
+        orderForm.orderDetailsQuantityOrdered = newQuantity;
+        disabled.value = newQuantity <= 0;
+    }, {
+        immediate: true
+    });
     
     provide('showOneWayOptionPopup', showOneWayOptionPopup);
     provide('showTwoWayOptionPopup', showTwoWayOptionPopup);

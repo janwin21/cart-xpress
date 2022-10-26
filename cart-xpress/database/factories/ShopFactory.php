@@ -5,12 +5,15 @@ namespace Database\Factories;
 use App\Models\Customers;
 use App\Models\Shops;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Http\Traits\UseUpload;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Shops>
  */
 class ShopFactory extends Factory
 {
+    use UseUpload;
+
     /**
      * The name of the factory's corresponding model.
      *
@@ -40,7 +43,8 @@ class ShopFactory extends Factory
             'postalCode' => $this->faker->postcode(),
             'country' => $this->faker->country(),
             'description' => $this->faker->text(125),
-            'backgroundImagePath' => $this->faker->imageUrl(640, 480, null, true, 'Faker', true)
+            'backgroundImagePath' => $this->unsplashImage($this->faker->numberBetween(1, 1000), 640, 480)
+            //$this->faker->imageUrl(640, 480, null, true, 'Faker', true)
         ];
     }
 }

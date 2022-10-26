@@ -29,6 +29,10 @@ class Shops extends Model
         return $this->belongsTo(Customers::class, 'customerID');
     }
 
+    public function products() {
+        return $this->hasMany(Products::class, 'shopID');
+    }
+
     protected static function newFactory() {
         return ShopFactory::new();
     }

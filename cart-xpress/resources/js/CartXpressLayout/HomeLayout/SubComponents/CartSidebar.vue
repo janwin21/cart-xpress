@@ -42,12 +42,10 @@
                                             style="height: 75%;">
 
                                     <div class="form-control bg-xpress-gray-100 pt-0 px-2 pb-2
-                                                border-top
-                                                border-start-0
-                                                border-bottom-0
-                                                border-end-0
-                                                border-light rounded-0
-                                                d-flex justify-content-between align-items-center">
+                                            border-top border-start-0
+                                            border-bottom-0 border-end-0
+                                            border-light rounded-0
+                                            d-flex justify-content-between align-items-center">
 
                                         <p class="roboto text-light w-100 pt-2
                                             float-end fs-xpress-sm-200 fw-xpress-600">
@@ -73,35 +71,40 @@
                         position-absolute bottom-0
                         w-100 text-light">
 
-                        <div class="px-3 pt-3 pb-0 mb-0">
-                            <p class="roboto fw-xpress-500">Total Ordered</p>
+                            <div class="px-3 pt-3 pb-0 mb-0">
+                                <p class="roboto fw-xpress-500">Total Ordered</p>
 
-                            <div class="row">
-                                <div class="col-6">
-                                    <p class="roboto fs-xpress-sm-200 fw-xpress-300">
-                                        Quantity: {{ totalQuantity }} pieces</p>
-                                    <p class="roboto fs-xpress-sm-200 fw-xpress-300">Expected Duration on Delivery:</p>
-                                </div>
-                                <div class="col-6">
-                                    <p class="roboto fs-xpress-sm-200 fw-xpress-300">Total: P{{ totalPrice }}</p>
-                                    <p class="roboto fs-xpress-sm-200 fw-xpress-300">24 hours</p>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <p class="roboto fs-xpress-sm-200 fw-xpress-300">
+                                            Quantity: {{ totalQuantity }} pieces</p>
+                                        <p class="roboto fs-xpress-sm-200 fw-xpress-300">Expected Duration on Delivery:</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <p class="roboto fs-xpress-sm-200 fw-xpress-300">
+                                            Total: P{{ totalPrice.toFixed(2) }}</p>
+                                        <p class="roboto fs-xpress-sm-200 fw-xpress-300">24 hours</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="text-end pe-2 pb-2 mt-0">
+                            <div class="text-end pe-2 pb-2 mt-0">
 
-                            <button class="btn bg-xpress-purple-300
-                                bg-hover-xpress-to-gray-200
-                                rounded-0 text-light py-1 px-4 roboto
-                                fs-xpress-sm-200 fw-xpress-500">
-                                Visit Profile</button>
+                                    <Link class="btn bg-xpress-purple-300
+                                        bg-hover-xpress-to-gray-200
+                                        rounded-0 text-light py-1 px-4 roboto
+                                        fs-xpress-sm-200 fw-xpress-500"
+                                        :href="route('profile')">
+                                        Visit Profile
+                                    </Link>
 
-                            <button class="btn bg-xpress-orange-100
-                                bg-hover-xpress-to-gray-200
-                                rounded-0 text-light py-1 px-4 roboto
-                                fs-xpress-sm-200 fw-xpress-500">
-                                Go Checkout</button>
+                                    <Link class="btn bg-xpress-orange-100
+                                        bg-hover-xpress-to-gray-200
+                                        rounded-0 text-light py-1 px-4 roboto
+                                        fs-xpress-sm-200 fw-xpress-500"
+                                        :href="route('checkout')">
+                                        Go Checkout
+                                    </Link>
 
                             </div>
 
@@ -122,12 +125,13 @@
 
 <script setup>
     import ProductLink from '../Elements/ProductLink.vue';
+    import { Link } from '@inertiajs/inertia-vue3';
     import { inject } from 'vue';
     import { useTotal } from '../../../Composables/UseTotal';
     //const { quantity, priceWithDiscount, updateQuantity } = useProduct(props.product);
     
     const shops = inject('shops');
-
+    console.log(shops);
     const { totalQuantity, totalPrice } = useTotal(shops);
 
     // quantity.value = props.product.orderDetails.quantityOrdered;

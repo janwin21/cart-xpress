@@ -4,12 +4,15 @@ namespace Database\Factories;
 
 use App\Models\Categories;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Http\Traits\UseUpload;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Categories>
  */
 class CategoryFactory extends Factory
 {
+    use UseUpload;
+
     /**
      * The name of the factory's corresponding model.
      *
@@ -27,7 +30,8 @@ class CategoryFactory extends Factory
         return [
             'name' => $this->faker->unique()->domainWord(),
             'description' => $this->faker->text(125),
-            'backgroundImagePath' => $this->faker->imageUrl(640, 480, 'cats', true, 'Faker', true)
+            'backgroundImagePath' => $this->unsplashImage($this->faker->numberBetween(1, 1000), 640, 480)
+            //$this->faker->imageUrl(640, 480, 'cats', true, 'Faker', true)
         ];
     }
 }

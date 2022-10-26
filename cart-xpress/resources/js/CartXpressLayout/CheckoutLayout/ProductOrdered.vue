@@ -76,7 +76,7 @@
                 <p class="roboto mt-0
                             fs-xpress-sm-700 fw-xpress-500 
                             text-light">
-                            P{{ priceWithDiscount() }}</p>
+                            P{{ nFormatter(priceWithDiscount()) }}</p>
             </div>
 
             <!-- quantityInStock -->
@@ -100,7 +100,7 @@
                     <p class="roboto mt-0 pe-1
                         fs-xpress-sm-700 fw-xpress-500 
                         text-light">
-                        P{{ updateQuantity }}</p>
+                        P{{ nFormatter(updateQuantity) }}</p>
 
                 </template>
             </div>
@@ -148,7 +148,7 @@
                             fs-xpress-sm-300 fw-xpress-500 
                             text-light">
                             WEIGHT <span class="ms-2 text-xpress-gray-300">
-                                {{ props.product.size }}KG</span></p>
+                                {{ nFormatter(props.product.size, 1) }}KG</span></p>
             </div>
 
             <div class="col-2 mt-5">
@@ -166,17 +166,37 @@
 
 <script setup>
     import moment from 'moment';
+    import { ref, inject, watch } from 'vue';
     import { Link } from '@inertiajs/inertia-vue3';
     import { useProduct } from '../../Composables/UseProduct';
+    import { useNFormatter } from '../../Composables/UseNFormatter';
+
+    const { nFormatter } = useNFormatter();
 
     const props = defineProps({
         product: Object,
-        editable: Number
+        editable: Number,
+        index: Number
     });
 
-    const { quantity, priceWithDiscount, updateQuantity } = useProduct(props.product);
+    const { inputIndex, quantity, priceWithDiscount, updateQuantity } = useProduct(props.product);
+    const isQuantityOrderedUndefined =  ref(typeof props.product.orderDetails === 'undefined');
+    
+    quantity.value = isQuantityOrderedUndefined.value ? 0 : props.product.orderDetails.quantityOrdered;
+    const shopInput = inject('shopInput');
+    
+    inputIndex.value = shopInput.quantities.length;
+    shopInput.quantities.push({
+        productID: props.product.id,
+        quantity: quantity.value
+    })
 
-    quantity.value = props.product.orderDetails.quantityOrdered;
+    watch(quantity, newQuantity => {
+        shopInput.quantities[inputIndex.value].quantity = newQuantity;
+        console.log('QUANTITIES', shopInput.quantities);
+    }, {
+        immediate: false
+    });
 
 </script>
 

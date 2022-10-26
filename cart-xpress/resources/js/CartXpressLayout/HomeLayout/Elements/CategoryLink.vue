@@ -5,7 +5,7 @@
         <img class="w-100 h-100" 
              :src="props.backgroundImagePath" alt="category image">
 
-        <Link href="#" :id="props.categoryID">
+        <Link :href="route('categories.show', props.categoryID)">
             <p class="bg-opaque-xpress-black-200
                       bg-opaque-hover-xpress-to-black-100 
                       roboto text-light text-center bg-primary

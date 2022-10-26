@@ -9,9 +9,9 @@
                     {{ props.shop.name }}</h4>
     </div>
 
-    <template v-for="product in props.shop.products" :key="product.id">
+    <template v-for="(product, index) in props.shop.products" :key="product.id">
 
-        <ProductOrdered :product="product" :editable="1" />
+        <ProductOrdered :product="product" :index="index" :editable="1" />
 
     </template>
 

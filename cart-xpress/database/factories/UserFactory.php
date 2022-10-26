@@ -7,9 +7,12 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Laravel\Jetstream\Features;
+use App\Http\Traits\UseUpload;
 
 class UserFactory extends Factory
 {
+    use UseUpload;
+
     /**
      * The name of the factory's corresponding model.
      *
@@ -28,8 +31,10 @@ class UserFactory extends Factory
             'firstName' => $this->faker->firstName(),
             'lastName' => $this->faker->lastName(),
             'phone' => $this->faker->phoneNumber(),
-            'profileImagePath' => $this->faker->imageUrl(200, 200, null, true, 'Faker', true),
-            'backgroundImagePath' => $this->faker->imageUrl(640, 480, null, true, 'Faker', true),
+            'profileImagePath' => $this->unsplashImage($this->faker->numberBetween(1, 1000), 200, 200),
+            // $this->faker->imageUrl(200, 200, null, true, 'Faker', true),
+            'backgroundImagePath' => $this->unsplashImage($this->faker->numberBetween(1, 1000), 640, 480),
+            // $this->faker->imageUrl(640, 480, null, true, 'Faker', true),
             'acceptAgreement' => true,
             'isHired' => false,
             'isVendor' => true,

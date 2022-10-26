@@ -3,12 +3,9 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Traits\UseUpload;
 
-class CategoriesWithProductsResource extends JsonResource
+class OnCartShopsResource extends JsonResource
 {
-    use UseUpload;
-    
     /**
      * Transform the resource into an array.
      *
@@ -20,10 +17,11 @@ class CategoriesWithProductsResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'description' => $this->description,
-            'imagePath' => 
-                $this->getPath($this->backgroundImagePath, '/images/sample-shops/sample-shop-1.jpg'),
-            'products' => ProductsInCategoryResource::collection($this->products)
+            'products' => OnCartProductsResource::collection(
+                $this->products->filter(function($product) {
+                    return $product->orderDetails->count() > 0;
+                })
+            )
         ];
     }
 }

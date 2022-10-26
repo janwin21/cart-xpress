@@ -29,6 +29,10 @@ class Customers extends Model
         return $this->hasMany(Shops::class, 'customerID');
     }
 
+    public function orders() {
+        return $this->hasMany(Orders::class, 'customerID');
+    }
+
     protected static function newFactory() {
         return CustomerFactory::new();
     }

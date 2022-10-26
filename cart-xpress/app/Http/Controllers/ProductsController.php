@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProductResource;
 use App\Http\Resources\YourShopsResource;
 use App\Models\Categories;
 use App\Models\Products;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Traits\UseUpload;
@@ -98,6 +98,27 @@ class ProductsController extends Controller
     public function show($id)
     {
 
+        $productQuantity = 0;
+        $productOrderedExist = false;
+
+        if(Auth::user()->customer->orders->where('status', 'on-cart')->count()) {
+
+            $existingOrderedProduct = Auth::user()->customer->orders->where('status', 'on-cart')->first()
+                ->orderDetails->where('productID', $id);
+
+            $productOrderedExist = $existingOrderedProduct->count() != 0;
+
+            if($productOrderedExist) {
+
+                $productQuantity = $existingOrderedProduct->first()->quantityOrdered;
+
+            }
+
+        }
+
+        $product = new ProductResource(Products::where('id', $id)->first());
+        
+        /*
         $product = [
             'id' => 0,
             'name' => 'Product 01',
@@ -299,9 +320,13 @@ class ProductsController extends Controller
                 ]
             ]
         ];
+        */
 
         return inertia('CartXpressPage/Product', [
-            'product' => $product
+            'product' => $product,
+            'productQuantity' => $productQuantity,
+            'productOrderedExist' => $productOrderedExist,
+            'hasLogin' => Auth::check()
         ]);
         
     }

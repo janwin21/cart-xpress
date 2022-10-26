@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ShopsController;
 use Illuminate\Foundation\Application;
@@ -55,12 +56,12 @@ Route::get('profile/register', [HomeController::class, 'register'])->name('profi
 Route::post('profile/logout', [HomeController::class, 'logout'])->name('profile.logout');
 
 // Profile Page
-Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
-Route::get('/profile/{id}', [HomeController::class, 'visitUserCustomer'])->name('profile.visit');
+Route::get('profile', [HomeController::class, 'profile'])->name('profile');
+Route::get('profile/{id}', [HomeController::class, 'visitUserCustomer'])->name('profile.visit');
 
 // Checkout & Order Page
-Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
-Route::post('/checkout/order', [HomeController::class, 'order'])->name('order');
+Route::get('checkout', [HomeController::class, 'checkout'])->name('checkout');
+Route::post('checkout/order', [HomeController::class, 'order'])->name('order');
 
 // CUSTOMER
 Route::resource('customers', CustomersController::class);
@@ -75,6 +76,9 @@ Route::resource('shops', ShopsController::class);
 
 // CATEGORIES
 Route::resource('categories', CategoriesController::class);
+
+// ORDERS
+Route::post('orders/add-to-cart', [OrderController::class, 'addToCart'])->name('orders.addToCart');
 
 // EMPLOYEE
 Route::resource('employees', EmployeesController::class);
