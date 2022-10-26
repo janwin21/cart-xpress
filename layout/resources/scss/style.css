@@ -12118,42 +12118,95 @@ div.orgChart div.adjunct-link {
     min-width: 15rem;
     justify-items: left !important;
   }
-  .search-manager .col-6 .form-control #search-img {
+  .search-manager {
+    /*search bar*/
+    /*dropdown menu*/
+    /*ascending-descending*/
+  }
+  .search-manager .form-control {
+    justify-content: start !important;
+  }
+  .search-manager .form-control #search-img {
     width: 2em !important;
     padding-top: 0.1rem !important;
   }
-  .search-manager .col-6 .form-control button #show {
+  .search-manager .form-control #show-cart-btn #show {
     display: none !important;
   }
-  .search-manager .col-6 .sorted-component {
-    padding-top: 1rem !important;
+  .search-manager .form-control #show-cart-btn {
+    justify-content: flex-start !important;
+    padding-right: 26px !important;
   }
-  .search-manager .col-6 .sorted-component #sorting {
-    padding-bottom: 1rem !important;
+  .search-manager .form-control #search-shop {
+    width: 2 !important;
   }
-  .search-manager .col-6 .sorted-component #sort-button .sorted-buttons {
-    padding-bottom: 0.2rem !important;
+  .search-manager #first-text-end #hide-home-btn {
+    margin-top: 5em !important;
+    margin-right: 0 !important;
   }
-  .search-manager .col-6 .sorted-component #sort-button #button-text {
+  .search-manager #first-text-end #show-home-btn {
+    margin-top: 5em !important;
+    margin-right: 0 !important;
+  }
+  .search-manager #first-text-end .application-description-header {
+    display: inline !important;
+  }
+  .search-manager #first-text-end .application-description-header h6 {
+    margin-top: 2px !important;
+    font-weight: 400 !important;
+    font-size: smaller !important;
+    margin-top: 0 !important;
+  }
+  .search-manager #first-text-end p {
+    display: none !important;
+  }
+  .search-manager .sorted-component-wrapper {
+    align-items: flex-end !important;
+  }
+  .search-manager .sorted-component-wrapper #right {
+    align-items: flex-end !important;
+  }
+  .search-manager .sorted-component-wrapper #sorting .sorted-component {
+    margin-bottom: 0 !important;
+  }
+  .search-manager .sorted-component-wrapper #sorting .sorted-component #sortButton .btn {
+    margin-bottom: 2px !important;
+  }
+  .search-manager .sorted-component-wrapper #sorting .sorted-component #sort-button {
+    background-color: #f6b26b !important;
+    margin-bottom: 5px !important;
+    padding-top: 1.5px !important;
+    padding-bottom: 2px !important;
+  }
+  .search-manager .sorted-component-wrapper #sorting .sorted-component #sort-button #button-text {
+    font-size: 12px !important;
     color: beige !important;
     padding: 0px !important;
   }
-  .search-manager .col-6 .sorted-component #p-sort {
+  .search-manager .sorted-component-wrapper #sorting .sorted-component #p-sort {
     display: none !important;
   }
-  .search-manager .col-6 #sorted-component-two .sorted-buttons button {
-    display: inline-flex !important;
+  .search-manager #sorted-component-two .sorted-buttons button {
     padding-left: 1% !important;
     padding-right: 2% !important;
     padding-bottom: 0.4rem !important;
-    margin-bottom: 3% !important;
+    margin-bottom: 10% !important;
     font-size: 12px !important;
   }
-  .search-manager .col-6 #sorted-component-two .sorted-buttons #desc {
-    margin-right: 0.3rem !important;
+  .search-manager #sorted-component-two .sorted-buttons #desc {
+    margin-right: 0.1rem !important;
     font-size: 12px !important;
+    padding-top: 2.8px !important;
+    padding-bottom: 3px !important;
+    margin-bottom: 3px !important;
+    align-items: flex-end !important;
   }
-  .search-manager .col-6 #sorted-component-two .sorted-buttons #asc {
+  .search-manager #sorted-component-two .sorted-buttons #asc {
     margin-right: 0.2rem !important;
+    font-size: 12px !important;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    margin-bottom: 3px !important;
+    align-items: flex-end !important;
   }
 }/*# sourceMappingURL=style.css.map */

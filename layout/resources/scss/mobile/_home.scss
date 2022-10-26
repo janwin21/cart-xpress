@@ -169,61 +169,113 @@ button{
 
 .search-manager{
  
+  /*search bar*/
+   .form-control{
+          justify-content: start !important;
+
+        #search-img{
+            width: 2em !important;
+            padding-top: 0.1rem !important;
+                   }
+                   #show-cart-btn{
+
+            #show{
+              display: none !important;
+                 }
+              }
+              #show-cart-btn{
+                
+                justify-content: flex-start !important;
+                padding-right: 26px !important;
+              }
+
+              #search-shop{
+                width: 2 !important;
+              }
+}
+
+#first-text-end{
+  #hide-home-btn{
+    margin-top: 5em !important;
+    margin-right: 0 !important;
+                }
+  #show-home-btn{
+ margin-top: 5em !important;
+ margin-right: 0 !important;
+                }
   
-  .col-6{
+.application-description-header{
+        display: inline !important;
 
-
-    .form-control{
-#search-img{
-  width: 2em !important;
-  padding-top: 0.1rem !important;
-}
-
-button{
-
-  #show{
-    display: none !important;
-    
-
-  }
-}
-}
-.sorted-component{
- 
-    #sorting{
-      padding-bottom: 1rem !important;
+    h6{
+      margin-top: 2px !important;
+     font-weight: 400 !important;
+     font-size: smaller !important;
+     margin-top: 0 !important;
     }
-    padding-top: 1rem !important;
-    
- 
-  #sort-button{
-     .sorted-buttons{
-      padding-bottom: 0.2rem !important;
-     }
-
-    #button-text{
-        color: beige !important;
-        padding: 0px !important;
-
-    }
+   
   }
 
-  #p-sort{
-
+  p{
     display: none !important;
   }
+  
 }
+/*dropdown menu*/
+
+.sorted-component-wrapper{
+align-items: flex-end !important;
+
+#right{
+  align-items: flex-end !important;
+}
+  #sorting{
+    
+    .sorted-component{
+  
+      margin-bottom: 0 !important;
+      #sortButton{
+          .btn{
+            margin-bottom: 2px !important;
+          }
+        }
+    #sort-button{
+        background-color:#f6b26b !important;
+      margin-bottom: 5px !important;
+      padding-top: 1.5px !important;
+      padding-bottom: 2px !important;
+  
+      
+      #button-text{
+      font-size: 12px !important;
+          color: beige !important;
+          padding: 0px !important;
+        
+  
+      }
+    }
+  
+    #p-sort{
+  
+      display: none !important;
+    }
+  }
+}
+}
+
+ 
+/*ascending-descending*/
 
 #sorted-component-two{
  
   .sorted-buttons{
     
       button{
-        display: inline-flex !important;
+       
        padding-left: 1% !important ;
        padding-right: 2% !important;
        padding-bottom: 0.4rem !important;
-      margin-bottom: 3% !important;
+      margin-bottom: 10% !important;
       font-size: 12px !important;
 
   
@@ -231,16 +283,25 @@ button{
       
     }
     #desc{
-
-    margin-right: 0.3rem !important;
+  
+    margin-right: 0.1rem !important;
    font-size: 12px !important;
+    padding-top: 2.8px !important;
+   padding-bottom: 3px !important;
+   margin-bottom: 3px !important;
+   align-items: flex-end !important;
 
     }
     #asc{
       margin-right: 0.2rem !important;
+      font-size: 12px !important;
+      padding-top: 3px !important;
+      padding-bottom: 3px !important;
+      margin-bottom: 3px !important;
+      align-items: flex-end !important;
     }
   }
-}
+
 }
 }
 
