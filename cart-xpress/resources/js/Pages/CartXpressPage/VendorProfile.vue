@@ -11,7 +11,9 @@
 
                     <RightSidebar />
 
-                    <VendorSidebar />
+                    <VendorSidebar v-if="!userProps.restricted" />
+
+                    <EmployeeSidebar v-if="userProps.restricted" />
                     
                 </div>
             
@@ -32,6 +34,7 @@
     import RegisterCover from '../../CartXpressLayout/RegisterLayout/RegisterCover.vue';
     import RightSidebar from '../../CartXpressLayout/ProfileLayout/RightSidebar.vue';
     import VendorSidebar from '../../CartXpressLayout/ProfileLayout/VendorSidebar.vue';
+    import EmployeeSidebar from '../../CartXpressLayout/ProfileLayout/EmployeeSidebar.vue';
 
     // actions & composables
     import callRegister from '../../Actions/register';

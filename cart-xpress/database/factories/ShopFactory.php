@@ -46,5 +46,6 @@ class ShopFactory extends Factory
             'backgroundImagePath' => $this->unsplashImage($this->faker->numberBetween(1, 1000), 640, 480)
             //$this->faker->imageUrl(640, 480, null, true, 'Faker', true)
         ];
+        
     }
 }

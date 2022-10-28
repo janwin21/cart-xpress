@@ -9,6 +9,8 @@ use App\Http\Traits\UseUpload;
 class OnCartProductsResource extends JsonResource
 {
     use UseUpload;
+
+    private static $orderID, $isHired;
     
     /**
      * Transform the resource into an array.
@@ -18,6 +20,18 @@ class OnCartProductsResource extends JsonResource
      */
     public function toArray($request)
     {
+        $orderDetail = $this->orderDetails->where('productID', $this->id)->where('orderID',
+            (self::$isHired == 0 && Auth::user()->customer) ?
+                Auth::user()->customer->orders->where('status', 'on-cart')->first()->id : self::$orderID
+        )->first();
+
+        $quantityOrdered = isset($orderDetail) ? $orderDetail->quantityOrdered : 0;
+
+        $imagePath = '/images/sample-products/product-1.jpg';
+
+        if(str_contains($this->imagePath, 'source.unsplash.com')) $imagePath = $this->imagePath;
+        else if(self::$isHired) $imagePath = '../' . $this->imagePath;
+
         return [
             'id' => $this->id,
             'name' => $this->name,
@@ -27,18 +41,25 @@ class OnCartProductsResource extends JsonResource
             'discount' => $this->discount,
             'durationOfDeliveryByHour' => $this->durationOfDeliveryByHour,
             'quantityInStock' => $this->quantityInStock,
-            'imagePath' => 
-                $this->getPath($this->imagePath, '/images/sample-products/product-1.jpg'),
+            'imagePath' => $imagePath,
             'overallRating' => 5,
             'countReviews' => 5,
             'totalPriceSold' => 5,
             'category' => new TopCategoriesResource($this->category),
             'shop' => new ShopResource($this->shop),
             'orderDetails' => [
-                'quantityOrdered' => $this->orderDetails->where('orderID',
-                    Auth::user()->customer->orders->where('status', 'on-cart')->first()->id
-                )->first()->quantityOrdered
+                'quantityOrdered' => $quantityOrdered
             ]
+            
         ];
+
+    }
+
+    // custom function that returns collection type
+    public static function orderCollection($resource, $orderID, $isHired): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+    {
+        self::$orderID = $orderID;
+        self::$isHired = $isHired;
+        return parent::collection($resource);
     }
 }

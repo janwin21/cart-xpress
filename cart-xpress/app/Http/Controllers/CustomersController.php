@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\OrdersResource;
+use App\Http\Resources\YourProfileResource;
+use App\Models\Orders;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CustomersController extends Controller
 {
@@ -52,27 +57,13 @@ class CustomersController extends Controller
      */
     public function show($id)
     {
-        
-        $user = [
-            'id' => 0,
-            'firstName' => 'myFirstName',
-            'lastName' => 'myLastName',
-            'phone' => 'phone',
-            'email' => 'user@gamil.com',
-            'profileImagePath' => '/images/alphabetical-profile/a-profile.jpg',
-            'backgroundImagePath' => '/images/alphabetical-backgrounds/a-profile-background.jpg',
-            'isHired' => false,
-            'isVendor' => true
-        ];
 
-        $userProfile = [
-            'addressLine1' => 'addressLine1',
-            'addressLine2' => 'addressLine2',
-            'city' => 'city',
-            'states' => 'states',
-            'postalCode' => 'postalCode',
-            'country' => 'country'
-        ];
+        // temp variables
+        $tempUser = User::where('id', $id)->first();
+
+        $user = new YourProfileResource($tempUser);
+        
+        $userProfile = User::find($tempUser->id)->customer;
 
         $onCartOrders = [
             [
@@ -116,25 +107,11 @@ class CustomersController extends Controller
             ]
         ];
 
-        $pendingOrders = [
-            [
-                'id' => 0,
-                'orderedDate' => new Carbon(),
-                'products' =>  [
-                    [
-                        'id' => 0,
-                        'name' => 'the first product',
-                        'price' => 55,
-                        'quantityInStock' => 12,
-                        'overallRating' => 4.5,
-                        'discount' => 0.4,
-                        'description' => 'this is a description of sample number 1',
-                        'imagePath' => '/images/sample-products/product-1.jpg',
-                        'orderDetails' => [ 'quantityOrdered' => 5 ]
-                    ]
-                ]
-            ]
-        ];
+        $pendingOrders = OrdersResource::collection(
+            Orders::where('customerID', 
+                $tempUser->customer->id)
+                    ->where('status', 'pending')
+                    ->orderBy('orderedDate', 'DESC')->get());
 
         $deliveredOrders = [
             [
@@ -199,7 +176,7 @@ class CustomersController extends Controller
             ]
         ];
 
-        $restricted = false;
+        $restricted = true;
 
         if($user['isVendor']) {
             return inertia('CartXpressPage/VendorProfile', [
@@ -210,6 +187,7 @@ class CustomersController extends Controller
                 'deliveredOrders' => $deliveredOrders,
                 'cancelledOrders' => $cancelledOrders,
                 'yourShops' => $yourShops,
+                'hasLogin' => Auth::check(),
                 'restricted' => $restricted
             ]);
         } else {
@@ -220,6 +198,7 @@ class CustomersController extends Controller
                 'pendingOrders' => $pendingOrders,
                 'deliveredOrders' => $deliveredOrders,
                 'cancelledOrders' => $cancelledOrders,
+                'hasLogin' => Auth::check(),
                 'restricted' => $restricted
             ]);
         }

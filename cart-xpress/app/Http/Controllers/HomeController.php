@@ -7,8 +7,10 @@ use App\Http\Controllers\Auth\LoginRequest;
 use App\Http\Resources\CategoriesWithProductsResource;
 use App\Http\Resources\CustomerAddressesResource;
 use App\Http\Resources\OnCartShopsResource;
+use App\Http\Resources\OrdersResource;
 use App\Http\Resources\PopularProductsResource;
 use App\Http\Resources\PopularShopsResource;
+use App\Http\Resources\ShopResource;
 use App\Http\Resources\TopCategoriesResource;
 use App\Http\Resources\YourProfileResource;
 use App\Http\Resources\YourShopsResource;
@@ -19,6 +21,7 @@ use App\Http\Traits\UseUpload;
 use App\Models\Categories;
 use App\Models\Customers;
 use App\Models\OrderDetails;
+use App\Models\Orders;
 use App\Models\Products;
 use App\Models\Shops;
 
@@ -59,19 +62,24 @@ class HomeController extends Controller
         
         // display all products on-cart by shops    
         $shops = [];
-        
-        if(Auth::user()->customer->orders->where('status', 'on-cart')->count() != 0) {
+        $hasLogin = Auth::check();
 
-            $shops = OnCartShopsResource::collection(
-                Shops::all()->filter(function($shop) {
-                    return $shop->products->filter(function($product) {
-                        return $product->orderDetails->where('orderID',
-                            Auth::user()->customer->orders->where('status', 'on-cart')->first()->id
-                        )->count() > 0;
-                    })->count() > 0;
-                })
-            );
+        if($hasLogin && !Auth::user()->isHired) {
 
+            if(Auth::user()->customer->orders->where('status', 'on-cart')->count() != 0) {
+    
+                $shops = OnCartShopsResource::collection(
+                    Shops::all()->filter(function($shop) {
+                        return $shop->products->filter(function($product) {
+                            return $product->orderDetails->where('orderID',
+                                Auth::user()->customer->orders->where('status', 'on-cart')->first()->id
+                            )->count() > 0;
+                        })->count() > 0;
+                    })
+                );
+    
+            }
+    
         }
 
         return inertia('CartXpressPage/Home', [
@@ -80,7 +88,7 @@ class HomeController extends Controller
             'shops' => $shops,
             'topCategories' => $topCategories,
             'popularProducts' => $popularProducts,
-            'hasLogin' => Auth::check() 
+            'hasLogin' => $hasLogin
         ]);
 
     }
@@ -190,117 +198,26 @@ class HomeController extends Controller
                 ]
             ];
 
-            $customers = [
-                [
-                    'id' => 0,
-                    'firstName' => 'first abc',
-                    'lastName' => 'last abc',
-                    'profileImagePath' => '/images/alphabetical-profile/a-profile.jpg',
-                    'backgroundImagePath' => '/images/alphabetical-backgrounds/a-profile-background.jpg',
-                    'createdAt' => new Carbon(2002, 8, 1),
-                ],
-                [
-                    'id' => 1,
-                    'firstName' => 'xzy sasasa',
-                    'lastName' => 'gsdosdo',
-                    'profileImagePath' => '/images/alphabetical-profile/c-profile.jpg',
-                    'backgroundImagePath' => '/images/alphabetical-backgrounds/d-profile-background.jpg',
-                    'createdAt' => new Carbon(2016, 5, 2)
-                ],
-                [
-                    'id' => 2,
-                    'firstName' => 'asadsd',
-                    'lastName' => 'asdsad',
-                    'profileImagePath' => '/images/alphabetical-profile/e-profile.jpg',
-                    'backgroundImagePath' => '/images/alphabetical-backgrounds/r-profile-background.jpg',
-                    'createdAt' => new Carbon(2022, 2, 10)
-                ]
-            ];
+            $customers = YourProfileResource::collection(User::where('isHired', 0)->get()->filter(
+                function($user) {
+                    return 
+                        $user->customer->orders->where('status', 'pending')->count() > 0 &&
+                        $user->customer->representatives
+                            ->where('employeeID', Auth::user()->employee->id)->count() > 0;
+                }
+            ));
+            
+            $employees = YourProfileResource::collection(User::where('isHired', 1)->get());
 
-            $employees = [
-                [
-                    'id' => 0,
-                    'firstName' => 'employee first abc',
-                    'lastName' => 'employee last abc',
-                    'profileImagePath' => '/images/alphabetical-profile/m-profile.jpg',
-                    'backgroundImagePath' => '/images/alphabetical-backgrounds/t-profile-background.jpg',
-                    'createdAt' => new Carbon(2002, 8, 1),
-                ],
-                [
-                    'id' => 1,
-                    'firstName' => 'employee xzy sasasa',
-                    'lastName' => 'employee gsdosdo',
-                    'profileImagePath' => '/images/alphabetical-profile/g-profile.jpg',
-                    'backgroundImagePath' => '/images/alphabetical-backgrounds/x-profile-background.jpg',
-                    'createdAt' => new Carbon(2016, 5, 2)
-                ],
-                [
-                    'id' => 2,
-                    'firstName' => 'employee asadsd',
-                    'lastName' => 'employee asdsad',
-                    'profileImagePath' => '/images/alphabetical-profile/e-profile.jpg',
-                    'backgroundImagePath' => 'images/alphabetical-backgrounds/e-profile-background.jpg',
-                    'createdAt' => new Carbon(2022, 2, 10)
-                ]
-            ];
+            $needToAssignCustomers = YourProfileResource::collection(User::where('isHired', 0)->get()->filter(
+                function($user) {
+                    return 
+                        $user->customer->orders->where('status', 'pending')->count() > 0 &&
+                        $user->customer->representatives->count() <= 0;
+                }
+            ));
 
-            $needToAssignCustomers = [
-                [
-                    'id' => 0,
-                    'firstName' => 'first abc',
-                    'lastName' => 'last abc',
-                    'profileImagePath' => '/images/alphabetical-profile/a-profile.jpg',
-                    'backgroundImagePath' => '/images/alphabetical-backgrounds/a-profile-background.jpg',
-                    'createdAt' => new Carbon(2002, 8, 1),
-                ],
-                [
-                    'id' => 1,
-                    'firstName' => 'xzy sasasa',
-                    'lastName' => 'gsdosdo',
-                    'profileImagePath' => '/images/alphabetical-profile/c-profile.jpg',
-                    'backgroundImagePath' => '/images/alphabetical-backgrounds/d-profile-background.jpg',
-                    'createdAt' => new Carbon(2016, 5, 2)
-                ],
-                [
-                    'id' => 2,
-                    'firstName' => 'asadsd',
-                    'lastName' => 'asdsad',
-                    'profileImagePath' => '/images/alphabetical-profile/e-profile.jpg',
-                    'backgroundImagePath' => 'images/alphabetical-backgrounds/t-profile-background.jpg',
-                    'createdAt' => new Carbon(2022, 2, 10)
-                ]
-            ];
-
-            $shops = [
-                [
-                    'id' => 0,
-                    'name' => 'my shop 01',
-                    'createdAt' => new Carbon(2002, 01, 01),
-                    'backgorundImagePath' => '/images/sample-shops/sample-shop-1.jpg',
-                    'city' => 'city 01'
-                ],
-                [
-                    'id' => 1,
-                    'name' => 'my shop 02',
-                    'createdAt' => new Carbon(2013, 01, 01),
-                    'backgorundImagePath' => '/images/sample-shops/sample-shop-2.jpg',
-                    'city' => 'city 12'
-                ],
-                [
-                    'id' => 2,
-                    'name' => 'my shop 03',
-                    'createdAt' => new Carbon(20014, 01, 01),
-                    'backgorundImagePath' => '/images/sample-shops/sample-shop-3.webp',
-                    'city' => 'ZYX city'
-                ],
-                [
-                    'id' => 3,
-                    'name' => 'my shop 04',
-                    'createdAt' => new Carbon(2015, 01, 01),
-                    'backgorundImagePath' => '/images/sample-shops/sample-shop-4.png',
-                    'city' => 'sasasasas'
-                ]
-            ];
+            $shops = ShopResource::collection(Shops::all());
             
             return inertia('CartXpressPage/EmployeeProfile', [
                 'user' => $user,
@@ -316,107 +233,29 @@ class HomeController extends Controller
         
             $userProfile = User::find($tempUser->id)->customer;
 
-            $onCartOrders = [
-                [
-                    'id' => 0,
-                    'orderedDate' => new Carbon(),
-                    'products' =>  [
-                        [
-                            'id' => 0,
-                            'name' => 'the first product',
-                            'price' => 55,
-                            'quantityInStock' => 12,
-                            'overallRating' => 4.5,
-                            'discount' => 0.4,
-                            'description' => 'this is a description of sample number 1',
-                            'imagePath' => '/images/sample-products/product-1.jpg',
-                            'orderDetails' => [ 'quantityOrdered' => 5 ]
-                        ],
-                        [
-                            'id' => 1,
-                            'name' => 'product 01',
-                            'price' => 5445,
-                            'quantityInStock' => 12,
-                            'overallRating' => 4.5,
-                            'discount' => 0.4,
-                            'description' => 'this is a description of sample number 1',
-                            'imagePath' => '/images/sample-products/product-3.jpg',
-                            'orderDetails' => [ 'quantityOrdered' => 9 ]
-                        ],
-                        [
-                            'id' => 2,
-                            'name' => 'product 01',
-                            'price' => 55,
-                            'quantityInStock' => 12,
-                            'overallRating' => 4.5,
-                            'discount' => 0.4,
-                            'description' => 'this is a description of sample number 1',
-                            'imagePath' => '/images/sample-products/product-4.jpg',
-                            'orderDetails' => [ 'quantityOrdered' => 5 ]
-                        ]
-                    ]
-                ]
-            ];
+            $onCartOrders = OrdersResource::collection(
+                Orders::where('customerID', 
+                    Auth::user()->customer->id)
+                        ->where('status', 'on-cart')
+                        ->orderBy('orderedDate', 'DESC')->get());
 
-            $pendingOrders = [
-                [
-                    'id' => 0,
-                    'orderedDate' => new Carbon(),
-                    'products' =>  [
-                        [
-                            'id' => 0,
-                            'name' => 'the first product',
-                            'price' => 55,
-                            'quantityInStock' => 12,
-                            'overallRating' => 4.5,
-                            'discount' => 0.4,
-                            'description' => 'this is a description of sample number 1',
-                            'imagePath' => '/images/sample-products/product-1.jpg',
-                            'orderDetails' => [ 'quantityOrdered' => 5 ]
-                        ]
-                    ]
-                ]
-            ];
+            $pendingOrders = OrdersResource::collection(
+                Orders::where('customerID', 
+                    Auth::user()->customer->id)
+                        ->where('status', 'pending')
+                        ->orderBy('orderedDate', 'DESC')->get());
 
-            $deliveredOrders = [
-                [
-                    'id' => 0,
-                    'orderedDate' => new Carbon(),
-                    'products' =>  [
-                        [
-                            'id' => 0,
-                            'name' => 'the first product',
-                            'price' => 55,
-                            'quantityInStock' => 12,
-                            'overallRating' => 4.5,
-                            'discount' => 0.4,
-                            'description' => 'this is a description of sample number 1',
-                            'imagePath' => '/images/sample-products/product-1.jpg',
-                            'orderDetails' => [ 'quantityOrdered' => 5 ]
-                        ]
-                    ]
-                ]
-            ];
+            $deliveredOrders = OrdersResource::collection(
+                Orders::where('customerID', 
+                    Auth::user()->customer->id)
+                        ->where('status', 'delivered')
+                        ->orderBy('orderedDate', 'DESC')->get());
 
-            $cancelledOrders = [
-                [
-                    'id' => 0,
-                    'orderedDate' => new Carbon(),
-                    'products' =>  [
-                        [
-                            'id' => 0,
-                            'name' => 'the first product',
-                            'price' => 55,
-                            'quantityInStock' => 12,
-                            'overallRating' => 4.5,
-                            'discount' => 0.4,
-                            'description' => 'this is a description of sample number 1',
-                            'imagePath' => '/images/sample-products/product-1.jpg',
-                            'orderDetails' => [ 'quantityOrdered' => 5 ]
-                        ]
-                    ]
-                ]
-            ];
+            $cancelledOrders = OrdersResource::collection(
+                Orders::where('customerID', 
+                    Auth::user()->customer->id)
+                        ->where('status', 'cancelled')
+                        ->orderBy('orderedDate', 'DESC')->get());
 
             $restricted = false;
             
@@ -518,7 +357,8 @@ class HomeController extends Controller
             'shops' => $shops,
             'users' => $users,
             'user' => new CustomerAddressesResource(Auth::user()),
-            'hasLogin' => Auth::check()
+            'hasLogin' => Auth::check(),
+            'isHired' => Auth::user()->isHired
         ]);
 
     }
@@ -547,6 +387,7 @@ class HomeController extends Controller
         }
 
         $onCartOrder->status = 'pending';
+        $onCartOrder->orderedDate = new Carbon();
         $onCartOrder->update();
 
         $yourAddress->addressLine1  = $request->addressLine1;

@@ -182,6 +182,7 @@
     const setProfileAddress = inject('setProfileAddress');
     const shopInput = inject('shopInput');
     const yourProfile = inject('yourProfile');
+    const isHired = inject('isHired');
 
 </script>
 

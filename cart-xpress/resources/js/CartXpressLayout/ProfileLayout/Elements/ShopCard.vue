@@ -12,7 +12,7 @@
                             top-0 left-0 w-100 h-100">
 
                     <img class="w-100 h-100" 
-                        :src="props.shop.backgorundImagePath" alt="" 
+                        :src="props.shop.backgroundImagePath" alt="shop image" 
                         style="object-fit: cover;">
                 </div>
 

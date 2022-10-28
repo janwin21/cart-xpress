@@ -16,9 +16,9 @@
 
                             <!-- welcome header -->
                             <div class="welcome-header 
-                                        border border-top-0 border-start-0 
-                                        border-end-0 border-bottom-1 
-                                        text-center px-5 pt-5 pb-4">
+                                border border-top-0 border-start-0 
+                                border-end-0 border-bottom-1 
+                                text-center px-5 pt-5 pb-4">
                                         
                                 <h4 class="roboto text-xpress-blue-300">Create Your New Shop, vendorName</h4>
 
@@ -28,7 +28,7 @@
                                     eaque ipsum, illum soluta at nesciunt.</p>
                             </div>
 
-                            <form @submit.prevent="productForm.post(route('products.store'))" 
+                            <form @submit.prevent="submitProduct" 
                                 enctype="multipart/form-data">
 
                                 <!-- first row -->
@@ -148,18 +148,18 @@
                                                 fw-xpress-600 mt-1"
                                                 id="background-btn"
                                                 data-is-profile="false"
-                                                type="button">
+                                                type="button" :disabled="props.editable">
                                                 UPLOAD</button>
 
                                             <input class="d-none" id="backgroundImagePath" 
-                                                type="file" name="imagePath" required    
+                                                type="file" name="imagePath" :required="!props.editable"    
                                                 @change="productForm.imagePath = onFile($event)" />
 
                                         </div>
 
                                         <img id="backgroundImageDisplay" 
                                             class="w-100 h-100 rounded mt-3" 
-                                            src="/images/sample-products/product-1.jpg" 
+                                            :src="props.editable ? productForm.imagePath : '/images/sample-products/product-1.jpg'" 
                                             alt="" style="
                                             height: 500px;
                                             object-fit: cover;">
@@ -319,6 +319,9 @@
     callRegister();
 
     const props = defineProps({
+        editable: Boolean,
+        product: Object,
+        category: Object,
         categories: Array,
         yourShops: Array,
         shopID: Number,
@@ -339,6 +342,19 @@
     });
 
     productForm.shopID = props.shopID;
+    productForm.name = props.editable ? props.product.name : '',
+    productForm.size = props.editable ? props.product.size : '1',
+    productForm.description = props.editable ? props.product.description : '',
+    productForm.quantityInStock = props.editable ? props.product.quantityInStock : '',
+    productForm.price = props.editable ? props.product.price : 0,
+    productForm.discount = props.editable ? props.product.discount : 0,
+    productForm.durationOfDeliveryByHour = props.editable ? props.product.durationOfDeliveryByHour : 1,
+
+    productForm.imagePath = props.editable ? 
+        (props.product.imagePath.includes('source.unsplash.com') ?
+            props.product.imagePath : '../' + props.product.imagePath) : '',
+
+    productForm.categoryName = props.editable ? props.category.name : ''
 
     const searchInput = ref(null);
 
@@ -352,6 +368,16 @@
     // SEARCH
     const searchProductValue = ref('');
     watch(searchProductValue, value => { searchProductValue.value = value; });
+
+    function submitProduct() {
+        if(props.editable) {
+
+            console.log(productForm);
+            productForm.patch(route('products.update', props.product.id));
+        } else {
+            productForm.post(route('products.store'));
+        }
+    }
 
 </script>
 

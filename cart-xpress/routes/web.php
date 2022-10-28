@@ -6,6 +6,8 @@ use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\RepliesController;
+use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\ShopsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -79,8 +81,16 @@ Route::resource('categories', CategoriesController::class);
 
 // ORDERS
 Route::post('orders/add-to-cart', [OrderController::class, 'addToCart'])->name('orders.addToCart');
+Route::patch('orders/cancel/{id}', [OrderController::class, 'cancel'])->name('orders.cancel');
+Route::patch('orders/reOrder/{id}', [OrderController::class, 'reOrder'])->name('orders.reOrder');
+Route::get('orders/showCheckout/{id}', [OrderController::class, 'showCheckout'])->name('orders.showCheckout');
+Route::patch('orders/deliverOrder/{id}', [OrderController::class, 'deliverOrder'])->name('orders.deliverOrder');
 
 // EMPLOYEE
 Route::resource('employees', EmployeesController::class);
 Route::post('employees/assign/{employeeID}/{customerID}', [EmployeesController::class, 'assign'])
     ->name('employees.assign');
+
+// REVIEWS & REPLIES
+Route::resource('reviews', ReviewsController::class);
+Route::resource('replies', RepliesController::class);

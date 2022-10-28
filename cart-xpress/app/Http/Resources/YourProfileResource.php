@@ -29,7 +29,8 @@ class YourProfileResource extends JsonResource
                 $this->getPath($this->backgroundImagePath, 
                 '/images/alphabetical-backgrounds/a-profile-background.jpg'),
             'isHired' => $this->isHired,
-            'isVendor' => $this->isVendor
+            'isVendor' => $this->isVendor,
+            'createAt' => $this->created_at
         ];
     }
     

@@ -83,12 +83,17 @@
             <div class="col-2 mt-5">
                 <template v-if="props.editable">
 
-                    <div class="form-control p-0 pt-1 bg-transparent 
+                    <div v-if="!isHired" class="form-control p-0 pt-1 bg-transparent 
                                 border-0 border-light">
 
                         <input class="w-50 px-3 rounded" 
                             type="number" name="quantityInStock" 
                             v-model="quantity" min="0">
+                    </div>
+                    <div v-if="isHired">
+                        <p class="roboto mt-0 mb-1
+                            fs-xpress-sm-300 fw-xpress-500 
+                            text-xpress-yellow-200">{{ quantity }} Pieces</p>
                     </div>
 
                 </template>
@@ -107,7 +112,7 @@
 
             <div class="col-2 mt-5 pe-5">
 
-                <template v-if="props.editable">
+                <template v-if="props.editable && !isHired">
                     
                     <button class="btn bg-xpress-red-100
                         bg-hover-xpress-to-gray-200 text-light
@@ -157,7 +162,7 @@
                             fs-xpress-sm-300 fw-xpress-500 
                             text-light">
                             DISCOUNT <span class="ms-2 text-xpress-yellow-200">
-                                {{ props.product.discount * 100 }}%</span></p>
+                                {{ (props.product.discount * 100).toFixed(2) }}%</span></p>
             </div>
         </div>
     
@@ -184,12 +189,15 @@
     
     quantity.value = isQuantityOrderedUndefined.value ? 0 : props.product.orderDetails.quantityOrdered;
     const shopInput = inject('shopInput');
-    
-    inputIndex.value = shopInput.quantities.length;
-    shopInput.quantities.push({
-        productID: props.product.id,
-        quantity: quantity.value
-    })
+    const isQuantitiesUndefined =  ref(typeof shopInput === 'undefined');
+
+    inputIndex.value = isQuantitiesUndefined ? 0 : shopInput.quantities.length;
+
+    if(!isQuantitiesUndefined.value)
+        shopInput.quantities.push({
+            productID: props.product.id,
+            quantity: quantity.value
+        })
 
     watch(quantity, newQuantity => {
         shopInput.quantities[inputIndex.value].quantity = newQuantity;
@@ -197,6 +205,8 @@
     }, {
         immediate: false
     });
+
+    const isHired = inject('isHired');
 
 </script>
 

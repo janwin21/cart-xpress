@@ -6,7 +6,7 @@
             bg-hover-xpress-to-gray-200
             rounded-0 text-light py-1 ps-4 roboto
             fs-xpress-sm-300 fw-xpress-500"
-            data-index="2">
+            data-index="1">
             SHOPS</button>
 
         <div class="order-wrapper" style="display: none;">

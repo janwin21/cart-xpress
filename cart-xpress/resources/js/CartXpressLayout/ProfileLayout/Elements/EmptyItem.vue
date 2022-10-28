@@ -1,8 +1,8 @@
 <template>
     <!-- empty items -->
-    <div v-if="length <= 0" class="empty-section m-3 p-3 
+    <div v-if="props.length <= 0" class="empty-section m-3 p-3 
                 border border-1 text-center rounded"
-                style="display: none;">
+                style="display: none;" :index="index">
 
         <h5 class="d-inline roboto text-light fw-xpress-500
                    mb-1 fs-xpress-sm-300 w-50 text-end">
@@ -14,7 +14,8 @@
 
 <script setup>
     const props = defineProps({
-        length: Number
+        length: Number,
+        index: Number
     });
 </script>
 

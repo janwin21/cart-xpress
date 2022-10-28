@@ -128,25 +128,32 @@
                             <!-- reply form -->
                             <div class="create-review bg-xpress-gray-100 rounded p-4">
             
-                                <form action="javascript: void(0)">
-            
+                                <form @submit.prevent="reply(reply.id, $event)">
+
                                     <!-- content -->
                                     <div class="form-control p-0 rounded-0 border-0">
             
                                         <textarea class="roboto text-xpress-gray-300 
-                                                bg-xpress-gray-500 border-0 py-2 fw-xpress-500 
-                                                        fs-xpress-sm-300 rounded w-100 mt-1 px-3"
-                                                        name="content" placeholder="type your review here..."
-                                                        style="height: 100px;"></textarea></div>
+                                            bg-xpress-gray-500 border-0 py-2 fw-xpress-500 
+                                            fs-xpress-sm-300 rounded w-100 mt-1 px-3"
+                                            name="content" placeholder="type your review here..."
+                                            style="height: 100px;" required="true">
+                                        </textarea>
+
+                                    </div>
             
                                     <div class="lower-part w-100 mt-3">
+
                                         <button class="btn bg-xpress-orange-100 
-                                                        bg-hover-xpress-to-gray-200 text-light 
-                                                        rounded py-1 px-5 fs-xpress-sm-300 
-                                                        fw-xpress-500 me-1"
-                                                        type="submit">
-                                                        Reply</button></div>
-            
+                                            bg-hover-xpress-to-gray-200 text-light 
+                                            rounded py-1 px-5 fs-xpress-sm-300 
+                                            fw-xpress-500 me-1"
+                                            type="submit">
+                                            Reply
+                                        </button>
+
+                                    </div>
+
                                 </form>
             
                             </div>
@@ -170,6 +177,7 @@
     import $ from 'jquery';
     import { inject } from 'vue';
     import Reply from './Reply.vue';
+    import { useForm } from '@inertiajs/inertia-vue3';
 
     function showReplyBySlide(event) {
         const target = $(event.target);
@@ -188,6 +196,17 @@
     const property = inject('property');
     const orderedThrough = inject('orderedThrough');
     const dynamicSortBy = inject('dynamicSortBy');
+
+    const replyForm = useForm({
+        reviewID: 0,
+        content: ''
+    });
+
+    function reply(reviewID, event) {
+        replyForm.reviewID = reviewID;
+        replyForm.content = $(event.currentTarget).find('textarea').val();
+        replyForm.post(route('replies.store'));
+    }
 
 </script>
 

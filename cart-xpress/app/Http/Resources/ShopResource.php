@@ -30,7 +30,8 @@ class ShopResource extends JsonResource
             'addressLine2' => $this->addressLine2, 
             'backgroundImagePath' => 
                 $this->getPath($this->backgroundImagePath, '/images/sample-shops/sample-shop-1.jpg'),
-            'mainVendor' => new MainVendorResource($this->customer->user)
+            'mainVendor' => new MainVendorResource($this->customer->user),
+            'createdAt' => $this->created_at
         ];
     }
 

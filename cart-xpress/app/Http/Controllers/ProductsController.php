@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ProductResource;
+use App\Http\Resources\ReviewsResource;
 use App\Http\Resources\YourShopsResource;
 use App\Models\Categories;
 use App\Models\Products;
@@ -10,6 +11,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Traits\UseUpload;
+use App\Models\Reviews;
 
 class ProductsController extends Controller
 {
@@ -52,6 +54,7 @@ class ProductsController extends Controller
             User::find(Auth::user()->id)->customer->shops);
 
         return inertia('CartXpressPage/ProductForm', [
+            'editable' => false,
             'categories' => Categories::all(),
             'yourShops' => $yourShops,
             'shopID' => $shopID,
@@ -81,7 +84,7 @@ class ProductsController extends Controller
             'price' => $request->price,
             'discount' => $request->discount,
             'durationOfDeliveryByHour' => $request->durationOfDeliveryByHour,
-            'categoryName' => $request->categoryName,
+            //'categoryName' => $request->categoryName,
             'imagePath' => $imagePath 
         ]);
 
@@ -101,232 +104,36 @@ class ProductsController extends Controller
         $productQuantity = 0;
         $productOrderedExist = false;
 
-        if(Auth::user()->customer->orders->where('status', 'on-cart')->count()) {
+        if(Auth::user()->customer) {
 
-            $existingOrderedProduct = Auth::user()->customer->orders->where('status', 'on-cart')->first()
-                ->orderDetails->where('productID', $id);
+            if(Auth::user()->customer->orders->where('status', 'on-cart')->count()) {
 
-            $productOrderedExist = $existingOrderedProduct->count() != 0;
+                $existingOrderedProduct = Auth::user()->customer->orders->where('status', 'on-cart')->first()
+                    ->orderDetails->where('productID', $id);
 
-            if($productOrderedExist) {
+                $productOrderedExist = $existingOrderedProduct->count() != 0;
 
-                $productQuantity = $existingOrderedProduct->first()->quantityOrdered;
+                if($productOrderedExist) {
+
+                    $productQuantity = $existingOrderedProduct->first()->quantityOrdered;
+
+                }
 
             }
 
         }
 
-        $product = new ProductResource(Products::where('id', $id)->first());
-        
-        /*
-        $product = [
-            'id' => 0,
-            'name' => 'Product 01',
-            'createdAt' => new Carbon(),
-            'price' => 150,
-            'size' => 3,
-            'discount' => 0.25,
-            'durationOfDeliveryByHour' => 4,
-            'quantityInStock' => 80,
-            'imagePath' => '/images/sample-products/product-1.jpg',
-            'overallRating' => 4.3,
-            'countReviews' => 67,
-            'totalPriceSold' => 14000,
-    
-            'category' => [ 
-                'id' => 0,
-                'name' => 'category name'
-            ],
-    
-            'shop' => [
-                'id' => 0,
-                'name' => 'Shop 12232312',
-                'city' => 'Paranaque',
-                'state' => 'Metro Manila',
-                'country' => 'Philippines',
-                'email' => 'shop@email.com',
-                'postalCode' => '1764',
-                'phone' => '1234567890',
-                'addressLine1' => 'adressline1 1234566899',
-                'addressLine2' => 'adressline2 097531',
-    
-                'mainVendor' => [
-                    'id' => 0,
-                    'firstName' => 'myFirstame',
-                    'lastName' => 'myLastName',
-                    'profileImagePath' => '/images/alphabetical-profile/a-profile.jpg'
-                ]
-    
-            ],
-    
-            'reviews' => [
-                [
-                    'id' => 0,
-                    'rating' => 4.2,
-                    'content' => "My content 01 => saskm asns amsa amsmas msakasmkaSMADJISAJAS NAKAS N",
-                    'postedAt' => new Carbon('2020-10-10'),
-                    'createdBy' => [
-                        'id' => 0,
-                        'profileImagePath' => '/images/alphabetical-profile/a-profile.jpg',
-                        'firstName' => 'firstName 01',
-                        'lastName' => 'lastName 01'
-                    ],
-    
-                    'replies' => [
-                        [
-                            'id' => 0,
-                            'content' => 'My reply 01 => saskm asns amsa amsmas msakasmkaSMADJISAJAS NAKAS N',
-                            'replyAt' => new Carbon('2021-10-07'),
-                            'createdBy' => [
-                                'id' => 0,
-                                'firstName' => 'replay firstName 01',
-                                'lastName' => 'replay lastName 01',
-                                'imagePath' => '/images/alphabetical-profile/a-profile.jpg'
-                            ]
-                        ],
-                        [
-                            'id' => 2,
-                            'content' => 'My reply 03 => saskm asns amsa amsmas msakasmkaSMADJISAJAS NAKAS N',
-                            'replyAt' => new Carbon('2018-03-11'),
-                            'createdBy' => [
-                                'id' => 2,
-                                'firstName' => 'replay firstName 03',
-                                'lastName' => 'replay lastName 03',
-                                'imagePath' => '/images/alphabetical-profile/a-profile.jpg'
-                            ]
-                        ],
-                        [
-                            'id' => 1,
-                            'content' => 'My reply 02 => saskm asns amsa amsmas msakasmkaSMADJISAJAS NAKAS N',
-                            'replyAt' => new Carbon('2019-09-07'),
-                            'createdBy' => [
-                                'id' => 1,
-                                'firstName' => 'replay firstName 02',
-                                'lastName' => 'replay lastName 02',
-                                'imagePath' => '/images/alphabetical-profile/a-profile.jpg'
-                            ]
-                        ]
-                    ]
-                ],
-                [
-                    'id' => 1,
-                    'rating' => 3,
-                    'content' => "My content 02 => saskm asns amsa amsmas msakasmkaSMADJISAJAS NAKAS N",
-                    'postedAt' => new Carbon('2021-08-08'),
-                    'createdBy' => [
-                        'id' => 1,
-                        'profileImagePath' => '/images/alphabetical-profile/a-profile.jpg',
-                        'firstName' => 'firstName 02',
-                        'lastName' => 'lastName 02'
-                    ],
-    
-                    'replies' => [
-                        [
-                            'id' => 0,
-                            'content' => 'My reply 01 => saskm asns amsa amsmas msakasmkaSMADJISAJAS NAKAS N',
-                            'replyAt' => new Carbon('2021-10-07'),
-                            'createdBy' => [
-                                'id' => 0,
-                                'firstName' => 'replay firstName 01',
-                                'lastName' => 'replay lastName 01',
-                                'imagePath' => '/images/alphabetical-profile/a-profile.jpg'
-                            ]
-                        ],
-                        [
-                            'id' => 2,
-                            'content' => 'My reply 03 => saskm asns amsa amsmas msakasmkaSMADJISAJAS NAKAS N',
-                            'replyAt' => new Carbon('2018-03-11'),
-                            'createdBy' => [
-                                'id' => 2,
-                                'firstName' => 'replay firstName 03',
-                                'lastName' => 'replay lastName 03',
-                                'imagePath' => '/images/alphabetical-profile/a-profile.jpg'
-                            ]
-                        ],
-                        [
-                            'id' => 1,
-                            'content' => 'My reply 02 => saskm asns amsa amsmas msakasmkaSMADJISAJAS NAKAS N',
-                            'replyAt' => new Carbon('2019-09-07'),
-                            'createdBy' => [
-                                'id' => 1,
-                                'firstName' => 'replay firstName 02',
-                                'lastName' => 'replay lastName 02',
-                                'imagePath' => '/images/alphabetical-profile/a-profile.jpg'
-                            ]
-                        ]
-                    ]
-                ],
-                [
-                    'id' => 2,
-                    'rating' => 5,
-                    'content' => "My content 03 => saskm asns amsa amsmas msakasmkaSMADJISAJAS NAKAS N",
-                    'postedAt' => new Carbon('2022-03-03'),
-                    'createdBy' => [
-                        'id' => 2,
-                        'profileImagePath' => '/images/alphabetical-profile/a-profile.jpg',
-                        'firstName' => 'firstName 03',
-                        'lastName' => 'lastName 03'
-                    ],
-                    
-                    'replies' => []
-                ],
-                [
-                    'id' => 3,
-                    'rating' => 4.9,
-                    'content' => "My content 04 => saskm asns amsa amsmas msakasmkaSMADJISAJAS NAKAS N",
-                    'postedAt' => new Carbon('2020-01-01'),
-                    'createdBy' => [
-                        'id' => 3,
-                        'profileImagePath' => '/images/alphabetical-profile/a-profile.jpg',
-                        'firstName' => 'firstName 04',
-                        'lastName' => 'lastName 04'
-                    ],
-                    
-                    'replies' => [
-                        [
-                            'id' => 0,
-                            'content' => 'My reply 01 => saskm asns amsa amsmas msakasmkaSMADJISAJAS NAKAS N',
-                            'replyAt' => new Carbon('2021-10-07'),
-                            'createdBy' => [
-                                'id' => 0,
-                                'firstName' => 'replay firstName 01',
-                                'lastName' => 'replay lastName 01',
-                                'imagePath' => '/images/alphabetical-profile/a-profile.jpg'
-                            ]
-                        ],
-                        [
-                            'id' => 2,
-                            'content' => 'My reply 03 => saskm asns amsa amsmas msakasmkaSMADJISAJAS NAKAS N',
-                            'replyAt' => new Carbon('2018-03-11'),
-                            'createdBy' => [
-                                'id' => 2,
-                                'firstName' => 'replay firstName 03',
-                                'lastName' => 'replay lastName 03',
-                                'imagePath' => '/images/alphabetical-profile/a-profile.jpg'
-                            ]
-                        ],
-                        [
-                            'id' => 1,
-                            'content' => 'My reply 02 => saskm asns amsa amsmas msakasmkaSMADJISAJAS NAKAS N',
-                            'replyAt' => new Carbon('2019-09-07'),
-                            'createdBy' => [
-                                'id' => 1,
-                                'firstName' => 'replay firstName 02',
-                                'lastName' => 'replay lastName 02',
-                                'imagePath' => '/images/alphabetical-profile/a-profile.jpg'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
-        ];
-        */
+        $tempProduct = Products::where('id', $id)->first();
+        $product = new ProductResource($tempProduct);
 
         return inertia('CartXpressPage/Product', [
+            'editable' => $tempProduct->shop->customer->user->id == Auth::user()->id,
             'product' => $product,
+            'reviews' => ReviewsResource::collection($product->reviews),
             'productQuantity' => $productQuantity,
             'productOrderedExist' => $productOrderedExist,
-            'hasLogin' => Auth::check()
+            'hasLogin' => Auth::check(),
+            'myUser' => Auth::user()
         ]);
         
     }
@@ -339,7 +146,22 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $product = Products::where('id', $id)->first();
+
+        $yourShops = YourShopsResource::collection(
+            User::find(Auth::user()->id)->customer->shops);
+
+        return inertia('CartXpressPage/ProductForm', [
+            'editable' => true,
+            'product' => $product,
+            'category' => $product->category,
+            'categories' => Categories::all(),
+            'yourShops' => $yourShops,
+            'shopID' => 0,
+            'hasLogin' => Auth::check() 
+        ]);
+
     }
 
     /**
@@ -351,7 +173,20 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $product = Products::where('id', $id)->first();
+        $product->categoryID = Categories::where('name', $request->categoryName)->first()->id;
+        $product->name = $request->name;
+        $product->size = $request->size;
+        $product->description = $request->description;
+        $product->quantityInStock = $request->quantityInStock;
+        $product->price = $request->price;
+        $product->discount = $request->discount;
+        $product->durationOfDeliveryByHour = $request->durationOfDeliveryByHour;
+        //$product->categoryName = $request->categoryName;
+        $product->update();
+
+        return redirect()->route('products.show', $id);
     }
 
     /**
@@ -362,6 +197,12 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        $product = Products::where('id', $id)->first();
+        $product->quantityInStock = 0;
+        $product->update();
+
+        return redirect()->route('profile');
+
     }
 }

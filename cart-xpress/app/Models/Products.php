@@ -35,6 +35,10 @@ class Products extends Model
         return $this->hasMany(OrderDetails::class, 'productID');
     }
 
+    public function reviews() {
+        return $this->hasMany(Reviews::class, 'productID');
+    }
+
     protected static function newFactory() {
         return ProductFactory::new();
     }

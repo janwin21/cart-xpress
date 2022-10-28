@@ -11,7 +11,7 @@
 
             <ReviewForm :product="props.product" />
 
-            <ProductReviews :reviews="props.product.reviews" />
+            <ProductReviews :reviews="props.reviews" />
 
         </div>
         <!---------- Product Main Content END -->
@@ -40,15 +40,20 @@
     provide('dynamicSortBy', dynamicSortBy);
 
     const props = defineProps({
+        editable: Boolean,
         product: Object,
+        reviews: Object,
         productQuantity: Number,
         productOrderedExist: Boolean,
-        hasLogin: Boolean
+        hasLogin: Boolean,
+        myUser: Boolean,
     });
 
+    provide('editable', reactive(props.editable));
     provide('productQuantity', props.productQuantity);
     provide('productOrderedExist', props.productOrderedExist);
     provide('hasLogin', reactive(props.hasLogin));
+    provide('myUser', props.myUser);
 
 </script>
 

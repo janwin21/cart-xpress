@@ -96,41 +96,48 @@
 
             <div class="create-review bg-xpress-gray-100 rounded p-4">
 
-                <form action="javascript: void(0)">
+                <form @submit.prevent="reviewForm.post(route('reviews.store'))">
 
                     <h4 class="roboto mb-0 text-light 
-                                fs-xpress-sm-400">
-                                Please review our product</h4>
+                        fs-xpress-sm-400">
+                        Please review our product</h4>
 
                     <p class="d-inline roboto mt-3
-                            fs-xpress-sm-300 fw-xpress-500 
-                            text-xpress-gray-600">
-                            RATE US</p>
+                        fs-xpress-sm-300 fw-xpress-500 
+                        text-xpress-gray-600">
+                        RATE US</p>
 
                     <!-- rating-->
                     <input class="d-inline roboto mt-3 text-xpress-gray-100
-                            bg-light border-0 px-2 ms-2 fw-xpress-500 
-                                    fs-xpress-sm-300 rounded-0" 
-                                    type="number" min="1"
-                                    name="rating" style="width: 4em"
-                                    value="1">
+                        bg-light border-0 px-2 ms-2 fw-xpress-500 
+                        fs-xpress-sm-300 rounded-0" 
+                        type="number" min="1"
+                        name="rating" style="width: 4em"
+                        v-model="reviewForm.rating">
 
                     <!-- content -->
                     <div class="form-control mt-4 p-0 rounded-0 border-0">
 
                         <textarea class="roboto text-xpress-gray-300 
-                                bg-xpress-gray-500 border-0 py-2 fw-xpress-500 
-                                        fs-xpress-sm-300 rounded w-100 mt-1 px-3"
-                                        name="content" placeholder="type your review here..."
-                                        style="height: 100px;"></textarea></div>
+                            bg-xpress-gray-500 border-0 py-2 fw-xpress-500 
+                            fs-xpress-sm-300 rounded w-100 mt-1 px-3"
+                            name="content" placeholder="type your review here..."
+                            style="height: 100px;" v-model="reviewForm.content">
+                        </textarea>
+                    
+                    </div>
 
                     <div class="lower-part w-100 mt-3">
+
                         <button class="btn bg-xpress-purple-300 
-                                        bg-hover-xpress-to-gray-200 text-light 
-                                        rounded py-1 px-5 fs-xpress-sm-300 
-                                        fw-xpress-500 me-1"
-                                        type="submit">
-                                        Publish</button></div>
+                            bg-hover-xpress-to-gray-200 text-light 
+                            rounded py-1 px-5 fs-xpress-sm-300 
+                            fw-xpress-500 me-1"
+                            type="submit">
+                            Publish
+                        </button>
+
+                    </div>
 
                 </form>
 
@@ -142,11 +149,20 @@
 </template>
 
 <script setup>
+    import { useForm } from '@inertiajs/inertia-vue3';
     import { inject } from 'vue';
 
     const props = defineProps({
         product: Object
     });
+
+    const reviewForm = useForm({
+        productID: 0,
+        rating: 5,
+        content: 'Good product!'
+    });
+
+    reviewForm.productID = props.product.id;
 
     const property = inject('property');
     const orderedThrough = inject('orderedThrough');

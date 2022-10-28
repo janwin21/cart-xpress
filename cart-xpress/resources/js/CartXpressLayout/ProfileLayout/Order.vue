@@ -3,15 +3,15 @@
     <div class="shopping-cart-row pt-4">
     
         <button :class="`dropdown-btn btn bg-xpress-${props.color} w-25
-                         bg-hover-xpress-to-gray-200 text-end
-                         rounded-0 text-light py-1 ps-4 roboto
-                         fs-xpress-sm-300 fw-xpress-500`"
-                         :data-index="props.index">
-                         {{ props.buttonName }}</button>
+            bg-hover-xpress-to-gray-200 text-end
+            rounded-0 text-light py-1 ps-4 roboto
+            fs-xpress-sm-300 fw-xpress-500`"
+            :data-index="props.index">
+            {{ props.buttonName }}</button>
 
-        <EmptyItem :length="props.orders.length" />
+        <!--<EmptyItem :length="props.orders.length" :index="index" />-->
 
-        <div class="order-wrapper" style="display: none;">
+        <div class="order-wrapper" :style="`${onService ? '' : 'display: none'};`">
 
             <template v-for="order in props.orders" :key="order.id">
 
@@ -26,56 +26,56 @@
                             {{ moment(order.orderedDate).format('MMMM Do YYYY, h:mm:ss a') }}</h4>
 
                     <slot />
+                                        
+                    <!-- order upper parts -->
+                    <button v-if="canCancel" class="btn bg-xpress-red-100 float-end
+                        bg-hover-xpress-to-gray-200
+                        rounded text-light py-1 px-4 roboto
+                        fs-xpress-sm-200 fw-xpress-500"
+                        @click="cancel(order.id)">
+                        CANCEL
+                    </button>
+                                        
+                    <!-- order upper parts -->
+                    <button v-if="canOrder" class="btn bg-xpress-orange-200 float-end
+                        bg-hover-xpress-to-gray-200
+                        rounded text-light py-1 px-4 roboto
+                        fs-xpress-sm-200 fw-xpress-500"
+                        @click="reOrder(order.id)">
+                        RE-ORDER
+                    </button>
+
+                    <template v-if="onService">
+                                            
+                        <!-- order upper parts -->
+                        <Link v-if="onService" 
+                            class="btn bg-xpress-orange-200 float-end
+                            bg-hover-xpress-to-gray-200
+                            rounded text-light py-1 px-4 roboto
+                            fs-xpress-sm-200 fw-xpress-500 ms-1"
+                            :href="route('orders.showCheckout', order.id)">
+                            MORE INFO
+                        </Link>
+                    
+                    </template>
 
                 </div>
 
                 <!-- cart content -->
-                <div class="bg-xpress-gray-200 mx-3">
+                <div class="bg-xpress-gray-200 mx-3 pb-1">
                     
                     <div class="row row-cols-6 m-0 g-1">
 
                         <template v-for="product in order.products" :key="product.id">
 
                             <ProductLink :product="product"
-                                    style="height: 75%;">
+                                style="height: 75%;">
 
-                                <div :class="`form-control bg-xpress-${!readOnly ? gray-100 : props.color} 
-                                     pt-0 px-2 pb-2
-                                     border-top
-                                     border-start-0
-                                     border-bottom-0
-                                     border-end-0
-                                     border-light rounded-0
-                                     d-flex justify-content-between align-items-center`">
-
-                                    <label :class="`text-${!readOnly ? 'light' : 'xpress-gray-200'} 
-                                            roboto fs-xpress-sm-200`" 
-                                            for="quantityOrdered">Quantity</label>
-
-                                    <template v-if="!readOnly">
-
-                                        <input class="w-50 mt-2 px-2" 
-                                            type="number" 
-                                            name="quantityOrdered"
-                                            :value="product.orderDetails.quantityOrdered"
-                                            min="1" />
-
-                                    </template>
-                                    <template v-else>
-
-                                        <p class="card-text text-xpress-gray-200 
-                                                fw-xpress-900 fs-xpress-sm-400">
-                                                5</p>
-
-                                    </template>
-
-                                </div>
-
-                                    <button v-if="!readOnly" class="btn bg-xpress-red-100 w-100
-                                            bg-hover-xpress-to-gray-200
-                                            rounded-0 text-light py-1 px-4 roboto
-                                            fs-xpress-sm-200 fw-xpress-500">
-                                            Remove</button>
+                                <button v-if="!readOnly" class="btn bg-xpress-red-100 w-100
+                                    bg-hover-xpress-to-gray-200
+                                    rounded-0 text-light py-1 px-4 roboto
+                                    fs-xpress-sm-200 fw-xpress-500">
+                                    Remove</button>
 
                             </ProductLink>
 
@@ -93,10 +93,12 @@
 </template>
 
 <script setup>
+    import { Link } from '@inertiajs/inertia-vue3';
     import ProductLink from '../HomeLayout/Elements/ProductLink.vue';
     import EmptyItem from './Elements/EmptyItem.vue';
     import { reactive } from 'vue';
     import moment from 'moment';
+    import { Inertia } from '@inertiajs/inertia';
 
     const props = defineProps({
         orders: Array,
@@ -104,8 +106,23 @@
         buttonName: String,
         classIcon: String,
         readOnly: Boolean,
+        onService: Boolean,
+        canCancel: Boolean,
+        canOrder: Boolean,
         index: Number
     });
+
+    function cancel(id) {
+        
+        Inertia.patch(route('orders.cancel', id));
+
+    }
+
+    function reOrder(id) {
+        
+        Inertia.patch(route('orders.reOrder', id));
+
+    }
     
 </script>
 

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CategoriesWithProductsResource;
 use App\Http\Resources\ShopResource;
 use App\Http\Resources\YourShopsResource;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Traits\UseUpload;
+use App\Models\Categories;
 use App\Models\Shops;
 use App\Models\User;
 use App\Models\Vendors;
@@ -95,81 +97,19 @@ class ShopsController extends Controller
     public function show($id)
     {
 
-        $shop = new ShopResource(Shops::where('id', $id)->first());
+        $tempShop = Shops::where('id', $id)->first();
+        $shop = new ShopResource($tempShop);
 
-        $categoriesWithProducts = [
-            [
-                'id' => 0, 
-                'name' => 'casr', 
-                'imagePath' => '/images/sample-categories/car.jpg',
-                'products' => [
-                    [ 
-                        'id' => 0,
-                        'name' => 'f 01',
-                        'overallRating' => 5,
-                        'price' => 90,
-                        'discount' => 0.45,
-                        'itemSold' => 15,
-                        'createdAt' => new Carbon(),
-                        'quantityInStock' => 25,
-                        'imagePath' => '/images/sample-products/product-4.jpg',
-                        'shop' => [ 'id' => 0 ]
-                    ],
-                    [
-                        'id' => 2,
-                        'name' => 'z 01',
-                        'overallRating' => 1.5,
-                        'price' => 110,
-                        'discount' => 0.45,
-                        'itemSold' => 12,
-                        'createdAt' => new Carbon(),
-                        'quantityInStock' => 25,
-                        'imagePath' => '/images/sample-products/product-1.jpg',
-                        'shop' => [ 'id' => 1 ]
-                    ],
-                ]
-            ], 
-            [
-                'id' => 2, 
-                'name' => 'train', 
-                'imagePath' => '/images/sample-categories/toy.jpg',
-                'products' => [
-                    [ 
-                        'id' => 0,
-                        'name' => 'f 01',
-                        'overallRating' => 5,
-                        'price' => 90,
-                        'discount' => 0.45,
-                        'itemSold' => 15,
-                        'createdAt' => new Carbon(),
-                        'quantityInStock' => 25,
-                        'imagePath' => '/images/sample-products/product-4.jpg',
-                        'shop' => [ 'id' => 0 ]
-                    ]
-                ]
-            ], 
-            [
-                'id' => 1, 
-                'name' => 'train', 
-                'imagePath' => '/images/sample-categories/car.jpg',
-                'products' => [
-                    [ 
-                        'id' => 0,
-                        'name' => 'f 01',
-                        'overallRating' => 5,
-                        'price' => 90,
-                        'discount' => 0.45,
-                        'itemSold' => 15,
-                        'createdAt' => new Carbon(),
-                        'quantityInStock' => 25,
-                        'imagePath' => '/images/sample-products/product-4.jpg',
-                        'shop' => [ 'id' => 0 ]
-                    ]
-                ]
-            ]
-        ];
+        $categoriesWithProducts = CategoriesWithProductsResource::collection(
+            Categories::all()->filter(function($category) use ($id) {
+                return $category->products->filter(function($product) use ($id) {
+                    return $product->shopID == $id;
+                })->count() > 0;
+            })
+        );
         
         return inertia('CartXpressPage/Shop', [
+            'editble' => $tempShop->customer->user->id == Auth::user()->id,
             'shop' => $shop,
             'categoriesWithProducts' => $categoriesWithProducts,
             'hasLogin' => Auth::check() 

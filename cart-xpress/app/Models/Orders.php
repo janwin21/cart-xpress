@@ -14,6 +14,10 @@ class Orders extends Model
         return $this->hasMany(OrderDetails::class, 'orderID');
     }
 
+    public function customer() {
+        return $this->belongsTo(Customers::class, 'customerID');
+    }
+
     protected $fillable = [
         'customerID',
         'orderedDate',

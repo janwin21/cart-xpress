@@ -21,6 +21,7 @@
             <div class="w-100 text-end gradient-black-op-100-to-bg-gray-200 
                     pb-4 pe-3 border-bottom-blue-200">
 
+                <!--
                 <a class="btn bg-xpress-red-100
                     bg-hover-xpress-to-gray-200 text-light 
                     rounded py-1 px-5 fs-xpress-sm-300 
@@ -32,6 +33,7 @@
                     rounded py-1 px-5 fs-xpress-sm-300 
                     fw-xpress-500 mt-5 me-1">
                     Edit Shop</a>
+                -->
 
                 <Link :href="route('categories.create')"
                     class="btn bg-xpress-orange-100

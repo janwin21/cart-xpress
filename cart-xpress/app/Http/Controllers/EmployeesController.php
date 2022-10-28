@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Representatives;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EmployeesController extends Controller
@@ -97,7 +99,12 @@ class EmployeesController extends Controller
     public function assign($employeeID, $customerID)
     {
         
-        dd($employeeID, $customerID);
+        Representatives::create([
+            'employeeID' => User::where('id', $employeeID)->first()->employee->id,
+            'customerID' => User::where('id', $customerID)->first()->customer->id
+        ]);
+
+        return redirect()->route('home');
 
     }
 }

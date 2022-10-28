@@ -29,13 +29,17 @@
                     px-3 py-1 text-light">
                     {{ props.user.email }}</h5>
 
+            
             <div class="w-100 text-end border-bottom-blue-200 px-3 pb-3">
-    
+                
+                <!--
                 <button class="btn bg-xpress-orange-200
                     bg-hover-xpress-to-gray-200
                     rounded text-light py-1 px-4 roboto
                     fs-xpress-sm-200 fw-xpress-500">
-                    EDIT</button>
+                    EDIT
+                </button>
+                -->
                     
             </div>
 

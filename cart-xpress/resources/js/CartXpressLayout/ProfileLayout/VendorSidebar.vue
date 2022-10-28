@@ -47,7 +47,7 @@
                         style="height: 150px;">
 
                         <Link :href="route('shops.show', yourShop.id)">
-
+                            
                             <img class="rounded w-100 h-100" 
                                 :src="`${ ($page.component === 'CartXpressPage/ProductForm' && !yourShop.backgroundImagePath.includes('source.unsplash.com')) ? '../' : '' }${yourShop.backgroundImagePath}`" 
                                 alt="shop image"

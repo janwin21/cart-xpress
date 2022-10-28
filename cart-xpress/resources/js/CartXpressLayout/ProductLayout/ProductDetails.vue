@@ -98,7 +98,7 @@
 
                     <div class="col-3 pb-2 text-end pe-5">
 
-                        <button class="btn bg-xpress-orange-100
+                        <button v-if="!myUser.isHired && editable" class="btn bg-xpress-orange-100
                             bg-hover-xpress-to-gray-200 text-light
                             rounded fs-xpress-sm-100 
                             fw-xpress-600 ms-1"
@@ -107,7 +107,7 @@
                             <i class="fa-solid fa-pen"></i>
                         </button>
 
-                        <button class="btn bg-xpress-red-100
+                        <button v-if="!myUser.isHired && editable" class="btn bg-xpress-red-100
                             bg-hover-xpress-to-gray-200 text-light
                             rounded fs-xpress-sm-100 
                             fw-xpress-600 ms-1"
@@ -148,17 +148,13 @@
 
                     <p class="roboto mt-0
                         fs-xpress-sm-300 fw-xpress-400 
-                        text-light">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Enim voluptatibus nostrum blanditiis libero deserunt in quos, 
-                        rerum mollitia neque odio voluptas! Molestiae tempore expedita 
-                        delectus impedit. Id doloremque quae expedita?</p>
+                        text-light">{{ props.product.description }}</p>
                 </div>
 
                 <form action="javascript: void(0)">
 
                     <!-- other details -->
-                    <div class="other-details mt-5 row row-cols-2">
+                    <div v-if="!myUser.isHired" class="other-details mt-5 row row-cols-2">
 
                         <div class="col">
 
@@ -218,7 +214,7 @@
                     </div>
 
                     <!-- buttons for submission -->
-                    <div class="submit-buttons">
+                    <div v-if="!myUser.isHired" class="submit-buttons">
 
                         <form class="d-inline" @submit.prevent="orderForm.post(route('orders.addToCart'))">
                             <button class="btn bg-xpress-purple-300 
@@ -230,6 +226,7 @@
                             </button>
                         </form>
 
+                        <!--
                         <form class="d-inline" @submit.prevent="orderForm.post(route('orders.addToCart'))">
                             <button class="btn bg-xpress-orange-100 
                                 bg-hover-xpress-to-gray-200 text-light w-25 
@@ -239,8 +236,11 @@
                                 Buy it Right Now!
                             </button>
                         </form>
+                        -->
 
                     </div>
+
+                    <div v-if="myUser.isHired" class="w-100" style="height: 100px"></div>
 
                 </form>
                 
@@ -253,7 +253,7 @@
 
                 <TwoOptionModal>
 
-                    <template #modal-header>Deleting {{ props.product.name }}</template>
+                    <template #modal-header>Emptying {{ props.product.name }}</template>
 
                     <template #modal-body>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -267,8 +267,10 @@
                             bg-hover-xpress-to-gray-200 text-light
                             rounded py-1 fs-xpress-sm-300 
                             fw-xpress-600 mt-1"
-                            id="background-btn">
-                            DELETE</button>
+                            id="background-btn"
+                            @click="destroy(props.product.id)">
+                            DELETE
+                        </button>
 
                         <button class="btn bg-xpress-gray-500 w-25 
                             bg-hover-xpress-to-gray-200 text-light
@@ -276,7 +278,8 @@
                             fw-xpress-600 mt-1 ms-2"
                             id="background-btn"
                             @click="showTwoWayOptionPopup()">
-                            CANCEL</button>
+                            CANCEL
+                        </button>
 
                     </template>
                     
@@ -304,7 +307,8 @@
                             bg-hover-xpress-to-gray-200 text-light
                             rounded py-1 fs-xpress-sm-300 
                             fw-xpress-600 mt-1"
-                            id="background-btn">
+                            id="background-btn"
+                            @click="edit(props.product.id)">
                             PROCEED
                         </button>
 
@@ -326,6 +330,7 @@
     import TwoOptionModal from '../../CartXpressModal/TwoOptionModal.vue';
     import OneOptionModal from '../../CartXpressModal/OneOptionModal.vue';
     import { useNFormatter } from '../../Composables/UseNFormatter';
+import { Inertia } from '@inertiajs/inertia';
 
     const props = defineProps({
         product: Object
@@ -347,7 +352,13 @@
     quantity.value = inject('productQuantity');
     orderForm.productOrderedExist = inject('productOrderedExist');
 
+    const restrictedQuantity = ref(props.product.quantityInStock);
+
     watch(quantity, newQuantity => {
+        if(newQuantity > restrictedQuantity.value) {
+            quantity.value--;
+            return;
+        }
         orderForm.orderDetailsQuantityOrdered = newQuantity;
         disabled.value = newQuantity <= 0;
     }, {
@@ -356,6 +367,23 @@
     
     provide('showOneWayOptionPopup', showOneWayOptionPopup);
     provide('showTwoWayOptionPopup', showTwoWayOptionPopup);
+
+    const myUser = inject('myUser');
+    const editable = inject('editable');
+
+    function destroy(productID) {
+
+        showTwoWayOptionPopup();
+        Inertia.delete(route('products.destroy', productID));
+
+    }
+
+    function edit(productID) {
+
+        showOneWayOptionPopup();
+        Inertia.get(route('products.edit', productID));
+
+    }
 
 </script>
 

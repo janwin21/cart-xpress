@@ -68,12 +68,20 @@
 
                             <div class="col-5 text-end mt-2">
             
-                                <button class="btn bg-xpress-orange-100 w-50
+                                <button v-if="!isHired" class="btn bg-xpress-orange-100 w-50
                                     bg-hover-xpress-to-gray-200
                                     rounded-0 text-light py-1 px-3 roboto
                                     fs-xpress-sm-300 fw-xpress-500"
                                     @click="submitOrder()">
                                     Check out
+                                </button>
+            
+                                <button v-if="isHired" class="btn bg-success w-50
+                                    bg-hover-xpress-to-gray-200
+                                    rounded-0 text-light py-1 px-3 roboto
+                                    fs-xpress-sm-300 fw-xpress-500"
+                                    @click="deliverOrder(props.orderID)" type="button">
+                                    Deliver
                                 </button>
 
                             </div>
@@ -152,9 +160,9 @@
                         
                         <div class="row m-0">
             
-                            <UserAddress :users="props.users" />
+                            <UserAddress v-if="!isHired" :users="props.users" />
 
-                            <LocationForm />
+                            <LocationForm v-if="!isHired" />
 
                             <input ref="checkBtn" class="d-none" 
                                 type="submit" value="submit" />
@@ -191,14 +199,17 @@
     // actions & composables
     import callCheckout from '../../Actions/checkout';
     import { useTotal } from '../../Composables/UseTotal';
+    import { Inertia } from '@inertiajs/inertia';
 
     callCheckout();
 
     const props = defineProps({
+        orderID: Number,
         shops: Array,
         users: Array,
         user: Object,
-        hasLogin: Boolean
+        hasLogin: Boolean,
+        isHired: Boolean
     });
 
     const checkBtn = ref(null);
@@ -217,6 +228,7 @@
     });
 
     provide('hasLogin', reactive(props.hasLogin));
+    provide('isHired', reactive(props.isHired));
     provide('shopInput', shopInput);
     provide('yourProfile', props.user);
 
@@ -251,6 +263,12 @@
     function submitOrder() {
 
         $(checkBtn.value).click();
+
+    }
+
+    function deliverOrder(orderID) {
+
+        Inertia.patch(route('orders.deliverOrder', orderID));
 
     }
 

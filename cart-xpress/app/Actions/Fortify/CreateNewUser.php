@@ -9,6 +9,7 @@ use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
 use App\Http\Traits\UseUpload;
 use App\Models\Customers;
+use App\Models\Employees;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -58,6 +59,12 @@ class CreateNewUser implements CreatesNewUsers
                 'postalCode' => $input['customer']['postalCode'],
                 'country' => $input['customer']['country'],
                 'creditLimit' => $input['customer']['creditLimit']
+            ]);
+
+        } else {
+
+            Employees::create([
+                'userID' => $user->id
             ]);
 
         }

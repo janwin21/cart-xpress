@@ -228,6 +228,7 @@
         profileImagePath: '',
         backgroundImagePath: '',
         acceptAgreement: false,
+        isVendor: false,
         isHired: true
     });
 

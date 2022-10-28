@@ -26,12 +26,12 @@ class CustomerAddressesResource extends JsonResource
             'backgroundImagePath' => 
                 $this->getPath($this->backgroundImagePath, 
                 '/images/alphabetical-backgrounds/a-profile-background.jpg'),
-            'addressLine1' =>  $this->customer->addressLine1,
-            'addressLine2' =>  $this->customer->addressLine2,
-            'city' =>  $this->customer->city,
-            'state' =>  $this->customer->state,
-            'postalCode' =>  $this->customer->postalCode,
-            'country' =>  $this->customer->country,
+            'addressLine1' =>  isset($this->customer->addressLine1) ? $this->customer->addressLine1 : '',
+            'addressLine2' =>  isset($this->customer->addressLine2) ? $this->customer->addressLine2 : '',
+            'city' =>  isset($this->customer->city) ? $this->customer->city : '',
+            'state' =>  isset($this->customer->state) ? $this->customer->state : '',
+            'postalCode' =>  isset($this->customer->postalCode) ? $this->customer->postalCode : '',
+            'country' =>  isset($this->customer->country) ? $this->customer->country : '',
             'orders' => [ 'comment' => '' ]
         ];
     }

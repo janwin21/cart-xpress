@@ -72,7 +72,7 @@
                     You don’t have account yet?</p>
 
                 <Link class="roboto text-light fs-xpress-sm-200 
-                    w-25 border-light" :href="route('register')">
+                    w-25 border-light" :href="route('profile.register')">
                     <p class="">Register</p>
                 </Link>
 
