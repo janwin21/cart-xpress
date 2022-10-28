@@ -12006,6 +12006,9 @@ div.orgChart div.adjunct-link {
   #sort-button {
     display: none !important;
   }
+  #header-button {
+    display: none !important;
+  }
 }
 @media (max-width: 991.98px) {
   /*NAV-BARRR*/
@@ -12071,14 +12074,16 @@ div.orgChart div.adjunct-link {
   }
   .search-home-xpress {
     display: inline-block;
-    padding: 0;
+    padding: 0 !important;
     margin: 0;
-    height: 22rem;
+    height: 24.5rem;
     justify-content: start !important;
+    flex-direction: column !important;
   }
   .search-home-xpress button {
     text-align: center !important;
     margin-top: 0.5rem !important;
+    flex-direction: column !important;
   }
   .search-home-xpress p {
     display: none;
@@ -12133,25 +12138,27 @@ div.orgChart div.adjunct-link {
   .search-manager .form-control #show-cart-btn #show {
     display: none !important;
   }
-  .search-manager .form-control #show-cart-btn {
-    justify-content: flex-start !important;
-    padding-right: 26px !important;
-  }
   .search-manager .form-control #search-shop {
     width: 2 !important;
   }
+  .search-manager #first-text-end #header-button {
+    margin-top: 4em !important;
+    font-weight: 400 !important;
+    font-size: smaller !important;
+  }
   .search-manager #first-text-end #hide-home-btn {
-    margin-top: 5em !important;
+    margin-top: 0 !important;
     margin-right: 0 !important;
   }
   .search-manager #first-text-end #show-home-btn {
-    margin-top: 5em !important;
+    margin-top: 0 !important;
     margin-right: 0 !important;
   }
   .search-manager #first-text-end .application-description-header {
     display: inline !important;
   }
   .search-manager #first-text-end .application-description-header h6 {
+    display: none !important;
     margin-top: 2px !important;
     font-weight: 400 !important;
     font-size: smaller !important;
@@ -12208,5 +12215,14 @@ div.orgChart div.adjunct-link {
     padding-bottom: 3px !important;
     margin-bottom: 3px !important;
     align-items: flex-end !important;
+  }
+  .cart-xpress-header .simple-nav {
+    display: inline-flex;
+  }
+  .cart-xpress-header .simple-nav button {
+    width: 115px !important;
+  }
+  .cart-xpress-header .simple-nav button #class1 {
+    margin-left: 0 !important;
   }
 }/*# sourceMappingURL=style.css.map */
