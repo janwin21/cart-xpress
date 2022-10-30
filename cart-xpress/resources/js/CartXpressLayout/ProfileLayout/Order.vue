@@ -74,8 +74,10 @@
                                 <button v-if="!readOnly" class="btn bg-xpress-red-100 w-100
                                     bg-hover-xpress-to-gray-200
                                     rounded-0 text-light py-1 px-4 roboto
-                                    fs-xpress-sm-200 fw-xpress-500">
-                                    Remove</button>
+                                    fs-xpress-sm-200 fw-xpress-500"
+                                    @click="remove(order.id, product.id)">
+                                    Remove
+                                </button>
 
                             </ProductLink>
 
@@ -122,6 +124,13 @@
         
         Inertia.patch(route('orders.reOrder', id));
 
+    }
+
+    function remove(orderID, productID) {
+        Inertia.delete(route('orders.deleteItem', {
+            'orderID': orderID, 
+            'productID': productID
+        }));
     }
     
 </script>

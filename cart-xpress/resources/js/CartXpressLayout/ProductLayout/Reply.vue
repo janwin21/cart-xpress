@@ -6,7 +6,7 @@
             <!-- left -->
             <div class="col-1 p-0 me-0 pe-3 text-end">
                 <img class="rounded-circle" 
-                    :src="props.reply.createdBy.imagePath" alt="" 
+                    :src="props.reply.createdBy.profileImagePath" alt="" 
                     style="height: 50px;">   
             </div>
 
@@ -24,10 +24,11 @@
                             reply at {{ moment(props.reply.replyAt)
                                             .format('MMMM Do YYYY, h:mm:ss a') }}</p>
 
-                <button class="float-end btn bg-xpress-red-100 
+                <button v-if="reply.owned" class="float-end btn bg-xpress-red-100 
                                 bg-hover-xpress-to-gray-200 text-light 
                                 rounded py-1 px-5 fs-xpress-sm-300 
-                                fw-xpress-500 me-1">
+                                fw-xpress-500 me-1"
+                                @click="destroy(props.reply.id)">
                                 Delete</button>
 
                 <p class="roboto my-0 w-100
@@ -42,11 +43,16 @@
 </template>
 
 <script setup>
+    import { Inertia } from '@inertiajs/inertia';
     import moment from 'moment';
 
     const props = defineProps({
         reply: Object
     });
+
+    function destroy(replyID) {
+        Inertia.delete(route('replies.destroy', replyID));
+    }
 
 </script>
 

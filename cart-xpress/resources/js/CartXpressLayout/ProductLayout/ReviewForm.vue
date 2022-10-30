@@ -96,7 +96,7 @@
 
             <div class="create-review bg-xpress-gray-100 rounded p-4">
 
-                <form @submit.prevent="reviewForm.post(route('reviews.store'))">
+                <form @submit.prevent="submitReview">
 
                     <h4 class="roboto mb-0 text-light 
                         fs-xpress-sm-400">
@@ -163,6 +163,11 @@
     });
 
     reviewForm.productID = props.product.id;
+
+    function submitReview() {
+        reviewForm.post(route('reviews.store'));
+        location.reload();
+    }
 
     const property = inject('property');
     const orderedThrough = inject('orderedThrough');

@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Auth;
 
-class ReviewsResource extends JsonResource
+class RepliesResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,10 +18,8 @@ class ReviewsResource extends JsonResource
         return [
             'id' => $this->id,
             'createdBy' => new YourProfileResource($this->user),
-            'postedAt' => $this->created_at,
-            'rating' => $this->rating,
+            'replieAt' => $this->created_at,
             'content' => $this->content,
-            'replies' => RepliesResource::collection($this->replies),
             'owned' => $this->user->id == Auth::user()->id
         ];
     }

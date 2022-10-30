@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Database\Factories\ReplyFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,7 +21,7 @@ class Replies extends Model
     }
 
     protected static function newFactory() {
-        return Replies::new();
+        return ReplyFactory::new();
     }
 
 }

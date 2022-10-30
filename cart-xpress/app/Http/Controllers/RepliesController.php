@@ -2,10 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Replies;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RepliesController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('redirect.home');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -34,8 +42,14 @@ class RepliesController extends Controller
      */
     public function store(Request $request)
     {
-        
-        dd($request);
+
+        $reply = Replies::create([
+            'createdByID' => Auth::user()->id,
+            'reviewID' => $request->reviewID,
+            'content' => $request->content
+        ]);
+
+        return redirect()->route('products.show', $reply->review->product->id);
 
     }
 
@@ -81,6 +95,12 @@ class RepliesController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $replies = Replies::where('id', $id)->first();
+        $repliesID = $replies->review->product->id;
+        $replies->delete();
+
+        return redirect()->route('products.show', $repliesID);
+
     }
 }

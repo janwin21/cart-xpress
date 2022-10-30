@@ -27,7 +27,7 @@ class OrderFactory extends Factory
     {
 
         $customers = Customers::all();
-        $status = ['pending', 'delivered', 'canceled'];
+        $status = ['pending', 'delivered', 'cancelled'];
 
         return [
             'customerID' => $this->faker->numberBetween(1, $customers->count()),

@@ -26,6 +26,8 @@ class OnCartProductsResource extends JsonResource
         )->first();
 
         $quantityOrdered = isset($orderDetail) ? $orderDetail->quantityOrdered : 0;
+        $orderID = isset($orderDetail) ? $orderDetail->orderID : 0;
+        $productID = isset($orderDetail) ? $orderDetail->productID : 0;
 
         $imagePath = '/images/sample-products/product-1.jpg';
 
@@ -48,6 +50,8 @@ class OnCartProductsResource extends JsonResource
             'category' => new TopCategoriesResource($this->category),
             'shop' => new ShopResource($this->shop),
             'orderDetails' => [
+                'orderID' => $orderID,
+                'productID' => $productID,
                 'quantityOrdered' => $quantityOrdered
             ]
             

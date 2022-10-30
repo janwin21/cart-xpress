@@ -12,12 +12,12 @@ class Reviews extends Model
 
     protected $fillable = ['createdByID', 'productID', 'rating', 'content'];
 
-    public function product() {
-        return $this->belongsTo(Products::class, 'productID');
+    public function replies() {
+        return $this->hasMany(Replies::class, 'reviewID');
     }
 
-    public function replies() {
-        return $this->belongsTo(Reviews::class, 'reviewID');
+    public function product() {
+        return $this->belongsTo(Products::class, 'productID');
     }
 
     public function user() {

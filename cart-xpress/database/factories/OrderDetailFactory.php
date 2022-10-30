@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\OrderDetails;
 use App\Models\Orders;
+use App\Models\Products;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -27,7 +28,7 @@ class OrderDetailFactory extends Factory
     {
 
         $orders = Orders::all();
-        $products = Orders::all();
+        $products = Products::all();
 
         return [
             'orderID' => $this->faker->numberBetween(1, $orders->count()),

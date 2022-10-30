@@ -85,6 +85,7 @@ Route::patch('orders/cancel/{id}', [OrderController::class, 'cancel'])->name('or
 Route::patch('orders/reOrder/{id}', [OrderController::class, 'reOrder'])->name('orders.reOrder');
 Route::get('orders/showCheckout/{id}', [OrderController::class, 'showCheckout'])->name('orders.showCheckout');
 Route::patch('orders/deliverOrder/{id}', [OrderController::class, 'deliverOrder'])->name('orders.deliverOrder');
+Route::delete('orders/deleteItem/{orderID}/{productID}', [OrderController::class, 'deleteItem'])->name('orders.deleteItem');
 
 // EMPLOYEE
 Route::resource('employees', EmployeesController::class);

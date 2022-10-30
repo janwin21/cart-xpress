@@ -118,4 +118,13 @@ class OrderController extends Controller
 
     }
 
+    public function deleteItem($orderID, $productID) {
+
+        OrderDetails::where('orderID', $orderID)
+            ->where('productID', $productID)->first()->delete();
+
+        return redirect()->route('home');
+
+    }
+
 }

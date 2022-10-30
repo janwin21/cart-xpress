@@ -20,7 +20,7 @@ class ProductsInCategoryResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'overallRating' => 5,
+            'overallRating' => $this->reviews->count() > 0 ? round($this->reviews->avg('rating'), 1) : 5,
             'price' => $this->price,
             'discount' => $this->discount,
             'itemSold' => 15,

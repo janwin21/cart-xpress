@@ -30,10 +30,11 @@
                                 posted at {{ moment(review.postedAt)
                                                 .format('MMMM Do YYYY, h:mm:ss a') }}</p>
 
-                        <button class="float-end btn bg-xpress-red-100 
+                        <button v-if="review.owned" class="float-end btn bg-xpress-red-100 
                                 bg-hover-xpress-to-gray-200 text-light 
                                 rounded py-1 px-5 fs-xpress-sm-300 
-                                fw-xpress-500 me-1">
+                                fw-xpress-500 me-1"
+                                @click="destroy(review.id)">
                                 Delete</button>
 
                         <p class="roboto mt-0
@@ -128,7 +129,7 @@
                             <!-- reply form -->
                             <div class="create-review bg-xpress-gray-100 rounded p-4">
             
-                                <form @submit.prevent="reply(reply.id, $event)">
+                                <form @submit.prevent="reply(review.id, $event)">
 
                                     <!-- content -->
                                     <div class="form-control p-0 rounded-0 border-0">
@@ -137,8 +138,7 @@
                                             bg-xpress-gray-500 border-0 py-2 fw-xpress-500 
                                             fs-xpress-sm-300 rounded w-100 mt-1 px-3"
                                             name="content" placeholder="type your review here..."
-                                            style="height: 100px;" required="true">
-                                        </textarea>
+                                            style="height: 100px;" required="true" />
 
                                     </div>
             
@@ -178,6 +178,7 @@
     import { inject } from 'vue';
     import Reply from './Reply.vue';
     import { useForm } from '@inertiajs/inertia-vue3';
+import { Inertia } from '@inertiajs/inertia';
 
     function showReplyBySlide(event) {
         const target = $(event.target);
@@ -206,6 +207,11 @@
         replyForm.reviewID = reviewID;
         replyForm.content = $(event.currentTarget).find('textarea').val();
         replyForm.post(route('replies.store'));
+        location.reload();
+    }
+
+    function destroy(reviewID) {
+        Inertia.delete(route('reviews.destroy', reviewID));
     }
 
 </script>

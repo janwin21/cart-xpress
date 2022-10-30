@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Auth;
 
 class ReviewsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('redirect.home');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -90,6 +96,10 @@ class ReviewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $review = Reviews::where('id', $id)->first();
+        $reviewID = $review->product->id;
+        $review->delete();
+
+        return redirect()->route('products.show', $reviewID);
     }
 }

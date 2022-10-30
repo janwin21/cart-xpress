@@ -57,8 +57,10 @@
                                     <button class="btn bg-xpress-red-100 w-100
                                         bg-hover-xpress-to-gray-200
                                         rounded-0 text-light py-1 px-4 roboto
-                                        fs-xpress-sm-200 fw-xpress-500">
-                                        Remove</button>
+                                        fs-xpress-sm-200 fw-xpress-500"
+                                        @click="remove(product.orderDetails)">
+                                        Remove
+                                    </button>
 
                                 </ProductLink>
 
@@ -128,11 +130,20 @@
     import { Link } from '@inertiajs/inertia-vue3';
     import { inject } from 'vue';
     import { useTotal } from '../../../Composables/UseTotal';
+    import { Inertia } from '@inertiajs/inertia';
     //const { quantity, priceWithDiscount, updateQuantity } = useProduct(props.product);
     
     const shops = inject('shops');
     console.log(shops);
     const { totalQuantity, totalPrice } = useTotal(shops);
+
+    function remove(orderDetails) {
+        Inertia.delete(route('orders.deleteItem', {
+            'orderID': orderDetails.orderID, 
+            'productID': orderDetails.productID
+        }));
+        location.reload();
+    }
 
     // quantity.value = props.product.orderDetails.quantityOrdered;
 </script>
