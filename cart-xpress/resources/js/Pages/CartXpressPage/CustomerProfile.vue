@@ -37,7 +37,8 @@
                             <Order :on-service="props.restricted" :orders="props.pendingOrders" 
                                 color="orange-200" buttonName="PENDING ORDERS"
                                 class-icon="fa-solid fa-spinner" 
-                                :readOnly="true" :index="props.isHired == 0 ? 1 : -1" :can-cancel="props.isHired == 0">
+                                :readOnly="true" :index="props.user.isHired == 0 ? 1 : -1" 
+                                :can-cancel="props.user.isHired == 0">
                             
                             </Order>
 

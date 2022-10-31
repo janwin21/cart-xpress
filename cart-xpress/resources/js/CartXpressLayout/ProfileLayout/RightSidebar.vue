@@ -26,8 +26,8 @@
             <!-- pending -->
             <Order :on-service="props.restricted" :orders="props.pendingOrders" 
                 color="orange-200" buttonName="PENDING ORDERS"
-                class-icon="fa-solid fa-spinner" :index="props.isHired == 0 ? 1 : -1"
-                :readOnly="true" :can-cancel="props.isHired == 0">
+                class-icon="fa-solid fa-spinner" :index="props.user.isHired == 0 ? 1 : -1"
+                :readOnly="true" :can-cancel="props.user.isHired == 0">
 
             </Order>
 
