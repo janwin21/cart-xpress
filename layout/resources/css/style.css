@@ -10966,7 +10966,7 @@ textarea.form-control-lg {
 }
 
 .gradient-bg-gray-100-to-bg-red-300-end {
-  background-image: linear-gradient(to right, #434343 50%, #cf5959);
+  background-image: linear-gradient(to right, #434343 50%, rgb(209, 80, 80));
 }
 
 /* ACTIVE COLORS */

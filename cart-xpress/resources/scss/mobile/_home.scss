@@ -1,26 +1,337 @@
 @use '../costumize' as *;
 
+
+
+// No media query necessary for xs breakpoint as it's effectively `@media (max-width: 0) { ... }`
+/*@include media-breakpoint-down(sm) { ... }
+=======
 /*
 @include media-breakpoint-up(sm) { ... }
 @include media-breakpoint-up(md) { ... }
 @include media-breakpoint-up(lg) { ... }
 @include media-breakpoint-up(xl) { ... }
 @include media-breakpoint-up(xxl) { ... }
-
 @include media-breakpoint-down(sm) { ... }
+>>>>>>> 1c55b143e31487a13f481ce9d7aefaee7ad75bf1
 @include media-breakpoint-down(md) { ... }
 @include media-breakpoint-down(lg) { ... }
 @include media-breakpoint-down(xl) { ... }
 @include media-breakpoint-down(xxl) { ... }
 */
 
-/* HOME MOBILE */
-@include media-breakpoint-down(md) {
+// Example: Style from medium breakpoint and down
+@include media-breakpoint-up(lg) {
+  #sort-button{
+    display: none !important;
+    
+  }
+  #header-button{
 
-    .navbar {
+    display: none !important;
+  }
+}
 
-        background-color: red !important;
+@include media-breakpoint-down(lg){
+  
+ /*NAV-BARRR*/
+  .navbar{
+    .navbar-brand{
+color: black !important ;
+button{
+  position: absolute !important;
+  width: 0.6em!important;
+  border-width: 0.6em !important;
+  width: 0.6em !important;
+  height: 0.5em !important;
+  padding-top: 1rem !important;
+}
 
     }
+  background-color: lightgray !important;
 
+  .navbar-toggler-icon{
+  font-size: 0.5em !important;
+  border-width: 0.6em !important;
+ padding-top: 0.5em !important;
+  }
+  .navbar-nav{
+ margin-left: 0 !important;
+ display:list-item ;
+ border: solid;
+ border-width:thin;
+ height: 15rem;
+ background-color: burlywood;
+ border-radius: 0.7rem;
+ align-items: center;
+
+ .fa-bell{
+  display: inline-block;
+  border-width: 0;
+ }
+ .btn{
+  
+  border-inline-end: 2rem;
+  display: inline-block;
+
+  margin-left: 1rem;
+ }
+ #notify {
+  animation: none;
+}
+}
+
+}
+
+.simple-greeting{
+  overflow: hidden;
+  h5{
+    position: absolute !important;
+    display: block !important;
+    font-size:16px !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    font-weight: 500;
+    width:100% !important;
+    }
+  .w-100{
+      display: block; 
+      overflow-y: hidden;
+      height: 15rem;
+        }
+}
+
+.search-home-xpress{
+
+
+
+  display:inline-block;
+  padding:0 !important;
+  margin: 0;
+  height: 24.5rem;
+
+  justify-content: start !important;
+  flex-direction: column !important;
+
+  button{
+    text-align: center !important;
+    margin-top: .5rem !important;
+    flex-direction: column !important;
+        }
+  p{
+    display: none;
+    margin-top: 8rem !important;
+   }
+
+  h6{
+    
+    display: block !important;
+    font-size:16px !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    font-weight: 500;
+    width:100% !important;
+    justify-content: center;
+    }
+  .row{
+    display: inline-block;
+    justify-content: center !important;
+    padding-right: 10% !important;
+    padding-bottom: 0px !important;
+    margin-bottom: 0px !important;
+  
+    
+.col-4{
+  padding-bottom: 0.5rem !important;
+  justify-content: center !important;
+    
+  
+       
+       #prod{
+          width:7rem ;
+       }
+        img{
+          position: absolute;
+          width: 5rem !important;
+          height:auto !important;
+          padding-top: 1rem !important;
+          padding-right: 3rem !important;
+         
+       
+        
+        }
+      input{
+          min-width: 15rem;
+          justify-items: left !important;
+          
+
+        }
+    }
+  }
+
+
+
+
+}
+
+.search-manager{
+ 
+  /*search bar*/
+   .form-control{
+          justify-content: start !important;
+
+        #search-img{
+            width: 2em !important;
+            padding-top: 0.1rem !important;
+                   }
+                   #show-cart-btn{
+
+            #show{
+              display: none !important;
+                 }
+              }
+              #show-cart-btn{
+                
+              }
+
+              #search-shop{
+                width: 2 !important;
+              }
+}
+
+#first-text-end{
+
+  #header-button{
+      margin-top: 4em !important;
+      font-weight: 400 !important;
+      font-size: smaller !important;
+
+  }
+  #hide-home-btn{
+    margin-top: 0 !important;
+    margin-right: 0 !important;
+                }
+  #show-home-btn{
+ margin-top: 0 !important;
+ margin-right: 0 !important;
+                }
+  
+.application-description-header{
+        display: inline !important;
+
+    h6{
+      display: none !important;
+      margin-top: 2px !important;
+     font-weight: 400 !important;
+     font-size: smaller !important;
+     margin-top: 0 !important;
+    }
+   
+  }
+
+  p{
+    display: none !important;
+  }
+  
+}
+/*dropdown menu*/
+
+.sorted-component-wrapper{
+align-items: flex-end !important;
+
+#right{
+  align-items: flex-end !important;
+}
+  #sorting{
+    
+    .sorted-component{
+  
+      margin-bottom: 0 !important;
+      #sortButton{
+          .btn{
+            margin-bottom: 2px !important;
+          }
+        }
+    #sort-button{
+        background-color:#f6b26b !important;
+      margin-bottom: 5px !important;
+      padding-top: 1.5px !important;
+      padding-bottom: 2px !important;
+  
+      
+      #button-text{
+      font-size: 12px !important;
+          color: beige !important;
+          padding: 0px !important;
+        
+  
+      }
+    }
+  
+    #p-sort{
+  
+      display: none !important;
+    }
+  }
+}
+}
+
+ 
+/*ascending-descending*/
+
+#sorted-component-two{
+ 
+  .sorted-buttons{
+    
+      button{
+       
+       padding-left: 1% !important ;
+       padding-right: 2% !important;
+       padding-bottom: 0.4rem !important;
+      margin-bottom: 10% !important;
+      font-size: 12px !important;
+
+  
+      //PAUSE
+      
+    }
+    #desc{
+  
+    margin-right: 0.1rem !important;
+   font-size: 12px !important;
+    padding-top: 2.8px !important;
+   padding-bottom: 3px !important;
+   margin-bottom: 3px !important;
+   align-items: flex-end !important;
+
+    }
+    #asc{
+      margin-right: 0.2rem !important;
+      font-size: 12px !important;
+      padding-top: 3px !important;
+      padding-bottom: 3px !important;
+      margin-bottom: 3px !important;
+      align-items: flex-end !important;
+    }
+  }
+
+}
+}
+.cart-xpress-header{
+
+  .simple-nav{
+  
+    display: inline-flex;
+   
+    
+    button{
+    
+      width: 115px !important;
+
+      #class1{
+        margin-left: 0 !important ;
+      }
+    }
+
+  }
+}
 }
